@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0a0a0a !important; /* Ensure solid black behind gradients */
+  background: radial-gradient(circle at 15% 20%, rgba(34, 211, 238, 0.08), transparent 38%),
+    radial-gradient(circle at 85% 0%, rgba(56, 189, 248, 0.14), transparent 33%), #0a0a0a;
+  color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Global Typography Upgrades & Hard Overrides */
+/* 10. Hard Override If Needed & 11. Typography Upgrade */
+body, p, span, div, h1, h2, h3, h4, h5, h6, li, a {
+  mix-blend-mode: normal !important;
+}
+
+p, span, li, blockquote, .readable-text {
+  color: #ffffff !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+  z-index: 10;
+  position: relative;
+  font-weight: 500 !important;
+  line-height: 1.75 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glass-card {
+  background: #1a1a1a !important;
+  border: 1px solid #2a2a2a !important;
+  position: relative;
+}
+
+.glass-card > * {
+  z-index: 10;
+  position: relative;
+}
+
+.animated-gradient-text {
+  background: linear-gradient(90deg, #f8fafc, #38bdf8, #22d3ee);
+  background-size: 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: shimmer 5s linear infinite;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 220%;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: reveal 0.8s ease forwards;
+}
+

@@ -117,7 +117,7 @@ export const practicalExposure = [
 ]
 
 export const contactDetails = {
-  email: 'contact@abdulsamhoon.com',
-  linkedin: 'https://linkedin.com/in/abdulsamhoon',
-  github: 'https://github.com/abdulsamhoon',
+  email: 'bdlsmhn@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/abdul-samhoon-0bb8b5330/',
+  github: 'https://github.com/samhoon000',
 }

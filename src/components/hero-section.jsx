@@ -33,7 +33,7 @@ export function HeroSection() {
             <a href="#projects" className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-base transition hover:-translate-y-0.5 hover:bg-accentSoft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base">
               View Projects
             </a>
-            <a href="#resume" className="rounded-lg border border-stroke bg-panel px-5 py-3 text-sm font-semibold text-textPrimary transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base">
+            <a href="/Abdul_Samhoon_Resume.pdf" download="Abdul_Samhoon_Resume.pdf" className="rounded-lg border border-stroke bg-panel px-5 py-3 text-sm font-semibold text-textPrimary transition hover:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base">
               Download Resume
             </a>
             <a href="#contact" className="rounded-lg border border-stroke bg-panel px-5 py-3 text-sm font-semibold text-textPrimary transition hover:border-accentSoft hover:text-textPrimary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base">

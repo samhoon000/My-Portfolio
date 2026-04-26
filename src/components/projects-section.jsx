@@ -85,11 +85,11 @@ export function ProjectsSection() {
             
             <div className="relative flex-1 overflow-y-auto rounded-xl bg-base border border-stroke/50 p-4 sm:p-6">
               {selectedProject.images && selectedProject.images.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start">
+                <div className={`grid gap-6 sm:gap-8 items-start ${selectedProject.images.length === 1 ? 'grid-cols-1 max-w-4xl mx-auto' : 'grid-cols-1 md:grid-cols-2'}`}>
                   {selectedProject.images.map((img, idx) => (
                     <div 
                       key={idx} 
-                      className="group relative overflow-hidden rounded-xl bg-panelSoft border border-stroke transition-all duration-300 hover:border-accent hover:shadow-[0_0_20px_rgba(56,189,248,0.3)] hover:-translate-y-1"
+                      className="group relative overflow-hidden rounded-xl bg-panelSoft border border-stroke transition-all duration-300 hover:border-accentSoft hover:shadow-[0_0_25px_rgba(34,211,238,0.4)] hover:-translate-y-1"
                     >
                       <img 
                         src={img} 

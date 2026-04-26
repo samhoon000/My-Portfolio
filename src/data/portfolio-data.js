@@ -64,15 +64,14 @@ export const certifications = [
 
 export const projects = [
   {
-    title: 'Sales Performance Dashboard',
-    problem: 'Business teams lacked visibility into region-wise sales trends and margin leakage.',
-    tools: ['Power BI', 'SQL', 'Excel'],
+    title: 'Karnataka AQI Analysis',
+    problem: 'Analyzed Government of India CPCB air quality data to uncover pollution trends, city-wise health risks, and seasonal environmental impact across Karnataka using Python and Power BI.',
+    tools: ['Power BI', 'Python', 'Pandas', 'Data Cleaning', 'Statistics'],
     insights:
-      'Identified top underperforming categories and optimized discount strategy to highlight high-margin opportunities.',
-    imageLabel: 'Sales KPI Dashboard',
-    githubUrl: '#',
-    demoUrl: '#',
-    caseStudyUrl: '#',
+      'Tumkur, Davangere, and Bengaluru emerged as the most polluted cities. Winter recorded the highest pollution levels, while NO₂ indicated traffic as a major pollution source.',
+    imageLabel: 'Air Quality Dashboard',
+    githubUrl: 'https://github.com/samhoon000/Karnataka_AQI_Analysis.git',
+    images: ['/karnataka-aqi-1.png'],
   },
   {
     title: 'Customer Churn Prediction',

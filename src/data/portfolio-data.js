@@ -86,15 +86,14 @@ export const projects = [
     caseStudyUrl: '#',
   },
   {
-    title: 'Drug Side Effect Analytics Dashboard',
-    problem: 'Healthcare stakeholders required patterns in adverse drug reactions across demographics.',
-    tools: ['Power BI', 'Python', 'Statistics'],
+    title: 'Apple Stock Price Analysis Dashboard',
+    problem: 'Investors and analysts needed historical stock insights to understand Apple’s long-term growth, volatility trends, and monthly performance behavior.',
+    tools: ['Power BI', 'Excel', 'DAX', 'Finance Analytics'],
     insights:
-      'Tracked risk clusters by drug class and age group to support safer treatment decision-making.',
-    imageLabel: 'Healthcare Safety Dashboard',
-    githubUrl: '#',
-    demoUrl: '#',
-    caseStudyUrl: '#',
+      'Built an interactive Power BI dashboard showing stock growth trends, monthly average closing prices, yearly volatility spikes, bullish vs bearish trading days, and trading volume patterns.',
+    imageLabel: 'Apple Stock Price Dashboard',
+    githubUrl: 'https://github.com/samhoon000/apple-stock-trend-dashboard.git',
+    images: ['/Apple-Stock-1.png', '/Apple-Stock-2.png'],
   },
   {
     title: 'SQL Business Insights Explorer',

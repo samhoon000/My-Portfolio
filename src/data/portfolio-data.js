@@ -74,15 +74,19 @@ export const projects = [
     images: ['/karnataka-aqi-1.png'],
   },
   {
-    title: 'Customer Churn Prediction',
-    problem: 'Subscription business needed early warnings for high-risk customer segments.',
-    tools: ['Python', 'Pandas', 'Scikit-learn', 'Tableau'],
+    title: 'India Food Price Intelligence Dashboard',
+    problem: 'Analyzed agricultural commodity price data across India to uncover market volatility, overpaying vs underpaying markets, state-wise price fluctuations, and commodity risk patterns. The goal was to transform raw pricing data into actionable insights for smarter trading and policy decisions.',
+    tools: ['Power BI', 'Python', 'Pandas', 'Statistics', 'Market Analytics'],
     insights:
-      'Built a churn scoring workflow that highlighted retention levers such as usage frequency and support delays.',
-    imageLabel: 'Churn Model Insights',
-    githubUrl: '#',
-    demoUrl: '#',
-    caseStudyUrl: '#',
+      'Tomato showed the highest price volatility, while Wheat remained most stable. Certain markets significantly overpaid compared to national averages, while others consistently underpaid. Southern and northeastern states showed stronger pricing fluctuations.',
+    imageLabel: 'Market Price Dashboard',
+    githubUrl: 'https://github.com/samhoon000/indian-food-price-volatility.git',
+    images: ['/food-price-1.png', '/food-price-2.png'],
+    themeClasses: {
+      cardHover: 'hover:border-emerald/50',
+      button: 'border-emerald/50 bg-emerald/10 text-emerald hover:bg-emerald hover:text-base focus-visible:ring-emerald shadow-[0_0_10px_rgba(16,185,129,0.2)] hover:shadow-[0_0_15px_rgba(16,185,129,0.4)]',
+      imageHover: 'hover:border-emerald/50 hover:shadow-[0_0_25px_rgba(16,185,129,0.25)]',
+    }
   },
   {
     title: 'Apple Stock Price Analysis Dashboard',

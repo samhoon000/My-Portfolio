@@ -25,7 +25,7 @@ export function ProjectsSection() {
         {projects.map((project) => (
           <article
             key={project.title}
-            className="glass-card rounded-2xl bg-panelSoft p-6 shadow-card transition hover:-translate-y-1 hover:border-accent"
+            className={`glass-card rounded-2xl bg-panelSoft p-6 shadow-card transition hover:-translate-y-1 ${project.themeClasses?.cardHover || 'hover:border-accent'}`}
           >
             <div className="mb-4 rounded-xl border border-stroke bg-gradient-to-br from-panel to-base p-5">
               <p className="readable-text text-xs uppercase tracking-wider text-white">Project Preview</p>
@@ -60,7 +60,7 @@ export function ProjectsSection() {
               )}
               <button 
                 onClick={() => openModal(project)}
-                className="rounded-md border border-accent bg-accent/10 px-4 py-2 text-xs font-medium text-accent transition hover:bg-accent hover:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base shadow-[0_0_10px_rgba(56,189,248,0.2)] hover:shadow-[0_0_15px_rgba(56,189,248,0.4)]"
+                className={`rounded-md border px-4 py-2 text-xs font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-base ${project.themeClasses?.button || 'border-accent bg-accent/10 text-accent hover:bg-accent hover:text-base focus-visible:ring-accent shadow-[0_0_10px_rgba(56,189,248,0.2)] hover:shadow-[0_0_15px_rgba(56,189,248,0.4)]'}`}
               >
                 View
               </button>
@@ -89,7 +89,7 @@ export function ProjectsSection() {
                   {selectedProject.images.map((img, idx) => (
                     <div 
                       key={idx} 
-                      className="group relative overflow-hidden rounded-xl bg-panelSoft border border-stroke transition-all duration-300 hover:border-accentSoft hover:shadow-[0_0_25px_rgba(34,211,238,0.4)] hover:-translate-y-1"
+                      className={`group relative overflow-hidden rounded-xl bg-panelSoft border border-stroke transition-all duration-300 hover:-translate-y-1 ${selectedProject.themeClasses?.imageHover || 'hover:border-accentSoft hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]'}`}
                     >
                       <img 
                         src={img} 

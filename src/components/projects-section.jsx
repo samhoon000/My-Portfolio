@@ -58,12 +58,23 @@ export function ProjectsSection() {
                   GitHub
                 </a>
               )}
-              <button 
-                onClick={() => openModal(project)}
-                className={`rounded-md border px-4 py-2 text-xs font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-base ${project.themeClasses?.button || 'border-accent bg-accent/10 text-accent hover:bg-accent hover:text-base focus-visible:ring-accent shadow-[0_0_10px_rgba(56,189,248,0.2)] hover:shadow-[0_0_15px_rgba(56,189,248,0.4)]'}`}
-              >
-                View
-              </button>
+              {project.demoUrl && project.demoUrl !== '#' ? (
+                <a 
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-block rounded-md border px-4 py-2 text-xs font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-base ${project.themeClasses?.button || 'border-accent bg-accent/10 text-accent hover:bg-accent hover:text-base focus-visible:ring-accent shadow-[0_0_10px_rgba(56,189,248,0.2)] hover:shadow-[0_0_15px_rgba(56,189,248,0.4)]'}`}
+                >
+                  View
+                </a>
+              ) : (
+                <button 
+                  onClick={() => openModal(project)}
+                  className={`rounded-md border px-4 py-2 text-xs font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-base ${project.themeClasses?.button || 'border-accent bg-accent/10 text-accent hover:bg-accent hover:text-base focus-visible:ring-accent shadow-[0_0_10px_rgba(56,189,248,0.2)] hover:shadow-[0_0_15px_rgba(56,189,248,0.4)]'}`}
+                >
+                  View
+                </button>
+              )}
             </div>
           </article>
         ))}

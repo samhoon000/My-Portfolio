@@ -99,15 +99,19 @@ export const projects = [
     images: ['/Apple-Stock-1.png', '/Apple-Stock-2.png'],
   },
   {
-    title: 'SQL Business Insights Explorer',
-    problem: 'Decision makers needed self-serve insights from transactional datasets without BI latency.',
-    tools: ['SQL', 'PostgreSQL', 'Metabase'],
+    title: 'Smart Pathways for Personalized Learning',
+    problem: 'Developed an AI-powered platform to help students navigate structured learning paths, discover curated career resources, and improve job readiness through intelligent guidance.',
+    tools: ['React', 'Node.js', 'MongoDB', 'Groq API', 'AI / LLM'],
     insights:
-      'Designed analytical SQL queries that surfaced revenue drivers, repeat purchase behavior, and cohort patterns.',
-    imageLabel: 'SQL Insights Panel',
-    githubUrl: '#',
-    demoUrl: '#',
-    caseStudyUrl: '#',
+      'Built as an Academic Team Project (collaborative development). Integrated Groq API for automated quiz generation and real-time evaluation. Designed mock interview system to simulate real job scenarios. Enabled networking features to connect learners with peers and mentors.',
+    imageLabel: 'AI Learning Platform',
+    githubUrl: 'https://github.com/samhoon000/Career-Guidance.git',
+    demoUrl: 'https://skillquest-xwzr.onrender.com/',
+    themeClasses: {
+      cardHover: 'hover:border-purple-500/50',
+      button: 'border-purple-500/50 bg-purple-500/10 text-purple-400 hover:bg-purple-500 hover:text-white focus-visible:ring-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.2)] hover:shadow-[0_0_15px_rgba(168,85,247,0.4)]',
+      imageHover: 'hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.25)]',
+    }
   },
 ]
 

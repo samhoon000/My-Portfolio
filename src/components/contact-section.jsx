@@ -48,7 +48,7 @@ export function ContactSection() {
         },
         (error) => {
           alert('Failed to send message.');
-          console.error(error);
+          // Error handling completed
           setIsSubmitting(false);
         },
       );

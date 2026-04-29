@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Environment variables
+# We ignore .env files so sensitive keys aren't pushed to public repositories like GitHub.
+.env
+.env.*
+.env.local
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
 import { contactDetails } from '../data/portfolio-data'
 import { SectionHeading } from './section-heading'
@@ -6,20 +6,45 @@ import { SectionHeading } from './section-heading'
 export function ContactSection() {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  // Disable background scroll when modal is open
+  useEffect(() => {
+    if (showSuccessModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showSuccessModal]);
 
   const sendEmail = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // We use environment variables (import.meta.env) to keep sensitive keys secure.
+    // By keeping them out of source code, we prevent exposing them on public GitHub repositories.
     emailjs
-      .sendForm('service_i1yo2i8', 'template_pvdcple', form.current, {
-        publicKey: 'sD6O9i__1q1QVagJ3',
-      })
+      .sendForm(
+        import.meta.env.VITE_SERVICE_ID, 
+        import.meta.env.VITE_TEMPLATE_ID, 
+        form.current, 
+        {
+          publicKey: import.meta.env.VITE_PUBLIC_KEY,
+        }
+      )
       .then(
         () => {
-          alert('Message sent successfully!');
+          setShowSuccessModal(true);
           form.current.reset();
           setIsSubmitting(false);
+          
+          // Auto disappear after 3 seconds
+          setTimeout(() => {
+            setShowSuccessModal(false);
+          }, 3000);
         },
         (error) => {
           alert('Failed to send message.');
@@ -105,6 +130,50 @@ export function ContactSection() {
           </div>
         </form>
       </div>
+
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <style>
+            {`
+              @keyframes popIn {
+                0% { opacity: 0; transform: scale(0.9); }
+                100% { opacity: 1; transform: scale(1); }
+              }
+              .animate-popIn {
+                animation: popIn 0.3s ease-out forwards;
+              }
+            `}
+          </style>
+          {/* Blurred Background Overlay */}
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
+            onClick={() => setShowSuccessModal(false)}
+          ></div>
+          
+          {/* Modal Content */}
+          <div className="relative z-10 flex flex-col items-center justify-center rounded-2xl bg-panelSoft border border-white/10 p-8 shadow-[0_0_40px_rgba(0,0,0,0.5)] animate-popIn max-w-sm w-full text-center">
+            {/* Animated Checkmark */}
+            <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-500">
+              <svg className="h-10 w-10 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            
+            <h4 className="text-2xl font-bold text-white">Message Sent Successfully!</h4>
+            <p className="mt-3 text-base text-white/70">
+              Thank you for reaching out. I'll get back to you as soon as possible.
+            </p>
+            
+            <button 
+              onClick={() => setShowSuccessModal(false)}
+              className="mt-8 w-full rounded-xl bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 active:scale-95"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

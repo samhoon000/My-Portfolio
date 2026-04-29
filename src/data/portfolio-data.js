@@ -43,22 +43,30 @@ export const skills = [
 
 export const certifications = [
   {
-    title: 'Google Data Analytics Professional Certificate',
-    provider: 'Coursera / Google',
-    date: 'Month 2026',
-    credentialUrl: '#',
+    title: 'Hackwise 2.0 National Hackathon – Top 10 (Secured 9th Place)',
+    provider: 'KVG College of Engineering',
+    date: '',
+    description: 'Secured 9th place in a national-level hackathon by developing an innovative solution under competitive conditions. Demonstrated strong problem-solving, teamwork, and real-world project execution skills.',
+    credentialUrl: 'https://hackwise.spherehive.in/verify',
+    image: '/hackwise-certificate.jpg',
+    theme: 'gold',
   },
   {
-    title: 'Microsoft Power BI Data Analyst Associate',
-    provider: 'Microsoft',
-    date: 'Month 2026',
-    credentialUrl: '#',
+    title: 'Supervised Machine Learning: Regression and Classification',
+    provider: 'DeepLearning.AI & Stanford University (via Coursera)',
+    date: '',
+    description: 'Completed a foundational machine learning course covering regression and classification techniques, model evaluation, and real-world applications. Gained hands-on understanding of core ML concepts guided by Andrew Ng.',
+    credentialUrl: 'https://www.coursera.org/account/accomplishments/verify/UMQEPYDUIT2M?utm_source=mobile&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=course',
+    image: '/ml-certificate.png',
+    theme: 'ai',
   },
   {
-    title: 'SQL for Data Analysis Certification',
-    provider: 'DataCamp',
-    date: 'Month 2026',
-    credentialUrl: '#',
+    title: 'AI Sparkathon 2025 – Second Prize',
+    provider: 'Bearys Institute of Technology (BIT), Mangalore',
+    date: '',
+    description: 'Secured 2nd Prize in AI Sparkathon 2025 for building an AI-based personalized learning and career guidance platform. Demonstrated strong innovation, teamwork, and real-world problem-solving skills.',
+    image: '/ai-sparkathon-certificate.jpg',
+    theme: 'gold-prominent',
   },
 ]
 

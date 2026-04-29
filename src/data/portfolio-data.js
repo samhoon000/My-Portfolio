@@ -28,17 +28,17 @@ export const heroStats = [
 ]
 
 export const skills = [
-  { name: 'SQL', level: 90, icon: FaDatabase },
-  { name: 'Python', level: 85, icon: FaPython },
-  { name: 'Power BI', level: 88, icon: FaMicrosoft },
+  { name: 'SQL', level: 80, icon: FaDatabase },
+  { name: 'Python', level: 80, icon: FaPython },
+  { name: 'Power BI', level: 85, icon: FaMicrosoft },
   { name: 'Excel', level: 90, icon: FaFileExcel },
-  { name: 'Tableau', level: 75, icon: FaChartBar },
-  { name: 'Pandas', level: 84, icon: SiPandas },
+  { name: 'Tableau', level: 80, icon: FaChartBar },
+  { name: 'Pandas', level: 86, icon: SiPandas },
   { name: 'NumPy', level: 80, icon: SiNumpy },
-  { name: 'Statistics', level: 78, icon: FaChartLine },
+  { name: 'Statistics', level: 75, icon: FaChartLine },
   { name: 'Data Cleaning', level: 88, icon: FaTable },
-  { name: 'Dashboard Design', level: 85, icon: BiBarChartAlt2 },
-  { name: 'Data Visualization', level: 87, icon: FaRegChartBar },
+  { name: 'Dashboard Design', level: 80, icon: BiBarChartAlt2 },
+  { name: 'Data Visualization', level: 83, icon: FaRegChartBar },
 ]
 
 export const certifications = [

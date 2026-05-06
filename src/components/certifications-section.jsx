@@ -40,7 +40,7 @@ export function CertificationsSection() {
       <SectionHeading
         eyebrow="Certifications"
         title="Verified upskilling and professional learning"
-        description="Editable placeholders for certifications to highlight your continuous growth in analytics."
+        description="Award-winning hackathon participant and certified in Machine Learning, with proven experience in building real-world AI solutions"
       />
       <div className="grid gap-4 md:grid-cols-3">
         {certifications.map((certification) => {

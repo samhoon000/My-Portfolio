@@ -6,7 +6,7 @@ export function GithubSection() {
       <SectionHeading
         eyebrow="GitHub"
         title="Explore my code, SQL queries, and analytics workflows"
-        description="Add your GitHub username in the image URLs below to display dynamic contribution and language stats."
+        description="Showcasing my GitHub projects, data analysis workflows, and machine learning implementations with real-world applications."
       />
       <div className="grid gap-4 lg:grid-cols-2">
         <a

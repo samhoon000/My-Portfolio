@@ -22,23 +22,23 @@ export const navLinks = [
 ]
 
 export const heroStats = [
-  { label: 'Projects Built', value: 12 },
-  { label: 'Datasets Analyzed', value: 25 },
-  { label: 'Dashboards Designed', value: 8 },
+  { label: 'Projects Built', value: 8 },
+  { label: 'Datasets Analyzed', value: 15 },
+  { label: 'Dashboards Designed', value: 5 },
 ]
 
 export const skills = [
-  { name: 'SQL', level: 80, icon: FaDatabase },
-  { name: 'Python', level: 80, icon: FaPython },
-  { name: 'Power BI', level: 85, icon: FaMicrosoft },
-  { name: 'Excel', level: 90, icon: FaFileExcel },
-  { name: 'Tableau', level: 80, icon: FaChartBar },
-  { name: 'Pandas', level: 86, icon: SiPandas },
-  { name: 'NumPy', level: 80, icon: SiNumpy },
-  { name: 'Statistics', level: 75, icon: FaChartLine },
-  { name: 'Data Cleaning', level: 88, icon: FaTable },
-  { name: 'Dashboard Design', level: 80, icon: BiBarChartAlt2 },
-  { name: 'Data Visualization', level: 83, icon: FaRegChartBar },
+  { name: 'SQL', level: 60, icon: FaDatabase },
+  { name: 'Python', level: 70, icon: FaPython },
+  { name: 'Power BI', level: 70, icon: FaMicrosoft },
+  { name: 'Excel', level: 75, icon: FaFileExcel },
+  { name: 'Tableau', level: 60, icon: FaChartBar },
+  { name: 'Pandas', level: 75, icon: SiPandas },
+  { name: 'NumPy', level: 65, icon: SiNumpy },
+  { name: 'Statistics', level: 60, icon: FaChartLine },
+  { name: 'Data Cleaning', level: 75, icon: FaTable },
+  { name: 'Dashboard Design', level: 75, icon: BiBarChartAlt2 },
+  { name: 'Data Visualization', level: 75, icon: FaRegChartBar },
 ]
 
 export const certifications = [

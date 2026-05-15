@@ -1,5 +1,5 @@
 # My Portfolio - Data Analyst Project Showcase
-
+[samhoon.xyz](samhoon.xyz)
 A professional portfolio repository designed to present **Data Analyst capabilities** through project storytelling, structured analysis workflow, and technical documentation. The focus is on demonstrating practical skills in **SQL**, **Python**, and business-focused data analysis for placement and interview discussions.
 
 ## Problem Statement

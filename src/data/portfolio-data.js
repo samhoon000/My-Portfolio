@@ -68,6 +68,15 @@ export const certifications = [
     image: '/ai-sparkathon-certificate.jpg',
     theme: 'gold-prominent',
   },
+  {
+    title: 'Databases and SQL for Data Science with Python',
+    provider: 'IBM (via Coursera)',
+    date: '',
+    description: 'Successfully completed a course focused on SQL, database fundamentals, data retrieval, filtering, joins, aggregations, and working with databases using Python. Strengthened foundational skills in SQL and data analysis for real-world applications.',
+    credentialUrl: 'https://www.coursera.org/account/accomplishments/verify/XD4ZGS1BGITR',
+    image: '/sql-certificate.png',
+    theme: 'sql',
+  },
 ]
 
 export const projects = [

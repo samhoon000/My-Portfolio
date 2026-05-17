@@ -22,9 +22,9 @@ export function HeroSection() {
         <div>
           <p className="readable-text mb-4 text-sm uppercase tracking-[0.28em] text-accent">AI & Data Science Undergraduate</p>
           <h1 className="font-display text-4xl font-bold tracking-tight text-textPrimary sm:text-6xl lg:text-7xl">Abdul Samhoon</h1>
-          <h2 className="mt-4 h-20 sm:h-14 font-display text-xl font-semibold animated-gradient-text sm:text-2xl lg:text-3xl">
+          <h2 className="mt-4 min-h-[4.5rem] sm:min-h-[4rem] lg:min-h-[5.5rem] font-display text-xl font-semibold animated-gradient-text sm:text-2xl lg:text-3xl leading-snug lg:leading-normal">
             {typed}
-            <span className="ml-1 animate-pulse text-accent">|</span>
+            <span className="inline-block ml-1 animate-pulse text-accent">|</span>
           </h2>
           <p className="readable-text mt-6 max-w-xl text-base text-white/80 leading-relaxed">
             I specialize in transforming complex data into strategic business intelligence. Proficient in <strong>Python, SQL, Power BI,</strong> and <strong>Machine Learning</strong>, I focus on building analytical pipelines and models that drive real-world impact.

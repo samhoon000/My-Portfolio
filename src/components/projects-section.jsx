@@ -32,15 +32,25 @@ export function ProjectsSection() {
               <p className="mt-2 font-display text-xl text-textPrimary">{project.imageLabel}</p>
             </div>
             <h3 className="text-xl font-semibold text-textPrimary">{project.title}</h3>
-            <p className="readable-text mt-3 text-sm text-white">
-              <span className="font-semibold text-textPrimary">Business Problem: </span>
-              {project.problem}
-            </p>
-            <p className="readable-text mt-3 text-sm text-white">
-              <span className="font-semibold text-textPrimary">Key Insights: </span>
-              {project.insights}
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="mt-4 space-y-3">
+              <p className="readable-text text-sm text-white/90">
+                <span className="font-bold text-accent">Problem: </span>
+                {project.problem}
+              </p>
+              {project.approach && (
+                <p className="readable-text text-sm text-white/90">
+                  <span className="font-bold text-accent">Approach: </span>
+                  {project.approach}
+                </p>
+              )}
+              {project.result && (
+                <p className="readable-text text-sm text-white/90">
+                  <span className="font-bold text-accent">Result: </span>
+                  {project.result}
+                </p>
+              )}
+            </div>
+            <div className="mt-5 flex flex-wrap gap-2">
               {project.tools.map((tool) => (
                 <span key={tool} className="readable-text rounded-full border border-stroke bg-panel px-3 py-1 text-xs text-white">
                   {tool}

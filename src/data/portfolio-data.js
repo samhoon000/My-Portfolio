@@ -8,7 +8,8 @@ import {
   FaTable,
   FaRegChartBar,
   FaGithub,
-  FaGitAlt
+  FaGitAlt,
+  FaServer
 } from 'react-icons/fa'
 import { SiPandas, SiNumpy, SiScikitlearn } from 'react-icons/si'
 import { BiBarChartAlt2 } from 'react-icons/bi'
@@ -52,6 +53,7 @@ export const skills = {
     { name: 'Git', icon: FaGitAlt },
     { name: 'GitHub', icon: FaGithub },
     { name: 'MySQL', icon: FaDatabase },
+    { name: 'phpMyAdmin', icon: FaServer },
   ]
 }
 
@@ -82,12 +84,14 @@ export const achievements = [
     organization: 'Bearys Institute of Technology',
     icon: '🥈',
     description: 'Secured 2nd Prize for building an AI-based personalized learning and career guidance platform. Demonstrated strong innovation and AI implementation.',
+    image: '/ai-sparkathon-certificate.jpg',
   },
   {
     title: 'Top 10 – National Level Hackathon',
     organization: 'Hackwise 2.0 (9th Place)',
     icon: '🏆',
     description: 'Secured 9th place nationwide. Developed an innovative solution under competitive conditions demonstrating robust problem-solving.',
+    image: '/hackwise-certificate.jpg',
   },
   {
     title: 'Hackathon Participation',

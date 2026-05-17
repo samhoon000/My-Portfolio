@@ -1,5 +1,6 @@
 import { achievements } from '../data/portfolio-data'
 import { SectionHeading } from './section-heading'
+import { FaExternalLinkAlt } from 'react-icons/fa'
 
 export function AchievementsSection() {
   return (
@@ -34,6 +35,19 @@ export function AchievementsSection() {
                 <p className="mt-3 text-sm text-white/80 leading-relaxed">
                   {achievement.description}
                 </p>
+                {achievement.image && (
+                  <div className="mt-5">
+                    <a
+                      href={achievement.image}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white/70 bg-white/5 border border-white/10 rounded-lg hover:text-accent hover:bg-accent/10 hover:border-accent/30 transition-all duration-300"
+                    >
+                      <span>View Certificate</span>
+                      <FaExternalLinkAlt className="w-3 h-3 opacity-70" />
+                    </a>
+                  </div>
+                )}
               </div>
             </article>
           ))}

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { heroStats } from '../data/portfolio-data'
 import { useTypewriter } from '../hooks/use-typewriter'
 import { useCountUp } from '../hooks/use-count-up'
@@ -9,6 +10,116 @@ function StatCard({ label, value }) {
     <div className="glass-card rounded-xl p-4 shadow-card">
       <p className="text-xl font-bold text-textPrimary">{count}+</p>
       <p className="mt-1 text-xs uppercase tracking-wider text-textPrimary">{label}</p>
+    </div>
+  )
+}
+
+function TerminalSkills() {
+  const skills = [
+    "> Loading technical skills...",
+    "✓ Python for Data Analysis",
+    "✓ SQL & Database Querying",
+    "✓ Power BI Visualization",
+    "✓ Data Cleaning & EDA",
+    "✓ Machine Learning Basics",
+    "✓ Pandas & NumPy",
+    "✓ Git & GitHub"
+  ]
+
+  const [displayedLines, setDisplayedLines] = useState([])
+  const [currentLineIdx, setCurrentLineIdx] = useState(0)
+  const [typedText, setTypedText] = useState('')
+
+  useEffect(() => {
+    if (currentLineIdx >= skills.length) {
+      const resetTimeout = setTimeout(() => {
+        setDisplayedLines([])
+        setCurrentLineIdx(0)
+        setTypedText('')
+      }, 5000)
+      return () => clearTimeout(resetTimeout)
+    }
+
+    const currentFullText = skills[currentLineIdx]
+
+    if (typedText.length < currentFullText.length) {
+      const charTimeout = setTimeout(() => {
+        setTypedText(currentFullText.slice(0, typedText.length + 1))
+      }, 35)
+      return () => clearTimeout(charTimeout)
+    } else {
+      const lineTimeout = setTimeout(() => {
+        setDisplayedLines((prev) => [...prev, currentFullText])
+        setCurrentLineIdx((prev) => prev + 1)
+        setTypedText('')
+      }, 300)
+      return () => clearTimeout(lineTimeout)
+    }
+  }, [currentLineIdx, typedText, skills])
+
+  const renderLine = (lineText, key, isTyping = false) => {
+    if (lineText.startsWith('>')) {
+      return (
+        <div key={key} className="font-mono text-xs sm:text-sm text-zinc-300 leading-normal min-h-[1.5rem] flex items-start">
+          <div className="inline-block text-accent mr-2 font-bold select-none">&gt;</div>
+          <div className="inline font-semibold text-zinc-300">
+            {lineText.substring(1).trimStart()}
+            {isTyping && <div className="inline-block w-1.5 h-3.5 bg-accent ml-1 animate-pulse align-middle" />}
+          </div>
+        </div>
+      )
+    }
+    if (lineText.startsWith('✓')) {
+      return (
+        <div key={key} className="font-mono text-xs sm:text-sm text-zinc-100 leading-normal min-h-[1.5rem] flex items-start">
+          <div className="inline-block text-emerald mr-2 font-bold select-none">✓</div>
+          <div className="inline font-medium text-zinc-100">
+            {lineText.substring(1).trimStart()}
+            {isTyping && <div className="inline-block w-1.5 h-3.5 bg-accent ml-1 animate-pulse align-middle" />}
+          </div>
+        </div>
+      )
+    }
+    return (
+      <div key={key} className="font-mono text-xs sm:text-sm text-zinc-300 leading-normal min-h-[1.5rem] flex items-start">
+        <div className="inline text-zinc-300">
+          {lineText}
+          {isTyping && <div className="inline-block w-1.5 h-3.5 bg-accent ml-1 animate-pulse align-middle" />}
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="w-full">
+      <div className="mb-4">
+        <h3 className="font-display text-lg font-bold text-textPrimary tracking-tight">Technical Toolkit</h3>
+        <div className="font-sans text-xs text-white/60 mt-1">
+          Technologies and tools I use to solve data problems.
+        </div>
+      </div>
+
+      <div className="glass-card rounded-2xl bg-panelSoft overflow-hidden shadow-[0_0_30px_rgba(56,189,248,0.12)] border border-accent/20 hover:border-accent/40 transition-all duration-300">
+        <div className="flex items-center justify-between px-4 py-3 bg-[#121212] border-b border-stroke/40">
+          <div className="flex gap-2">
+            <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+            <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+            <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+          </div>
+          <div className="text-[11px] font-mono text-white/40 tracking-wider select-none pr-8">
+            skills.sh
+          </div>
+          <div />
+        </div>
+
+        <div className="p-5 bg-[#0d0d0d] h-[260px] max-h-[260px] overflow-hidden flex flex-col justify-start gap-1.5 font-mono select-text text-left">
+          {displayedLines.map((line, idx) => {
+            const isLastLineAndFinished = currentLineIdx >= skills.length && idx === skills.length - 1
+            return renderLine(line, `line-${idx}`, isLastLineAndFinished)
+          })}
+          {currentLineIdx < skills.length && renderLine(typedText, 'line-current', true)}
+        </div>
+      </div>
     </div>
   )
 }
@@ -44,36 +155,8 @@ export function HeroSection() {
             </a>
           </div>
         </div>
-        <div className="space-y-6 hidden lg:block">
-          <div className="glass-card rounded-2xl bg-panelSoft p-6 shadow-[0_0_30px_rgba(56,189,248,0.15)] border border-accent/20 hover:border-accent/40 transition-colors">
-            <p className="readable-text text-xs font-semibold uppercase tracking-[0.2em] text-accent mb-4">Core Competencies</p>
-            <div className="space-y-4">
-              <div>
-                <div className="flex justify-between text-xs text-textPrimary mb-1">
-                  <span>Data Analytics & Visualization</span>
-                </div>
-                <div className="h-1.5 w-full rounded-full bg-base overflow-hidden">
-                  <div className="h-full w-[90%] rounded-full bg-gradient-to-r from-accent to-blue-500" />
-                </div>
-              </div>
-              <div>
-                <div className="flex justify-between text-xs text-textPrimary mb-1">
-                  <span>Machine Learning</span>
-                </div>
-                <div className="h-1.5 w-full rounded-full bg-base overflow-hidden">
-                  <div className="h-full w-[75%] rounded-full bg-gradient-to-r from-emerald-400 to-emerald-600" />
-                </div>
-              </div>
-              <div>
-                <div className="flex justify-between text-xs text-textPrimary mb-1">
-                  <span>Python & SQL</span>
-                </div>
-                <div className="h-1.5 w-full rounded-full bg-base overflow-hidden">
-                  <div className="h-full w-[85%] rounded-full bg-gradient-to-r from-purple-400 to-purple-600" />
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="space-y-6 w-full mt-8 lg:mt-0">
+          <TerminalSkills />
           <div className="grid grid-cols-3 gap-4">
             {heroStats.map((stat) => (
               <StatCard key={stat.label} label={stat.label} value={stat.value} />

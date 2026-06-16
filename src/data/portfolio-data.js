@@ -103,6 +103,19 @@ export const achievements = [
 
 export const projects = [
   {
+    title: 'Food Health Risk Analytics Dashboard',
+    problem: 'Consumers and analysts lacked a structured way to evaluate nutritional quality, identify health risks, and extract meaningful insights from large food nutrition datasets.',
+    approach: 'Developed an end-to-end data analytics solution using Python, Pandas, SQL, MySQL, and Power BI. Performed data cleaning, feature engineering, exploratory analysis, SQL-based business analytics, and dashboard development on more than 1,000 food items. Created custom Nutrition Density and Health Risk Score metrics to evaluate food quality and risk levels.',
+    result: 'Delivered an interactive Power BI dashboard that enables users to analyze nutrition patterns, identify high-risk foods, compare healthier alternatives, and explore food health trends through KPI monitoring, risk categorization, and visual analytics. Generated actionable insights into nutrient density, health risk distribution, and overall food quality.',
+    tools: ['Power BI', 'Python', 'SQL', 'MySQL', 'Pandas', 'Data Analytics'],
+    insights:
+      'Delivered an interactive Power BI dashboard that enables users to analyze nutrition patterns, identify high-risk foods, compare healthier alternatives, and explore food health trends through KPI monitoring, risk categorization, and visual analytics. Generated actionable insights into nutrient density, health risk distribution, and overall food quality.',
+    imageLabel: 'Food Health Risk Analytics Dashboard',
+    githubUrl: 'https://github.com/samhoon000/food-health-risk-analysis',
+    images: ['/food-health-dashboard.png'],
+    buttonText: 'Dashboard',
+  },
+  {
     title: 'Early Warning System for Urban Pollution Spikes',
     problem: 'Government of India CPCB air quality data needed rigorous analysis to uncover hidden pollution trends, city-wise health risks, and seasonal environmental impacts across Karnataka.',
     approach: 'Engineered a comprehensive analytical pipeline using Python and Power BI to clean, process, and visualize complex environmental datasets, applying statistical techniques to model seasonal variations.',
@@ -129,23 +142,6 @@ export const projects = [
       cardHover: 'hover:border-emerald/50',
       button: 'border-emerald/50 bg-emerald/10 text-emerald hover:bg-emerald hover:text-base focus-visible:ring-emerald shadow-[0_0_10px_rgba(16,185,129,0.2)] hover:shadow-[0_0_15px_rgba(16,185,129,0.4)]',
       imageHover: 'hover:border-emerald/50 hover:shadow-[0_0_25px_rgba(16,185,129,0.25)]',
-    }
-  },
-  {
-    title: 'Smart Pathways for Personalized Learning',
-    problem: 'Students lacked a structured approach to discovering curated career resources and improving job readiness through intelligent guidance and realistic simulations.',
-    approach: 'Developed an AI-powered platform utilizing the Groq API for automated quiz generation and real-time evaluation. Integrated a robust backend with MongoDB and Node.js.',
-    result: 'Delivered an immersive mock interview system and dynamic learning paths, significantly enhancing student job readiness and creating a scalable AI application.',
-    tools: ['React', 'Node.js', 'MongoDB', 'Groq API', 'AI / LLM'],
-    insights:
-      'Built as an Academic Team Project (collaborative development). Integrated Groq API for automated quiz generation and real-time evaluation. Designed mock interview system to simulate real job scenarios. Enabled networking features to connect learners with peers and mentors.',
-    imageLabel: 'AI Learning Platform',
-    githubUrl: 'https://github.com/samhoon000/Career-Guidance.git',
-    demoUrl: 'https://skillquest-xwzr.onrender.com/',
-    themeClasses: {
-      cardHover: 'hover:border-purple-500/50',
-      button: 'border-purple-500/50 bg-purple-500/10 text-purple-400 hover:bg-purple-500 hover:text-white focus-visible:ring-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.2)] hover:shadow-[0_0_15px_rgba(168,85,247,0.4)]',
-      imageHover: 'hover:border-purple-500/50 hover:shadow-[0_0_25px_rgba(168,85,247,0.25)]',
     }
   },
   {

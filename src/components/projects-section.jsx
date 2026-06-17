@@ -104,18 +104,18 @@ export function ProjectsSection() {
             
             <h3 className="mb-6 text-xl sm:text-2xl font-semibold text-textPrimary pr-12">{selectedProject.title}</h3>
             
-            <div className="relative flex-1 overflow-y-auto rounded-xl bg-base border border-stroke/50 p-4 sm:p-6">
+            <div className="relative flex-1 overflow-y-auto rounded-xl bg-base border border-stroke/50 p-4 sm:p-6 flex items-center justify-center">
               {selectedProject.images && selectedProject.images.length > 0 ? (
-                <div className={`grid gap-6 sm:gap-8 items-start ${selectedProject.images.length === 1 ? 'grid-cols-1 max-w-4xl mx-auto' : 'grid-cols-1 md:grid-cols-2'}`}>
+                <div className={`grid gap-6 sm:gap-8 items-center justify-items-center w-full ${selectedProject.images.length === 1 ? 'grid-cols-1 max-w-4xl mx-auto' : 'grid-cols-1 md:grid-cols-2'}`}>
                   {selectedProject.images.map((img, idx) => (
                     <div 
                       key={idx} 
-                      className={`group relative overflow-hidden rounded-xl bg-panelSoft border border-stroke transition-all duration-300 hover:-translate-y-1 ${selectedProject.themeClasses?.imageHover || 'hover:border-accentSoft hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]'}`}
+                      className={`group relative overflow-hidden rounded-xl bg-panelSoft border border-stroke transition-all duration-300 hover:-translate-y-1 flex items-center justify-center ${selectedProject.themeClasses?.imageHover || 'hover:border-accentSoft hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]'}`}
                     >
                       <img 
                         src={img} 
                         alt={`${selectedProject.title} screenshot ${idx + 1}`}
-                        className="h-auto w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                        className="max-h-[55vh] sm:max-h-[60vh] lg:max-h-[65vh] w-auto max-w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
                       />
                     </div>
                   ))}

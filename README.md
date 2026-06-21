@@ -1,157 +1,119 @@
-# My Portfolio - Data Analyst Project Showcase
-[samhoon.xyz](samhoon.xyz)
-A professional portfolio repository designed to present **Data Analyst capabilities** through project storytelling, structured analysis workflow, and technical documentation. The focus is on demonstrating practical skills in **SQL**, **Python**, and business-focused data analysis for placement and interview discussions.
+# 👤 Samhoon | Data Analyst & Data Science Portfolio
+> B.E. in Artificial Intelligence & Data Science | Aspiring Data Analyst / Business Analyst / Data Science Intern
 
-## Problem Statement
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/abdul-samhoon-0bb8b5330/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github)](https://github.com/samhoon000)
+[![Email](https://img.shields.io/badge/Email-Contact-red?style=for-the-badge&logo=gmail)](mailto:bdlsmhn@gmail.com)
 
-Recruiters and hiring managers often need clear evidence of analytical thinking beyond certificates.  
-This project addresses that gap by organizing portfolio content around real-world analysis components: data modeling, SQL querying, insight extraction, and communication of business impact.
+Welcome! This repository hosts the source code and configuration for my **Personal Portfolio Website** ([samhoon.xyz](http://samhoon.xyz)). It highlights my skills in data analytics, business intelligence, and machine learning through interactive dashboards and projects.
 
-## Objectives
+---
 
-- Build a portfolio that highlights **job-ready Data Analyst skills**
-- Demonstrate ability to work with **relational schema design** and SQL analytics
-- Present analysis outcomes in a structured, recruiter-friendly format
-- Provide a clean, maintainable codebase for continuous portfolio updates
-- Create a reusable project format for future analytics case studies
+## 🎯 About Me
+I am a **B.E. student in Artificial Intelligence & Data Science** passionate about converting complex datasets into actionable business insights. I specialize in building interactive dashboards, conducting exploratory data analysis (EDA), and developing analytical pipelines to solve real-world problems.
 
-## Dataset Description
+*   **Role Targets:** Data Analyst / Business Analyst / Data Science Intern
+*   **Key Strengths:** SQL Query Optimization, Python Data Wrangling, BI Dashboard Design, and Statistical Analysis.
+*   **Achievements:**
+    *   🥈 **2nd Prize** – AI Sparkathon 2025 (Bearys Institute of Technology) for building an AI-based personalized learning platform.
+    *   🏆 **Top 10 (9th Place)** – Hackwise 2.0 National Hackathon.
 
-The analysis context in this portfolio is based on a job-market-style dataset and includes entities such as companies, roles, compensation, and hiring trends.
+---
 
-- **Source type:** Structured tabular data (CSV/SQL-ready format)
-- **Scope:** Company-level and job-level records
-- **Typical fields:** Company name, role title, salary ranges, location, posting date, required skills, demand indicators
-- **Use case:** Trend analysis for salary benchmarking, role demand, and hiring timelines
+## 💻 Technical Skills & Tools
 
-> Note: Replace this section with exact dataset source links and row/column counts when finalized.
+| Category | Skills & Technologies |
+| :--- | :--- |
+| **Data Analytics & BI** | SQL, Power BI, Excel, DAX, Data Cleaning, Exploratory Data Analysis (EDA), Feature Engineering |
+| **Programming & Libraries** | Python, Pandas, NumPy, Scikit-Learn, Matplotlib |
+| **Web Development** | React, JavaScript, Vite, Tailwind CSS, HTML5, CSS3 |
+| **Developer Tools & Databases** | Git, GitHub, MySQL, phpMyAdmin, VS Code |
 
-## Database Schema
+---
 
-The analysis model is organized with the following core tables:
+## 🌟 Featured Projects
+These analytical projects are integrated and showcased interactively in my portfolio website:
 
-- `companies` - company master data (industry, location, organization attributes)
-- `jobs` - job postings and role metadata
-- `salaries` - compensation fields (min, max, median, currency, normalized values)
-- `job_metrics` - computed indicators (demand score, skill frequency, competitiveness index)
-- `job_time` - temporal dimensions (posting date, month, quarter, trend windows)
+### 1. Food Health Risk Analytics Dashboard 🥦
+*An end-to-end data analytics dashboard evaluating the nutritional quality and health risk profile of 1,000+ food items.*
+*   **Tech Stack:** Power BI, Python, Pandas, SQL, MySQL
+*   **Problem:** Consumers and health analysts lack structured tools to evaluate food quality, identify risk parameters, and extract nutritional insights.
+*   **Approach:** Cleaned and processed raw nutritional data using Python/Pandas. Modeled database schemas in MySQL. Developed custom metrics including **Nutritional Density** and **Health Risk Score**.
+*   **Result:** Built an interactive Power BI dashboard featuring dynamic risk categorization, KPI monitoring, and healthy alternative suggestions.
+*   **Links:** [📁 Code Repository](https://github.com/samhoon000/food-health-risk-analysis)
 
-### Example Schema Relationships
+### 2. Early Warning System for Urban Air Pollution 🌬️
+*A seasonal environmental analytics dashboard identifying critical pollution patterns and urban health hazards.*
+*   **Tech Stack:** Power BI, Python, Pandas, Statistics
+*   **Problem:** Public air quality datasets (CPCB) required rigorous modeling to uncover seasonal pollution spikes and traffic-related emission trends.
+*   **Approach:** Structured an analytical pipeline in Python to clean and aggregate environmental logs. Applied statistical methods to evaluate seasonality.
+*   **Result:** Mapped high-risk zones (Tumkur, Davangere, Bengaluru) and established strong correlations between Winter seasons, traffic density, and NO₂ levels.
+*   **Links:** [📁 Code Repository](https://github.com/samhoon000/Karnataka_AQI_Analysis.git)
 
-- `companies.company_id` -> `jobs.company_id`
-- `jobs.job_id` -> `salaries.job_id`
-- `jobs.job_id` -> `job_metrics.job_id`
-- `jobs.posted_date` -> `job_time.date_key`
+### 3. India Food Price Intelligence Dashboard 🌾
+*A market intelligence platform monitoring agricultural commodity price volatility and regional price disparities.*
+*   **Tech Stack:** Power BI, Python, Pandas, Statistics
+*   **Problem:** High volatility in agricultural markets makes it difficult for traders and policymakers to spot overpaying regions and price trends.
+*   **Approach:** Executed comprehensive data wrangling on national market price datasets. Built variance models to track commodity pricing fluctuations.
+*   **Result:** Successfully highlighted market inefficiencies (overpaying vs. underpaying regions). Identified Tomato as the highest volatility commodity and Wheat as the most stable.
+*   **Links:** [📁 Code Repository](https://github.com/samhoon000/indian-food-price-volatility.git)
 
-## Key SQL Queries / Analysis Performed
+### 4. Apple Stock Price Analysis Dashboard 📈
+*A financial analytics dashboard modeling stock trends, trading volume, and historical volatility.*
+*   **Tech Stack:** Power BI, Excel, DAX
+*   **Problem:** Investors need clean historical views and volatility indicators to evaluate trading days and market momentum.
+*   **Approach:** Integrated historical market data, engineered custom DAX metrics for moving averages, and classified bullish vs. bearish trading days.
+*   **Result:** Created a high-fidelity visual dashboard highlighting monthly closing prices, volume spikes, and market trends.
+*   **Links:** [📁 Code Repository](https://github.com/samhoon000/apple-stock-trend-dashboard.git)
 
-- Salary distribution analysis by role and location
-- Top in-demand skills by job category
-- Company-wise hiring intensity and trend movement
-- Time-series analysis of job postings (monthly/quarterly)
-- Outlier detection on salary bands and compensation spread
-- Role competitiveness analysis using posting volume vs. skill overlap
+---
 
-```sql
--- Example: median salary by role
-SELECT
-    j.role_title,
-    percentile_cont(0.5) WITHIN GROUP (ORDER BY s.salary_normalized) AS median_salary
-FROM jobs j
-JOIN salaries s ON j.job_id = s.job_id
-GROUP BY j.role_title
-ORDER BY median_salary DESC;
-```
+## 🏆 Certifications
+*   **Databases and SQL for Data Science with Python** — *IBM (via Coursera)* [[Verify Credential](https://www.coursera.org/account/accomplishments/verify/XD4ZGS1BGITR)]
+*   **Supervised Machine Learning: Regression and Classification** — *DeepLearning.AI & Stanford University* [[Verify Credential](https://www.coursera.org/account/accomplishments/verify/UMQEPYDUIT2M)]
 
-```sql
--- Example: monthly posting trend
-SELECT
-    jt.year_month,
-    COUNT(*) AS total_postings
-FROM jobs j
-JOIN job_time jt ON j.posted_date = jt.date_key
-GROUP BY jt.year_month
-ORDER BY jt.year_month;
-```
+---
 
-## Insights / Findings
+## 🛠️ Portfolio Web App Tech Stack
+This repository contains the frontend code powering my portfolio:
+*   **Core Framework:** React 18, Vite
+*   **Styling:** Tailwind CSS, Vanilla CSS
+*   **Icons:** React Icons
+*   **Deployment:** Vercel
 
-- **Salary variance is role-sensitive:** analyst-specialized tracks show significantly wider salary bands than general reporting roles.
-- **Skill concentration matters:** SQL + Python combinations appear most frequently in higher-paying clusters.
-- **Hiring activity is cyclical:** posting volume shows periodic spikes aligned with quarter boundaries.
-- **Location and compensation are tightly linked:** metro-focused postings trend higher compensation but higher role competition.
+---
 
-> Placeholder: Add 3-5 quantified findings with exact percentages and SQL-backed evidence.
+## ⚙️ Installation & Local Setup
 
-## Tools & Technologies Used
+To clone and run the portfolio website locally:
 
-- **SQL:** PostgreSQL/MySQL-style analytical querying
-- **Python:** Data cleaning and exploratory analysis (Pandas, NumPy)
-- **Visualization:** Matplotlib/Seaborn/BI screenshots (as applicable)
-- **Frontend Portfolio Stack:** React, Vite, JavaScript, TailwindCSS, CSS
-- **Version Control:** Git, GitHub
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/samhoon000/My-Portfolio.git
+    cd My-Portfolio
+    ```
 
-## Project Structure
+2.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
 
-```text
-Samhoon_Portfolio/
-├── public/
-├── src/
-│   ├── components/
-│   ├── data/
-│   ├── hooks/
-│   ├── App.jsx
-│   ├── main.jsx
-│   ├── App.css
-│   └── index.css
-├── index.html
-├── package.json
-├── vite.config.js
-├── tailwind.config.js
-├── postcss.config.js
-├── eslint.config.js
-└── README.md
-```
+3.  **Run Development Server**
+    ```bash
+    npm run dev
+    ```
+    *Open `http://localhost:5173` in your browser to view the application.*
 
-## How to Run / Setup Instructions
+4.  **Build for Production**
+    ```bash
+    npm run build
+    ```
 
-```bash
-# 1) Clone repository
-git clone https://github.com/samhoon000/My-Portfolio.git
+---
 
-# 2) Move into project folder
-cd My-Portfolio
+## 📬 Contact & Connect
+Let's connect to discuss potential internship opportunities, data analytics roles, or collaborative projects!
 
-# 3) Install dependencies
-npm install
-
-# 4) Start development server
-npm run dev
-
-# 5) Build for production
-npm run build
-```
-
-## Future Work
-
-- Add a dedicated `sql/` folder with production-grade query scripts
-- Publish data dictionary and schema ER diagram
-- Integrate Python notebooks for reproducible analysis workflow
-- Add KPI dashboard snapshots with business interpretations
-- Include benchmark comparisons across industries and regions
-- Expand project documentation with test cases and assumptions
-
-## Screenshots
-
-Screenshots are available in the `screenshots/` directory to demonstrate:
-
-- Portfolio landing page
-- Project section highlighting data analyst work
-- Query output samples / dashboard previews
-- Key insight visualization snapshots
-
-> Placeholder: Add image links once screenshot files are finalized.
-
-## Conclusion
-
-This repository is structured as an interview-ready portfolio foundation to communicate **end-to-end Data Analyst capability**: from data modeling and SQL analysis to insight communication and professional presentation. It is designed to be continuously expanded with deeper analytics projects and measurable business outcomes.
+*   **Email:** [bdlsmhn@gmail.com](mailto:bdlsmhn@gmail.com)
+*   **LinkedIn:** [linkedin.com/in/abdul-samhoon-0bb8b5330](https://www.linkedin.com/in/abdul-samhoon-0bb8b5330/)
+*   **GitHub:** [github.com/samhoon000](https://github.com/samhoon000)

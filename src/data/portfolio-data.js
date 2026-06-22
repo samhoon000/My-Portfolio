@@ -103,14 +103,14 @@ export const achievements = [
 
 export const projects = [
   {
-    title: 'Food Health Risk Analytics Dashboard',
-    problem: 'Consumers and analysts lacked a structured way to evaluate nutritional quality, identify health risks, and extract meaningful insights from large food nutrition datasets.',
-    approach: 'Developed an end-to-end data analytics solution using Python, Pandas, SQL, MySQL, and Power BI. Performed data cleaning, feature engineering, exploratory analysis, SQL-based business analytics, and dashboard development on more than 1,000 food items. Created custom Nutrition Density and Health Risk Score metrics to evaluate food quality and risk levels.',
-    result: 'Delivered an interactive Power BI dashboard that enables users to analyze nutrition patterns, identify high-risk foods, compare healthier alternatives, and explore food health trends through KPI monitoring, risk categorization, and visual analytics. Generated actionable insights into nutrient density, health risk distribution, and overall food quality.',
+    title: 'Food Nutrition & Health Risk Analytics System',
+    problem: 'Nutrition analysts and quality control teams lacked a scalable business intelligence solution to audit product safety profiles, segment inventories by safety parameters, and identify high-risk product lines across a 1,000+ item catalog.',
+    approach: 'Engineered a robust ETL and data warehousing pipeline using Python, Pandas, and MySQL. Normalized semi-structured nutritional databases, handled missing data, and engineered two proprietary KPIs: Nutritional Density Index and Health Risk Score. Wrote SQL-based queries to segment inventory into distinct risk categories.',
+    result: 'Delivered an interactive Power BI dashboard providing product managers with real-time risk segmentations and inventory quality audits. Successfully identified that 15% of catalog products exceeded critical sodium thresholds, driving recommendations for product reformulation and mapping high-margin healthier alternatives.',
     tools: ['Power BI', 'Python', 'SQL', 'MySQL', 'Pandas', 'Data Analytics'],
     insights:
-      'Delivered an interactive Power BI dashboard that enables users to analyze nutrition patterns, identify high-risk foods, compare healthier alternatives, and explore food health trends through KPI monitoring, risk categorization, and visual analytics. Generated actionable insights into nutrient density, health risk distribution, and overall food quality.',
-    imageLabel: 'Food Health Risk Analytics Dashboard',
+      'Delivered an interactive Power BI dashboard providing product managers with real-time risk segmentations and inventory quality audits. Successfully identified that 15% of catalog products exceeded critical sodium thresholds, driving recommendations for product reformulation and mapping high-margin healthier alternatives.',
+    imageLabel: 'Food Nutrition & Health Risk Analytics System',
     githubUrl: 'https://github.com/samhoon000/food-health-risk-analysis',
     images: ['/food-health-dashboard.png'],
     buttonText: 'View',

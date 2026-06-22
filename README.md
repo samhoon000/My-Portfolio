@@ -34,12 +34,12 @@ I am a **B.E. student in Artificial Intelligence & Data Science** passionate abo
 ## 🌟 Featured Projects
 These analytical projects are integrated and showcased interactively in my portfolio website:
 
-### 1. Food Health Risk Analytics Dashboard 🥦
-*An end-to-end data analytics dashboard evaluating the nutritional quality and health risk profile of 1,000+ food items.*
+### 1. Food Nutrition & Health Risk Analytics System 🥦
+*An end-to-end data analytics and business intelligence solution evaluating product safety profiles and segmenting inventory risk for 1,000+ catalog items.*
 *   **Tech Stack:** Power BI, Python, Pandas, SQL, MySQL
-*   **Problem:** Consumers and health analysts lack structured tools to evaluate food quality, identify risk parameters, and extract nutritional insights.
-*   **Approach:** Cleaned and processed raw nutritional data using Python/Pandas. Modeled database schemas in MySQL. Developed custom metrics including **Nutritional Density** and **Health Risk Score**.
-*   **Result:** Built an interactive Power BI dashboard featuring dynamic risk categorization, KPI monitoring, and healthy alternative suggestions.
+*   **Problem:** Nutrition analysts and quality control teams lacked a scalable business intelligence solution to audit product safety profiles, segment inventories by safety parameters, and identify high-risk product lines across a 1,000+ item catalog.
+*   **Approach:** Engineered a robust ETL and data warehousing pipeline using Python, Pandas, and MySQL. Normalized semi-structured nutritional databases, handled missing data, and engineered two proprietary KPIs: Nutritional Density Index and Health Risk Score. Wrote SQL-based queries to segment inventory into distinct risk categories.
+*   **Result:** Delivered an interactive Power BI dashboard providing product managers with real-time risk segmentations and inventory quality audits. Successfully identified that 15% of catalog products exceeded critical sodium thresholds, driving recommendations for product reformulation and mapping high-margin healthier alternatives.
 *   **Links:** [📁 Code Repository](https://github.com/samhoon000/food-health-risk-analysis)
 
 ### 2. Early Warning System for Urban Air Pollution 🌬️

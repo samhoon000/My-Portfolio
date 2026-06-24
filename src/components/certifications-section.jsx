@@ -44,7 +44,7 @@ const getThemeClasses = (theme) => {
 
 export function CertificationsSection() {
   return (
-    <section id="certifications" className="py-16 sm:py-24 relative overflow-hidden">
+    <section id="certifications" className="py-10 sm:py-12 relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/5 blur-[120px] rounded-full pointer-events-none -z-10" />
 
@@ -55,7 +55,7 @@ export function CertificationsSection() {
           description="Award-winning hackathon participant and certified in Data Science & Machine Learning, with proven experience in building real-world AI solutions"
         />
         
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 mt-12 max-w-5xl mx-auto">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 max-w-5xl mx-auto">
           {certifications.map((certification) => {
             const themeClasses = getThemeClasses(certification.theme);
             return (

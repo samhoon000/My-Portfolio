@@ -4,7 +4,7 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 
 export function AchievementsSection() {
   return (
-    <section id="achievements" className="py-16 sm:py-24 relative overflow-hidden">
+    <section id="achievements" className="py-10 sm:py-12 relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/5 blur-[120px] rounded-full pointer-events-none -z-10" />
 
@@ -15,7 +15,7 @@ export function AchievementsSection() {
           description="Proven ability to build AI and data solutions under pressure, collaborating with teams in high-stakes environments."
         />
 
-        <div className="mt-12 max-w-4xl mx-auto space-y-6">
+        <div className="max-w-4xl mx-auto space-y-6">
           {achievements.map((achievement, index) => (
             <article 
               key={achievement.title} 

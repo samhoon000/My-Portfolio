@@ -128,7 +128,7 @@ export function HeroSection() {
   const typed = useTypewriter('Building Data-Driven Solutions with Analytics & Machine Learning')
 
   return (
-    <section id="home" className="relative py-20 sm:py-24">
+    <section id="home" className="relative pt-20 pb-10 sm:pt-24 sm:pb-12">
       <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-center">
         <div>
           <p className="readable-text mb-4 text-sm uppercase tracking-[0.28em] text-accent">AI & Data Science Undergraduate</p>

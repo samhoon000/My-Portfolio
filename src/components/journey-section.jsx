@@ -3,11 +3,11 @@ import { SectionHeading } from './section-heading'
 
 export function JourneySection() {
   return (
-    <section id="experience" className="py-16 sm:py-20">
+    <section id="experience" className="py-10 sm:py-12">
       <SectionHeading
         eyebrow="Learning Journey / Practical Exposure"
         title="Hands-on growth through real analytics practice"
-        description="As a fresher, I focus on practical project execution and continuous skill development."
+        description="As an aspiring data analyst, I focus on practical project execution and continuous skill development."
       />
       <div className="grid gap-3">
         {practicalExposure.map((item) => (

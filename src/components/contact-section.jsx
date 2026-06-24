@@ -3,7 +3,7 @@ import { SectionHeading } from './section-heading'
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-16 sm:py-20">
+    <section id="contact" className="py-10 sm:py-12">
       <SectionHeading
         eyebrow="Contact"
         title="Let us connect for analytics opportunities"
@@ -31,10 +31,25 @@ export function ContactSection() {
         <form className="glass-card rounded-xl bg-panelSoft p-6">
           <h3 className="text-lg font-semibold text-textPrimary">Send a Message</h3>
           <div className="mt-4 grid gap-3">
-            <input type="text" placeholder="Abdul Samhoon" className="rounded-md border border-stroke bg-base px-3 py-2 text-sm font-medium text-white placeholder:text-white outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent" />
-            <input type="email" placeholder="Your Email" className="rounded-md border border-stroke bg-base px-3 py-2 text-sm font-medium text-white placeholder:text-white outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent" />
-            <textarea rows="4" placeholder="Your Message" className="rounded-md border border-stroke bg-base px-3 py-2 text-sm font-medium leading-relaxed text-white placeholder:text-white outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent" />
-            <button type="button" className="rounded-md bg-accent px-4 py-2 text-sm font-semibold text-base transition hover:bg-accentSoft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-panelSoft">
+            <input 
+              type="text" 
+              placeholder="Your Name" 
+              className="rounded-md border border-stroke bg-base px-3 py-2 text-sm font-medium text-white placeholder:text-white/45 outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent" 
+            />
+            <input 
+              type="email" 
+              placeholder="your.email@example.com" 
+              className="rounded-md border border-stroke bg-base px-3 py-2 text-sm font-medium text-white placeholder:text-white/45 outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent" 
+            />
+            <textarea 
+              rows="4" 
+              placeholder="Tell me about your project or opportunity..." 
+              className="rounded-md border border-stroke bg-base px-3 py-2 text-sm font-medium leading-relaxed text-white placeholder:text-white/45 outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-accent" 
+            />
+            <button 
+              type="button" 
+              className="rounded-md bg-accent px-4 py-2 text-sm font-semibold text-base transition hover:bg-accentSoft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-panelSoft"
+            >
               Send Message
             </button>
           </div>

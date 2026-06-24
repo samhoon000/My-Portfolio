@@ -2,7 +2,7 @@ import { SectionHeading } from './section-heading'
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-16 sm:py-20">
+    <section id="about" className="py-10 sm:py-12">
       <SectionHeading
         eyebrow="About"
         title="Engineering data into strategic insights"

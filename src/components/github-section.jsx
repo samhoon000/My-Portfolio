@@ -80,7 +80,7 @@ export function GithubSection() {
   const languagesUrl = `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=transparent&title_color=ffffff&text_color=cbd5e1&border_color=334155&bg_color=00000000&hide_border=false`
 
   return (
-    <section id="github" className="py-16 sm:py-20">
+    <section id="github" className="py-10 sm:py-12">
       <div className="container px-4">
         <SectionHeading
           eyebrow="GitHub"
@@ -88,7 +88,7 @@ export function GithubSection() {
           description="Showcasing my GitHub projects, data analysis workflows, and machine learning implementations with real-world applications."
         />
         
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:gap-8">
+        <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">
           <GithubCard 
             src={statsUrl} 
             alt="GitHub contribution stats card" 

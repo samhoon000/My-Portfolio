@@ -3,7 +3,7 @@ import { SectionHeading } from './section-heading'
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-16 sm:py-20">
+    <section id="skills" className="py-10 sm:py-12">
       <SectionHeading
         eyebrow="Skills"
         title="Core technical stack for analytics and machine learning"

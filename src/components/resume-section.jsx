@@ -2,7 +2,7 @@ import { SectionHeading } from './section-heading'
 
 export function ResumeSection() {
   return (
-    <section id="resume" className="py-16 sm:py-20">
+    <section id="resume" className="py-10 sm:py-12">
       <SectionHeading
         eyebrow="Resume"
         title="Ready for internships and entry-level analyst roles"

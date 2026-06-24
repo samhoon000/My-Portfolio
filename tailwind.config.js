@@ -15,8 +15,9 @@ export default {
         accent: '#38bdf8',
         accentSoft: '#22d3ee',
         textPrimary: '#ffffff',
-        textSecondary: '#ffffff',
-        textMuted: '#ffffff',
+        textSecondary: '#e2e8f0',
+        textMuted: '#94a3b8',
+        textDarkMuted: '#64748b',
         emerald: '#10b981',
       },
       boxShadow: {

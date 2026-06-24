@@ -15,7 +15,7 @@ export function ProjectsSection() {
   }
 
   return (
-    <section id="projects" className="py-16 sm:py-20">
+    <section id="projects" className="py-10 sm:py-12">
       <SectionHeading
         eyebrow="Projects"
         title="Case-study style analytics projects"

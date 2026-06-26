@@ -7,7 +7,12 @@ export function SectionHeading({ eyebrow, title, description }) {
       <h2 className="font-display text-3xl font-bold tracking-tight text-textPrimary sm:text-4xl">
         {title}
       </h2>
-      <p className="readable-text mt-3 text-sm sm:text-base">{description}</p>
+      <p 
+        className="readable-text mt-3 text-sm sm:text-base text-textSecondary opacity-100 mix-blend-normal" 
+        style={{ color: '#e2e8f0', opacity: 1 }}
+      >
+        {description}
+      </p>
     </div>
   )
 }

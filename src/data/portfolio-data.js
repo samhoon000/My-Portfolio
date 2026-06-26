@@ -116,12 +116,12 @@ export const projects = [
   },
   {
     title: 'Early Warning System for Urban Pollution Spikes',
-    problem: 'Government of India CPCB air quality data needed rigorous analysis to uncover hidden pollution trends, city-wise health risks, and seasonal environmental impacts across Karnataka.',
-    approach: 'Engineered a comprehensive analytical pipeline using Python and Power BI to clean, process, and visualize complex environmental datasets, applying statistical techniques to model seasonal variations.',
-    result: 'Identified Tumkur, Davangere, and Bengaluru as critical high-risk zones. Discovered actionable correlations between NO₂ levels and traffic, providing data-driven insights for urban planning.',
-    tools: ['Power BI', 'Python', 'Pandas', 'Data Cleaning', 'Statistics'],
+    problem: 'State environmental regulators and urban planners lacked an automated, integrated system to monitor and analyze historical CPCB air quality data, identify regional environmental risk zones, and uncover seasonal pollution trends and key chemical correlations across major cities in Karnataka.',
+    approach: 'Developed an end-to-end Python, Pandas, and SQL workflow to clean raw CPCB datasets, handling missing values and outlier treatment. Conducted deep exploratory data analysis (EDA), trend and seasonal analysis, and correlation analysis to identify key pollution sources. Engineered temporal features and designed an interactive Power BI dashboard featuring custom environmental KPIs.',
+    result: 'Empowered municipal decision-makers with actionable insights, identifying Tumkur, Davangere, and Bengaluru as critical high-risk zones. Discovered that winter temperature inversions combined with traffic-related NO₂ spikes increased local pollution levels, enabling data-driven urban planning interventions and targeted environmental policies.',
+    tools: ['Power BI', 'Python', 'SQL', 'Pandas', 'EDA', 'Data Analytics'],
     insights:
-      'Tumkur, Davangere, and Bengaluru emerged as the most polluted cities. Winter recorded the highest pollution levels, while NO₂ indicated traffic as a major pollution source.',
+      'Empowered municipal decision-makers with actionable insights, identifying Tumkur, Davangere, and Bengaluru as critical high-risk zones. Discovered that winter temperature inversions combined with traffic-related NO₂ spikes increased local pollution levels, enabling data-driven urban planning interventions and targeted environmental policies.',
     imageLabel: 'Air Quality Dashboard',
     githubUrl: 'https://github.com/samhoon000/Karnataka_AQI_Analysis.git',
     images: ['/karnataka-aqi-1.png'],

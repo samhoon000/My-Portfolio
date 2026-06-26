@@ -33,18 +33,18 @@ export function ProjectsSection() {
             </div>
             <h3 className="text-xl font-semibold text-textPrimary">{project.title}</h3>
             <div className="mt-4 space-y-3">
-              <p className="readable-text text-sm text-white/90">
+              <p className="readable-text text-sm text-white/90 text-justify">
                 <span className="font-bold text-accent">Problem: </span>
                 {project.problem}
               </p>
               {project.approach && (
-                <p className="readable-text text-sm text-white/90">
+                <p className="readable-text text-sm text-white/90 text-justify">
                   <span className="font-bold text-accent">Approach: </span>
                   {project.approach}
                 </p>
               )}
               {project.result && (
-                <p className="readable-text text-sm text-white/90">
+                <p className="readable-text text-sm text-white/90 text-justify">
                   <span className="font-bold text-accent">Result: </span>
                   {project.result}
                 </p>

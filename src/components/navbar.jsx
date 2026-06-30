@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
+import { Link } from 'react-router-dom'
 import { navLinks } from '../data/portfolio-data'
 
 export function Navbar() {
@@ -25,18 +26,18 @@ export function Navbar() {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${headerBg}`}>
       <div className={`mx-auto flex max-w-6xl items-center justify-between px-4 transition-all duration-300 sm:px-6 lg:px-8 ${isScrolled ? 'py-3' : 'py-4'}`}>
-        <a href="#home" className="font-display text-lg font-semibold tracking-wide text-textPrimary">
+        <Link to="/#home" className="font-display text-lg font-semibold tracking-wide text-textPrimary">
           Abdul Samhoon
-        </a>
+        </Link>
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.id}
-              href={`#${link.id}`}
+              to={`/#${link.id}`}
               className="text-sm text-textPrimary transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <a
             href="/Abdul_Samhoon_Resume.pdf"
@@ -59,14 +60,14 @@ export function Navbar() {
       {isOpen ? (
         <div className="border-t border-stroke bg-base px-4 py-4 md:hidden flex flex-col gap-2">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.id}
-              href={`#${link.id}`}
+              to={`/#${link.id}`}
               onClick={() => setIsOpen(false)}
               className="block py-2 text-sm text-textPrimary transition hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <a
             href="/Abdul_Samhoon_Resume.pdf"
@@ -82,4 +83,5 @@ export function Navbar() {
     </header>
   )
 }
+
 

@@ -112,7 +112,7 @@ export const projects = [
     imageLabel: 'Food Nutrition & Health Risk Analytics System',
     githubUrl: 'https://github.com/samhoon000/food-health-risk-analysis',
     images: ['/food-health-dashboard.png'],
-    buttonText: 'View',
+    buttonText: 'Explore Project',
   },
   {
     title: 'Early Warning System for Urban Pollution Spikes',

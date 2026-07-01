@@ -26,8 +26,10 @@ import {
 } from 'react-icons/fa'
 import { SiPandas } from 'react-icons/si'
 
+// Replace this with your actual YouTube Video ID
+const YOUTUBE_VIDEO_ID = "dQw4w9WgXcQ"
+
 export function FoodHealthCaseStudy() {
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false)
 
   // Motion variants for premium, subtle animations
   const fadeInUp = {
@@ -417,55 +419,105 @@ export function FoodHealthCaseStudy() {
           variants={fadeInUp}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Interactive Dashboard</h2>
+          <div className="mb-6 border-b border-stroke pb-2 animate-reveal">
+            <h2 className="font-display text-2xl font-bold text-white">Dashboard Demonstration</h2>
+            <p className="font-sans text-sm text-textMuted mt-1">
+              Watch a walkthrough of the interactive Power BI dashboard, showcasing the key business insights, visualizations, and analytical capabilities developed for this project.
+            </p>
+          </div>
           
-          <div className="grid gap-8 lg:grid-cols-[1.3fr_0.7fr] items-start">
-            {/* Dashboard Container (Click to Lightbox) */}
-            <div 
-              onClick={() => setIsLightboxOpen(true)}
-              className="group relative cursor-zoom-in overflow-hidden rounded-2xl border border-stroke bg-panelSoft shadow-card transition hover:border-accent"
-            >
-              <div className="absolute inset-0 bg-base/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300 z-10">
-                <span className="rounded-md border border-accent bg-accent/25 px-4 py-2 text-xs font-semibold text-accent backdrop-blur-sm shadow-[0_0_15px_rgba(56,189,248,0.4)]">
-                  Click to Expand
-                </span>
-              </div>
-              <img 
-                src="/food-health-dashboard.png" 
-                alt="Interactive Power BI Dashboard Visual" 
-                className="w-full h-auto object-cover transform transition duration-500 group-hover:scale-[1.015]"
-              />
-            </div>
+          <div className="w-full max-w-4xl mx-auto overflow-hidden rounded-2xl border border-stroke bg-panelSoft shadow-glow aspect-video mb-8">
+            <iframe
+              className="w-full h-full"
+              src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}`}
+              title="Food Nutrition & Health Risk Analytics Dashboard Demonstration Walkthrough"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
 
-            {/* Dashboard Details */}
-            <div className="space-y-4">
-              <h3 className="font-display text-lg font-bold text-accent">Power BI Integration</h3>
-              <p className="readable-text text-sm text-textSecondary text-justify leading-relaxed">
-                The visual dashboard presents quality and risk levels across the entire food database. It operates in real-time on top of normalized database schemas. Key elements built into the visualization interface include:
-              </p>
-              <ul className="space-y-3 font-sans text-xs text-textMuted">
-                <li className="flex items-start gap-2">
-                  <FaCheck className="text-accent mt-0.5 shrink-0" />
-                  <span><b>Interactive Slicers & Filters</b>: Drill down into specific food categories, risk divisions, and nutrition density levels.</span>
+          <div className="grid gap-6 md:grid-cols-2">
+            {/* Dashboard Features Card */}
+            <motion.div 
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.2 }}
+              className="glass-card rounded-2xl bg-panelSoft p-6 border border-stroke shadow-card"
+            >
+              <div className="flex items-center gap-3 mb-4 border-b border-stroke pb-2">
+                <div className="rounded-lg bg-accent/10 p-2 text-accent">
+                  <FaTools size={18} />
+                </div>
+                <h3 className="font-display text-lg font-bold text-white">Dashboard Features</h3>
+              </div>
+              <ul className="space-y-3 font-sans text-xs text-textSecondary">
+                <li className="flex items-start gap-2.5">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  <span>KPI cards summarizing overall nutritional metrics</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <FaCheck className="text-accent mt-0.5 shrink-0" />
-                  <span><b>Nutritional Risk Scatter Plot</b>: Plots Health Risk Score against Nutrition Density Index to locate optimal alternatives.</span>
+                <li className="flex items-start gap-2.5">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  <span>Risk Category Distribution using a donut chart</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <FaCheck className="text-accent mt-0.5 shrink-0" />
-                  <span><b>Top 10 Healthiest Foods List</b>: Dynamically displays low-risk, high-density products for catalog branding.</span>
+                <li className="flex items-start gap-2.5">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  <span>Health Risk vs Nutrition Density scatter plot</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <FaCheck className="text-accent mt-0.5 shrink-0" />
-                  <span><b>Top 10 High-Risk Products List</b>: Automatically surfaces items violating safety guidelines.</span>
+                <li className="flex items-start gap-2.5">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  <span>Top 10 Healthiest Foods ranking</span>
                 </li>
-                <li className="flex items-start gap-2">
-                  <FaCheck className="text-accent mt-0.5 shrink-0" />
-                  <span><b>Product Breakdown Donut Charts</b>: Breaks down low, moderate, and high-risk shares in the catalog.</span>
+                <li className="flex items-start gap-2.5">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  <span>Top 10 Highest-Risk Foods ranking</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  <span>Interactive slicers and filters for data exploration</span>
                 </li>
               </ul>
-            </div>
+            </motion.div>
+
+            {/* Business Insights Card */}
+            <motion.div 
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.2 }}
+              className="glass-card rounded-2xl bg-panelSoft p-6 border border-stroke shadow-card"
+            >
+              <div className="flex items-center gap-3 mb-4 border-b border-stroke pb-2">
+                <div className="rounded-lg bg-emerald/10 p-2 text-emerald">
+                  <FaLightbulb size={18} />
+                </div>
+                <h3 className="font-display text-lg font-bold text-white">Business Insights</h3>
+              </div>
+              <ul className="space-y-3 font-sans text-xs text-textSecondary">
+                <li className="flex items-start gap-2.5">
+                  <span className="rounded-full bg-emerald/10 p-1 text-emerald shrink-0 mt-0.5"><FaCheck size={8} /></span>
+                  <span>High-risk food products requiring attention</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="rounded-full bg-emerald/10 p-1 text-emerald shrink-0 mt-0.5"><FaCheck size={8} /></span>
+                  <span>Nutrient-dense alternatives for healthier recommendations</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="rounded-full bg-emerald/10 p-1 text-emerald shrink-0 mt-0.5"><FaCheck size={8} /></span>
+                  <span>Products suitable for reformulation</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="rounded-full bg-emerald/10 p-1 text-emerald shrink-0 mt-0.5"><FaCheck size={8} /></span>
+                  <span>Distribution of products across health risk categories</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="rounded-full bg-emerald/10 p-1 text-emerald shrink-0 mt-0.5"><FaCheck size={8} /></span>
+                  <span>Relationship between nutrition density and health risk</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="rounded-full bg-emerald/10 p-1 text-emerald shrink-0 mt-0.5"><FaCheck size={8} /></span>
+                  <span>Inventory quality assessment and decision support</span>
+                </li>
+              </ul>
+            </motion.div>
           </div>
         </motion.section>
 
@@ -702,28 +754,7 @@ export function FoodHealthCaseStudy() {
 
       </div>
 
-      {/* DASHBOARD LIGHTBOX MODAL */}
-      {isLightboxOpen && (
-        <div 
-          onClick={() => setIsLightboxOpen(false)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-base/95 p-4 sm:p-6 md:p-8 backdrop-blur-md transition-all duration-300 cursor-zoom-out"
-        >
-          <div className="relative max-h-full w-full max-w-5xl rounded-2xl border border-stroke bg-panel p-2 shadow-2xl animate-scaleIn">
-            <button 
-              onClick={() => setIsLightboxOpen(false)}
-              className="absolute right-4 top-4 z-10 rounded-full bg-base/80 p-2 text-textSecondary transition hover:bg-accent hover:text-base focus:outline-none shadow-md"
-              aria-label="Close lightbox"
-            >
-              <FaTimes size={16} />
-            </button>
-            <img 
-              src="/food-health-dashboard.png" 
-              alt="Food Nutrition & Health Risk Analytics Dashboard Lightbox View"
-              className="max-h-[85vh] w-auto max-w-full mx-auto object-contain rounded-lg"
-            />
-          </div>
-        </div>
-      )}
+
     </div>
   )
 }

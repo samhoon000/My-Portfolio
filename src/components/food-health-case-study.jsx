@@ -27,7 +27,7 @@ import {
 import { SiPandas } from 'react-icons/si'
 
 // Replace this with your actual YouTube Video ID
-const YOUTUBE_VIDEO_ID = "dQw4w9WgXcQ"
+const YOUTUBE_VIDEO_ID = "Vq4Lz7gYn8U"
 
 export function FoodHealthCaseStudy() {
 
@@ -115,11 +115,11 @@ export function FoodHealthCaseStudy() {
     <div className="bg-base min-h-screen text-textPrimary select-none">
       {/* Container wraps case study sections to keep alignment consistent with portfolio */}
       <div className="mx-auto max-w-6xl px-4 pt-24 pb-16 sm:px-6 lg:px-8">
-        
+
         {/* Navigation Breadcrumb */}
         <div className="mb-8">
-          <Link 
-            to="/#projects" 
+          <Link
+            to="/#projects"
             className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accentSoft transition"
           >
             <FaArrowLeft /> Back to Portfolio
@@ -127,7 +127,7 @@ export function FoodHealthCaseStudy() {
         </div>
 
         {/* 1. HERO SECTION */}
-        <motion.section 
+        <motion.section
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
@@ -143,12 +143,12 @@ export function FoodHealthCaseStudy() {
             <p className="readable-text mt-4 text-base text-textSecondary border-l-2 border-accent pl-4 italic">
               Building an end-to-end Business Intelligence solution for nutritional risk assessment using Python, SQL, MySQL, ETL pipelines, and Power BI.
             </p>
-            
+
             {/* Tech Badges */}
             <div className="mt-6 flex flex-wrap gap-2">
               {['Python', 'Pandas', 'SQL', 'MySQL', 'Power BI', 'ETL', 'Data Analysis'].map((tech) => (
-                <span 
-                  key={tech} 
+                <span
+                  key={tech}
                   className="readable-text rounded-full border border-stroke bg-panel px-3 py-1 text-xs text-textMuted"
                 >
                   {tech}
@@ -156,13 +156,13 @@ export function FoodHealthCaseStudy() {
               ))}
             </div>
           </div>
-          
+
           <div className="relative group">
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-accent to-emerald-400 opacity-20 blur transition duration-1000 group-hover:opacity-35" />
             <div className="relative overflow-hidden rounded-2xl border border-stroke bg-panel shadow-2xl">
-              <img 
-                src="/food-health-dashboard.png" 
-                alt="Food Nutrition & Health Risk Analytics Dashboard Preview" 
+              <img
+                src="/food-health-dashboard.png"
+                alt="Food Nutrition & Health Risk Analytics Dashboard Preview"
                 className="w-full h-auto object-cover transform transition duration-500 group-hover:scale-[1.02]"
               />
             </div>
@@ -170,7 +170,7 @@ export function FoodHealthCaseStudy() {
         </motion.section>
 
         {/* 2. PROJECT OVERVIEW */}
-        <motion.section 
+        <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -186,7 +186,7 @@ export function FoodHealthCaseStudy() {
         </motion.section>
 
         {/* 3. BUSINESS PROBLEM */}
-        <motion.section 
+        <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -234,7 +234,7 @@ export function FoodHealthCaseStudy() {
         </motion.section>
 
         {/* 4. MY SOLUTION */}
-        <motion.section 
+        <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -242,9 +242,9 @@ export function FoodHealthCaseStudy() {
           className="mb-20"
         >
           <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">My Solution</h2>
-          
+
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            
+
             {/* Solution Card 1 */}
             <motion.div variants={fadeInUp} className="glass-card rounded-2xl bg-panelSoft p-5 border border-stroke transition hover:-translate-y-1 hover:border-accent">
               <div className="rounded-lg bg-accent/10 w-10 h-10 flex items-center justify-center text-accent mb-4">
@@ -315,7 +315,7 @@ export function FoodHealthCaseStudy() {
         </motion.section>
 
         {/* 5. PROJECT WORKFLOW */}
-        <motion.section 
+        <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -323,13 +323,13 @@ export function FoodHealthCaseStudy() {
           className="mb-20"
         >
           <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Project Workflow</h2>
-          
+
           {/* Timeline Wrapper */}
           <div className="glass-card rounded-2xl bg-panelSoft p-8 shadow-card">
             {/* Desktop Timeline */}
             <div className="hidden md:flex items-center justify-between relative">
               <div className="absolute top-[35px] left-8 right-8 h-0.5 bg-stroke z-0" />
-              
+
               {[
                 { title: "Dataset", desc: "Raw Nutrition CSV Data" },
                 { title: "Python Cleaning", desc: "Pandas Unit Standardisation" },
@@ -340,7 +340,7 @@ export function FoodHealthCaseStudy() {
               ].map((step, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center relative z-10 w-[14%]">
                   <div className="w-10 h-10 rounded-full border-2 border-accent bg-panel flex items-center justify-center font-display text-sm font-semibold text-accent shadow-[0_0_10px_rgba(56,189,248,0.2)]">
-                    0{idx+1}
+                    0{idx + 1}
                   </div>
                   <h4 className="font-display text-xs font-bold text-white mt-3 leading-snug">{step.title}</h4>
                   <p className="font-sans text-[10px] text-textMuted mt-1 leading-normal">{step.desc}</p>
@@ -369,7 +369,7 @@ export function FoodHealthCaseStudy() {
         </motion.section>
 
         {/* 6. SQL ANALYTICS */}
-        <motion.section 
+        <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -385,7 +385,7 @@ export function FoodHealthCaseStudy() {
             {sqlAnalytics.map((item, idx) => {
               const IconComponent = item.icon
               return (
-                <motion.div 
+                <motion.div
                   key={idx}
                   variants={fadeInUp}
                   className={`glass-card rounded-xl p-5 border bg-panelSoft transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${item.color}`}
@@ -412,7 +412,7 @@ export function FoodHealthCaseStudy() {
         </motion.section>
 
         {/* 7. DASHBOARD SECTION */}
-        <motion.section 
+        <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -425,7 +425,7 @@ export function FoodHealthCaseStudy() {
               Watch a walkthrough of the interactive Power BI dashboard, showcasing the key business insights, visualizations, and analytical capabilities developed for this project.
             </p>
           </div>
-          
+
           <div className="w-full max-w-4xl mx-auto overflow-hidden rounded-2xl border border-stroke bg-panelSoft shadow-glow aspect-video mb-8">
             <iframe
               className="w-full h-full"
@@ -440,7 +440,7 @@ export function FoodHealthCaseStudy() {
 
           <div className="grid gap-6 md:grid-cols-2">
             {/* Dashboard Features Card */}
-            <motion.div 
+            <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.2 }}
               className="glass-card rounded-2xl bg-panelSoft p-6 border border-stroke shadow-card"
@@ -480,7 +480,7 @@ export function FoodHealthCaseStudy() {
             </motion.div>
 
             {/* Business Insights Card */}
-            <motion.div 
+            <motion.div
               whileHover={{ y: -4 }}
               transition={{ duration: 0.2 }}
               className="glass-card rounded-2xl bg-panelSoft p-6 border border-stroke shadow-card"
@@ -522,7 +522,7 @@ export function FoodHealthCaseStudy() {
         </motion.section>
 
         {/* 8. DASHBOARD HIGHLIGHTS */}
-        <motion.section 
+        <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -530,7 +530,7 @@ export function FoodHealthCaseStudy() {
           className="mb-20"
         >
           <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Dashboard Highlights</h2>
-          
+
           <div className="grid gap-6 md:grid-cols-3">
             {/* Highlight Card 1 */}
             <motion.div variants={fadeInUp} className="glass-card rounded-2xl bg-panelSoft p-6 border border-stroke">
@@ -604,7 +604,7 @@ export function FoodHealthCaseStudy() {
         </motion.section>
 
         {/* 9. TECHNICAL STACK */}
-        <motion.section 
+        <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -612,7 +612,7 @@ export function FoodHealthCaseStudy() {
           className="mb-20"
         >
           <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Technical Stack</h2>
-          
+
           <div className="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
             {/* Tech 1 */}
             <motion.div variants={fadeInUp} className="glass-card rounded-xl bg-panelSoft p-4 border border-stroke text-center">
@@ -643,7 +643,7 @@ export function FoodHealthCaseStudy() {
         </motion.section>
 
         {/* 10. KEY BUSINESS OUTCOMES */}
-        <motion.section 
+        <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -651,7 +651,7 @@ export function FoodHealthCaseStudy() {
           className="mb-20"
         >
           <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Key Business Outcomes</h2>
-          
+
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               "Built an end-to-end automated ETL pipeline.",
@@ -661,7 +661,7 @@ export function FoodHealthCaseStudy() {
               "Designed an interactive Power BI dashboard.",
               "Identified products exceeding critical sodium thresholds."
             ].map((outcome, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 variants={fadeInUp}
                 className="glass-card rounded-xl bg-panelSoft p-5 border border-stroke flex items-start gap-3 transition-all hover:border-emerald/50"
@@ -678,7 +678,7 @@ export function FoodHealthCaseStudy() {
         </motion.section>
 
         {/* 11. REPORT & PRESENTATION (PROJECT DOCUMENTATION) */}
-        <motion.section 
+        <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -686,7 +686,7 @@ export function FoodHealthCaseStudy() {
           className="mb-20"
         >
           <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Project Documentation</h2>
-          
+
           <div className="grid gap-6 md:grid-cols-2">
             {/* Document 1: Project Report */}
             <div className="glass-card rounded-2xl bg-panelSoft p-6 border border-stroke flex flex-col justify-between">
@@ -699,7 +699,7 @@ export function FoodHealthCaseStudy() {
                   Complete project report detailing raw data extraction, cleaning methods, ETL pipeline structures, custom KPI formulas, SQL queries, dashboard definitions, and business findings.
                 </p>
               </div>
-              <Link 
+              <Link
                 to="/project/food-health/report"
                 className="w-full text-center rounded-md border border-accent bg-accent/10 py-2.5 text-xs font-semibold text-accent transition hover:bg-accent hover:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
@@ -718,7 +718,7 @@ export function FoodHealthCaseStudy() {
                   Slide deck presentation summarizing the project overview, core business problems, data architecture flow, feature formulas, SQL queries results, and key visual outcomes.
                 </p>
               </div>
-              <Link 
+              <Link
                 to="/project/food-health/presentation"
                 className="w-full text-center rounded-md border border-accent bg-accent/10 py-2.5 text-xs font-semibold text-accent transition hover:bg-accent hover:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
@@ -729,7 +729,7 @@ export function FoodHealthCaseStudy() {
         </motion.section>
 
         {/* 12. BOTTOM CTA */}
-        <motion.section 
+        <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -742,10 +742,10 @@ export function FoodHealthCaseStudy() {
           <p className="font-sans text-sm text-textMuted max-w-md mx-auto mb-6 leading-relaxed">
             Examine the entire repository database pipeline, raw schemas, python ETL files, and analytical SQL scripts directly on GitHub.
           </p>
-          <a 
-            href="https://github.com/samhoon000/food-health-risk-analysis" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://github.com/samhoon000/food-health-risk-analysis"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-xs sm:text-sm font-semibold text-base transition hover:-translate-y-0.5 hover:bg-accentSoft hover:shadow-[0_0_15px_rgba(56,189,248,0.4)]"
           >
             <FaGithub size={16} /> View GitHub Repository

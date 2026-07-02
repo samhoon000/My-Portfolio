@@ -22,7 +22,8 @@ import {
   FaTools,
   FaServer,
   FaChevronRight,
-  FaMicrosoft
+  FaMicrosoft,
+  FaClock
 } from 'react-icons/fa'
 import { SiPandas } from 'react-icons/si'
 
@@ -111,6 +112,35 @@ export function FoodHealthCaseStudy() {
     }
   ]
 
+  // Key challenges in food nutrition data analytics
+  const challenges = [
+    {
+      title: "Large Product Catalogs",
+      description: "Evaluating nutritional information across 1,000+ food products manually is slow and difficult to scale.",
+      icon: FaDatabase
+    },
+    {
+      title: "Lack of Standardized Health Metrics",
+      description: "Raw nutritional values alone make it difficult to objectively compare products based on their overall healthiness.",
+      icon: FaHeartbeat
+    },
+    {
+      title: "Time-Consuming Analysis",
+      description: "Identifying foods with excessive sugar, fat, sodium, or low nutritional value requires repetitive manual analysis.",
+      icon: FaClock
+    },
+    {
+      title: "Limited Business Visibility",
+      description: "Stakeholders lack interactive dashboards to monitor nutritional trends, product risk distribution, and healthier alternatives.",
+      icon: FaChartBar
+    },
+    {
+      title: "Delayed Decision Making",
+      description: "Without automated analytics, recommending product reformulation or healthier substitutions becomes inefficient.",
+      icon: FaRunning
+    }
+  ]
+
   return (
     <div className="bg-base min-h-screen text-textPrimary select-none">
       {/* Container wraps case study sections to keep alignment consistent with portfolio */}
@@ -194,39 +224,37 @@ export function FoodHealthCaseStudy() {
           className="mb-20"
         >
           <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">The Business Problem</h2>
-          <div className="glass-card rounded-2xl bg-panelSoft p-6 sm:p-8 border border-red-500/20 shadow-card">
-            <div className="flex flex-col gap-6 md:flex-row md:items-center">
+          <div className="glass-card rounded-2xl bg-panelSoft p-6 sm:p-8 border border-accent/20 shadow-card transition-all duration-300 hover:border-accent/40">
+            <div className="flex flex-col gap-8 md:flex-row md:items-start">
               <div className="flex-1">
-                <p className="font-sans text-lg font-semibold text-red-400 mb-3">Auditing Bottle-necks in Nutrition Management</p>
-                <p className="readable-text text-sm text-textSecondary mb-4">
-                  Nutrition analysts and quality control managers struggle to maintain safety profiles and meet compliance rules across growing product catalogs. Key operational issues include:
+                <p className="font-sans text-lg font-semibold text-accent mb-3">Business Challenge</p>
+                <p className="readable-text text-sm text-textSecondary mb-6 leading-relaxed">
+                  Food manufacturers, nutrition analysts, and quality assurance teams often manage large nutritional databases containing hundreds or thousands of products. Analyzing these datasets manually to identify unhealthy products, compare nutritional quality, and generate meaningful business insights is time-consuming and inefficient. Without a centralized analytics solution, organizations struggle to prioritize healthier alternatives, monitor product risk levels, and support data-driven product improvement decisions.
                 </p>
-                <ul className="space-y-3 font-sans text-sm text-textMuted">
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400" />
-                    <span><b>Product Scale Congestion</b>: Catalogs contain thousands of products, making manual product reviews impossible.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400" />
-                    <span><b>Time-Consuming Manual Auditing</b>: Inspecting product safety criteria manually takes days and delays report generation.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400" />
-                    <span><b>Delayed Risk Identification</b>: Finding and flagging high-sodium or high-sugar items is delayed, leaving brands exposed to compliance audits.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400" />
-                    <span><b>Lack of Objective Comparison</b>: Teams lack standardized indexes to rank and compare product health scores objectively across different categories.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-red-400" />
-                    <span><b>Centralization Void</b>: Decision-makers operate without a centralized decision-support tool, hindering reformulation efforts.</span>
-                  </li>
-                </ul>
+                
+                <h3 className="font-sans text-xs font-bold tracking-wider text-textMuted uppercase mb-4">Key Challenges</h3>
+                <div className="space-y-3.5">
+                  {challenges.map((challenge, idx) => (
+                    <motion.div
+                      key={idx}
+                      whileHover={{ x: 4 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className="flex items-start gap-3.5 p-3.5 rounded-xl bg-panel/30 border border-stroke/50 hover:bg-panel/60 hover:border-accent/30 transition-all duration-300"
+                    >
+                      <div className="mt-0.5 flex items-center justify-center shrink-0 rounded-lg bg-accent/10 p-2 text-accent border border-accent/20 w-9 h-9">
+                        <challenge.icon size={18} />
+                      </div>
+                      <div>
+                        <h4 className="font-display text-sm font-semibold text-white leading-snug">{challenge.title}</h4>
+                        <p className="readable-text mt-1 text-xs text-textMuted leading-relaxed">{challenge.description}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-              <div className="flex justify-center shrink-0">
-                <div className="rounded-full bg-red-500/10 p-6 text-red-400 border border-red-500/20">
-                  <FaExclamationTriangle size={48} className="animate-pulse" />
+              <div className="flex justify-center shrink-0 md:pt-4">
+                <div className="rounded-full bg-accent/10 p-6 text-accent border border-accent/20">
+                  <FaChartBar size={48} className="animate-pulse" />
                 </div>
               </div>
             </div>

@@ -690,12 +690,12 @@ export function FoodHealthCaseStudy() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              "Built an end-to-end automated ETL pipeline.",
-              "Processed and normalized 1,028 food products.",
-              "Created two custom nutritional KPIs (HRS & NDI).",
-              "Built 14 business-focused SQL analyses.",
-              "Designed an interactive Power BI dashboard.",
-              "Identified products exceeding critical sodium thresholds."
+              "Processed and standardized nutritional data for 1,028 food products.",
+              "Engineered two custom metrics—Health Risk Score (HRS) and Nutrition Density Index (NDI)—for objective product evaluation.",
+              "Developed 14 business-focused SQL analyses to uncover nutritional trends and generate actionable insights.",
+              "Built an interactive Power BI dashboard featuring KPIs, product rankings, risk distribution, and nutritional comparisons.",
+              "Identified high-risk and nutrient-dense food products using custom analytical scoring models.",
+              "Delivered a centralized analytics solution that supports nutritional assessment, product comparison, and data-driven decision-making."
             ].map((outcome, idx) => (
               <motion.div
                 key={idx}

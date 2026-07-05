@@ -565,20 +565,20 @@ export function FoodHealthCaseStudy() {
               <h3 className="font-display text-lg font-bold text-white mb-4 border-b border-stroke pb-2">KPIs</h3>
               <ul className="space-y-2.5 font-sans text-xs text-textSecondary">
                 <li className="flex items-center justify-between">
-                  <span className="text-textMuted">Total Catalog Items</span>
-                  <span className="font-bold text-accent">1,028 Foods</span>
+                  <span className="text-textMuted">Total Food Products</span>
+                  <span className="font-bold text-accent">1,028</span>
                 </li>
                 <li className="flex items-center justify-between">
-                  <span className="text-textMuted">Average Risk Score</span>
-                  <span className="font-bold text-accent">3.42 / 10</span>
+                  <span className="text-textMuted">Average Health Risk Score</span>
+                  <span className="font-bold text-accent">28.63</span>
                 </li>
                 <li className="flex items-center justify-between">
-                  <span className="text-textMuted">Low Risk Percentage</span>
-                  <span className="font-bold text-accent">65% of Inventory</span>
+                  <span className="text-textMuted">Low-Risk Products</span>
+                  <span className="font-bold text-accent">65.18%</span>
                 </li>
                 <li className="flex items-center justify-between">
                   <span className="text-textMuted">Average Nutrition Density</span>
-                  <span className="font-bold text-accent">2.18 NDI</span>
+                  <span className="font-bold text-accent">19.00</span>
                 </li>
               </ul>
             </motion.div>
@@ -589,19 +589,27 @@ export function FoodHealthCaseStudy() {
               <ul className="space-y-2.5 font-sans text-xs text-textSecondary">
                 <li className="flex items-start gap-2">
                   <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                  <span><b>Risk Distribution Donut Chart</b>: Segment share displays.</span>
+                  <span>KPI cards summarizing overall nutritional metrics</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                  <span><b>Density vs Risk Scatter Plot</b>: Correlation chart.</span>
+                  <span>Risk Category Distribution using a donut chart</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                  <span><b>Category Specific Filters</b>: Interactive slicers.</span>
+                  <span>Health Risk vs Nutrition Density scatter plot</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                  <span><b>Top 10 Rankings</b>: Healthiest and highest-risk items.</span>
+                  <span>Top 10 Healthiest Foods ranking</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                  <span>Top 10 Highest-Risk Foods ranking</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                  <span>Interactive filters for category and product exploration</span>
                 </li>
               </ul>
             </motion.div>
@@ -612,19 +620,19 @@ export function FoodHealthCaseStudy() {
               <ul className="space-y-2.5 font-sans text-xs text-textSecondary">
                 <li className="flex items-start gap-2">
                   <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-emerald-400" />
-                  <span><b>Risk Isolation</b>: Instantly identify and flag unhealthy products.</span>
+                  <span><b>Risk Identification</b>: Quickly identify food products with high health risk scores for further analysis.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-emerald-400" />
-                  <span><b>Recipe Auditing</b>: Accelerates product reformulations.</span>
+                  <span><b>Nutritional Comparison</b>: Compare food products using Health Risk Score and Nutrition Density metrics.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-emerald-400" />
-                  <span><b>Inventory Checks</b>: Compliance monitoring across product lines.</span>
+                  <span><b>Product Ranking</b>: Rank the healthiest and highest-risk foods to support nutritional analysis.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-emerald-400" />
-                  <span><b>Alternative Mapping</b>: Drives customers to healthier substitutes.</span>
+                  <span><b>Interactive Exploration</b>: Filter products by risk category and food type to explore nutritional trends and support data-driven decision-making.</span>
                 </li>
               </ul>
             </motion.div>

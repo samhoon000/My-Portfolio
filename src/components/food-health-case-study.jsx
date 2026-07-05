@@ -280,7 +280,7 @@ export function FoodHealthCaseStudy() {
               </div>
               <h3 className="font-display text-lg font-semibold text-white mb-2">Python-Based ETL</h3>
               <p className="readable-text text-xs text-textSecondary leading-relaxed">
-                Automated data cleaning and unit normalization with Pandas. Replaced missing nutrients using category medians, ensuring high-fidelity data profiles.
+                Performed data cleaning and preprocessing using Python and Pandas by handling missing values, standardizing nutritional attributes, and preparing a consistent dataset for analysis.
               </p>
             </motion.div>
 
@@ -291,7 +291,7 @@ export function FoodHealthCaseStudy() {
               </div>
               <h3 className="font-display text-lg font-semibold text-white mb-2">Feature Engineering</h3>
               <p className="readable-text text-xs text-textSecondary leading-relaxed">
-                Engineered custom metrics: <b>Health Risk Score</b> (HRS) and <b>Nutrition Density Index</b> (NDI) to measure product profiles objectively.
+                Engineered two custom metrics—Health Risk Score (HRS) and Nutrition Density Index (NDI)—to objectively evaluate food products and enable meaningful nutritional comparisons across the dataset.
               </p>
             </motion.div>
 
@@ -300,9 +300,9 @@ export function FoodHealthCaseStudy() {
               <div className="rounded-lg bg-accent/10 w-10 h-10 flex items-center justify-center text-accent mb-4">
                 <FaDatabase size={20} />
               </div>
-              <h3 className="font-display text-lg font-semibold text-white mb-2">Relational Warehousing</h3>
+              <h3 className="font-display text-lg font-semibold text-white mb-2">Relational Database</h3>
               <p className="readable-text text-xs text-textSecondary leading-relaxed">
-                Normalized and structured cleaned datasets in a local MySQL relational database, ensuring fast transactional reads for complex analysis.
+                Designed a normalized MySQL relational database to efficiently store processed nutritional data and support structured SQL analysis.
               </p>
             </motion.div>
 
@@ -311,9 +311,9 @@ export function FoodHealthCaseStudy() {
               <div className="rounded-lg bg-accent/10 w-10 h-10 flex items-center justify-center text-accent mb-4">
                 <FaChartBar size={20} />
               </div>
-              <h3 className="font-display text-lg font-semibold text-white mb-2">SQL Business Queries</h3>
+              <h3 className="font-display text-lg font-semibold text-white mb-2">SQL Business Analysis</h3>
               <p className="readable-text text-xs text-textSecondary leading-relaxed">
-                Developed 14 business-focused SQL queries inside MySQL to automatically extract rankings, segments, and nutrient-efficient foods.
+                Developed 14 business-focused SQL queries to identify high-risk foods, rank healthier alternatives, analyze nutritional trends, and generate actionable business insights.
               </p>
             </motion.div>
 
@@ -324,7 +324,7 @@ export function FoodHealthCaseStudy() {
               </div>
               <h3 className="font-display text-lg font-semibold text-white mb-2">Power BI Dashboard</h3>
               <p className="readable-text text-xs text-textSecondary leading-relaxed">
-                Designed a premium decision-support dashboard, incorporating visual KPI metrics, scatter risk plots, and product lists.
+                Designed an interactive Power BI dashboard featuring KPI cards, risk distribution, nutritional comparisons, product rankings, and dynamic filters to support intuitive data exploration.
               </p>
             </motion.div>
 
@@ -333,9 +333,9 @@ export function FoodHealthCaseStudy() {
               <div className="rounded-lg bg-accent/10 w-10 h-10 flex items-center justify-center text-accent mb-4">
                 <FaFilter size={20} />
               </div>
-              <h3 className="font-display text-lg font-semibold text-white mb-2">Interactive Insights</h3>
+              <h3 className="font-display text-lg font-semibold text-white mb-2">Business Insights</h3>
               <p className="readable-text text-xs text-textSecondary leading-relaxed">
-                Provided interactive filters allowing users to audit foods, track catalog risk spreads, and reformulate high-sodium recipes easily.
+                Enabled users to explore nutritional trends, compare food products, identify high-risk categories, and support data-driven decision-making through interactive visual analytics.
               </p>
             </motion.div>
 

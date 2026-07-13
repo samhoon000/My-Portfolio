@@ -42,12 +42,12 @@ These analytical projects are integrated and showcased interactively in my portf
 *   **Result:** Delivered an interactive Power BI dashboard providing product managers with real-time risk segmentations and inventory quality audits. Successfully identified that 15% of catalog products exceeded critical sodium thresholds, driving recommendations for product reformulation and mapping high-margin healthier alternatives.
 *   **Links:** [📁 Code Repository](https://github.com/samhoon000/food-health-risk-analysis)
 
-### 2. Early Warning System for Urban Air Pollution 🌬️
-*A seasonal environmental analytics dashboard identifying critical pollution patterns and urban health hazards.*
-*   **Tech Stack:** Power BI, Python, Pandas, Statistics
-*   **Problem:** Public air quality datasets (CPCB) required rigorous modeling to uncover seasonal pollution spikes and traffic-related emission trends.
-*   **Approach:** Structured an analytical pipeline in Python to clean and aggregate environmental logs. Applied statistical methods to evaluate seasonality.
-*   **Result:** Mapped high-risk zones (Tumkur, Davangere, Bengaluru) and established strong correlations between Winter seasons, traffic density, and NO₂ levels.
+### 2. Instacart Customer Analytics Dashboard 🛒
+*An end-to-end data analytics solution analyzing over 3.4 million customer orders to uncover purchasing behavior, product performance, and customer retention insights.*
+*   **Tech Stack:** Power BI, Python, DuckDB, SQL, Pandas, EDA, Data Analytics
+*   **Problem:** Retail businesses generate millions of transactional records but often lack a centralized analytics solution to monitor customer purchasing behavior, evaluate product performance, identify loyal customers, and support data-driven inventory and marketing decisions.
+*   **Approach:** Developed an end-to-end analytics solution using Python, Pandas, DuckDB, SQL, and Power BI to analyze over 3.4 million customer orders. Performed data cleaning, exploratory data analysis (EDA), customer segmentation, reorder analysis, basket size analysis, loyalty scoring, and department performance analysis. Designed interactive Power BI dashboards with executive KPIs and business-focused visualizations to uncover purchasing patterns and customer retention insights.
+*   **Result:** Identified high-performing departments, customer purchasing trends, and products with strong subscription potential through reorder analysis. Built executive dashboards highlighting customer retention, loyalty segments, reorder behavior, and operational KPIs, enabling data-driven decisions for inventory optimization, targeted marketing, and customer retention strategies.
 *   **Links:** [📁 Code Repository](https://github.com/samhoon000/Karnataka_AQI_Analysis.git)
 
 ### 3. India Food Price Intelligence Dashboard 🌾

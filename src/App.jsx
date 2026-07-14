@@ -24,6 +24,7 @@ import { ScrollToHash } from './components/scroll-to-hash'
 import { FoodHealthCaseStudy } from './components/food-health-case-study'
 import { FoodHealthReport } from './components/food-health-report'
 import { FoodHealthPresentation } from './components/food-health-presentation'
+import { InstacartCaseStudy } from './components/instacart-case-study'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -62,6 +63,7 @@ function App() {
         <Route path="/project/food-health" element={<FoodHealthCaseStudy />} />
         <Route path="/project/food-health/report" element={<FoodHealthReport />} />
         <Route path="/project/food-health/presentation" element={<FoodHealthPresentation />} />
+        <Route path="/project/instacart" element={<InstacartCaseStudy />} />
       </Routes>
 
       <Footer />

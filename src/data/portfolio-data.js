@@ -119,15 +119,16 @@ export const projects = [
   },
   {
     title: 'Instacart Customer Analytics Dashboard',
-    problem: 'Retail businesses generate millions of transactional records but often lack a centralized analytics solution to monitor customer purchasing behavior, evaluate product performance, identify loyal customers, and support data-driven inventory and marketing decisions.',
-    approach: 'Developed an end-to-end analytics solution using Python, Pandas, DuckDB, SQL, and Power BI to analyze over 3.4 million customer orders. Performed data cleaning, exploratory data analysis (EDA), customer segmentation, reorder analysis, basket size analysis, loyalty scoring, and department performance analysis. Designed interactive Power BI dashboards with executive KPIs and business-focused visualizations to uncover purchasing patterns and customer retention insights.',
-    result: 'Identified high-performing departments, customer purchasing trends, and products with strong subscription potential through reorder analysis. Built executive dashboards highlighting customer retention, loyalty segments, reorder behavior, and operational KPIs, enabling data-driven decisions for inventory optimization, targeted marketing, and customer retention strategies.',
-    tools: ['Power BI', 'Python', 'DuckDB', 'SQL', 'Pandas', 'EDA', 'Data Analytics'],
+    problem: 'Retail businesses generate millions of transactional records every day but often lack a centralized analytics solution to monitor customer purchasing behavior, measure product performance, identify loyal customers, and support data-driven inventory and marketing decisions. Business teams require meaningful insights into reorder behavior, customer retention, and purchasing trends to improve operational efficiency and customer engagement.',
+    approach: 'Developed an end-to-end analytics solution using Python, Pandas, DuckDB, SQL, and Power BI to analyze over 3.4 million customer orders and millions of product transactions. Built a complete analytics pipeline including data cleaning and preprocessing, exploratory data analysis (EDA), SQL business analysis, customer segmentation, loyalty scoring, basket size analysis, department performance analysis, reorder behavior analysis, customer retention analysis, and subscription opportunity analysis. Designed interactive executive dashboards with custom KPIs and business-focused visualizations to transform raw transactional data into actionable business insights.',
+    result: 'Delivered an executive business intelligence dashboard that identified high-performing departments, customer purchasing trends, reorder behavior, customer loyalty segments, retention patterns, and subscription opportunities. Generated insights supporting inventory optimization, targeted marketing strategies, customer retention initiatives, and business decision-making through interactive Power BI dashboards.',
+    tools: ['Power BI', 'Python', 'DuckDB', 'SQL', 'Pandas', 'Data Analytics'],
     insights:
-      'Identified high-performing departments, customer purchasing trends, and products with strong subscription potential through reorder analysis. Built executive dashboards highlighting customer retention, loyalty segments, reorder behavior, and operational KPIs, enabling data-driven decisions for inventory optimization, targeted marketing, and customer retention strategies.',
+      'Delivered an executive business intelligence dashboard that identified high-performing departments, customer purchasing trends, reorder behavior, customer loyalty segments, retention patterns, and subscription opportunities. Generated insights supporting inventory optimization, targeted marketing strategies, customer retention initiatives, and business decision-making through interactive Power BI dashboards.',
     imageLabel: 'Instacart Customer Analytics Dashboard',
-    githubUrl: 'https://github.com/samhoon000/Karnataka_AQI_Analysis.git',
-    images: ['/karnataka-aqi-1.png'],
+    githubUrl: 'https://github.com/samhoon000/instacart-customer-analytics',
+    images: ['/instacart-executive-overview.png', '/instacart-customer-insights.png'],
+    buttonText: 'Explore Project',
   },
   {
     title: 'India Food Price Intelligence Dashboard',

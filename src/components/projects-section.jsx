@@ -26,39 +26,41 @@ export function ProjectsSection() {
         {projects.map((project) => (
           <article
             key={project.title}
-            className={`glass-card rounded-2xl bg-panelSoft p-6 shadow-card transition hover:-translate-y-1 ${project.themeClasses?.cardHover || 'hover:border-accent'}`}
+            className={`glass-card rounded-2xl bg-panelSoft py-5 px-6 shadow-card transition hover:-translate-y-1 flex flex-col justify-between ${project.themeClasses?.cardHover || 'hover:border-accent'}`}
           >
-            <div className="mb-4 rounded-xl border border-stroke bg-gradient-to-br from-panel to-base p-5">
-              <p className="readable-text text-xs uppercase tracking-wider text-white">Project Preview</p>
-              <p className="mt-2 font-display text-xl text-textPrimary">{project.imageLabel}</p>
-            </div>
-            <h3 className="text-xl font-semibold text-textPrimary">{project.title}</h3>
-            <div className="mt-4 space-y-3">
-              <p className="readable-text text-sm text-white/90 text-justify">
-                <span className="font-bold text-accent">Problem: </span>
-                {project.problem}
-              </p>
-              {project.approach && (
+            <div>
+              <div className="mb-3 rounded-xl border border-stroke bg-gradient-to-br from-panel to-base p-5">
+                <p className="readable-text text-xs uppercase tracking-wider text-white">Project Preview</p>
+                <p className="mt-2 font-display text-xl text-textPrimary">{project.imageLabel}</p>
+              </div>
+              <h3 className="text-xl font-semibold text-textPrimary">{project.title}</h3>
+              <div className="mt-3 space-y-2.5">
                 <p className="readable-text text-sm text-white/90 text-justify">
-                  <span className="font-bold text-accent">Approach: </span>
-                  {project.approach}
+                  <span className="font-bold text-accent">Problem: </span>
+                  {project.problem}
                 </p>
-              )}
-              {project.result && (
-                <p className="readable-text text-sm text-white/90 text-justify">
-                  <span className="font-bold text-accent">Result: </span>
-                  {project.result}
-                </p>
-              )}
+                {project.approach && (
+                  <p className="readable-text text-sm text-white/90 text-justify">
+                    <span className="font-bold text-accent">Approach: </span>
+                    {project.approach}
+                  </p>
+                )}
+                {project.result && (
+                  <p className="readable-text text-sm text-white/90 text-justify">
+                    <span className="font-bold text-accent">Result: </span>
+                    {project.result}
+                  </p>
+                )}
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {project.tools.map((tool) => (
+                  <span key={tool} className="readable-text rounded-full border border-stroke bg-panel px-3 py-1 text-xs text-white">
+                    {tool}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {project.tools.map((tool) => (
-                <span key={tool} className="readable-text rounded-full border border-stroke bg-panel px-3 py-1 text-xs text-white">
-                  {tool}
-                </span>
-              ))}
-            </div>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-auto pt-5 flex flex-wrap gap-3">
               {project.githubUrl && project.githubUrl !== '#' && (
                 <a 
                   href={project.githubUrl} 

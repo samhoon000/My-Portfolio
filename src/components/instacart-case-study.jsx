@@ -73,7 +73,7 @@ export function InstacartCaseStudy() {
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
-          className="grid gap-8 lg:grid-cols-2 items-center mb-20 border-b border-stroke pb-16"
+          className="grid gap-8 lg:grid-cols-[1fr_1.25fr] items-center mb-20 border-b border-stroke pb-16"
         >
           <div>
             <div className="inline-block rounded-full bg-accent/10 border border-accent/20 px-3 py-1 text-xs font-semibold text-accent mb-4 tracking-wider uppercase">
@@ -108,7 +108,7 @@ export function InstacartCaseStudy() {
             
             {/* Image Container */}
             <div 
-              className="relative overflow-hidden rounded-2xl border border-stroke bg-panel shadow-2xl aspect-[16/10] w-full cursor-pointer"
+              className="relative overflow-hidden rounded-2xl border border-stroke bg-[#0F1115] shadow-2xl aspect-[16/10] w-full cursor-pointer p-4 sm:p-5 md:p-6"
               onClick={() => setSelectedImage(dashboardImages[currentImageIndex])}
             >
               <AnimatePresence initial={false}>
@@ -120,7 +120,7 @@ export function InstacartCaseStudy() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute inset-0 w-full h-full object-cover transform transition duration-500 hover:scale-[1.02]"
+                  className="absolute inset-0 w-full h-full object-contain p-4 sm:p-5 md:p-6 transform transition duration-500 hover:scale-[1.01]"
                 />
               </AnimatePresence>
 
@@ -148,7 +148,7 @@ export function InstacartCaseStudy() {
                 e.stopPropagation();
                 setCurrentImageIndex((prev) => (prev === 0 ? dashboardImages.length - 1 : prev - 1));
               }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(18,21,27,0.75)] text-white backdrop-blur-sm shadow-md transition-all duration-[250ms] select-none
+              className="absolute left-2 sm:left-0 sm:-translate-x-1/2 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(18,21,27,0.75)] text-white backdrop-blur-sm shadow-md transition-all duration-[250ms] select-none
                 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
                 hover:scale-105 hover:border-[#27C5FF]/50 hover:bg-[rgba(26,31,38,0.8)] hover:text-[#27C5FF] hover:shadow-[0_0_15px_rgba(39,197,255,0.35)]"
               aria-label="Previous Dashboard"
@@ -162,7 +162,7 @@ export function InstacartCaseStudy() {
                 e.stopPropagation();
                 setCurrentImageIndex((prev) => (prev === dashboardImages.length - 1 ? 0 : prev + 1));
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(18,21,27,0.75)] text-white backdrop-blur-sm shadow-md transition-all duration-[250ms] select-none
+              className="absolute right-2 sm:right-0 sm:translate-x-1/2 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(18,21,27,0.75)] text-white backdrop-blur-sm shadow-md transition-all duration-[250ms] select-none
                 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
                 hover:scale-105 hover:border-[#27C5FF]/50 hover:bg-[rgba(26,31,38,0.8)] hover:text-[#27C5FF] hover:shadow-[0_0_15px_rgba(39,197,255,0.35)]"
               aria-label="Next Dashboard"
@@ -584,16 +584,16 @@ export function InstacartCaseStudy() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 mb-8">
-            {/* Dashboard Card 1 */}
+             {/* Dashboard Card 1 */}
             <div 
               onClick={() => setSelectedImage('/instacart-executive-overview.png')}
               className="glass-card rounded-2xl bg-panelSoft p-4 border border-stroke cursor-pointer group transition-all duration-300 hover:border-accent hover:shadow-[0_0_20px_rgba(56,189,248,0.15)]"
             >
-              <div className="relative overflow-hidden rounded-xl bg-panel mb-4 aspect-video">
+              <div className="relative overflow-hidden rounded-xl bg-[#0F1115] mb-4 aspect-video p-4 sm:p-5 border border-stroke/20">
                 <img 
                   src="/instacart-executive-overview.png" 
                   alt="Instacart Executive Overview Dashboard" 
-                  className="w-full h-full object-cover transform transition duration-500 group-hover:scale-[1.02]"
+                  className="w-full h-full object-contain transform transition duration-500 group-hover:scale-[1.02]"
                 />
                 <div className="absolute inset-0 bg-base/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
                   <span className="bg-accent text-base text-xs font-semibold px-4 py-2 rounded-lg shadow-md">Click to Zoom</span>
@@ -608,11 +608,11 @@ export function InstacartCaseStudy() {
               onClick={() => setSelectedImage('/instacart-customer-insights.png')}
               className="glass-card rounded-2xl bg-panelSoft p-4 border border-stroke cursor-pointer group transition-all duration-300 hover:border-accent hover:shadow-[0_0_20px_rgba(56,189,248,0.15)]"
             >
-              <div className="relative overflow-hidden rounded-xl bg-panel mb-4 aspect-video">
+              <div className="relative overflow-hidden rounded-xl bg-[#0F1115] mb-4 aspect-video p-4 sm:p-5 border border-stroke/20">
                 <img 
                   src="/instacart-customer-insights.png" 
                   alt="Instacart Customer & Product Insights Dashboard" 
-                  className="w-full h-full object-cover transform transition duration-500 group-hover:scale-[1.02]"
+                  className="w-full h-full object-contain transform transition duration-500 group-hover:scale-[1.02]"
                 />
                 <div className="absolute inset-0 bg-base/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
                   <span className="bg-accent text-base text-xs font-semibold px-4 py-2 rounded-lg shadow-md">Click to Zoom</span>

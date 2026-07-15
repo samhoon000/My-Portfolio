@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   FaPython,
   FaDatabase,
@@ -22,6 +22,20 @@ import {
 
 export function InstacartCaseStudy() {
   const [selectedImage, setSelectedImage] = useState(null)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  const dashboardImages = [
+    '/instacart-executive-overview.png',
+    '/instacart-customer-insights.png'
+  ]
+
+  // Preload dashboard images for instant switching
+  useEffect(() => {
+    dashboardImages.forEach((src) => {
+      const img = new Image()
+      img.src = src
+    })
+  }, [])
 
   // Motion variants for premium, subtle animations
   const fadeInUp = {
@@ -88,18 +102,73 @@ export function InstacartCaseStudy() {
             </div>
           </div>
 
-          <div 
-            className="relative group cursor-pointer" 
-            onClick={() => setSelectedImage('/instacart-executive-overview.png')}
-          >
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-accent to-emerald-400 opacity-20 blur transition duration-1000 group-hover:opacity-35" />
-            <div className="relative overflow-hidden rounded-2xl border border-stroke bg-panel shadow-2xl">
-              <img
-                src="/instacart-executive-overview.png"
-                alt="Instacart Customer Analytics Dashboard Preview"
-                className="w-full h-auto object-cover transform transition duration-500 group-hover:scale-[1.02]"
-              />
+          <div className="relative group/carousel w-full">
+            {/* Glow background */}
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-accent to-emerald-400 opacity-20 blur transition duration-1000 group-hover/carousel:opacity-35" />
+            
+            {/* Image Container */}
+            <div 
+              className="relative overflow-hidden rounded-2xl border border-stroke bg-panel shadow-2xl aspect-[16/10] w-full cursor-pointer"
+              onClick={() => setSelectedImage(dashboardImages[currentImageIndex])}
+            >
+              <AnimatePresence initial={false}>
+                <motion.img
+                  key={currentImageIndex}
+                  src={dashboardImages[currentImageIndex]}
+                  alt={`Instacart Customer Analytics Dashboard Preview ${currentImageIndex + 1}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 w-full h-full object-cover transform transition duration-500 hover:scale-[1.02]"
+                />
+              </AnimatePresence>
+
+              {/* Dashboard Indicator Dots */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 bg-[rgba(18,21,27,0.75)] border border-[rgba(255,255,255,0.08)] backdrop-blur-sm px-3.5 py-1.5 rounded-full shadow-md select-none">
+                {dashboardImages.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCurrentImageIndex(idx);
+                    }}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      currentImageIndex === idx ? 'bg-accent w-4' : 'bg-white/40 hover:bg-white/70 w-2'
+                    }`}
+                    aria-label={`Go to dashboard screenshot ${idx + 1}`}
+                  />
+                ))}
+              </div>
             </div>
+
+            {/* Left navigation arrow */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentImageIndex((prev) => (prev === 0 ? dashboardImages.length - 1 : prev - 1));
+              }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(18,21,27,0.75)] text-white backdrop-blur-sm shadow-md transition-all duration-[250ms] select-none
+                w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
+                hover:scale-105 hover:border-[#27C5FF]/50 hover:bg-[rgba(26,31,38,0.8)] hover:text-[#27C5FF] hover:shadow-[0_0_15px_rgba(39,197,255,0.35)]"
+              aria-label="Previous Dashboard"
+            >
+              <span className="text-xl sm:text-2xl font-bold leading-none select-none">←</span>
+            </button>
+
+            {/* Right navigation arrow */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentImageIndex((prev) => (prev === dashboardImages.length - 1 ? 0 : prev + 1));
+              }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(18,21,27,0.75)] text-white backdrop-blur-sm shadow-md transition-all duration-[250ms] select-none
+                w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
+                hover:scale-105 hover:border-[#27C5FF]/50 hover:bg-[rgba(26,31,38,0.8)] hover:text-[#27C5FF] hover:shadow-[0_0_15px_rgba(39,197,255,0.35)]"
+              aria-label="Next Dashboard"
+            >
+              <span className="text-xl sm:text-2xl font-bold leading-none select-none">→</span>
+            </button>
           </div>
         </motion.section>
 

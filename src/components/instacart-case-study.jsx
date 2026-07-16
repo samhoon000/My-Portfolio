@@ -102,73 +102,84 @@ export function InstacartCaseStudy() {
             </div>
           </div>
 
-          <div className="relative group/carousel w-full">
-            {/* Glow background */}
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-accent to-emerald-400 opacity-20 blur transition duration-1000 group-hover/carousel:opacity-35" />
+          <div className="relative group/carousel w-full flex flex-col items-center">
             
-            {/* Image Container */}
-            <div 
-              className="relative rounded-2xl border border-stroke bg-[#0F1115] shadow-2xl aspect-[16/9] w-full cursor-pointer p-3 sm:p-4 flex items-center justify-center"
-              onClick={() => setSelectedImage(dashboardImages[currentImageIndex])}
-            >
-              <AnimatePresence initial={false}>
-                <motion.img
-                  key={currentImageIndex}
-                  src={dashboardImages[currentImageIndex]}
-                  alt={`Instacart Customer Analytics Dashboard Preview ${currentImageIndex + 1}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 w-full h-full object-contain p-3 sm:p-4"
+            {/* Carousel Content Wrapper (contains Image and Arrows) */}
+            <div className="relative w-full flex items-center justify-center">
+              {/* Glow background */}
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-accent to-emerald-400 opacity-20 blur transition duration-1000 group-hover/carousel:opacity-35" />
+              
+              {/* Image Container */}
+              <div 
+                className="relative rounded-2xl border border-stroke bg-[#0F1115] shadow-2xl w-full cursor-pointer flex items-center justify-center z-10"
+                onClick={() => setSelectedImage(dashboardImages[currentImageIndex])}
+              >
+                {/* Dummy spacer image in flow to reserve natural height */}
+                <img 
+                  src={dashboardImages[currentImageIndex]} 
+                  className="w-full h-auto opacity-0 pointer-events-none p-3 sm:p-4" 
+                  alt="layout spacer" 
                 />
-              </AnimatePresence>
-
-              {/* Dashboard Indicator Dots */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 bg-[rgba(18,21,27,0.75)] border border-[rgba(255,255,255,0.08)] backdrop-blur-sm px-3.5 py-1.5 rounded-full shadow-md select-none">
-                {dashboardImages.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setCurrentImageIndex(idx);
-                    }}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      currentImageIndex === idx ? 'bg-accent w-4' : 'bg-white/40 hover:bg-white/70 w-2'
-                    }`}
-                    aria-label={`Go to dashboard screenshot ${idx + 1}`}
+                
+                <AnimatePresence initial={false}>
+                  <motion.img
+                    key={currentImageIndex}
+                    src={dashboardImages[currentImageIndex]}
+                    alt={`Instacart Customer Analytics Dashboard Preview ${currentImageIndex + 1}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute inset-0 w-full h-full object-contain p-3 sm:p-4"
                   />
-                ))}
+                </AnimatePresence>
               </div>
+
+              {/* Left navigation arrow */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentImageIndex((prev) => (prev === 0 ? dashboardImages.length - 1 : prev - 1));
+                }}
+                className="absolute left-[-16px] sm:left-[-28px] md:left-[-36px] top-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(18,21,27,0.75)] text-white backdrop-blur-sm shadow-md transition-all duration-[250ms] select-none
+                  w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
+                  hover:scale-105 hover:border-[#27C5FF]/50 hover:bg-[rgba(26,31,38,0.8)] hover:text-[#27C5FF] hover:shadow-[0_0_15px_rgba(39,197,255,0.35)]"
+                aria-label="Previous Dashboard"
+              >
+                <span className="text-xl sm:text-2xl font-bold leading-none select-none">←</span>
+              </button>
+
+              {/* Right navigation arrow */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentImageIndex((prev) => (prev === dashboardImages.length - 1 ? 0 : prev + 1));
+                }}
+                className="absolute right-[-16px] sm:right-[-28px] md:right-[-36px] top-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(18,21,27,0.75)] text-white backdrop-blur-sm shadow-md transition-all duration-[250ms] select-none
+                  w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
+                  hover:scale-105 hover:border-[#27C5FF]/50 hover:bg-[rgba(26,31,38,0.8)] hover:text-[#27C5FF] hover:shadow-[0_0_15px_rgba(39,197,255,0.35)]"
+                aria-label="Next Dashboard"
+              >
+                <span className="text-xl sm:text-2xl font-bold leading-none select-none">→</span>
+              </button>
             </div>
 
-            {/* Left navigation arrow */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setCurrentImageIndex((prev) => (prev === 0 ? dashboardImages.length - 1 : prev - 1));
-              }}
-              className="absolute left-[-16px] sm:left-[-28px] md:left-[-36px] top-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(18,21,27,0.75)] text-white backdrop-blur-sm shadow-md transition-all duration-[250ms] select-none
-                w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
-                hover:scale-105 hover:border-[#27C5FF]/50 hover:bg-[rgba(26,31,38,0.8)] hover:text-[#27C5FF] hover:shadow-[0_0_15px_rgba(39,197,255,0.35)]"
-              aria-label="Previous Dashboard"
-            >
-              <span className="text-xl sm:text-2xl font-bold leading-none select-none">←</span>
-            </button>
-
-            {/* Right navigation arrow */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setCurrentImageIndex((prev) => (prev === dashboardImages.length - 1 ? 0 : prev + 1));
-              }}
-              className="absolute right-[-16px] sm:right-[-28px] md:right-[-36px] top-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(18,21,27,0.75)] text-white backdrop-blur-sm shadow-md transition-all duration-[250ms] select-none
-                w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
-                hover:scale-105 hover:border-[#27C5FF]/50 hover:bg-[rgba(26,31,38,0.8)] hover:text-[#27C5FF] hover:shadow-[0_0_15px_rgba(39,197,255,0.35)]"
-              aria-label="Next Dashboard"
-            >
-              <span className="text-xl sm:text-2xl font-bold leading-none select-none">→</span>
-            </button>
+            {/* Dashboard Indicator Dots (Outside container at bottom center) */}
+            <div className="mt-4 flex items-center gap-2 bg-[rgba(18,21,27,0.75)] border border-[rgba(255,255,255,0.08)] backdrop-blur-sm px-3.5 py-1.5 rounded-full shadow-md select-none z-10">
+              {dashboardImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setCurrentImageIndex(idx);
+                  }}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    currentImageIndex === idx ? 'bg-accent w-4' : 'bg-white/40 hover:bg-white/70 w-2'
+                  }`}
+                  aria-label={`Go to dashboard screenshot ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </motion.section>
 
@@ -589,11 +600,17 @@ export function InstacartCaseStudy() {
               onClick={() => setSelectedImage('/instacart-executive-overview.png')}
               className="glass-card rounded-2xl bg-panelSoft p-4 border border-stroke cursor-pointer group transition-all duration-300 hover:border-accent hover:shadow-[0_0_20px_rgba(56,189,248,0.15)]"
             >
-              <div className="relative rounded-xl border border-stroke/20 bg-[#0F1115] mb-4 aspect-[16/9] p-3 sm:p-4 flex items-center justify-center">
+              <div className="relative rounded-xl border border-stroke/20 bg-[#0F1115] mb-4 flex items-center justify-center">
+                {/* Dummy spacer image in flow to reserve natural height */}
+                <img 
+                  src="/instacart-executive-overview.png" 
+                  className="w-full h-auto opacity-0 pointer-events-none p-3 sm:p-4" 
+                  alt="layout spacer" 
+                />
                 <img 
                   src="/instacart-executive-overview.png" 
                   alt="Instacart Executive Overview Dashboard" 
-                  className="w-full h-full object-contain"
+                  className="absolute inset-0 w-full h-full object-contain p-3 sm:p-4"
                 />
                 <div className="absolute inset-0 bg-base/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
                   <span className="bg-accent text-base text-xs font-semibold px-4 py-2 rounded-lg shadow-md">Click to Zoom</span>
@@ -608,11 +625,17 @@ export function InstacartCaseStudy() {
               onClick={() => setSelectedImage('/instacart-customer-insights.png')}
               className="glass-card rounded-2xl bg-panelSoft p-4 border border-stroke cursor-pointer group transition-all duration-300 hover:border-accent hover:shadow-[0_0_20px_rgba(56,189,248,0.15)]"
             >
-              <div className="relative rounded-xl border border-stroke/20 bg-[#0F1115] mb-4 aspect-[16/9] p-3 sm:p-4 flex items-center justify-center">
+              <div className="relative rounded-xl border border-stroke/20 bg-[#0F1115] mb-4 flex items-center justify-center">
+                {/* Dummy spacer image in flow to reserve natural height */}
+                <img 
+                  src="/instacart-customer-insights.png" 
+                  className="w-full h-auto opacity-0 pointer-events-none p-3 sm:p-4" 
+                  alt="layout spacer" 
+                />
                 <img 
                   src="/instacart-customer-insights.png" 
                   alt="Instacart Customer & Product Insights Dashboard" 
-                  className="w-full h-full object-contain"
+                  className="absolute inset-0 w-full h-full object-contain p-3 sm:p-4"
                 />
                 <div className="absolute inset-0 bg-base/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
                   <span className="bg-accent text-base text-xs font-semibold px-4 py-2 rounded-lg shadow-md">Click to Zoom</span>

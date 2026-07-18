@@ -688,7 +688,58 @@ export function InstacartCaseStudy() {
           </div>
         </motion.section>
 
-        {/* 12. BOTTOM CTA */}
+        {/* 12. PROJECT DOCUMENTATION */}
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeInUp}
+          className="mb-20"
+        >
+          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Project Documentation</h2>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {/* Document 1: Project Report */}
+            <div className="glass-card rounded-2xl bg-panelSoft p-6 border border-stroke flex flex-col justify-between">
+              <div>
+                <span className="inline-block rounded bg-accent/15 px-2.5 py-0.5 text-[10px] font-bold text-accent uppercase tracking-wider mb-3">
+                  Technical PDF
+                </span>
+                <h3 className="font-display text-lg font-bold text-white mb-2">Project Report</h3>
+                <p className="font-sans text-xs text-textMuted leading-relaxed mb-6">
+                  Comprehensive technical documentation covering data acquisition, ETL pipeline, DuckDB database design, SQL business queries, exploratory data analysis (EDA), customer segmentation, KPI calculations, Power BI dashboard development, DAX measures, and key business insights generated from over 3.4 million customer orders.
+                </p>
+              </div>
+              <Link
+                to="/project/instacart/report"
+                className="w-full text-center rounded-md border border-accent bg-accent/10 py-2.5 text-xs font-semibold text-accent transition hover:bg-accent hover:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                View Report
+              </Link>
+            </div>
+
+            {/* Document 2: Presentation */}
+            <div className="glass-card rounded-2xl bg-panelSoft p-6 border border-stroke flex flex-col justify-between">
+              <div>
+                <span className="inline-block rounded bg-accent/15 px-2.5 py-0.5 text-[10px] font-bold text-accent uppercase tracking-wider mb-3">
+                  Case Deck PDF
+                </span>
+                <h3 className="font-display text-lg font-bold text-white mb-2">Project Presentation</h3>
+                <p className="font-sans text-xs text-textMuted leading-relaxed mb-6">
+                  Project presentation summarizing the business problem, analytics workflow, data architecture, customer behavior analysis, dashboard walkthrough, executive insights, business recommendations, and the overall impact of the analytics solution.
+                </p>
+              </div>
+              <Link
+                to="/project/instacart/presentation"
+                className="w-full text-center rounded-md border border-accent bg-accent/10 py-2.5 text-xs font-semibold text-accent transition hover:bg-accent hover:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                View Presentation
+              </Link>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* 13. BOTTOM CTA */}
         <motion.section
           initial="hidden"
           whileInView="visible"

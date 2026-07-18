@@ -68,6 +68,8 @@ function App() {
         <Route path="/project/instacart" element={<InstacartCaseStudy />} />
         <Route path="/project/instacart/report" element={<InstacartReport />} />
         <Route path="/project/instacart/presentation" element={<InstacartPresentation />} />
+        <Route path="/projects/instacart/report" element={<InstacartReport />} />
+        <Route path="/projects/instacart/presentation" element={<InstacartPresentation />} />
       </Routes>
 
       <Footer />

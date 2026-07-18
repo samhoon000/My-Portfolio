@@ -590,61 +590,29 @@ export function InstacartCaseStudy() {
           <div className="mb-6 border-b border-stroke pb-2 animate-reveal">
             <h2 className="font-display text-2xl font-bold text-white">Dashboard Showcase</h2>
             <p className="font-sans text-sm text-textMuted mt-1">
-              Explore the interactive, high-fidelity Power BI dashboards developed for Instacart. Click on any dashboard card below to open a larger high-resolution preview.
+              Explore the walkthrough of the interactive, high-fidelity Power BI dashboards developed for Instacart.
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 mb-8">
-             {/* Dashboard Card 1 */}
-            <div 
-              onClick={() => setSelectedImage('/instacart-executive-overview.png')}
-              className="glass-card rounded-2xl bg-panelSoft p-4 border border-stroke cursor-pointer group transition-all duration-300 hover:border-accent hover:shadow-[0_0_20px_rgba(56,189,248,0.15)]"
-            >
-              <div className="relative rounded-xl border border-stroke/20 bg-[#0F1115] mb-4 flex items-center justify-center">
-                {/* Dummy spacer image in flow to reserve natural height */}
-                <img 
-                  src="/instacart-executive-overview.png" 
-                  className="w-full h-auto opacity-0 pointer-events-none p-3 sm:p-4" 
-                  alt="layout spacer" 
-                />
-                <img 
-                  src="/instacart-executive-overview.png" 
-                  alt="Instacart Executive Overview Dashboard" 
-                  className="absolute inset-0 w-full h-full object-contain p-3 sm:p-4"
-                />
-                <div className="absolute inset-0 bg-base/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
-                  <span className="bg-accent text-base text-xs font-semibold px-4 py-2 rounded-lg shadow-md">Click to Zoom</span>
-                </div>
-              </div>
-              <h3 className="font-display text-base font-bold text-white">Executive Overview</h3>
-              <p className="font-sans text-xs text-textMuted mt-1">High-level sales stats, diurnal purchasing loads, order distributions, and reorder metrics.</p>
-            </div>
-
-            {/* Dashboard Card 2 */}
-            <div 
-              onClick={() => setSelectedImage('/instacart-customer-insights.png')}
-              className="glass-card rounded-2xl bg-panelSoft p-4 border border-stroke cursor-pointer group transition-all duration-300 hover:border-accent hover:shadow-[0_0_20px_rgba(56,189,248,0.15)]"
-            >
-              <div className="relative rounded-xl border border-stroke/20 bg-[#0F1115] mb-4 flex items-center justify-center">
-                {/* Dummy spacer image in flow to reserve natural height */}
-                <img 
-                  src="/instacart-customer-insights.png" 
-                  className="w-full h-auto opacity-0 pointer-events-none p-3 sm:p-4" 
-                  alt="layout spacer" 
-                />
-                <img 
-                  src="/instacart-customer-insights.png" 
-                  alt="Instacart Customer & Product Insights Dashboard" 
-                  className="absolute inset-0 w-full h-full object-contain p-3 sm:p-4"
-                />
-                <div className="absolute inset-0 bg-base/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
-                  <span className="bg-accent text-base text-xs font-semibold px-4 py-2 rounded-lg shadow-md">Click to Zoom</span>
-                </div>
-              </div>
-              <h3 className="font-display text-base font-bold text-white">Customer & Product Insights</h3>
-              <p className="font-sans text-xs text-textMuted mt-1">Loyalty cohorts, top-selling categories, repeat purchase velocities, and subscription prospects.</p>
+          <div className="relative group/video w-full max-w-4xl mx-auto mb-6 z-10">
+            {/* Glow background */}
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-accent to-purple-600 opacity-20 blur transition duration-1000 group-hover/video:opacity-35" />
+            
+            {/* Video Container */}
+            <div className="relative rounded-2xl border border-stroke bg-[#0F1115] shadow-card w-full aspect-video overflow-hidden transition-all duration-300 hover:border-accent hover:shadow-[0_0_25px_rgba(56,189,248,0.15)]">
+              <iframe
+                src="https://www.youtube.com/embed/tBa116WrGZE?rel=0&modestbranding=1"
+                title="Instacart Customer Analytics Dashboard Walkthrough"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full border-0"
+              ></iframe>
             </div>
           </div>
+
+          <p className="font-sans text-xs sm:text-sm text-textMuted text-center max-w-2xl mx-auto leading-relaxed italic">
+            Watch a complete walkthrough of the interactive Power BI dashboard, showcasing customer behavior, purchasing trends, retention analysis, and executive business insights.
+          </p>
         </motion.section>
 
         {/* 10. KEY INSIGHTS */}

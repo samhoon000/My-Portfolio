@@ -28,7 +28,7 @@ import {
 import { SiPandas } from 'react-icons/si'
 
 // Replace this with your actual YouTube Video ID
-const YOUTUBE_VIDEO_ID = "Vq4Lz7gYn8U"
+const YOUTUBE_VIDEO_ID = "4vw6qD9tGzE"
 
 export function FoodHealthCaseStudy() {
 

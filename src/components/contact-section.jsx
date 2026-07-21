@@ -15,15 +15,23 @@ export function ContactSection() {
           <div className="readable-text mt-4 space-y-3 text-sm text-white">
             <p>Email: {contactDetails.email}</p>
             <p>
-              LinkedIn:{' '}
-              <a href={contactDetails.linkedin} className="text-accent hover:text-accentSoft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-panelSoft">
-                {contactDetails.linkedin}
+              <a 
+                href={contactDetails.linkedin} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-accent hover:text-accentSoft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-panelSoft"
+              >
+                LinkedIn Profile
               </a>
             </p>
             <p>
-              GitHub:{' '}
-              <a href={contactDetails.github} className="text-accent hover:text-accentSoft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-panelSoft">
-                {contactDetails.github}
+              <a 
+                href={contactDetails.github} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-accent hover:text-accentSoft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-panelSoft"
+              >
+                GitHub Profile
               </a>
             </p>
           </div>

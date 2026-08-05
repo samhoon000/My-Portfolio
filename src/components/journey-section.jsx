@@ -3,7 +3,7 @@ import { SectionHeading } from './section-heading'
 
 export function JourneySection() {
   return (
-    <section id="experience" className="py-10 sm:py-12">
+    <section id="journey" className="py-10 sm:py-12">
       <SectionHeading
         eyebrow="Learning Journey / Practical Exposure"
         title="Hands-on growth through real analytics practice"

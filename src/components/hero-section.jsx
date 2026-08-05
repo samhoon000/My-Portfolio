@@ -131,14 +131,14 @@ export function HeroSection() {
     <section id="home" className="relative pt-20 pb-10 sm:pt-24 sm:pb-12">
       <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-center">
         <div>
-          <p className="readable-text mb-4 text-sm uppercase tracking-[0.28em] text-accent">AI & Data Science Undergraduate</p>
+          <p className="readable-text mb-4 text-sm uppercase tracking-[0.18em] text-accent">Data Analyst Intern @ Trinetro Labs • Final-Year AI & Data Science Student</p>
           <h1 className="font-display text-4xl font-bold tracking-tight text-textPrimary sm:text-6xl lg:text-7xl">Abdul Samhoon</h1>
           <h2 className="mt-4 min-h-[4.5rem] sm:min-h-[4rem] lg:min-h-[5.5rem] font-display text-xl font-semibold animated-gradient-text sm:text-2xl lg:text-3xl leading-snug lg:leading-normal">
             {typed}
             <span className="inline-block ml-1 animate-pulse text-accent">|</span>
           </h2>
           <p className="readable-text mt-6 max-w-xl text-base text-white/80 leading-relaxed">
-            I specialize in transforming complex data into strategic business intelligence. Proficient in <strong>Python, SQL, Power BI,</strong> and <strong>Machine Learning</strong>, I focus on building analytical pipelines and models that drive real-world impact.
+            I specialize in transforming complex data into strategic business intelligence. Currently working as a <strong>Data Analyst Intern at Trinetro Labs</strong> and pursuing my final year in <strong>AI & Data Science</strong>, I focus on building analytical pipelines and models that drive real-world impact.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a href="#projects" className="flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-base transition hover:-translate-y-0.5 hover:bg-accentSoft hover:shadow-[0_0_15px_rgba(56,189,248,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base">

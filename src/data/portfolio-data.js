@@ -17,6 +17,7 @@ import { BiBarChartAlt2 } from 'react-icons/bi'
 export const navLinks = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
   { id: 'achievements', label: 'Achievements' },
@@ -28,6 +29,23 @@ export const heroStats = [
   { label: 'Projects Built', value: 8 },
   { label: 'Datasets Analyzed', value: 15 },
   { label: 'Dashboards Designed', value: 5 },
+]
+
+export const experiences = [
+  {
+    role: 'Data Analyst Intern',
+    company: 'Trinetro Labs',
+    location: 'Remote',
+    period: 'August 2026 – Present',
+    companyUrl: 'https://trinetrolabs.com/',
+    linkedinUrl: 'https://www.linkedin.com/company/trinetrolabs/posts/?feedView=all',
+    description: [
+      'Joined Trinetro Labs as a remote Data Analyst Intern.',
+      'Working with SQL databases and AI-powered business intelligence solutions.',
+      'Gaining hands-on experience in data analysis, semantic modeling, and analytics workflows.',
+      'Collaborating with the product and engineering team in a startup environment.'
+    ]
+  }
 ]
 
 export const skills = {
@@ -162,6 +180,7 @@ export const projects = [
 ]
 
 export const practicalExposure = [
+  'Aug 2026 – Present: Data Analyst Intern — Trinetro Labs (Remote)',
   'Built end-to-end analytics projects from data cleaning to dashboard storytelling.',
   'Worked with real-world datasets from healthcare, sales, and customer domains.',
   'Developed strong self-learning habits through hands-on case studies and certifications.',

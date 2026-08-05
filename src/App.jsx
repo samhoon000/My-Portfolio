@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import { Navbar } from './components/navbar'
 import { HeroSection } from './components/hero-section'
 import { AboutSection } from './components/about-section'
+import { ExperienceSection } from './components/experience-section'
 import { SkillsSection } from './components/skills-section'
 import { ProjectsSection } from './components/projects-section'
 import { AchievementsSection } from './components/achievements-section'
@@ -51,6 +52,7 @@ function App() {
             <main className="mx-auto max-w-6xl px-4 pt-20 sm:px-6 lg:px-8">
               <HeroSection />
               <AboutSection />
+              <ExperienceSection />
               <SkillsSection />
               <ProjectsSection />
               <AchievementsSection />

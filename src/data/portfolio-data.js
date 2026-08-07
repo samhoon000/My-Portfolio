@@ -9,7 +9,8 @@ import {
   FaRegChartBar,
   FaGithub,
   FaGitAlt,
-  FaServer
+  FaServer,
+  FaAws
 } from 'react-icons/fa'
 import { SiPandas, SiNumpy, SiScikitlearn } from 'react-icons/si'
 import { BiBarChartAlt2 } from 'react-icons/bi'
@@ -66,9 +67,10 @@ export const skills = {
     { name: 'EDA', icon: FaRegChartBar },
     { name: 'Feature Engineering', icon: BiBarChartAlt2 },
   ],
-  'Developer Tools': [
+  'Development & Cloud': [
     { name: 'Git', icon: FaGitAlt },
     { name: 'GitHub', icon: FaGithub },
+    { name: 'AWS', icon: FaAws },
     { name: 'MySQL', icon: FaDatabase },
     { name: 'phpMyAdmin', icon: FaServer },
   ]

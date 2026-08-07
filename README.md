@@ -27,7 +27,7 @@ I am a **B.E. student in Artificial Intelligence & Data Science** passionate abo
 | **Data Analytics & BI** | SQL, Power BI, Excel, DAX, Data Cleaning, Exploratory Data Analysis (EDA), Feature Engineering |
 | **Programming & Libraries** | Python, Pandas, NumPy, Scikit-Learn, Matplotlib |
 | **Web Development** | React, JavaScript, Vite, Tailwind CSS, HTML5, CSS3 |
-| **Developer Tools & Databases** | Git, GitHub, MySQL, phpMyAdmin, VS Code |
+| **Development & Cloud** | Git, GitHub, AWS, MySQL, phpMyAdmin, VS Code |
 
 ---
 

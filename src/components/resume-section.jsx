@@ -1,20 +1,33 @@
 import { SectionHeading } from './section-heading'
+import { FaFileDownload } from 'react-icons/fa'
+import { BiCoffee } from 'react-icons/bi'
 
 export function ResumeSection() {
   return (
-    <section id="resume" className="py-10 sm:py-12">
+    <section id="resume" className="relative z-10 py-12 sm:py-16">
       <SectionHeading
         eyebrow="Resume"
-        title="Ready for internships and entry-level analyst roles"
-        description="“A concise overview of my skills, projects, and achievements in data analysis."
+        title="Ready for Data Analyst Roles"
+        description="A comprehensive summary of my analytics skills, practical internships, hackathons, and certifications."
       />
-      <div className="glass-card rounded-2xl bg-panelSoft p-7 text-center">
-        <h3 className="font-display text-2xl font-semibold text-textPrimary">Download My Resume</h3>
-        <p className="readable-text mx-auto mt-3 max-w-xl text-sm text-white">
-          Highlights my data analysis projects, technical skills, and real-world problem-solving experience.
+      <div className="cafe-card pixel-corners rounded-2xl p-8 text-center backdrop-blur-md">
+        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-[#4A2F25] border border-[#6B4535] text-[#E39A73] shadow-sm mb-4">
+          <BiCoffee className="text-2xl" />
+        </div>
+        <h3 className="font-pixel text-2xl font-bold text-[#FFF1D6]">Download My Resume</h3>
+        <p
+          className="mx-auto mt-2 max-w-lg text-sm font-sans leading-relaxed"
+          style={{ color: '#FFF1D6' }}
+        >
+          Details regarding my experience at Trinetro Labs, data analysis pipelines, and proven ML project results.
         </p>
-        <a href="/Abdul_Samhoon_Resume.pdf" download="Abdul_Samhoon_Resume.pdf" className="mt-6 inline-block rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-base transition hover:bg-accentSoft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-panelSoft">
-          Download Resume
+        <a
+          href="/Abdul_Samhoon_Resume.pdf"
+          download="Abdul_Samhoon_Resume.pdf"
+          className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#E39A73] px-6 py-3.5 font-pixel text-xs font-bold text-[#2B1D18] shadow-lg shadow-[#E39A73]/20 transition-all duration-300 hover:bg-[#F0B08A] hover:shadow-[#E39A73]/40"
+        >
+          <FaFileDownload />
+          <span>Download Resume (PDF)</span>
         </a>
       </div>
     </section>

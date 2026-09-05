@@ -167,7 +167,7 @@ export function FoodHealthCaseStudy() {
             <div className="inline-block rounded-full bg-accent/10 border border-accent/20 px-3 py-1 text-xs font-semibold text-accent mb-4 tracking-wider uppercase">
               Project Case Study
             </div>
-            <h1 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl leading-tight">
+            <h1 className="font-display text-3xl font-bold tracking-tight text-textPrimary sm:text-4xl lg:text-5xl leading-tight">
               Food Nutrition & Health Risk Analytics System
             </h1>
             <p className="readable-text mt-4 text-base text-textSecondary border-l-2 border-accent pl-4 italic">
@@ -207,7 +207,7 @@ export function FoodHealthCaseStudy() {
           variants={fadeInUp}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Project Overview</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">Project Overview</h2>
           <div className="glass-card rounded-2xl bg-panelSoft p-6 sm:p-8 shadow-card">
             <p className="readable-text text-base text-textSecondary text-justify leading-relaxed">
               The <strong>Food Nutrition & Health Risk Analytics System</strong> is a comprehensive, production-grade business intelligence and engineering pipeline. Rather than just a static dashboard, it is an end-to-end data auditing solution. The system automates the ingestion of raw, semi-structured product nutritional profiles, performs extensive ETL operations in Python, resolves missing value anomalies, calculates proprietary safety metrics, warehouses the normalized datasets in MySQL, and delivers interactive analytics. It enables quality assurance teams and food product managers to systematically audit catalogs, spot safety threshold violations, and optimize inventory formulation decisions instantly.
@@ -223,7 +223,7 @@ export function FoodHealthCaseStudy() {
           variants={fadeInUp}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">The Business Problem</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">The Business Problem</h2>
           <div className="glass-card rounded-2xl bg-panelSoft p-6 sm:p-8 border border-accent/20 shadow-card transition-all duration-300 hover:border-accent/40">
             <div className="flex flex-col gap-8 md:flex-row md:items-start">
               <div className="flex-1">
@@ -245,7 +245,7 @@ export function FoodHealthCaseStudy() {
                         <challenge.icon size={18} />
                       </div>
                       <div>
-                        <h4 className="font-display text-sm font-semibold text-white leading-snug">{challenge.title}</h4>
+                        <h4 className="font-display text-sm font-semibold text-textPrimary leading-snug">{challenge.title}</h4>
                         <p className="readable-text mt-1 text-xs text-textMuted leading-relaxed">{challenge.description}</p>
                       </div>
                     </motion.div>
@@ -269,7 +269,7 @@ export function FoodHealthCaseStudy() {
           variants={staggerContainer}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">My Solution</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">My Solution</h2>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 
@@ -278,7 +278,7 @@ export function FoodHealthCaseStudy() {
               <div className="rounded-lg bg-accent/10 w-10 h-10 flex items-center justify-center text-accent mb-4">
                 <FaPython size={20} />
               </div>
-              <h3 className="font-display text-lg font-semibold text-white mb-2">Python-Based ETL</h3>
+              <h3 className="font-display text-lg font-semibold text-textPrimary mb-2">Python-Based ETL</h3>
               <p className="readable-text text-xs text-textSecondary leading-relaxed">
                 Performed data cleaning and preprocessing using Python and Pandas by handling missing values, standardizing nutritional attributes, and preparing a consistent dataset for analysis.
               </p>
@@ -289,7 +289,7 @@ export function FoodHealthCaseStudy() {
               <div className="rounded-lg bg-accent/10 w-10 h-10 flex items-center justify-center text-accent mb-4">
                 <FaLightbulb size={20} />
               </div>
-              <h3 className="font-display text-lg font-semibold text-white mb-2">Feature Engineering</h3>
+              <h3 className="font-display text-lg font-semibold text-textPrimary mb-2">Feature Engineering</h3>
               <p className="readable-text text-xs text-textSecondary leading-relaxed">
                 Engineered two custom metrics—Health Risk Score (HRS) and Nutrition Density Index (NDI)—to objectively evaluate food products and enable meaningful nutritional comparisons across the dataset.
               </p>
@@ -300,7 +300,7 @@ export function FoodHealthCaseStudy() {
               <div className="rounded-lg bg-accent/10 w-10 h-10 flex items-center justify-center text-accent mb-4">
                 <FaDatabase size={20} />
               </div>
-              <h3 className="font-display text-lg font-semibold text-white mb-2">Relational Database</h3>
+              <h3 className="font-display text-lg font-semibold text-textPrimary mb-2">Relational Database</h3>
               <p className="readable-text text-xs text-textSecondary leading-relaxed">
                 Designed a normalized MySQL relational database to efficiently store processed nutritional data and support structured SQL analysis.
               </p>
@@ -311,7 +311,7 @@ export function FoodHealthCaseStudy() {
               <div className="rounded-lg bg-accent/10 w-10 h-10 flex items-center justify-center text-accent mb-4">
                 <FaChartBar size={20} />
               </div>
-              <h3 className="font-display text-lg font-semibold text-white mb-2">SQL Business Analysis</h3>
+              <h3 className="font-display text-lg font-semibold text-textPrimary mb-2">SQL Business Analysis</h3>
               <p className="readable-text text-xs text-textSecondary leading-relaxed">
                 Developed 14 business-focused SQL queries to identify high-risk foods, rank healthier alternatives, analyze nutritional trends, and generate actionable business insights.
               </p>
@@ -322,7 +322,7 @@ export function FoodHealthCaseStudy() {
               <div className="rounded-lg bg-accent/10 w-10 h-10 flex items-center justify-center text-accent mb-4">
                 <FaMicrosoft size={20} />
               </div>
-              <h3 className="font-display text-lg font-semibold text-white mb-2">Power BI Dashboard</h3>
+              <h3 className="font-display text-lg font-semibold text-textPrimary mb-2">Power BI Dashboard</h3>
               <p className="readable-text text-xs text-textSecondary leading-relaxed">
                 Designed an interactive Power BI dashboard featuring KPI cards, risk distribution, nutritional comparisons, product rankings, and dynamic filters to support intuitive data exploration.
               </p>
@@ -333,7 +333,7 @@ export function FoodHealthCaseStudy() {
               <div className="rounded-lg bg-accent/10 w-10 h-10 flex items-center justify-center text-accent mb-4">
                 <FaFilter size={20} />
               </div>
-              <h3 className="font-display text-lg font-semibold text-white mb-2">Business Insights</h3>
+              <h3 className="font-display text-lg font-semibold text-textPrimary mb-2">Business Insights</h3>
               <p className="readable-text text-xs text-textSecondary leading-relaxed">
                 Enabled users to explore nutritional trends, compare food products, identify high-risk categories, and support data-driven decision-making through interactive visual analytics.
               </p>
@@ -350,7 +350,7 @@ export function FoodHealthCaseStudy() {
           variants={fadeInUp}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Project Workflow</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">Project Workflow</h2>
 
           {/* Timeline Wrapper */}
           <div className="glass-card rounded-2xl bg-panelSoft p-8 shadow-card">
@@ -370,7 +370,7 @@ export function FoodHealthCaseStudy() {
                   <div className="w-10 h-10 rounded-full border-2 border-accent bg-panel flex items-center justify-center font-display text-sm font-semibold text-accent shadow-[0_0_10px_rgba(56,189,248,0.2)]">
                     0{idx + 1}
                   </div>
-                  <h4 className="font-display text-xs font-bold text-white mt-3 leading-snug">{step.title}</h4>
+                  <h4 className="font-display text-xs font-bold text-textPrimary mt-3 leading-snug">{step.title}</h4>
                   <p className="font-sans text-[10px] text-textMuted mt-1 leading-normal">{step.desc}</p>
                 </div>
               ))}
@@ -388,7 +388,7 @@ export function FoodHealthCaseStudy() {
               ].map((step, idx) => (
                 <div key={idx} className="relative">
                   <div className="absolute -left-[24px] top-0 w-4.5 h-4.5 rounded-full border-2 border-accent bg-base flex items-center justify-center text-[9px] font-bold text-accent" />
-                  <h4 className="font-display text-sm font-bold text-white leading-none">{step.title}</h4>
+                  <h4 className="font-display text-sm font-bold text-textPrimary leading-none">{step.title}</h4>
                   <p className="font-sans text-xs text-textMuted mt-1">{step.desc}</p>
                 </div>
               ))}
@@ -404,7 +404,7 @@ export function FoodHealthCaseStudy() {
           variants={staggerContainer}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-2 border-b border-stroke pb-2">SQL Analytics</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-2 border-b border-stroke pb-2">SQL Analytics</h2>
           <p className="readable-text text-sm text-textMuted mb-6 font-sans">
             Cleaned and normalized data was warehoused in MySQL. Rather than simply dumping SQL query scripts, we translated database queries directly into targeted business intelligence insights.
           </p>
@@ -422,7 +422,7 @@ export function FoodHealthCaseStudy() {
                     <div className="p-2 rounded-lg bg-white/5 shrink-0">
                       <IconComponent size={18} />
                     </div>
-                    <h3 className="font-display text-sm font-semibold text-white">{item.title}</h3>
+                    <h3 className="font-display text-sm font-semibold text-textPrimary">{item.title}</h3>
                   </div>
                   <p className="font-sans text-xs text-textMuted leading-relaxed text-justify">
                     {item.insight}
@@ -448,7 +448,7 @@ export function FoodHealthCaseStudy() {
           className="mb-20"
         >
           <div className="mb-6 border-b border-stroke pb-2 animate-reveal">
-            <h2 className="font-display text-2xl font-bold text-white">Dashboard Demonstration</h2>
+            <h2 className="font-display text-2xl font-bold text-textPrimary">Dashboard Demonstration</h2>
             <p className="font-sans text-sm text-textMuted mt-1">
               Watch a walkthrough of the interactive Power BI dashboard, showcasing the key business insights, visualizations, and analytical capabilities developed for this project.
             </p>
@@ -477,7 +477,7 @@ export function FoodHealthCaseStudy() {
                 <div className="rounded-lg bg-accent/10 p-2 text-accent">
                   <FaTools size={18} />
                 </div>
-                <h3 className="font-display text-lg font-bold text-white">Dashboard Features</h3>
+                <h3 className="font-display text-lg font-bold text-textPrimary">Dashboard Features</h3>
               </div>
               <ul className="space-y-3 font-sans text-xs text-textSecondary">
                 <li className="flex items-start gap-2.5">
@@ -517,7 +517,7 @@ export function FoodHealthCaseStudy() {
                 <div className="rounded-lg bg-emerald/10 p-2 text-emerald">
                   <FaLightbulb size={18} />
                 </div>
-                <h3 className="font-display text-lg font-bold text-white">Business Insights</h3>
+                <h3 className="font-display text-lg font-bold text-textPrimary">Business Insights</h3>
               </div>
               <ul className="space-y-3 font-sans text-xs text-textSecondary">
                 <li className="flex items-start gap-2.5">
@@ -557,12 +557,12 @@ export function FoodHealthCaseStudy() {
           variants={staggerContainer}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Dashboard Highlights</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">Dashboard Highlights</h2>
 
           <div className="grid gap-6 md:grid-cols-3">
             {/* Highlight Card 1 */}
             <motion.div variants={fadeInUp} className="glass-card rounded-2xl bg-panelSoft p-6 border border-stroke">
-              <h3 className="font-display text-lg font-bold text-white mb-4 border-b border-stroke pb-2">KPIs</h3>
+              <h3 className="font-display text-lg font-bold text-textPrimary mb-4 border-b border-stroke pb-2">KPIs</h3>
               <ul className="space-y-2.5 font-sans text-xs text-textSecondary">
                 <li className="flex items-center justify-between">
                   <span className="text-textMuted">Total Food Products</span>
@@ -585,7 +585,7 @@ export function FoodHealthCaseStudy() {
 
             {/* Highlight Card 2 */}
             <motion.div variants={fadeInUp} className="glass-card rounded-2xl bg-panelSoft p-6 border border-stroke">
-              <h3 className="font-display text-lg font-bold text-white mb-4 border-b border-stroke pb-2">Visualizations</h3>
+              <h3 className="font-display text-lg font-bold text-textPrimary mb-4 border-b border-stroke pb-2">Visualizations</h3>
               <ul className="space-y-2.5 font-sans text-xs text-textSecondary">
                 <li className="flex items-start gap-2">
                   <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-accent" />
@@ -616,7 +616,7 @@ export function FoodHealthCaseStudy() {
 
             {/* Highlight Card 3 */}
             <motion.div variants={fadeInUp} className="glass-card rounded-2xl bg-panelSoft p-6 border border-stroke">
-              <h3 className="font-display text-lg font-bold text-white mb-4 border-b border-stroke pb-2">Business Value</h3>
+              <h3 className="font-display text-lg font-bold text-textPrimary mb-4 border-b border-stroke pb-2">Business Value</h3>
               <ul className="space-y-2.5 font-sans text-xs text-textSecondary">
                 <li className="flex items-start gap-2">
                   <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-emerald-400" />
@@ -647,33 +647,33 @@ export function FoodHealthCaseStudy() {
           variants={staggerContainer}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Technical Stack</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">Technical Stack</h2>
 
           <div className="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
             {/* Tech 1 */}
             <motion.div variants={fadeInUp} className="glass-card rounded-xl bg-panelSoft p-4 border border-stroke text-center">
               <div className="text-accent text-lg font-semibold font-display mb-1">Languages</div>
-              <div className="font-sans text-sm text-white font-medium">Python, SQL</div>
+              <div className="font-sans text-sm text-textPrimary font-medium">Python, SQL</div>
             </motion.div>
             {/* Tech 2 */}
             <motion.div variants={fadeInUp} className="glass-card rounded-xl bg-panelSoft p-4 border border-stroke text-center">
               <div className="text-accent text-lg font-semibold font-display mb-1">Database</div>
-              <div className="font-sans text-sm text-white font-medium">MySQL</div>
+              <div className="font-sans text-sm text-textPrimary font-medium">MySQL</div>
             </motion.div>
             {/* Tech 3 */}
             <motion.div variants={fadeInUp} className="glass-card rounded-xl bg-panelSoft p-4 border border-stroke text-center">
               <div className="text-accent text-lg font-semibold font-display mb-1">Libraries</div>
-              <div className="font-sans text-sm text-white font-medium">Pandas, NumPy</div>
+              <div className="font-sans text-sm text-textPrimary font-medium">Pandas, NumPy</div>
             </motion.div>
             {/* Tech 4 */}
             <motion.div variants={fadeInUp} className="glass-card rounded-xl bg-panelSoft p-4 border border-stroke text-center">
               <div className="text-accent text-lg font-semibold font-display mb-1">Visualization</div>
-              <div className="font-sans text-sm text-white font-medium">Power BI</div>
+              <div className="font-sans text-sm text-textPrimary font-medium">Power BI</div>
             </motion.div>
             {/* Tech 5 */}
             <motion.div variants={fadeInUp} className="glass-card rounded-xl bg-panelSoft p-4 border border-stroke text-center col-span-2 md:col-span-4 lg:col-span-1">
               <div className="text-accent text-lg font-semibold font-display mb-1">Techniques</div>
-              <div className="font-sans text-[11px] text-white font-medium leading-tight">ETL, Feature Engineering, Data Cleaning, BI</div>
+              <div className="font-sans text-[11px] text-textPrimary font-medium leading-tight">ETL, Feature Engineering, Data Cleaning, BI</div>
             </motion.div>
           </div>
         </motion.section>
@@ -686,7 +686,7 @@ export function FoodHealthCaseStudy() {
           variants={staggerContainer}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Key Business Outcomes</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">Key Business Outcomes</h2>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
@@ -721,7 +721,7 @@ export function FoodHealthCaseStudy() {
           variants={fadeInUp}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Project Documentation</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">Project Documentation</h2>
 
           <div className="grid gap-6 md:grid-cols-2">
             {/* Document 1: Project Report */}
@@ -730,7 +730,7 @@ export function FoodHealthCaseStudy() {
                 <span className="inline-block rounded bg-accent/15 px-2.5 py-0.5 text-[10px] font-bold text-accent uppercase tracking-wider mb-3">
                   Technical PDF
                 </span>
-                <h3 className="font-display text-lg font-bold text-white mb-2">Project Report</h3>
+                <h3 className="font-display text-lg font-bold text-textPrimary mb-2">Project Report</h3>
                 <p className="font-sans text-xs text-textMuted leading-relaxed mb-6">
                   Complete project report detailing raw data extraction, cleaning methods, ETL pipeline structures, custom KPI formulas, SQL queries, dashboard definitions, and business findings.
                 </p>
@@ -749,7 +749,7 @@ export function FoodHealthCaseStudy() {
                 <span className="inline-block rounded bg-accent/15 px-2.5 py-0.5 text-[10px] font-bold text-accent uppercase tracking-wider mb-3">
                   Case Deck PDF
                 </span>
-                <h3 className="font-display text-lg font-bold text-white mb-2">Project Presentation</h3>
+                <h3 className="font-display text-lg font-bold text-textPrimary mb-2">Project Presentation</h3>
                 <p className="font-sans text-xs text-textMuted leading-relaxed mb-6">
                   Slide deck presentation summarizing the project overview, core business problems, data architecture flow, feature formulas, SQL queries results, and key visual outcomes.
                 </p>
@@ -772,7 +772,7 @@ export function FoodHealthCaseStudy() {
           variants={fadeInUp}
           className="text-center py-10 border-t border-stroke"
         >
-          <h2 className="font-display text-xl sm:text-2xl font-bold text-white mb-4">
+          <h2 className="font-display text-xl sm:text-2xl font-bold text-textPrimary mb-4">
             Interested in the implementation?
           </h2>
           <p className="font-sans text-sm text-textMuted max-w-md mx-auto mb-6 leading-relaxed">

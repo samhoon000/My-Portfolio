@@ -54,11 +54,17 @@ export function CinematicCafeHero() {
             Abdul Samhoon
           </h1>
           
-          <p className="mt-2 font-pixel text-sm sm:text-base font-semibold text-[#FFF1D6]">
+          <p
+            className="mt-2 font-pixel text-sm sm:text-base font-semibold"
+            style={{ color: '#FFF1D6' }}
+          >
             Data Analyst · Builder · Problem Solver
           </p>
           
-          <p className="mt-4 font-sans text-sm sm:text-base leading-relaxed text-[#FFF1D6]">
+          <p
+            className="mt-4 font-sans text-sm sm:text-base leading-relaxed"
+            style={{ color: '#FFF1D6' }}
+          >
             Turning complex data into clear, strategic decisions. Transforming retail, market intelligence, and nutritional insights into interactive BI dashboards and ML models.
           </p>
 
@@ -108,7 +114,7 @@ export function CinematicCafeHero() {
         style={{
           opacity: heroOpacity,
         }}
-        className="relative z-20 flex items-center gap-2 text-xs font-pixel uppercase tracking-widest text-[#E8D2B5] pointer-events-auto"
+        className="relative z-20 flex items-center gap-2 text-xs font-pixel uppercase tracking-widest text-[#FFF1D6] pointer-events-auto"
       >
         <span className="animate-bounce">
           <FaChevronDown className="text-[#E39A73]" />

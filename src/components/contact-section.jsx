@@ -20,7 +20,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-12 sm:py-16">
+    <section id="contact" className="relative z-10 py-12 sm:py-16">
       <SectionHeading
         eyebrow="The Warm Hearth"
         title="Let's Connect & Collaborate"
@@ -35,7 +35,10 @@ export function ContactSection() {
               <h3 className="font-pixel text-xl font-bold text-[#FFF1D6]">Direct Channels</h3>
             </div>
             
-            <p className="text-sm text-[#FFF1D6] font-sans leading-relaxed mb-6">
+            <p
+              className="text-sm font-sans leading-relaxed mb-6"
+              style={{ color: '#FFF1D6' }}
+            >
               Whether you want to discuss a prospective analytics role, data projects, or just chat about AI and business intelligence over a virtual coffee, feel free to reach out!
             </p>
 
@@ -48,7 +51,7 @@ export function ContactSection() {
                   <FaEnvelope />
                 </div>
                 <div>
-                  <p className="font-pixel text-[11px] text-[#E8D2B5] uppercase">Email</p>
+                  <p className="font-pixel text-[11px] text-[#FFF1D6] uppercase">Email</p>
                   <p className="text-sm font-semibold text-[#FFF1D6] group-hover:text-[#E39A73] transition-colors">
                     {contactDetails.email}
                   </p>
@@ -65,7 +68,7 @@ export function ContactSection() {
                   <FaLinkedin />
                 </div>
                 <div>
-                  <p className="font-pixel text-[11px] text-[#E8D2B5] uppercase">LinkedIn</p>
+                  <p className="font-pixel text-[11px] text-[#FFF1D6] uppercase">LinkedIn</p>
                   <p className="text-sm font-semibold text-[#FFF1D6] group-hover:text-[#E39A73] transition-colors">
                     linkedin.com/in/abdul-samhoon
                   </p>
@@ -82,7 +85,7 @@ export function ContactSection() {
                   <FaGithub />
                 </div>
                 <div>
-                  <p className="font-pixel text-[11px] text-[#E8D2B5] uppercase">GitHub</p>
+                  <p className="font-pixel text-[11px] text-[#FFF1D6] uppercase">GitHub</p>
                   <p className="text-sm font-semibold text-[#FFF1D6] group-hover:text-[#E39A73] transition-colors">
                     github.com/samhoon000
                   </p>
@@ -99,7 +102,10 @@ export function ContactSection() {
         {/* Send a Message Form */}
         <div className="cafe-card pixel-corners rounded-2xl p-6 sm:p-8 backdrop-blur-md">
           <h3 className="font-pixel text-xl font-bold text-[#FFF1D6] mb-2">Send a Message</h3>
-          <p className="text-xs text-[#FFF1D6] font-sans mb-5">
+          <p
+            className="text-xs font-sans mb-5"
+            style={{ color: '#FFF1D6' }}
+          >
             Leave a note and I will get back to you promptly.
           </p>
 
@@ -115,7 +121,7 @@ export function ContactSection() {
                 value={formState.name}
                 onChange={handleChange}
                 placeholder="Ada Lovelace"
-                className="w-full rounded-xl border border-[#6B4535] bg-[#3A241D]/90 px-4 py-2.5 text-sm font-sans text-[#FFF1D6] placeholder:text-[#E8D2B5] focus:border-[#E39A73] focus:outline-none focus:ring-1 focus:ring-[#E39A73]"
+                className="w-full rounded-xl border border-[#6B4535] bg-[#3A241D]/90 px-4 py-2.5 text-sm font-sans text-[#FFF1D6] placeholder:text-[#FFF1D6] focus:border-[#E39A73] focus:outline-none focus:ring-1 focus:ring-[#E39A73]"
               />
             </div>
 
@@ -131,7 +137,7 @@ export function ContactSection() {
                 value={formState.email}
                 onChange={handleChange}
                 placeholder="ada@example.com"
-                className="w-full rounded-xl border border-[#6B4535] bg-[#3A241D]/90 px-4 py-2.5 text-sm font-sans text-[#FFF1D6] placeholder:text-[#E8D2B5] focus:border-[#E39A73] focus:outline-none focus:ring-1 focus:ring-[#E39A73]"
+                className="w-full rounded-xl border border-[#6B4535] bg-[#3A241D]/90 px-4 py-2.5 text-sm font-sans text-[#FFF1D6] placeholder:text-[#FFF1D6] focus:border-[#E39A73] focus:outline-none focus:ring-1 focus:ring-[#E39A73]"
               />
             </div>
 
@@ -147,7 +153,7 @@ export function ContactSection() {
                 value={formState.message}
                 onChange={handleChange}
                 placeholder="Hi Abdul, I'd love to chat about a data analytics role..."
-                className="w-full rounded-xl border border-[#6B4535] bg-[#3A241D]/90 px-4 py-2.5 text-sm font-sans text-[#FFF1D6] placeholder:text-[#E8D2B5] focus:border-[#E39A73] focus:outline-none focus:ring-1 focus:ring-[#E39A73]"
+                className="w-full rounded-xl border border-[#6B4535] bg-[#3A241D]/90 px-4 py-2.5 text-sm font-sans text-[#FFF1D6] placeholder:text-[#FFF1D6] focus:border-[#E39A73] focus:outline-none focus:ring-1 focus:ring-[#E39A73]"
               />
             </div>
 

@@ -4,7 +4,7 @@ import { BiCoffee } from 'react-icons/bi'
 
 export function ResumeSection() {
   return (
-    <section id="resume" className="py-12 sm:py-16">
+    <section id="resume" className="relative z-10 py-12 sm:py-16">
       <SectionHeading
         eyebrow="Resume"
         title="Ready for Data Analyst Roles"
@@ -15,7 +15,10 @@ export function ResumeSection() {
           <BiCoffee className="text-2xl" />
         </div>
         <h3 className="font-pixel text-2xl font-bold text-[#FFF1D6]">Download My Resume</h3>
-        <p className="mx-auto mt-2 max-w-lg text-sm text-[#FFF1D6] font-sans leading-relaxed">
+        <p
+          className="mx-auto mt-2 max-w-lg text-sm font-sans leading-relaxed"
+          style={{ color: '#FFF1D6' }}
+        >
           Details regarding my experience at Trinetro Labs, data analysis pipelines, and proven ML project results.
         </p>
         <a

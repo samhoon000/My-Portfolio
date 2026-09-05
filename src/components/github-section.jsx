@@ -20,7 +20,12 @@ function GithubCard({ src, alt, href }) {
           </div>
           <div className="space-y-1">
             <p className="text-sm font-semibold text-[#FFF1D6]">GitHub activity view</p>
-            <p className="text-xs text-[#C9AA8F]">Click to open profile directly</p>
+            <p
+              className="text-xs"
+              style={{ color: '#FFF1D6' }}
+            >
+              Click to open profile directly
+            </p>
           </div>
         </div>
       ) : (
@@ -29,7 +34,7 @@ function GithubCard({ src, alt, href }) {
             <div className="absolute inset-0 z-10 flex items-center justify-center bg-panel/80 backdrop-blur-sm">
               <div className="flex flex-col items-center space-y-2">
                 <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#E39A73] border-t-transparent" />
-                <span className="font-pixel text-xs text-[#C9AA8F]">Loading stats...</span>
+                <span className="font-pixel text-xs text-[#FFF1D6]">Loading stats...</span>
               </div>
             </div>
           )}
@@ -62,7 +67,7 @@ export function GithubSection() {
   const languagesUrl = `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=transparent&title_color=FFF1D6&text_color=E8D2B5&border_color=4a2f24&bg_color=20130e&hide_border=false`
 
   return (
-    <section id="github" className="py-12 sm:py-16">
+    <section id="github" className="relative z-10 py-12 sm:py-16">
       <SectionHeading
         eyebrow="Open Source"
         title="GitHub & Code Activity"

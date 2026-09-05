@@ -4,7 +4,7 @@ import { BiCoffee } from 'react-icons/bi'
 
 export function JourneySection() {
   return (
-    <section id="journey" className="py-12 sm:py-16">
+    <section id="journey" className="relative z-10 py-12 sm:py-16">
       <SectionHeading
         eyebrow="Learning Journey"
         title="Practical Exposure & Growth"
@@ -19,7 +19,10 @@ export function JourneySection() {
             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#4A2F25] border border-[#6B4535] text-[#E39A73]">
               <BiCoffee className="text-base" />
             </div>
-            <p className="text-xs sm:text-sm font-sans font-medium text-[#FFF1D6] leading-relaxed">
+            <p
+              className="text-xs sm:text-sm font-sans font-medium leading-relaxed"
+              style={{ color: '#FFF1D6' }}
+            >
               {item}
             </p>
           </div>

@@ -4,8 +4,8 @@
 
 :root {
   --text-primary: #FFF1D6;
-  --text-secondary: #F5E3C8;
-  --text-muted: #E8D2B5;
+  --text-secondary: #FFF1D6;
+  --text-muted: #FFF1D6;
   --accent: #E39A73;
 }
 
@@ -64,11 +64,13 @@
 /* Warm Translucent Café Glass Card with high contrast text background */
 .cafe-card {
   background: rgba(43, 29, 24, 0.92);
+  color: #FFF1D6;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(107, 69, 53, 0.6);
   box-shadow: 0 16px 36px rgba(10, 5, 3, 0.6);
   position: relative;
+  z-index: 1;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -80,6 +82,7 @@
 /* Embedded Panel inside Cards */
 .cafe-subcard {
   background: rgba(58, 36, 29, 0.85);
+  color: #FFF1D6;
   border: 1px solid rgba(107, 69, 53, 0.5);
 }
 

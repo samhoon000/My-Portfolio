@@ -14,9 +14,12 @@ export function DocumentViewer({ title, subtitle, docUrl, backRoute }) {
       </div>
       
       <div className="mb-8">
-        <h1 className="font-display text-3xl font-bold text-textPrimary">{title}</h1>
+        <h1 className="font-display text-3xl font-bold text-[#FFF1D6]">{title}</h1>
         {subtitle && (
-          <p className="mt-2 text-sm text-textSecondary font-sans">
+          <p
+            className="mt-2 text-sm font-sans"
+            style={{ color: '#FFF1D6' }}
+          >
             {subtitle}
           </p>
         )}

@@ -10,7 +10,7 @@ const iconMap = {
 
 export function AchievementsSection() {
   return (
-    <section id="achievements" className="py-12 sm:py-16">
+    <section id="achievements" className="relative z-10 py-12 sm:py-16">
       <SectionHeading
         eyebrow="Recognition"
         title="Achievements & Hackathons"
@@ -44,7 +44,10 @@ export function AchievementsSection() {
                   {achievement.organization}
                 </p>
 
-                <p className="mt-3.5 text-xs sm:text-sm leading-relaxed text-[#FFF1D6] font-sans">
+                <p
+                  className="mt-3.5 text-xs sm:text-sm leading-relaxed font-sans"
+                  style={{ color: '#FFF1D6' }}
+                >
                   {achievement.description}
                 </p>
               </div>

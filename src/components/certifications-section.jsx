@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react'
 
 export function CertificationsSection() {
   return (
-    <section id="certifications" className="py-12 sm:py-16">
+    <section id="certifications" className="relative z-10 py-12 sm:py-16">
       <SectionHeading
         eyebrow="Credentials"
         title="Certifications & Learning"
@@ -36,7 +36,10 @@ export function CertificationsSection() {
                 {cert.provider}
               </p>
 
-              <p className="mt-3 text-xs sm:text-sm leading-relaxed text-[#FFF1D6] font-sans">
+              <p
+                className="mt-3 text-xs sm:text-sm leading-relaxed font-sans"
+                style={{ color: '#FFF1D6' }}
+              >
                 {cert.description}
               </p>
 

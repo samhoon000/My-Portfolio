@@ -11,7 +11,10 @@ export function SectionHeading({ eyebrow, title, description }) {
         {title}
       </h2>
       {description && (
-        <p className="mt-2.5 text-sm sm:text-base leading-relaxed text-[#FFF1D6] font-sans drop-shadow-[0_1px_4px_rgba(20,12,9,0.9)]">
+        <p
+          className="mt-2.5 text-sm sm:text-base leading-relaxed font-sans drop-shadow-[0_1px_4px_rgba(20,12,9,0.9)]"
+          style={{ color: '#FFF1D6' }}
+        >
           {description}
         </p>
       )}

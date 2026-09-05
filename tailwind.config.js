@@ -19,9 +19,9 @@ export default {
         accent: '#E39A73', // Primary Accent
         accentSoft: '#E39A73',
         accentHover: '#F0B08A', // Strong Accent
-        textPrimary: '#FFF1D6', // Primary Text (warm ivory)
-        textSecondary: '#F5E3C8', // Secondary Text
-        textMuted: '#E8D2B5', // Muted Text
+        textPrimary: '#FFF1D6', // Exact same color as Abdul Samhoon
+        textSecondary: '#FFF1D6',
+        textMuted: '#FFF1D6',
         textDark: '#2B1D18', // Dark Text for light elements only
         textDarkMuted: '#9B7E66',
         cafeTeal: '#294b50', // Pixel accent

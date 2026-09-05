@@ -17,7 +17,7 @@ export function ProjectsSection() {
   }
 
   return (
-    <section id="projects" className="py-12 sm:py-16">
+    <section id="projects" className="relative z-10 py-12 sm:py-16">
       <SectionHeading
         eyebrow="Portfolio Projects"
         title="Discovering Work in the Café"
@@ -51,19 +51,22 @@ export function ProjectsSection() {
               </h3>
 
               {/* Problem / Approach / Result */}
-              <div className="mt-4 space-y-3 font-sans text-xs sm:text-sm text-[#FFF1D6] leading-relaxed">
-                <p>
+              <div 
+                className="mt-4 space-y-3 font-sans text-xs sm:text-sm leading-relaxed"
+                style={{ color: '#FFF1D6' }}
+              >
+                <p style={{ color: '#FFF1D6' }}>
                   <strong className="text-[#E39A73] font-semibold">Problem: </strong>
                   {project.problem}
                 </p>
                 {project.approach && (
-                  <p>
+                  <p style={{ color: '#FFF1D6' }}>
                     <strong className="text-[#E39A73] font-semibold">Approach: </strong>
                     {project.approach}
                   </p>
                 )}
                 {project.result && (
-                  <p>
+                  <p style={{ color: '#FFF1D6' }}>
                     <strong className="text-[#E39A73] font-semibold">Result: </strong>
                     {project.result}
                   </p>
@@ -134,12 +137,12 @@ export function ProjectsSection() {
           <div className="cafe-card pixel-corners relative max-h-[90vh] w-full max-w-5xl rounded-2xl p-6 sm:p-8 shadow-2xl flex flex-col">
             <div className="flex items-start justify-between pb-4 border-b border-stroke/60">
               <div>
-                <span className="font-pixel text-xs text-accentSoft uppercase tracking-wider">Dashboard Preview</span>
-                <h3 className="font-pixel text-xl sm:text-2xl font-bold text-textPrimary">{selectedProject.title}</h3>
+                <span className="font-pixel text-xs text-[#E39A73] uppercase tracking-wider">Dashboard Preview</span>
+                <h3 className="font-pixel text-xl sm:text-2xl font-bold text-[#FFF1D6]">{selectedProject.title}</h3>
               </div>
               <button
                 onClick={closeModal}
-                className="rounded-xl border border-stroke bg-panel p-2.5 text-textSecondary transition hover:border-accent hover:text-accentSoft"
+                className="rounded-xl border border-[#6B4535] bg-[#3A241D] p-2.5 text-[#FFF1D6] transition hover:border-[#E39A73] hover:text-[#F0B08A]"
                 aria-label="Close modal"
               >
                 <FaTimes size={18} />
@@ -163,7 +166,7 @@ export function ProjectsSection() {
                   ))}
                 </div>
               ) : (
-                <div className="py-16 text-center text-textMuted">
+                <div className="py-16 text-center text-[#FFF1D6]">
                   <p>Images coming soon for this project.</p>
                 </div>
               )}

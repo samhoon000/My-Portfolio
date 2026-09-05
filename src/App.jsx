@@ -51,11 +51,11 @@ function App() {
           path="/" 
           element={
             <div className="relative w-full">
-              {/* Scene 1 & Scene 1 -> 2 Scroll Transition Hero */}
-              <CinematicCafeHero />
-              
               {/* Persistent Cozy Interior Background for Main Exploration */}
               <CafeBackground />
+
+              {/* Scene 1 & Scene 1 -> 2 Scroll Transition Hero */}
+              <CinematicCafeHero />
 
               {/* Interior Portfolio Exploration */}
               <main className="relative z-10 mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:px-8">

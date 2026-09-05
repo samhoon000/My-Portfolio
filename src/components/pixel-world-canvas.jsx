@@ -28,6 +28,14 @@ export function PixelWorldCanvas() {
     if (!canvas) return
     const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true })
 
+    const setupContextSmoothing = () => {
+      if (!ctx) return
+      ctx.imageSmoothingEnabled = false
+      if ('mozImageSmoothingEnabled' in ctx) ctx.mozImageSmoothingEnabled = false
+      if ('webkitImageSmoothingEnabled' in ctx) ctx.webkitImageSmoothingEnabled = false
+      if ('msImageSmoothingEnabled' in ctx) ctx.msImageSmoothingEnabled = false
+    }
+
     const drawImageToCanvas = (img) => {
       if (!img || !canvas || !ctx) return
       const cw = canvas.width
@@ -42,18 +50,17 @@ export function PixelWorldCanvas() {
 
       if (canvasRatio > imgRatio) {
         drawW = cw
-        drawH = cw / imgRatio
+        drawH = Math.round(cw / imgRatio)
         drawX = 0
-        drawY = (ch - drawH) / 2
+        drawY = Math.round((ch - drawH) / 2)
       } else {
         drawH = ch
-        drawW = ch * imgRatio
-        drawX = (cw - drawW) / 2
+        drawW = Math.round(ch * imgRatio)
+        drawX = Math.round((cw - drawW) / 2)
         drawY = 0
       }
 
-      ctx.imageSmoothingEnabled = true
-      ctx.imageSmoothingQuality = 'medium'
+      setupContextSmoothing()
       ctx.drawImage(img, drawX, drawY, drawW, drawH)
     }
 
@@ -81,13 +88,14 @@ export function PixelWorldCanvas() {
 
     const handleResize = () => {
       if (!canvas) return
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5)
+      const dpr = window.devicePixelRatio || 1
       const w = window.innerWidth
       const h = window.innerHeight
       canvas.width = Math.round(w * dpr)
       canvas.height = Math.round(h * dpr)
       canvas.style.width = `${w}px`
       canvas.style.height = `${h}px`
+      setupContextSmoothing()
       drawCurrentTarget()
     }
 
@@ -209,14 +217,7 @@ export function PixelWorldCanvas() {
         ref={canvasRef}
         className="block h-full w-full object-cover"
         style={{
-          imageRendering: 'auto',
-        }}
-      />
-      {/* Subtle warm atmospheric vignette for contrast and readability */}
-      <div 
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle at 50% 45%, rgba(22, 14, 11, 0.25) 0%, rgba(22, 14, 11, 0.7) 100%)',
+          imageRendering: 'pixelated',
         }}
       />
     </div>

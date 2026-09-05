@@ -16,6 +16,7 @@ import { ContactSection } from './components/contact-section'
 import { Footer } from './components/footer'
 import { ScrollProgress } from './components/scroll-progress'
 import { LoadingScreen } from './components/loading-screen'
+import { PixelWorldCanvas } from './components/pixel-world-canvas'
 
 // Routing scroll helpers
 import { ScrollToTop } from './components/scroll-to-top'
@@ -38,8 +39,13 @@ function App() {
   }, [])
 
   return (
-    <div className="relative overflow-x-hidden bg-base text-textPrimary">
+    <div className="relative min-h-screen overflow-x-hidden bg-transparent text-ivory selection:bg-terracotta/40 selection:text-ivory">
       <AnimatePresence>{isLoading ? <LoadingScreen /> : null}</AnimatePresence>
+      
+      {/* Scroll-Controlled Cinematic Pixel-Art Café Engine (cafe1 + cafe2 continuous 600 frames) */}
+      <PixelWorldCanvas />
+
+      {/* Global Overlays & Nav */}
       <ScrollProgress />
       <ScrollToTop />
       <ScrollToHash />
@@ -49,7 +55,7 @@ function App() {
         <Route 
           path="/" 
           element={
-            <main className="mx-auto max-w-6xl px-4 pt-20 sm:px-6 lg:px-8">
+            <main className="relative z-10 mx-auto max-w-6xl px-4 pt-16 sm:px-6 lg:px-8">
               <HeroSection />
               <AboutSection />
               <ExperienceSection />
@@ -64,17 +70,19 @@ function App() {
             </main>
           } 
         />
-        <Route path="/project/food-health" element={<FoodHealthCaseStudy />} />
-        <Route path="/project/food-health/report" element={<FoodHealthReport />} />
-        <Route path="/project/food-health/presentation" element={<FoodHealthPresentation />} />
-        <Route path="/project/instacart" element={<InstacartCaseStudy />} />
-        <Route path="/project/instacart/report" element={<InstacartReport />} />
-        <Route path="/project/instacart/presentation" element={<InstacartPresentation />} />
-        <Route path="/projects/instacart/report" element={<InstacartReport />} />
-        <Route path="/projects/instacart/presentation" element={<InstacartPresentation />} />
+        <Route path="/project/food-health" element={<div className="relative z-10"><FoodHealthCaseStudy /></div>} />
+        <Route path="/project/food-health/report" element={<div className="relative z-10"><FoodHealthReport /></div>} />
+        <Route path="/project/food-health/presentation" element={<div className="relative z-10"><FoodHealthPresentation /></div>} />
+        <Route path="/project/instacart" element={<div className="relative z-10"><InstacartCaseStudy /></div>} />
+        <Route path="/project/instacart/report" element={<div className="relative z-10"><InstacartReport /></div>} />
+        <Route path="/project/instacart/presentation" element={<div className="relative z-10"><InstacartPresentation /></div>} />
+        <Route path="/projects/instacart/report" element={<div className="relative z-10"><InstacartReport /></div>} />
+        <Route path="/projects/instacart/presentation" element={<div className="relative z-10"><InstacartPresentation /></div>} />
       </Routes>
 
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   )
 }

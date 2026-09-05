@@ -4,7 +4,7 @@ import { FaGlobe, FaLinkedin } from 'react-icons/fa'
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-10 sm:py-12">
+    <section id="experience" className="py-14 sm:py-20 relative">
       <SectionHeading
         eyebrow="Experience"
         title="Professional Experience"
@@ -14,21 +14,24 @@ export function ExperienceSection() {
         {experiences.map((exp, idx) => (
           <div
             key={idx}
-            className="glass-card rounded-2xl bg-panelSoft p-6 border border-stroke shadow-[0_0_20px_rgba(0,0,0,0.2)] hover:border-accent/30 transition-all duration-300"
+            className="glass-card rounded-2xl p-6 sm:p-7 border border-[#F5E3C8]/15 shadow-[0_12px_36px_rgba(15,9,7,0.65)] hover:border-terracotta/40 transition-all duration-300"
           >
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
               <div>
-                <h3 className="text-xl font-bold text-textPrimary">{exp.role}</h3>
-                <div className="flex flex-wrap items-center gap-2 mt-1.5 text-sm">
-                  <span className="font-semibold text-accent">{exp.company}</span>
-                  <span className="text-white/40">•</span>
-                  <span className="text-white/60">{exp.location}</span>
-                  <span className="text-white/40">•</span>
-                  <span className="text-white/60">{exp.period}</span>
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-terracotta shadow-[0_0_8px_#B96F59] animate-pulse" />
+                  <h3 className="text-xl font-bold font-display text-ivory">{exp.role}</h3>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 mt-2 text-sm">
+                  <span className="font-semibold text-peach">{exp.company}</span>
+                  <span className="text-warmMuted/50">•</span>
+                  <span className="text-cream">{exp.location}</span>
+                  <span className="text-warmMuted/50">•</span>
+                  <span className="text-warmMuted font-mono text-xs">{exp.period}</span>
                 </div>
                 
                 {/* Company Links */}
-                <div className="flex items-center gap-3 mt-3">
+                <div className="flex items-center gap-3 mt-3.5">
                   {exp.companyUrl && (
                     <a
                       href={exp.companyUrl}
@@ -36,9 +39,10 @@ export function ExperienceSection() {
                       rel="noopener noreferrer"
                       title="Company Website"
                       aria-label="Company Website"
-                      className="text-white/60 hover:text-accent hover:scale-110 transition-all duration-300"
+                      className="flex items-center gap-1.5 rounded-md border border-[#F5E3C8]/15 bg-[#38241D]/60 px-2.5 py-1 text-xs text-cream hover:text-ivory hover:border-terracotta/50 hover:bg-terracotta/20 transition-all duration-300"
                     >
-                      <FaGlobe className="w-4 h-4" />
+                      <FaGlobe className="w-3.5 h-3.5 text-terracotta" />
+                      <span>Website</span>
                     </a>
                   )}
                   {exp.linkedinUrl && (
@@ -48,9 +52,10 @@ export function ExperienceSection() {
                       rel="noopener noreferrer"
                       title="LinkedIn"
                       aria-label="LinkedIn"
-                      className="text-white/60 hover:text-accent hover:scale-110 transition-all duration-300"
+                      className="flex items-center gap-1.5 rounded-md border border-[#F5E3C8]/15 bg-[#38241D]/60 px-2.5 py-1 text-xs text-cream hover:text-ivory hover:border-terracotta/50 hover:bg-terracotta/20 transition-all duration-300"
                     >
-                      <FaLinkedin className="w-4 h-4" />
+                      <FaLinkedin className="w-3.5 h-3.5 text-peach" />
+                      <span>LinkedIn</span>
                     </a>
                   )}
                 </div>
@@ -60,8 +65,8 @@ export function ExperienceSection() {
             <ul className="mt-6 space-y-3">
               {exp.description.map((bullet, bulletIdx) => (
                 <li key={bulletIdx} className="flex items-start gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  <p className="readable-text text-sm text-white/90">{bullet}</p>
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta shadow-[0_0_6px_#B96F59]" />
+                  <p className="readable-text text-sm text-cream leading-relaxed font-sans">{bullet}</p>
                 </li>
               ))}
             </ul>

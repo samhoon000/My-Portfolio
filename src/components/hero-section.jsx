@@ -60,31 +60,31 @@ function TerminalSkills() {
   const renderLine = (lineText, key, isTyping = false) => {
     if (lineText.startsWith('>')) {
       return (
-        <div key={key} className="font-mono text-xs sm:text-sm text-zinc-300 leading-normal min-h-[1.5rem] flex items-start">
-          <div className="inline-block text-accent mr-2 font-bold select-none">&gt;</div>
-          <div className="inline font-semibold text-zinc-300">
+        <div key={key} className="font-mono text-xs sm:text-sm text-[#E8D2B5] leading-normal min-h-[1.5rem] flex items-start">
+          <div className="inline-block text-[#E39A73] mr-2 font-bold select-none">&gt;</div>
+          <div className="inline font-semibold text-[#FFF1D6]">
             {lineText.substring(1).trimStart()}
-            {isTyping && <div className="inline-block w-1.5 h-3.5 bg-accent ml-1 animate-pulse align-middle" />}
+            {isTyping && <div className="inline-block w-1.5 h-3.5 bg-[#E39A73] ml-1 animate-pulse align-middle" />}
           </div>
         </div>
       )
     }
     if (lineText.startsWith('✓')) {
       return (
-        <div key={key} className="font-mono text-xs sm:text-sm text-zinc-100 leading-normal min-h-[1.5rem] flex items-start">
+        <div key={key} className="font-mono text-xs sm:text-sm text-[#FFF1D6] leading-normal min-h-[1.5rem] flex items-start">
           <div className="inline-block text-emerald mr-2 font-bold select-none">✓</div>
-          <div className="inline font-medium text-zinc-100">
+          <div className="inline font-medium text-[#FFF1D6]">
             {lineText.substring(1).trimStart()}
-            {isTyping && <div className="inline-block w-1.5 h-3.5 bg-accent ml-1 animate-pulse align-middle" />}
+            {isTyping && <div className="inline-block w-1.5 h-3.5 bg-[#E39A73] ml-1 animate-pulse align-middle" />}
           </div>
         </div>
       )
     }
     return (
-      <div key={key} className="font-mono text-xs sm:text-sm text-zinc-300 leading-normal min-h-[1.5rem] flex items-start">
-        <div className="inline text-zinc-300">
+      <div key={key} className="font-mono text-xs sm:text-sm text-[#E8D2B5] leading-normal min-h-[1.5rem] flex items-start">
+        <div className="inline text-[#FFF1D6]">
           {lineText}
-          {isTyping && <div className="inline-block w-1.5 h-3.5 bg-accent ml-1 animate-pulse align-middle" />}
+          {isTyping && <div className="inline-block w-1.5 h-3.5 bg-[#E39A73] ml-1 animate-pulse align-middle" />}
         </div>
       </div>
     )
@@ -94,7 +94,7 @@ function TerminalSkills() {
     <div className="w-full">
       <div className="mb-4">
         <h3 className="font-display text-lg font-bold text-textPrimary tracking-tight">Technical Toolkit</h3>
-        <div className="font-sans text-xs text-white/60 mt-1">
+        <div className="font-sans text-xs text-[#FFF1D6] mt-1">
           Technologies and tools I use to solve data problems.
         </div>
       </div>
@@ -106,7 +106,7 @@ function TerminalSkills() {
             <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
             <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
           </div>
-          <div className="text-[11px] font-mono text-white/40 tracking-wider select-none pr-8">
+          <div className="text-[11px] font-mono text-[#E8D2B5] tracking-wider select-none pr-8">
             skills.sh
           </div>
           <div />
@@ -137,7 +137,7 @@ export function HeroSection() {
             {typed}
             <span className="inline-block ml-1 animate-pulse text-accent">|</span>
           </h2>
-          <p className="readable-text mt-6 max-w-xl text-base text-white/80 leading-relaxed">
+          <p className="readable-text mt-6 max-w-xl text-base text-[#FFF1D6] leading-relaxed">
             I specialize in transforming complex data into strategic business intelligence. Currently working as a <strong>Data Analyst Intern at Trinetro Labs</strong> and pursuing my final year in <strong>AI & Data Science</strong>, I focus on building analytical pipelines and models that drive real-world impact.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">

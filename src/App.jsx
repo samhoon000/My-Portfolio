@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { Routes, Route } from 'react-router-dom'
 import { Navbar } from './components/navbar'
-import { HeroSection } from './components/hero-section'
+import { CinematicCafeHero } from './components/cinematic-cafe-hero'
+import { CafeBackground } from './components/cafe-background'
 import { AboutSection } from './components/about-section'
 import { ExperienceSection } from './components/experience-section'
 import { SkillsSection } from './components/skills-section'
@@ -33,12 +34,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 900)
+    const timer = setTimeout(() => setIsLoading(false), 700)
     return () => clearTimeout(timer)
   }, [])
 
   return (
-    <div className="relative overflow-x-hidden bg-base text-textPrimary">
+    <div className="relative min-h-screen overflow-x-hidden bg-base text-textPrimary">
       <AnimatePresence>{isLoading ? <LoadingScreen /> : null}</AnimatePresence>
       <ScrollProgress />
       <ScrollToTop />
@@ -49,19 +50,27 @@ function App() {
         <Route 
           path="/" 
           element={
-            <main className="mx-auto max-w-6xl px-4 pt-20 sm:px-6 lg:px-8">
-              <HeroSection />
-              <AboutSection />
-              <ExperienceSection />
-              <SkillsSection />
-              <ProjectsSection />
-              <AchievementsSection />
-              <CertificationsSection />
-              <JourneySection />
-              <GithubSection />
-              <ResumeSection />
-              <ContactSection />
-            </main>
+            <div className="relative w-full">
+              {/* Scene 1 & Scene 1 -> 2 Scroll Transition Hero */}
+              <CinematicCafeHero />
+              
+              {/* Persistent Cozy Interior Background for Main Exploration */}
+              <CafeBackground />
+
+              {/* Interior Portfolio Exploration */}
+              <main className="relative z-10 mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:px-8">
+                <AboutSection />
+                <ExperienceSection />
+                <SkillsSection />
+                <ProjectsSection />
+                <AchievementsSection />
+                <CertificationsSection />
+                <JourneySection />
+                <GithubSection />
+                <ResumeSection />
+                <ContactSection />
+              </main>
+            </div>
           } 
         />
         <Route path="/project/food-health" element={<FoodHealthCaseStudy />} />
@@ -80,4 +89,3 @@ function App() {
 }
 
 export default App
-

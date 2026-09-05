@@ -1,7 +1,14 @@
+import { BiCoffee } from 'react-icons/bi'
+
 export function Footer() {
   return (
-    <footer className="readable-text border-t border-stroke bg-base py-7 text-center text-sm text-white">
-      <p>Built with focus on analytics, insight, and impact. © 2026 Abdul Samhoon.</p>
+    <footer className="border-t border-[#6B4535]/50 bg-[#140c09]/90 py-8 text-center text-xs text-[#FFF1D6] backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-center gap-2 px-4">
+        <BiCoffee className="text-[#E39A73] text-base" />
+        <p className="font-pixel tracking-wider text-[#FFF1D6]">
+          Crafted with data, insights & warm coffee • © 2026 Abdul Samhoon
+        </p>
+      </div>
     </footer>
   )
 }

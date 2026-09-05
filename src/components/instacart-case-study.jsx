@@ -79,7 +79,7 @@ export function InstacartCaseStudy() {
             <div className="inline-block rounded-full bg-accent/10 border border-accent/20 px-3 py-1 text-xs font-semibold text-accent mb-4 tracking-wider uppercase">
               Project Case Study
             </div>
-            <h1 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl leading-tight">
+            <h1 className="font-display text-3xl font-bold tracking-tight text-textPrimary sm:text-4xl lg:text-5xl leading-tight">
               Instacart Customer Analytics Dashboard
             </h1>
             <p className="readable-text mt-4 text-base text-textSecondary border-l-2 border-accent pl-4 italic">
@@ -141,7 +141,7 @@ export function InstacartCaseStudy() {
                   e.stopPropagation();
                   setCurrentImageIndex((prev) => (prev === 0 ? dashboardImages.length - 1 : prev - 1));
                 }}
-                className="absolute left-[-16px] sm:left-[-28px] md:left-[-36px] top-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(18,21,27,0.75)] text-white backdrop-blur-sm shadow-md transition-all duration-[250ms] select-none
+                className="absolute left-[-16px] sm:left-[-28px] md:left-[-36px] top-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(18,21,27,0.75)] text-textPrimary backdrop-blur-sm shadow-md transition-all duration-[250ms] select-none
                   w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
                   hover:scale-105 hover:border-[#27C5FF]/50 hover:bg-[rgba(26,31,38,0.8)] hover:text-[#27C5FF] hover:shadow-[0_0_15px_rgba(39,197,255,0.35)]"
                 aria-label="Previous Dashboard"
@@ -155,7 +155,7 @@ export function InstacartCaseStudy() {
                   e.stopPropagation();
                   setCurrentImageIndex((prev) => (prev === dashboardImages.length - 1 ? 0 : prev + 1));
                 }}
-                className="absolute right-[-16px] sm:right-[-28px] md:right-[-36px] top-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(18,21,27,0.75)] text-white backdrop-blur-sm shadow-md transition-all duration-[250ms] select-none
+                className="absolute right-[-16px] sm:right-[-28px] md:right-[-36px] top-1/2 -translate-y-1/2 z-20 flex items-center justify-center rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(18,21,27,0.75)] text-textPrimary backdrop-blur-sm shadow-md transition-all duration-[250ms] select-none
                   w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
                   hover:scale-105 hover:border-[#27C5FF]/50 hover:bg-[rgba(26,31,38,0.8)] hover:text-[#27C5FF] hover:shadow-[0_0_15px_rgba(39,197,255,0.35)]"
                 aria-label="Next Dashboard"
@@ -191,7 +191,7 @@ export function InstacartCaseStudy() {
           variants={fadeInUp}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Project Overview</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">Project Overview</h2>
           <div className="glass-card rounded-2xl bg-panelSoft p-6 sm:p-8 shadow-card">
             <p className="readable-text text-base text-textSecondary text-justify leading-relaxed">
               The <strong>Instacart Customer Analytics Dashboard</strong> is a high-performance business intelligence solution built to transform over 3.4 million customer orders into strategic insights. The solution features a lightweight, local SQL data pipeline built with Python and DuckDB, allowing ultra-fast queries across millions of order records. By normalizing customer purchasing trends, reorder patterns, basket composition, and department metrics, the database supports complex analytical queries in seconds. A custom-engineered loyalty segmentation scoring model identifies high-value users, while retention analysis aids marketing teams in identifying subscription-potential items. Finally, interactive dashboards in Power BI present senior executives with operational and customer-centric views to drive inventory alignment and promotional marketing.
@@ -207,7 +207,7 @@ export function InstacartCaseStudy() {
           variants={fadeInUp}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">The Business Problem</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">The Business Problem</h2>
           <div className="glass-card rounded-2xl bg-panelSoft p-6 sm:p-8 border border-accent/20 shadow-card transition-all duration-300 hover:border-accent/40">
             <div className="flex flex-col gap-8 md:flex-row md:items-start">
               <div className="flex-1">
@@ -255,7 +255,7 @@ export function InstacartCaseStudy() {
                         <challenge.icon size={18} />
                       </div>
                       <div>
-                        <h4 className="font-display text-sm font-semibold text-white leading-snug">{challenge.title}</h4>
+                        <h4 className="font-display text-sm font-semibold text-textPrimary leading-snug">{challenge.title}</h4>
                         <p className="readable-text mt-1 text-xs text-textMuted leading-relaxed">{challenge.description}</p>
                       </div>
                     </motion.div>
@@ -279,7 +279,7 @@ export function InstacartCaseStudy() {
           variants={staggerContainer}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Objectives</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">Objectives</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { title: "Analyze customer purchasing behavior", desc: "Identify peak order times, days, and reordering behaviors to capture active times." },
@@ -297,7 +297,7 @@ export function InstacartCaseStudy() {
                 <div className="rounded-lg bg-accent/10 w-10 h-10 flex items-center justify-center text-accent mb-4">
                   <FaCheck size={16} />
                 </div>
-                <h3 className="font-display text-sm font-semibold text-white mb-2">{obj.title}</h3>
+                <h3 className="font-display text-sm font-semibold text-textPrimary mb-2">{obj.title}</h3>
                 <p className="readable-text text-xs text-textSecondary leading-relaxed">{obj.desc}</p>
               </motion.div>
             ))}
@@ -312,7 +312,7 @@ export function InstacartCaseStudy() {
           variants={fadeInUp}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Dataset Overview</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">Dataset Overview</h2>
           <div className="glass-card rounded-2xl bg-panelSoft p-6 sm:p-8 shadow-card">
             <p className="readable-text text-base text-textSecondary text-justify leading-relaxed mb-6">
               The project utilizes the <strong>Instacart Online Grocery Shopping Dataset</strong>, which contains transactional data of grocery orders over time. This dataset represents a rich repository of real-world shopping history, tracking millions of user baskets and product classifications.
@@ -341,7 +341,7 @@ export function InstacartCaseStudy() {
                 { name: "Order Products Prior", desc: "Transactional link table detailing items added to cart and reorder status." }
               ].map((table, idx) => (
                 <div key={idx} className="p-3 border border-stroke/50 bg-panel/20 rounded-lg">
-                  <h4 className="font-display text-sm font-semibold text-white">{table.name}</h4>
+                  <h4 className="font-display text-sm font-semibold text-textPrimary">{table.name}</h4>
                   <p className="font-sans text-xs text-textMuted mt-1">{table.desc}</p>
                 </div>
               ))}
@@ -357,7 +357,7 @@ export function InstacartCaseStudy() {
           variants={staggerContainer}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Tech Stack</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">Tech Stack</h2>
           <div className="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
             {[
               { name: "Python", category: "Language" },
@@ -384,7 +384,7 @@ export function InstacartCaseStudy() {
           variants={fadeInUp}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Workflow</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">Workflow</h2>
           <div className="glass-card rounded-2xl bg-panelSoft p-8 shadow-card">
             {/* Desktop Timeline */}
             <div className="hidden md:flex items-center justify-between relative">
@@ -403,7 +403,7 @@ export function InstacartCaseStudy() {
                   <div className="w-10 h-10 rounded-full border-2 border-accent bg-panel flex items-center justify-center font-display text-sm font-semibold text-accent shadow-[0_0_10px_rgba(56,189,248,0.2)]">
                     0{idx + 1}
                   </div>
-                  <h4 className="font-display text-xs font-bold text-white mt-3 leading-snug">{step.title}</h4>
+                  <h4 className="font-display text-xs font-bold text-textPrimary mt-3 leading-snug">{step.title}</h4>
                   <p className="font-sans text-[10px] text-textMuted mt-1 leading-normal">{step.desc}</p>
                 </div>
               ))}
@@ -422,7 +422,7 @@ export function InstacartCaseStudy() {
               ].map((step, idx) => (
                 <div key={idx} className="relative">
                   <div className="absolute -left-[24px] top-0 w-4.5 h-4.5 rounded-full border-2 border-accent bg-base flex items-center justify-center text-[9px] font-bold text-accent" />
-                  <h4 className="font-display text-sm font-bold text-white leading-none">{step.title}</h4>
+                  <h4 className="font-display text-sm font-bold text-textPrimary leading-none">{step.title}</h4>
                   <p className="font-sans text-xs text-textMuted mt-1">{step.desc}</p>
                 </div>
               ))}
@@ -438,7 +438,7 @@ export function InstacartCaseStudy() {
           variants={staggerContainer}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-2 border-b border-stroke pb-2">Business Analysis</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-2 border-b border-stroke pb-2">Business Analysis</h2>
           <p className="readable-text text-sm text-textMuted mb-6 font-sans">
             Raw transactional data was loaded into a DuckDB database. We designed targeted SQL queries to perform business intelligence analysis, grouped into key operational categories:
           </p>
@@ -451,28 +451,28 @@ export function InstacartCaseStudy() {
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaRunning size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Customer Segmentation</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Customer Segmentation</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Classified customer ordering frequencies and volume to isolate loyal power buyers from occasional shoppers.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaAward size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Loyalty Score</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Loyalty Score</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Calculated a composite metric of order frequency, reorder rates, and order interval consistency.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaClock size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Customer Retention</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Customer Retention</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Tracked how long cohorts stay active and measured churn rates across order intervals.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaDatabase size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Average Basket Size</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Average Basket Size</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Evaluated items per order to identify high-capacity baskets and purchase trends.</p>
                   </div>
                 </li>
@@ -486,28 +486,28 @@ export function InstacartCaseStudy() {
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaClock size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Orders by Hour</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Orders by Hour</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Analyzed diurnal ordering spikes to align server loads and logistics dispatch schedules.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaClock size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Orders by Day</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Orders by Day</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Mapped ordering trends over the week to optimize warehouse staffing and stock levels.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaAward size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Top Products</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Top Products</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Identified highest volume products to ensure inventory availability and catalog placement.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaChartBar size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Department Performance</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Department Performance</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Benchmarked transactions and volume share across all 21 departments.</p>
                   </div>
                 </li>
@@ -521,21 +521,21 @@ export function InstacartCaseStudy() {
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaHeartbeat size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Reorder Rate</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Reorder Rate</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Measured overall catalog repeat purchases to gauge platform stickiness and user retention.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaFilter size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Department Reorder Rate</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Department Reorder Rate</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Analyzed which departments (e.g., Produce, Dairy) boast the highest repeat customers.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaSeedling size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Subscription Opportunity Products</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Subscription Opportunity Products</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Isolated products bought on highly regular cycles to support automatic subscription recommendations.</p>
                   </div>
                 </li>
@@ -549,28 +549,28 @@ export function InstacartCaseStudy() {
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaChartBar size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Executive KPIs</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Executive KPIs</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Synthesized transactional tables into high-level business health indicators for senior managers.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaTools size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Inventory Planning</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Inventory Planning</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Supplied operational teams with hourly distribution maps to minimize inventory run-out.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaLightbulb size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Customer Insights</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Customer Insights</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Isolated detailed user shopping profiles to understand churn triggers and drop-off risks.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="rounded-lg bg-accent/10 p-2 text-accent mt-0.5"><FaExclamationTriangle size={14} /></div>
                   <div>
-                    <h4 className="font-display text-sm font-semibold text-white">Marketing Recommendations</h4>
+                    <h4 className="font-display text-sm font-semibold text-textPrimary">Marketing Recommendations</h4>
                     <p className="font-sans text-xs text-textMuted leading-relaxed mt-1">Generated cross-department bundling suggestions and custom discount codes based on baskets.</p>
                   </div>
                 </li>
@@ -588,7 +588,7 @@ export function InstacartCaseStudy() {
           className="mb-20"
         >
           <div className="mb-6 border-b border-stroke pb-2 animate-reveal">
-            <h2 className="font-display text-2xl font-bold text-white">Dashboard Showcase</h2>
+            <h2 className="font-display text-2xl font-bold text-textPrimary">Dashboard Showcase</h2>
             <p className="font-sans text-sm text-textMuted mt-1">
               Explore the walkthrough of the interactive, high-fidelity Power BI dashboards developed for Instacart.
             </p>
@@ -623,7 +623,7 @@ export function InstacartCaseStudy() {
           variants={staggerContainer}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Key Insights</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">Key Insights</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
               { title: "58.97% Overall Reorder Rate", desc: "Indicates high repeat purchase patterns, primarily anchored by dairy products, produce, and baby food departments.", icon: FaHeartbeat, color: "text-emerald-400 border-emerald-400/20 hover:border-emerald-400/50" },
@@ -644,7 +644,7 @@ export function InstacartCaseStudy() {
                     <div className="p-2 rounded-lg bg-white/5 shrink-0">
                       <IconComp size={18} />
                     </div>
-                    <h3 className="font-display text-sm font-semibold text-white">{insight.title}</h3>
+                    <h3 className="font-display text-sm font-semibold text-textPrimary">{insight.title}</h3>
                   </div>
                   <p className="font-sans text-xs text-textMuted leading-relaxed">
                     {insight.desc}
@@ -663,7 +663,7 @@ export function InstacartCaseStudy() {
           variants={staggerContainer}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Business Impact</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">Business Impact</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               "Improved customer behavior visibility: Surfaced customer purchasing habits, cart trends, and ordering times.",
@@ -696,7 +696,7 @@ export function InstacartCaseStudy() {
           variants={fadeInUp}
           className="mb-20"
         >
-          <h2 className="font-display text-2xl font-bold text-white mb-6 border-b border-stroke pb-2">Project Documentation</h2>
+          <h2 className="font-display text-2xl font-bold text-textPrimary mb-6 border-b border-stroke pb-2">Project Documentation</h2>
 
           <div className="grid gap-6 md:grid-cols-2">
             {/* Document 1: Project Report */}
@@ -705,7 +705,7 @@ export function InstacartCaseStudy() {
                 <span className="inline-block rounded bg-accent/15 px-2.5 py-0.5 text-[10px] font-bold text-accent uppercase tracking-wider mb-3">
                   Technical PDF
                 </span>
-                <h3 className="font-display text-lg font-bold text-white mb-2">Project Report</h3>
+                <h3 className="font-display text-lg font-bold text-textPrimary mb-2">Project Report</h3>
                 <p className="font-sans text-xs text-textMuted leading-relaxed mb-6">
                   Comprehensive technical documentation covering data acquisition, ETL pipeline, DuckDB database design, SQL business queries, exploratory data analysis (EDA), customer segmentation, KPI calculations, Power BI dashboard development, DAX measures, and key business insights generated from over 3.4 million customer orders.
                 </p>
@@ -724,7 +724,7 @@ export function InstacartCaseStudy() {
                 <span className="inline-block rounded bg-accent/15 px-2.5 py-0.5 text-[10px] font-bold text-accent uppercase tracking-wider mb-3">
                   Case Deck PDF
                 </span>
-                <h3 className="font-display text-lg font-bold text-white mb-2">Project Presentation</h3>
+                <h3 className="font-display text-lg font-bold text-textPrimary mb-2">Project Presentation</h3>
                 <p className="font-sans text-xs text-textMuted leading-relaxed mb-6">
                   Project presentation summarizing the business problem, analytics workflow, data architecture, customer behavior analysis, dashboard walkthrough, executive insights, business recommendations, and the overall impact of the analytics solution.
                 </p>
@@ -747,7 +747,7 @@ export function InstacartCaseStudy() {
           variants={fadeInUp}
           className="text-center py-10 border-t border-stroke"
         >
-          <h2 className="font-display text-xl sm:text-2xl font-bold text-white mb-4">
+          <h2 className="font-display text-xl sm:text-2xl font-bold text-textPrimary mb-4">
             Interested in the implementation?
           </h2>
           <p className="font-sans text-sm text-textMuted max-w-md mx-auto mb-6 leading-relaxed">

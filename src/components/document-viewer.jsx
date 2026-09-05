@@ -7,7 +7,7 @@ export function DocumentViewer({ title, subtitle, docUrl, backRoute }) {
       <div className="mb-6">
         <Link 
           to={backRoute} 
-          className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:text-accentSoft transition"
+          className="inline-flex items-center gap-2 text-sm font-medium text-[#E39A73] hover:text-[#F0B08A] transition"
         >
           <FaArrowLeft /> Back to Project
         </Link>
@@ -16,7 +16,7 @@ export function DocumentViewer({ title, subtitle, docUrl, backRoute }) {
       <div className="mb-8">
         <h1 className="font-display text-3xl font-bold text-textPrimary">{title}</h1>
         {subtitle && (
-          <p className="mt-2 text-sm text-textMuted font-sans">
+          <p className="mt-2 text-sm text-textSecondary font-sans">
             {subtitle}
           </p>
         )}

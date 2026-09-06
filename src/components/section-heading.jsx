@@ -1,20 +1,18 @@
-export function SectionHeading({ eyebrow, title, description }) {
+export function SectionHeading({ eyebrow, title, description, align = 'left' }) {
   return (
-    <div className="mb-8 max-w-3xl">
-      <div className="mb-2 flex items-center gap-2">
-        <span className="h-1.5 w-1.5 rounded-none bg-[#E39A73]" />
-        <p className="font-pixel text-xs font-semibold uppercase tracking-[0.25em] text-[#E39A73] drop-shadow-[0_1px_3px_rgba(20,12,9,0.9)]">
+    <div className={`section-heading mb-8 max-w-3xl ${align === 'center' ? 'mx-auto text-center' : ''}`}>
+      <div className={`mb-3 flex items-center gap-3 ${align === 'center' ? 'justify-center' : ''}`}>
+        <span className="section-heading-line" />
+        <p className="font-pixel text-xs font-semibold uppercase tracking-[0.24em] text-accent">
           {eyebrow}
         </p>
+        {align === 'center' && <span className="section-heading-line" />}
       </div>
-      <h2 className="font-pixel text-2xl font-bold tracking-tight text-[#FFF1D6] sm:text-3xl lg:text-4xl drop-shadow-[0_2px_4px_rgba(20,12,9,0.95)]">
+      <h2 className="font-pixel text-3xl font-bold leading-tight tracking-tight text-cream sm:text-4xl lg:text-5xl">
         {title}
       </h2>
       {description && (
-        <p
-          className="mt-2.5 text-sm sm:text-base leading-relaxed font-sans drop-shadow-[0_1px_4px_rgba(20,12,9,0.9)]"
-          style={{ color: '#FFF1D6' }}
-        >
+        <p className="mt-3 max-w-2xl text-base leading-relaxed text-creamMuted">
           {description}
         </p>
       )}

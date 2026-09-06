@@ -2,62 +2,34 @@ import { SectionHeading } from './section-heading'
 import { BiCoffeeTogo } from 'react-icons/bi'
 import { FaLaptopCode, FaChartPie } from 'react-icons/fa'
 
+const details = [
+  { label: 'Role', value: 'Data Analyst Intern', Icon: FaLaptopCode },
+  { label: 'Education', value: 'B.E. in AI & Data Science', Icon: FaChartPie },
+  { label: 'Focus', value: 'BI & Machine Learning', Icon: BiCoffeeTogo },
+]
+
 export function AboutSection() {
   return (
-    <section id="about" className="relative z-10 py-12 sm:py-16">
-      <SectionHeading
-        eyebrow="About Me"
-        title="Engineering data into strategic business insights"
-        description="AI & Data Science undergraduate and Data Analyst Intern passionate about solving high-impact problems with modern analytics pipelines."
-      />
-      <div className="cafe-card pixel-corners rounded-2xl p-6 sm:p-8 backdrop-blur-md">
-        <div className="grid gap-6 md:grid-cols-[1fr_auto]">
-          <div className="space-y-4">
-            <p
-              className="text-base leading-relaxed font-sans"
-              style={{ color: '#FFF1D6' }}
-            >
-              My expertise lies in extracting meaningful patterns from complex datasets and presenting them through intuitive dashboards, statistical models, and automated data pipelines. With hands-on experience in <strong className="text-[#E39A73] font-semibold">SQL, Python, Power BI, and Machine Learning</strong>, I thrive in environments that demand rapid, rigorous problem-solving.
-            </p>
-            <p
-              className="text-base leading-relaxed font-sans"
-              style={{ color: '#FFF1D6' }}
-            >
-              I am currently gaining practical industry experience as a <strong className="text-[#E39A73] font-semibold">Data Analyst Intern at Trinetro Labs</strong>, building analytical systems and AI-powered business intelligence workflows. I love taking messy real-world datasets and crafting clean, actionable business narratives.
-            </p>
-          </div>
-        </div>
-
-        {/* Quick Highlights Row */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-[#6B4535]/50">
-          <div className="rounded-xl p-4 flex items-center gap-3.5 bg-[#3A241D]/90 border border-[#6B4535]">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#4A2F25] border border-[#6B4535] text-[#E39A73]">
-              <FaLaptopCode className="text-lg" />
-            </div>
-            <div>
-              <p className="font-pixel text-xs text-[#FFF1D6] uppercase">Role</p>
-              <p className="text-sm font-semibold text-[#FFF1D6]">Data Analyst Intern</p>
-            </div>
-          </div>
-
-          <div className="rounded-xl p-4 flex items-center gap-3.5 bg-[#3A241D]/90 border border-[#6B4535]">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#4A2F25] border border-[#6B4535] text-[#E39A73]">
-              <FaChartPie className="text-lg" />
-            </div>
-            <div>
-              <p className="font-pixel text-xs text-[#FFF1D6] uppercase">Education</p>
-              <p className="text-sm font-semibold text-[#FFF1D6]">B.E. in AI & Data Science</p>
-            </div>
-          </div>
-
-          <div className="rounded-xl p-4 flex items-center gap-3.5 bg-[#3A241D]/90 border border-[#6B4535]">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#4A2F25] border border-[#6B4535] text-[#E39A73]">
-              <BiCoffeeTogo className="text-xl" />
-            </div>
-            <div>
-              <p className="font-pixel text-xs text-[#FFF1D6] uppercase">Focus</p>
-              <p className="text-sm font-semibold text-[#FFF1D6]">BI & Machine Learning</p>
-            </div>
+    <section id="about" className="scene-section about-scene">
+      <div className="scene-marker" aria-hidden="true"><span>01</span> Welcome table</div>
+      <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+        <SectionHeading
+          eyebrow="About me"
+          title="Engineering data into strategic business insights."
+          description="AI & Data Science undergraduate and Data Analyst Intern, turning complicated questions into useful decisions."
+        />
+        <div className="wood-panel pixel-corners p-6 sm:p-8">
+          <p className="text-lg leading-relaxed text-cream">
+            I build clear analytical stories from messy, real-world data—using <strong>SQL</strong>, <strong>Python</strong>, <strong>Power BI</strong>, and <strong>machine learning</strong> to connect technical work with business impact.
+          </p>
+          <div className="mt-7 grid gap-3 sm:grid-cols-3">
+            {details.map((detail) => (
+              <div key={detail.label} className="table-sign">
+                <detail.Icon aria-hidden="true" />
+                <span>{detail.label}</span>
+                <strong>{detail.value}</strong>
+              </div>
+            ))}
           </div>
         </div>
       </div>

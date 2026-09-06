@@ -7,6 +7,7 @@ import { navLinks } from '../data/portfolio-data'
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,13 +17,23 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    const sections = navLinks.map(({ id }) => document.getElementById(id)).filter(Boolean)
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => entry.isIntersecting && setActiveSection(entry.target.id)),
+      { rootMargin: '-35% 0px -55%', threshold: 0 }
+    )
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
+  }, [])
+
   const headerBg = isScrolled || isOpen
-    ? 'bg-panel/90 backdrop-blur-md border-b border-stroke/70 shadow-[0_8px_24px_rgba(10,5,3,0.6)]'
+    ? 'nav-scrolled'
     : 'bg-transparent border-b border-transparent'
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerBg}`}>
-      <div className={`mx-auto flex max-w-6xl items-center justify-between px-4 transition-all duration-300 sm:px-6 lg:px-8 ${isScrolled ? 'py-2.5' : 'py-4'}`}>
+      <div className={`mx-auto flex max-w-7xl items-center justify-between px-4 transition-all duration-300 sm:px-6 lg:px-10 ${isScrolled ? 'py-2.5' : 'py-4'}`}>
         <Link 
           to="/#home" 
           className="group flex items-center gap-2 font-pixel text-lg font-bold tracking-wide text-[#FFF1D6] transition-colors hover:text-[#E39A73]"
@@ -32,12 +43,13 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="cafe-menu hidden items-center gap-1 md:flex" aria-label="Main navigation">
           {navLinks.map((link) => (
             <Link
               key={link.id}
               to={`/#${link.id}`}
-              className="text-xs uppercase tracking-wider font-semibold text-[#FFF1D6] transition-colors hover:text-[#E39A73] focus:outline-none focus:text-[#E39A73]"
+              className={`nav-item ${activeSection === link.id ? 'is-active' : ''}`}
+              aria-current={activeSection === link.id ? 'page' : undefined}
             >
               {link.label}
             </Link>
@@ -46,7 +58,7 @@ export function Navbar() {
             href="/Abdul_Samhoon_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-lg border border-[#6B4535] bg-[#3A241D] px-3.5 py-1.5 font-pixel text-xs font-bold text-[#FFF1D6] transition-all hover:border-[#E39A73] hover:bg-[#4A2F25] hover:text-[#F0B08A] shadow-sm"
+            className="nav-resume"
           >
             Resume
           </a>
@@ -56,8 +68,9 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen((state) => !state)}
-          className="rounded-lg border border-[#6B4535] bg-[#3A241D] p-2 text-xl text-[#FFF1D6] transition-colors hover:border-[#E39A73] hover:text-[#E39A73] md:hidden"
+          className="rounded-sm border border-copper/50 bg-espresso/90 p-2 text-xl text-cream transition-colors hover:border-accent hover:text-accent md:hidden"
           aria-label="Toggle menu"
+          aria-expanded={isOpen}
         >
           {isOpen ? <HiX /> : <HiMenuAlt3 />}
         </button>
@@ -65,7 +78,7 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="border-t border-[#6B4535]/70 bg-[#20130e]/95 px-6 py-5 backdrop-blur-xl md:hidden flex flex-col gap-3 shadow-2xl">
+        <div className="mobile-menu mx-4 flex flex-col gap-2 px-4 py-4 md:hidden">
           {navLinks.map((link) => (
             <Link
               key={link.id}

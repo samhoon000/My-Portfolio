@@ -1,12 +1,9 @@
-import { useEffect, useState } from 'react'
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
+import { useState } from 'react'
+import { motion as Motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 
 function SnowParticles() {
-  const [flakes, setFlakes] = useState([])
-
-  useEffect(() => {
-    // 28 subtle falling snowflake dots
-    const generated = Array.from({ length: 28 }).map((_, i) => ({
+  const [flakes] = useState(() =>
+    Array.from({ length: 28 }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
       size: Math.random() * 3 + 2,
@@ -14,8 +11,7 @@ function SnowParticles() {
       duration: Math.random() * 6 + 7,
       delay: Math.random() * 5,
     }))
-    setFlakes(generated)
-  }, [])
+  )
 
   return (
     <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden" aria-hidden="true">
@@ -56,7 +52,7 @@ export function CafeBackground() {
     <div className="pointer-events-none fixed inset-0 z-0 h-screen w-full overflow-hidden select-none" aria-hidden="true">
       
       {/* LAYER 1: cafe_2.png (Cozy Interior) - Persistent base */}
-      <motion.div
+      <Motion.div
         style={{
           opacity: cafe2Opacity,
           scale: cafe2Scale,
@@ -70,10 +66,10 @@ export function CafeBackground() {
           loading="eager"
           decoding="async"
         />
-      </motion.div>
+      </Motion.div>
 
       {/* LAYER 2: cafe_1.png (Snowy Exterior) - Placed directly on top of cafe_2 */}
-      <motion.div
+      <Motion.div
         style={{
           opacity: cafe1Opacity,
           scale: cafe1Scale,
@@ -88,10 +84,10 @@ export function CafeBackground() {
           decoding="async"
         />
         {/* Snow effect on exterior */}
-        <motion.div style={{ opacity: snowOpacity }} className="absolute inset-0">
+        <Motion.div style={{ opacity: snowOpacity }} className="absolute inset-0">
           <SnowParticles />
-        </motion.div>
-      </motion.div>
+        </Motion.div>
+      </Motion.div>
 
       {/* Common subtle edge vignette for readability across both images */}
       <div className="pointer-events-none absolute inset-0 z-30 bg-gradient-to-b from-base/60 via-transparent to-base/80" />

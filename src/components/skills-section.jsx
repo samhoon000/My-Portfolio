@@ -1,45 +1,39 @@
 import { skills } from '../data/portfolio-data'
 import { SectionHeading } from './section-heading'
 
+const menuGroups = [
+  { name: 'Coffee bar', subtitle: 'Data & analytics', keys: ['Languages'], extras: ['Power BI'] },
+  { name: 'Kitchen', subtitle: 'Models & processing', keys: ['Libraries'], extras: ['Data Cleaning', 'EDA'] },
+  { name: 'House specials', subtitle: 'BI & delivery', keys: ['Analytics & BI', 'Development & Cloud'], extras: [] },
+]
+
 export function SkillsSection() {
+  const allSkills = Object.values(skills).flat()
   return (
-    <section id="skills" className="relative z-10 py-12 sm:py-16">
-      <SectionHeading
-        eyebrow="Technical Stack"
-        title="Tools & Technologies"
-        description="Comprehensive technical toolkit spanning SQL querying, Python data ecosystems, BI dashboards, and ML modeling."
-      />
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {Object.entries(skills).map(([category, items]) => (
-          <div 
-            key={category} 
-            className="pixel-corners rounded-2xl p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 bg-[#2B1D18]/95 border border-[#6B4535] shadow-[0_16px_36px_rgba(10,5,3,0.6)]"
-          >
-            <div className="flex items-center gap-2 mb-5 pb-3 border-b border-[#6B4535]/60">
-              <span className="h-2 w-2 rounded-none bg-[#E39A73]" />
-              <h3 className="font-pixel text-lg font-bold text-[#FFF1D6]">{category}</h3>
-            </div>
-            
-            <div className="flex flex-col gap-3">
-              {items.map((skill) => {
-                const Icon = skill.icon
-                return (
-                  <div 
-                    key={skill.name} 
-                    className="group flex items-center gap-3 rounded-xl p-2.5 transition-all duration-200 border border-[#6B4535]/60 bg-[#3A241D]/90 hover:border-[#E39A73]/70 hover:bg-[#4A2F25]"
-                  >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#4A2F25] border border-[#6B4535] text-[#FFF1D6] group-hover:border-[#E39A73]/60 transition-colors shadow-sm">
-                      <Icon className="text-xl text-[#FFF1D6]" />
-                    </div>
-                    <span className="text-sm font-medium text-[#FFF1D6] group-hover:text-[#FFF1D6] transition-colors font-sans">
-                      {skill.name}
-                    </span>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        ))}
+    <section id="skills" className="scene-section menu-scene">
+      <div className="scene-marker" aria-hidden="true"><span>03</span> Counter menu</div>
+      <SectionHeading eyebrow="Skills menu" title="What’s brewing" description="A focused toolkit for taking data from raw source to business-ready insight." align="center" />
+      <div className="chalk-menu">
+        <div className="menu-rule"><span>Abdul’s analytics café</span></div>
+        <div className="grid gap-8 md:grid-cols-3">
+          {menuGroups.map((group) => {
+            const names = [...group.keys.flatMap((key) => skills[key] || []).map((item) => item.name), ...group.extras]
+            const unique = [...new Set(names)].filter((name) => !(group.name === 'House specials' && ['Data Cleaning', 'EDA'].includes(name)))
+            return (
+              <div key={group.name} className="menu-column">
+                <span>{group.subtitle}</span>
+                <h3>{group.name}</h3>
+                <ul>
+                  {unique.slice(0, 7).map((name) => {
+                    const item = allSkills.find((skill) => skill.name === name)
+                    const Icon = item?.icon
+                    return <li key={name}><span>{Icon && <Icon aria-hidden="true" />} {name}</span><i aria-hidden="true" /></li>
+                  })}
+                </ul>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </section>
   )

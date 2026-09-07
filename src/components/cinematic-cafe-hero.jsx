@@ -1,7 +1,103 @@
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion as Motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { FaFileDownload, FaGithub, FaEnvelope, FaChevronDown } from 'react-icons/fa'
 import { BiCoffee } from 'react-icons/bi'
 import { contactDetails } from '../data/portfolio-data'
+
+function seededRandom(seed) {
+  const value = Math.sin(seed * 999.91) * 43758.5453
+  return value - Math.floor(value)
+}
+
+function createSnowflakes(count) {
+  return Array.from({ length: count }, (_, index) => {
+    // Keep the intended depth mix at every responsive particle count.
+    const depth = (index + 0.5) / count
+    const tiny = depth < 0.7
+    const medium = depth >= 0.7 && depth < 0.95
+    const size = tiny
+      ? 1 + seededRandom(index + 11) * 0.8
+      : medium
+        ? 1.8 + seededRandom(index + 21) * 1.2
+        : 3.2 + seededRandom(index + 31) * 0.9
+    const drift = -24 + seededRandom(index + 41) * 48
+
+    return {
+      id: index,
+      x: seededRandom(index + 51) * 100,
+      size,
+      opacity: 0.2 + seededRandom(index + 61) * 0.25,
+      duration: 11 + seededRandom(index + 71) * 10,
+      delay: -(seededRandom(index + 81) * 21),
+      sway: drift * -0.45,
+      drift,
+      blur: tiny ? 0 : medium ? 0.2 : 1.1,
+    }
+  })
+}
+
+function HeroSnowfall() {
+  const containerRef = useRef(null)
+  const shouldReduceMotion = useReducedMotion()
+  const [isVisible, setIsVisible] = useState(true)
+  const [particleCount, setParticleCount] = useState(() => {
+    if (typeof window === 'undefined') return 44
+    if (window.innerWidth < 640) return 18
+    if (window.innerWidth < 1024) return 30
+    return 44
+  })
+
+  useEffect(() => {
+    const updateParticleCount = () => {
+      setParticleCount(window.innerWidth < 640 ? 18 : window.innerWidth < 1024 ? 30 : 44)
+    }
+
+    window.addEventListener('resize', updateParticleCount, { passive: true })
+    return () => window.removeEventListener('resize', updateParticleCount)
+  }, [])
+
+  useEffect(() => {
+    const element = containerRef.current
+    if (!element || typeof IntersectionObserver === 'undefined') return undefined
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.01 }
+    )
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [shouldReduceMotion])
+
+  const flakes = useMemo(() => createSnowflakes(particleCount), [particleCount])
+
+  if (shouldReduceMotion) return null
+
+  return (
+    <div
+      ref={containerRef}
+      className="hero-snowfall pointer-events-none absolute inset-0 z-10 overflow-hidden"
+      aria-hidden="true"
+    >
+      {flakes.map((flake) => (
+        <span
+          key={flake.id}
+          className="hero-snowflake"
+          style={{
+            '--snow-x': `${flake.x}%`,
+            '--snow-size': `${flake.size}px`,
+            '--snow-opacity': flake.opacity,
+            '--snow-duration': `${flake.duration}s`,
+            '--snow-delay': `${flake.delay}s`,
+            '--snow-sway': `${flake.sway}px`,
+            '--snow-drift': `${flake.drift}px`,
+            '--snow-blur': `${flake.blur}px`,
+            animationPlayState: isVisible ? 'running' : 'paused',
+          }}
+        />
+      ))}
+    </div>
+  )
+}
 
 export function CinematicCafeHero() {
   const { scrollY } = useScroll()
@@ -21,8 +117,10 @@ export function CinematicCafeHero() {
   return (
     <section 
       id="home" 
-      className="hero-scene relative z-10 flex min-h-screen w-full flex-col justify-between px-5 py-20 sm:px-10 md:px-16 lg:px-24"
+      className="hero-scene relative z-10 flex min-h-screen w-full flex-col justify-between overflow-hidden px-5 py-20 sm:px-10 md:px-16 lg:px-24"
     >
+      <HeroSnowfall />
+
       {/* Top Tagline / Eyebrow */}
       <Motion.div
         style={{

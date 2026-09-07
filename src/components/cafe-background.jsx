@@ -1,38 +1,4 @@
-import { useState } from 'react'
 import { motion as Motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
-
-function SnowParticles() {
-  const [flakes] = useState(() =>
-    Array.from({ length: 28 }).map((_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      size: Math.random() * 3 + 2,
-      opacity: Math.random() * 0.6 + 0.3,
-      duration: Math.random() * 6 + 7,
-      delay: Math.random() * 5,
-    }))
-  )
-
-  return (
-    <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden" aria-hidden="true">
-      {flakes.map((flake) => (
-        <div
-          key={flake.id}
-          className="absolute bg-[#fff4de] shadow-[0_0_3px_rgba(255,244,222,0.8)]"
-          style={{
-            left: `${flake.x}%`,
-            top: `-10px`,
-            width: `${flake.size}px`,
-            height: `${flake.size}px`,
-            opacity: flake.opacity,
-            animation: `snowDrift ${flake.duration}s linear infinite`,
-            animationDelay: `${flake.delay}s`,
-          }}
-        />
-      ))}
-    </div>
-  )
-}
 
 export function CafeBackground() {
   const { scrollY } = useScroll()
@@ -42,8 +8,6 @@ export function CafeBackground() {
   // cafe_1 (Exterior) fades from 1 -> 0 with a gentle zoom towards entrance
   const cafe1Opacity = useTransform(scrollY, [150, 700], [1, 0])
   const cafe1Scale = useTransform(scrollY, [0, 700], [1, shouldReduceMotion ? 1 : 1.14])
-  const snowOpacity = useTransform(scrollY, [100, 500], [1, 0])
-
   // cafe_2 (Interior) fades from 0 -> 1 with a gentle settle to scale 1.0
   const cafe2Opacity = useTransform(scrollY, [150, 700], [0, 1])
   const cafe2Scale = useTransform(scrollY, [150, 700], [shouldReduceMotion ? 1 : 1.06, 1])
@@ -83,10 +47,6 @@ export function CafeBackground() {
           loading="eager"
           decoding="async"
         />
-        {/* Snow effect on exterior */}
-        <Motion.div style={{ opacity: snowOpacity }} className="absolute inset-0">
-          <SnowParticles />
-        </Motion.div>
       </Motion.div>
 
       {/* Common subtle edge vignette for readability across both images */}

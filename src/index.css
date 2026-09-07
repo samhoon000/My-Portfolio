@@ -50,6 +50,25 @@
   z-index: -1;
   background: linear-gradient(90deg, rgba(10, 16, 22, .7) 0%, rgba(17, 12, 8, .38) 48%, rgba(17, 12, 8, .08) 78%);
 }
+.hero-snowflake {
+  position: absolute;
+  top: -10px;
+  left: var(--snow-x);
+  width: var(--snow-size);
+  height: var(--snow-size);
+  border-radius: 50%;
+  background: #fff4de;
+  opacity: var(--snow-opacity);
+  filter: blur(var(--snow-blur));
+  box-shadow: 0 0 2px rgba(255, 244, 222, .22);
+  will-change: transform;
+  animation: heroSnowfall var(--snow-duration) linear var(--snow-delay) infinite;
+}
+@keyframes heroSnowfall {
+  0% { transform: translate3d(0, -2vh, 0); }
+  48% { transform: translate3d(var(--snow-sway), 52vh, 0); }
+  100% { transform: translate3d(var(--snow-drift), 112vh, 0); }
+}
 .hero-card {
   width: min(100%, 670px);
   border: 1px solid rgba(222, 159, 101, .38);
@@ -360,5 +379,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-snowfall { display: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }

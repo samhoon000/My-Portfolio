@@ -13,25 +13,27 @@ function createSnowflakes(count) {
   return Array.from({ length: count }, (_, index) => {
     // Keep the intended depth mix at every responsive particle count.
     const depth = (index + 0.5) / count
-    const tiny = depth < 0.7
-    const medium = depth >= 0.7 && depth < 0.95
+    const tiny = depth < 0.6
+    const medium = depth >= 0.6 && depth < 0.9
     const size = tiny
-      ? 1 + seededRandom(index + 11) * 0.8
+      ? 1.2 + seededRandom(index + 11) * 0.8
       : medium
-        ? 1.8 + seededRandom(index + 21) * 1.2
-        : 3.2 + seededRandom(index + 31) * 0.9
-    const drift = -24 + seededRandom(index + 41) * 48
+        ? 2.1 + seededRandom(index + 21)
+        : 3.4 + seededRandom(index + 31) * 1.1
+    const drift = -26 + seededRandom(index + 41) * 52
+    const x = seededRandom(index + 51) * 100
+    const brightness = 0.3 + seededRandom(index + 61) * 0.27
 
     return {
       id: index,
-      x: seededRandom(index + 51) * 100,
+      x,
       size,
-      opacity: 0.2 + seededRandom(index + 61) * 0.25,
-      duration: 11 + seededRandom(index + 71) * 10,
-      delay: -(seededRandom(index + 81) * 21),
+      opacity: Math.min(0.62, brightness + (x < 50 ? 0.05 : 0)),
+      duration: 9 + seededRandom(index + 71) * 7,
+      delay: -(seededRandom(index + 81) * 16),
       sway: drift * -0.45,
       drift,
-      blur: tiny ? 0 : medium ? 0.2 : 1.1,
+      blur: tiny ? 0 : medium ? 0.15 : 1.2,
     }
   })
 }
@@ -41,15 +43,15 @@ function HeroSnowfall() {
   const shouldReduceMotion = useReducedMotion()
   const [isVisible, setIsVisible] = useState(true)
   const [particleCount, setParticleCount] = useState(() => {
-    if (typeof window === 'undefined') return 44
-    if (window.innerWidth < 640) return 18
-    if (window.innerWidth < 1024) return 30
-    return 44
+    if (typeof window === 'undefined') return 72
+    if (window.innerWidth < 640) return 30
+    if (window.innerWidth < 1024) return 48
+    return 72
   })
 
   useEffect(() => {
     const updateParticleCount = () => {
-      setParticleCount(window.innerWidth < 640 ? 18 : window.innerWidth < 1024 ? 30 : 44)
+      setParticleCount(window.innerWidth < 640 ? 30 : window.innerWidth < 1024 ? 48 : 72)
     }
 
     window.addEventListener('resize', updateParticleCount, { passive: true })

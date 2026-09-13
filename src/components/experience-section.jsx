@@ -6,12 +6,12 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="scene-section notice-scene">
       <div className="scene-marker" aria-hidden="true"><span>02</span> Notice board</div>
-      <SectionHeading eyebrow="Experience" title="Today’s order ticket" description="Practical analytics work in a fast-moving product environment." />
+      <SectionHeading eyebrow="Experience" title="Analytics experience" description="Practical analytics work in a fast-moving product environment." />
       {experiences.map((exp) => (
         <article key={exp.company} className="order-ticket">
           <div className="ticket-top">
             <div>
-              <span className="ticket-kicker">Current order · {exp.location}</span>
+              <span className="ticket-kicker">Current role · {exp.location}</span>
               <h3>{exp.role}</h3>
               <p>{exp.company}</p>
             </div>

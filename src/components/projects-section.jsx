@@ -31,15 +31,15 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="scene-section gallery-scene">
-      <div className="scene-marker" aria-hidden="true"><span>04</span> House gallery</div>
-      <SectionHeading eyebrow="Selected work" title="The house specials" description="End-to-end analytics projects, framed around the decision each one helped make." />
+      <div className="scene-marker" aria-hidden="true"><span>04</span> Project portfolio</div>
+      <SectionHeading eyebrow="Selected work" title="Featured analytics projects" description="End-to-end analytics projects, framed around the decision each one helped make." />
 
       <div className="project-gallery">
         {projects.map((project, index) => (
           <article key={project.title} className={`project-frame ${index < 2 ? 'featured' : 'compact'}`}>
             <div className="project-image-wrap">
               <img src={project.images[0]} alt={`${project.title} dashboard`} loading="lazy" />
-              <span>{index < 2 ? 'Featured special' : 'From the archive'}</span>
+              <span>{index < 2 ? 'Featured case study' : 'From the archive'}</span>
             </div>
             <div className="project-copy">
               <p className="project-number">No. {String(index + 1).padStart(2, '0')}</p>

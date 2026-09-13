@@ -25,7 +25,7 @@ export function CafeBackground() {
       >
         <img
           src="/cafe_2.png"
-          alt="Cozy Pixel-Art Café Interior"
+          alt="Cozy pixel-art portfolio workspace interior"
           className="pixel-crisp h-full w-full object-cover object-center"
           loading="eager"
           decoding="async"
@@ -42,7 +42,7 @@ export function CafeBackground() {
       >
         <img
           src="/cafe_1.png"
-          alt="Snowy Pixel-Art Café Exterior"
+          alt="Snowy pixel-art portfolio entrance"
           className="pixel-crisp h-full w-full object-cover object-center"
           loading="eager"
           decoding="async"

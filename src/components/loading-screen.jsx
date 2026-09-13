@@ -7,7 +7,7 @@ export function LoadingScreen() {
         <BiCoffee className="text-3xl" />
       </div>
       <p className="font-pixel text-sm uppercase tracking-[0.3em] text-accentSoft">
-        Entering Pixel Café...
+        Loading Analytics Portfolio...
       </p>
     </div>
   )

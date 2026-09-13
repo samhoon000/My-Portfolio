@@ -175,7 +175,7 @@ export function CinematicCafeHero() {
               className="button-primary group"
             >
               <BiCoffee className="text-lg transition-transform group-hover:rotate-12" />
-              <span>Enter Café</span>
+              <span>Explore Portfolio</span>
             </button>
 
             <a

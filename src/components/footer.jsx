@@ -7,11 +7,11 @@ export function Footer() {
     <footer className="cafe-footer relative z-20">
       <div>
         <BiCoffee aria-hidden="true" />
-        <p>Thanks for stopping by.</p>
+        <p>Thanks for exploring my work.</p>
         <span>Abdul Samhoon · Data Analyst · Builder · Problem Solver</span>
       </div>
       <nav aria-label="Footer navigation">
-        <Link to="/#home">Back to the door</Link>
+        <Link to="/#home">Back to top</Link>
         <a href={contactDetails.github} target="_blank" rel="noreferrer">GitHub</a>
         <a href={contactDetails.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
       </nav>

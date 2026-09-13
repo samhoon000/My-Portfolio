@@ -110,9 +110,9 @@ export function CaseStudyLayout({ project }) {
         </Motion.section>
 
         <Motion.section className="study-section" {...reveal}>
-          <StudyHeading number={6} title="Key insights" note="The most decision-relevant findings, served receipt-style." />
+          <StudyHeading number={6} title="Key insights" note="The most decision-relevant findings, summarized for quick review." />
           <div className="insight-receipt">
-            <div className="receipt-header"><Coffee /><span>Insight order · {project.shortName}</span></div>
+            <div className="receipt-header"><Coffee /><span>Insight summary · {project.shortName}</span></div>
             {project.insights.map((item, index) => (
               <article key={item.title}><span>Insight {String(index + 1).padStart(2, '0')}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></article>
             ))}
@@ -121,7 +121,7 @@ export function CaseStudyLayout({ project }) {
         </Motion.section>
 
         <Motion.section className="study-section" {...reveal}>
-          <StudyHeading number={7} title="Dashboard & results" note="Interactive outputs presented as framed café displays." />
+          <StudyHeading number={7} title="Dashboard & results" note="Interactive outputs presented as focused dashboard views." />
           <div className={`study-gallery ${project.images.length === 1 ? 'single' : ''}`}>
             {project.images.map((image, index) => (
               <button type="button" key={image} onClick={() => setLightbox(index)} aria-label={`Enlarge dashboard view ${index + 1}`}>

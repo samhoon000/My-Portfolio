@@ -8,7 +8,7 @@ export function AchievementsSection() {
   return (
     <section id="achievements" className="scene-section awards-scene">
       <div className="scene-marker" aria-hidden="true"><span>05</span> Awards wall</div>
-      <SectionHeading eyebrow="Recognition" title="Pinned on the café wall" description="A few moments of teamwork, invention, and competitive problem-solving." />
+      <SectionHeading eyebrow="Recognition" title="Professional highlights" description="A few moments of teamwork, invention, and competitive problem-solving." />
       <div className="award-shelf">
         {achievements.map((item, index) => {
           const Icon = icons[item.icon] || Award

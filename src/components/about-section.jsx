@@ -11,7 +11,7 @@ const details = [
 export function AboutSection() {
   return (
     <section id="about" className="scene-section about-scene">
-      <div className="scene-marker" aria-hidden="true"><span>01</span> Welcome table</div>
+      <div className="scene-marker" aria-hidden="true"><span>01</span> Profile overview</div>
       <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
         <SectionHeading
           eyebrow="About me"

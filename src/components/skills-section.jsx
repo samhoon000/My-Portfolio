@@ -2,23 +2,23 @@ import { skills } from '../data/portfolio-data'
 import { SectionHeading } from './section-heading'
 
 const menuGroups = [
-  { name: 'Coffee bar', subtitle: 'Data & analytics', keys: ['Languages'], extras: ['Power BI'] },
-  { name: 'Kitchen', subtitle: 'Models & processing', keys: ['Libraries'], extras: ['Data Cleaning', 'EDA'] },
-  { name: 'House specials', subtitle: 'BI & delivery', keys: ['Analytics & BI', 'Development & Cloud'], extras: [] },
+  { name: 'Data & BI', subtitle: 'Querying & visualization', keys: ['Languages'], extras: ['Power BI'] },
+  { name: 'Analysis & modeling', subtitle: 'Models & processing', keys: ['Libraries'], extras: ['Data Cleaning', 'EDA'] },
+  { name: 'Delivery & platforms', subtitle: 'BI & deployment', keys: ['Analytics & BI', 'Development & Cloud'], extras: [] },
 ]
 
 export function SkillsSection() {
   const allSkills = Object.values(skills).flat()
   return (
     <section id="skills" className="scene-section menu-scene">
-      <div className="scene-marker" aria-hidden="true"><span>03</span> Counter menu</div>
-      <SectionHeading eyebrow="Skills menu" title="What’s brewing" description="A focused toolkit for taking data from raw source to business-ready insight." align="center" />
+      <div className="scene-marker" aria-hidden="true"><span>03</span> Skills overview</div>
+      <SectionHeading eyebrow="Technical skills" title="Analytics toolkit" description="A focused toolkit for taking data from raw source to business-ready insight." align="center" />
       <div className="chalk-menu">
-        <div className="menu-rule"><span>Abdul’s analytics café</span></div>
+        <div className="menu-rule"><span>Abdul’s data analytics toolkit</span></div>
         <div className="grid gap-8 md:grid-cols-3">
           {menuGroups.map((group) => {
             const names = [...group.keys.flatMap((key) => skills[key] || []).map((item) => item.name), ...group.extras]
-            const unique = [...new Set(names)].filter((name) => !(group.name === 'House specials' && ['Data Cleaning', 'EDA'].includes(name)))
+            const unique = [...new Set(names)].filter((name) => !(group.name === 'Delivery & platforms' && ['Data Cleaning', 'EDA'].includes(name)))
             return (
               <div key={group.name} className="menu-column">
                 <span>{group.subtitle}</span>

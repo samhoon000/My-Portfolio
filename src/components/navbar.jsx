@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { BiCoffee } from 'react-icons/bi'
 import { navLinks } from '../data/portfolio-data'
 
 export function Navbar() {
+  const { pathname } = useLocation()
+  const isHomePage = pathname === '/'
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
@@ -39,17 +41,17 @@ export function Navbar() {
           className="group flex items-center gap-2 font-pixel text-lg font-bold tracking-wide text-[#FFF1D6] transition-colors hover:text-[#E39A73]"
         >
           <BiCoffee className="text-xl text-[#E39A73] transition-transform group-hover:rotate-12" />
-          <span>Abdul Samhoon</span>
+          <span>Abdul Samhoon</span><small>Data Analyst</small>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="cafe-menu hidden items-center gap-1 md:flex" aria-label="Main navigation">
+        <nav className="cafe-menu hidden items-center gap-1 lg:flex" aria-label="Main navigation">
           {navLinks.map((link) => (
             <Link
               key={link.id}
               to={`/#${link.id}`}
-              className={`nav-item ${activeSection === link.id ? 'is-active' : ''}`}
-              aria-current={activeSection === link.id ? 'page' : undefined}
+              className={`nav-item ${isHomePage && activeSection === link.id ? 'is-active' : ''}`}
+              aria-current={isHomePage && activeSection === link.id ? 'page' : undefined}
             >
               {link.label}
             </Link>
@@ -68,8 +70,8 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen((state) => !state)}
-          className="rounded-sm border border-copper/50 bg-espresso/90 p-2 text-xl text-cream transition-colors hover:border-accent hover:text-accent md:hidden"
-          aria-label="Toggle menu"
+          className="rounded-sm border border-copper/50 bg-espresso/90 p-2 text-xl text-cream transition-colors hover:border-accent hover:text-accent lg:hidden"
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isOpen}
         >
           {isOpen ? <HiX /> : <HiMenuAlt3 />}
@@ -78,7 +80,7 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="mobile-menu mx-4 flex flex-col gap-2 px-4 py-4 md:hidden">
+        <div className="mobile-menu mx-4 flex flex-col gap-2 px-4 py-4 lg:hidden">
           {navLinks.map((link) => (
             <Link
               key={link.id}
@@ -94,7 +96,7 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setIsOpen(false)}
-            className="mt-2 text-center rounded-xl border border-[#6B4535] bg-[#3A241D] px-4 py-2.5 font-pixel text-xs font-bold text-[#FFF1D6] hover:bg-[#4A2F25] hover:text-[#F0B08A] shadow-md"
+            className="nav-resume mt-2 text-center"
           >
             Download Resume
           </a>

@@ -10,7 +10,7 @@ export function CertificationsSection() {
       <div className="certificate-shelf">
         {certifications.map((cert) => (
           <article key={cert.title} className="certificate-card">
-            <div className="certificate-preview"><img src={cert.image} alt="" loading="lazy" /></div>
+            <div className="certificate-preview"><img src={cert.image} alt={`${cert.title} certificate`} loading="lazy" /></div>
             <div>
               <span>{cert.provider}</span>
               <h3>{cert.title}</h3>

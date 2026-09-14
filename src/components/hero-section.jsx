@@ -4,17 +4,6 @@ import { useTypewriter } from '../hooks/use-typewriter'
 import { useCountUp } from '../hooks/use-count-up'
 import { FaGithub, FaFileDownload, FaEnvelope, FaProjectDiagram } from 'react-icons/fa'
 
-const terminalSkills = [
-  '> Loading technical skills...',
-  '✓ Python for Data Analysis',
-  '✓ SQL & Database Querying',
-  '✓ Power BI Visualization',
-  '✓ Data Cleaning & EDA',
-  '✓ Machine Learning Basics',
-  '✓ Pandas & NumPy',
-  '✓ Git & GitHub',
-]
-
 function StatCard({ label, value }) {
   const count = useCountUp(value)
   return (
@@ -26,12 +15,23 @@ function StatCard({ label, value }) {
 }
 
 function TerminalSkills() {
+  const skills = [
+    "> Loading technical skills...",
+    "✓ Python for Data Analysis",
+    "✓ SQL & Database Querying",
+    "✓ Power BI Visualization",
+    "✓ Data Cleaning & EDA",
+    "✓ Machine Learning Basics",
+    "✓ Pandas & NumPy",
+    "✓ Git & GitHub"
+  ]
+
   const [displayedLines, setDisplayedLines] = useState([])
   const [currentLineIdx, setCurrentLineIdx] = useState(0)
   const [typedText, setTypedText] = useState('')
 
   useEffect(() => {
-    if (currentLineIdx >= terminalSkills.length) {
+    if (currentLineIdx >= skills.length) {
       const resetTimeout = setTimeout(() => {
         setDisplayedLines([])
         setCurrentLineIdx(0)
@@ -40,7 +40,7 @@ function TerminalSkills() {
       return () => clearTimeout(resetTimeout)
     }
 
-    const currentFullText = terminalSkills[currentLineIdx]
+    const currentFullText = skills[currentLineIdx]
 
     if (typedText.length < currentFullText.length) {
       const charTimeout = setTimeout(() => {
@@ -55,7 +55,7 @@ function TerminalSkills() {
       }, 300)
       return () => clearTimeout(lineTimeout)
     }
-  }, [currentLineIdx, typedText])
+  }, [currentLineIdx, typedText, skills])
 
   const renderLine = (lineText, key, isTyping = false) => {
     if (lineText.startsWith('>')) {
@@ -114,10 +114,10 @@ function TerminalSkills() {
 
         <div className="p-5 bg-[#0d0d0d] h-[260px] max-h-[260px] overflow-hidden flex flex-col justify-start gap-1.5 font-mono select-text text-left">
           {displayedLines.map((line, idx) => {
-            const isLastLineAndFinished = currentLineIdx >= terminalSkills.length && idx === terminalSkills.length - 1
+            const isLastLineAndFinished = currentLineIdx >= skills.length && idx === skills.length - 1
             return renderLine(line, `line-${idx}`, isLastLineAndFinished)
           })}
-          {currentLineIdx < terminalSkills.length && renderLine(typedText, 'line-current', true)}
+          {currentLineIdx < skills.length && renderLine(typedText, 'line-current', true)}
         </div>
       </div>
     </div>

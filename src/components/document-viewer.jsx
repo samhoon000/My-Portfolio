@@ -3,7 +3,7 @@ import { FaArrowLeft } from 'react-icons/fa'
 
 export function DocumentViewer({ title, subtitle, docUrl, backRoute }) {
   return (
-    <main id="main-content" className="document-page mx-auto max-w-6xl px-4 pt-28 pb-12 sm:px-6 lg:px-8 min-h-screen">
+    <div className="mx-auto max-w-6xl px-4 pt-24 pb-12 sm:px-6 lg:px-8 min-h-screen animate-reveal">
       <div className="mb-6">
         <Link 
           to={backRoute} 
@@ -14,7 +14,7 @@ export function DocumentViewer({ title, subtitle, docUrl, backRoute }) {
       </div>
       
       <div className="mb-8">
-        <h1 className="font-sans text-4xl font-bold tracking-tight text-[#FFF1D6]">{title}</h1>
+        <h1 className="font-display text-3xl font-bold text-[#FFF1D6]">{title}</h1>
         {subtitle && (
           <p
             className="mt-2 text-sm font-sans"
@@ -32,6 +32,6 @@ export function DocumentViewer({ title, subtitle, docUrl, backRoute }) {
           title={`${title} Viewer`}
         />
       </div>
-    </main>
+    </div>
   )
 }

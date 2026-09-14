@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import { Routes, Route } from 'react-router-dom'
 import { Navbar } from './components/navbar'
 import { CinematicCafeHero } from './components/cinematic-cafe-hero'
@@ -11,6 +13,7 @@ import { CertificationsSection } from './components/certifications-section'
 import { ContactSection } from './components/contact-section'
 import { Footer } from './components/footer'
 import { ScrollProgress } from './components/scroll-progress'
+import { LoadingScreen } from './components/loading-screen'
 
 // Routing scroll helpers
 import { ScrollToTop } from './components/scroll-to-top'
@@ -25,9 +28,16 @@ import { InstacartReport } from './components/instacart-report'
 import { InstacartPresentation } from './components/instacart-presentation'
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 700)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-base text-textPrimary">
-      <a className="skip-link" href="#main-content">Skip to content</a>
+      <AnimatePresence>{isLoading ? <LoadingScreen /> : null}</AnimatePresence>
       <ScrollProgress />
       <ScrollToTop />
       <ScrollToHash />
@@ -48,7 +58,7 @@ function App() {
               <div className="cafe-threshold relative z-10" aria-hidden="true">
                 <span>come in · warm up · look around</span>
               </div>
-              <main id="main-content" className="cafe-interior relative z-10 mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-10">
+              <main className="cafe-interior relative z-10 mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-10">
                 <AboutSection />
                 <ExperienceSection />
                 <SkillsSection />

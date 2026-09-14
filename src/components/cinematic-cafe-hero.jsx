@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion as Motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
-import { FaFileDownload, FaGithub, FaLinkedin, FaChevronDown, FaArrowRight } from 'react-icons/fa'
+import { FaFileDownload, FaGithub, FaEnvelope, FaChevronDown } from 'react-icons/fa'
+import { BiCoffee } from 'react-icons/bi'
 import { contactDetails } from '../data/portfolio-data'
 
 function seededRandom(seed) {
@@ -132,7 +133,7 @@ export function CinematicCafeHero() {
       >
         <span className="open-sign inline-flex items-center gap-2 px-3.5 py-2 font-pixel text-[11px] uppercase tracking-wider text-cream">
           <span className="h-1.5 w-1.5 bg-amber" />
-          Data Analyst Intern · Trinetro Labs
+          Data Analyst Intern @ Trinetro Labs
         </span>
       </Motion.div>
 
@@ -146,17 +147,24 @@ export function CinematicCafeHero() {
       >
         <div className="hero-card pixel-corners p-6 sm:p-9">
           <p className="font-pixel text-xs uppercase tracking-[0.3em] text-[#E39A73]">
-            Abdul Samhoon · Data Analyst
+            Welcome to my portfolio
           </p>
           
-          <h1 className="mt-3 text-4xl font-bold tracking-[-0.045em] text-cream sm:text-6xl lg:text-7xl">
-            Turning complex data into clear decisions.
+          <h1 className="mt-3 font-pixel text-4xl font-bold tracking-tight text-cream sm:text-6xl lg:text-7xl">
+            Abdul Samhoon
           </h1>
+          
+          <p
+            className="mt-3 font-pixel text-sm font-semibold text-cream sm:text-base"
+            style={{ color: '#fff0cf' }}
+          >
+            Data Analyst · Builder · Problem Solver
+          </p>
           
           <p
             className="mt-5 max-w-xl text-base leading-relaxed text-creamMuted"
           >
-            I transform retail, market intelligence, and nutritional data into interactive BI dashboards, analytical systems, and decision-ready insight.
+            Turning complex data into clear, strategic decisions. Transforming retail, market intelligence, and nutritional insights into interactive BI dashboards and ML models.
           </p>
 
           {/* Action Links */}
@@ -166,8 +174,8 @@ export function CinematicCafeHero() {
               type="button"
               className="button-primary group"
             >
-              <span>View selected work</span>
-              <FaArrowRight />
+              <BiCoffee className="text-lg transition-transform group-hover:rotate-12" />
+              <span>Explore Portfolio</span>
             </button>
 
             <a
@@ -176,12 +184,26 @@ export function CinematicCafeHero() {
               className="button-secondary"
             >
               <FaFileDownload />
-              <span>Download resume</span>
+              <span>Resume</span>
             </a>
-          </div>
-          <div className="hero-socials" aria-label="Profile links">
-            <a href={contactDetails.github} target="_blank" rel="noopener noreferrer"><FaGithub /> GitHub</a>
-            <a href={contactDetails.linkedin} target="_blank" rel="noopener noreferrer"><FaLinkedin /> LinkedIn</a>
+
+            <a
+              href={contactDetails.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button-secondary"
+            >
+              <FaGithub />
+              <span>GitHub</span>
+            </a>
+
+            <a
+              href="#contact"
+              className="button-secondary"
+            >
+              <FaEnvelope />
+              <span>Contact</span>
+            </a>
           </div>
         </div>
       </Motion.div>

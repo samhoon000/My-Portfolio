@@ -57,7 +57,7 @@ export function CaseStudyLayout({ project }) {
   return (
     <div className="case-study-page">
       <div className="case-study-room" aria-hidden="true"><img src="/cafe_2.png" alt="" className="pixel-crisp" /></div>
-      <main id="main-content" className="case-study-shell">
+      <main className="case-study-shell">
         <Link to="/#projects" className="study-back"><ArrowLeft /> Back to projects</Link>
 
         <Motion.header className="study-hero" initial={reduceMotion ? false : { opacity: 0, scale: .985 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .45 }}>

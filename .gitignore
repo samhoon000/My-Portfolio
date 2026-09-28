@@ -28,3 +28,6 @@ dist-ssr
 *.sln
 *.sw?
 .agents/
+.codex-finalizer/
+.codex-ppt-build/
+output/

@@ -1,40 +1,34 @@
+import { useState } from 'react'
 import { skills } from '../data/portfolio-data'
 import { SectionHeading } from './section-heading'
-
-const menuGroups = [
-  { name: 'Data & BI', subtitle: 'Querying & visualization', keys: ['Languages'], extras: ['Power BI'] },
-  { name: 'Analysis & modeling', subtitle: 'Models & processing', keys: ['Libraries'], extras: ['Data Cleaning', 'EDA'] },
-  { name: 'Delivery & platforms', subtitle: 'BI & deployment', keys: ['Analytics & BI', 'Development & Cloud'], extras: [] },
-]
+import { SectionReveal } from './section-reveal'
 
 export function SkillsSection() {
-  const allSkills = Object.values(skills).flat()
+  const groups = Object.entries(skills)
+  const [activeGroup, setActiveGroup] = useState(groups[0][0])
+
   return (
-    <section id="skills" className="scene-section menu-scene">
-      <div className="scene-marker" aria-hidden="true"><span>03</span> Skills overview</div>
-      <SectionHeading eyebrow="Technical skills" title="Analytics toolkit" description="A focused toolkit for taking data from raw source to business-ready insight." align="center" />
-      <div className="chalk-menu">
-        <div className="menu-rule"><span>Abdul’s data analytics toolkit</span></div>
-        <div className="grid gap-8 md:grid-cols-3">
-          {menuGroups.map((group) => {
-            const names = [...group.keys.flatMap((key) => skills[key] || []).map((item) => item.name), ...group.extras]
-            const unique = [...new Set(names)].filter((name) => !(group.name === 'Delivery & platforms' && ['Data Cleaning', 'EDA'].includes(name)))
-            return (
-              <div key={group.name} className="menu-column">
-                <span>{group.subtitle}</span>
-                <h3>{group.name}</h3>
-                <ul>
-                  {unique.slice(0, 7).map((name) => {
-                    const item = allSkills.find((skill) => skill.name === name)
-                    const Icon = item?.icon
-                    return <li key={name}><span>{Icon && <Icon aria-hidden="true" />} {name}</span><i aria-hidden="true" /></li>
-                  })}
-                </ul>
-              </div>
-            )
-          })}
+    <section id="skills" className="scene-section skills-scene">
+      <div className="scene-marker" aria-hidden="true"><span>05</span> Capabilities</div>
+      <SectionHeading eyebrow="Technical toolkit" title="One connected practice." description="A focused toolkit for taking data from raw source to business-ready insight." />
+      <SectionReveal className="skill-ecosystem">
+        <div className="skill-orbit" aria-hidden="true">
+          <div className="orbit-ring orbit-one" />
+          <div className="orbit-ring orbit-two" />
+          <div className="orbit-core"><small>Focus</small><strong>{activeGroup}</strong></div>
+          {groups.map(([group], index) => (
+            <button key={group} type="button" className={`orbit-node orbit-node-${index + 1} ${activeGroup === group ? 'is-active' : ''}`} tabIndex={-1}>0{index + 1}</button>
+          ))}
         </div>
-      </div>
+        <div className="skill-groups">
+          {groups.map(([group, items], index) => (
+            <button key={group} type="button" className={`skill-group ${activeGroup === group ? 'is-active' : ''}`} onMouseEnter={() => setActiveGroup(group)} onFocus={() => setActiveGroup(group)} onClick={() => setActiveGroup(group)} aria-pressed={activeGroup === group}>
+              <span>0{index + 1}</span>
+              <div><h3>{group}</h3><p>{items.map((item) => item.name).join(' · ')}</p></div>
+            </button>
+          ))}
+        </div>
+      </SectionReveal>
     </section>
   )
 }

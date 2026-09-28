@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { projects } from '../data/portfolio-data'
 import { SectionHeading } from './section-heading'
 import { FaTimes, FaGithub, FaArrowRight, FaEye } from 'react-icons/fa'
+import { SectionReveal } from './section-reveal'
 
 function ProjectActions({ project, onPreview }) {
   const route = project.title.includes('Food Nutrition')
@@ -12,11 +13,11 @@ function ProjectActions({ project, onPreview }) {
   return (
     <div className="project-actions">
       {route ? (
-        <Link to={route} className="button-primary">Explore case study <FaArrowRight /></Link>
+        <Link to={route} className="button-primary" data-cursor="OPEN">Explore case study <FaArrowRight /></Link>
       ) : (
-        <button type="button" className="button-primary" onClick={() => onPreview(project)}><FaEye /> View dashboard</button>
+        <button type="button" className="button-primary" onClick={() => onPreview(project)} data-cursor="VIEW"><FaEye /> View dashboard</button>
       )}
-      <a href={project.githubUrl} target="_blank" rel="noreferrer" className="button-secondary"><FaGithub /> GitHub</a>
+      <a href={project.githubUrl} target="_blank" rel="noreferrer" className="button-secondary"><FaGithub /> GitHub ↗</a>
     </div>
   )
 }
@@ -40,20 +41,22 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="scene-section gallery-scene">
-      <div className="scene-marker" aria-hidden="true"><span>04</span> Project portfolio</div>
-      <SectionHeading eyebrow="Selected work" title="Featured analytics projects" description="End-to-end analytics projects, framed around the decision each one helped make." />
+      <div className="scene-marker" aria-hidden="true"><span>04</span> Selected work</div>
+      <SectionHeading eyebrow="Selected work" title="Data, made decisive." description="End-to-end analytics projects, framed around the decision each one helped make." />
 
       <div className="project-gallery">
         {projects.map((project, index) => {
           const isFeatured = index < 2
           return (
-          <article key={project.title} className={`project-frame ${isFeatured ? 'featured' : 'compact'}`}>
+          <SectionReveal key={project.title} delay={Math.min(index * .05, .15)}>
+          <article className={`project-frame ${isFeatured ? 'featured' : 'compact'}`}>
             <div className="project-image-wrap">
               <img src={project.images[0]} alt={`${project.title} dashboard`} loading="lazy" />
-              <span>{isFeatured ? 'Featured case study' : 'Dashboard project'}</span>
+              <span>{isFeatured ? 'Case study' : 'Dashboard'}</span>
+              <i aria-hidden="true">{`[${String(index + 1).padStart(2, '0')}]`}</i>
             </div>
             <div className="project-copy">
-              <p className="project-number">No. {String(index + 1).padStart(2, '0')}</p>
+              <p className="project-number">Project / {String(index + 1).padStart(2, '0')}</p>
               <h3>{project.title}</h3>
               {isFeatured && <p className="project-brief"><strong>The brief</strong>{project.problem}</p>}
               {isFeatured && <p className="project-label">Outcome</p>}
@@ -62,6 +65,7 @@ export function ProjectsSection() {
               <ProjectActions project={project} onPreview={setSelectedProject} />
             </div>
           </article>
+          </SectionReveal>
         )})}
       </div>
 

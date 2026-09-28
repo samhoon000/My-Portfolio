@@ -7,7 +7,7 @@ import {
   ArrowUpRight,
   ChevronLeft,
   ChevronRight,
-  Coffee,
+  Database,
   FileText,
   Presentation,
   X,
@@ -56,7 +56,6 @@ export function CaseStudyLayout({ project }) {
 
   return (
     <div className="case-study-page">
-      <div className="case-study-room" aria-hidden="true"><img src="/cafe_2.png" alt="" className="pixel-crisp" /></div>
       <main id="main-content" className="case-study-shell">
         <Link to="/#projects" className="study-back"><ArrowLeft /> Back to projects</Link>
 
@@ -66,7 +65,7 @@ export function CaseStudyLayout({ project }) {
             <h1>{project.title}</h1>
             <p className="study-summary">{project.summary}</p>
             <div className="study-tools">{project.tools.map((tool) => <span key={tool}>{tool}</span>)}</div>
-            <div className="study-outcome"><Coffee aria-hidden="true" /><div><span>Primary outcome</span><p>{project.outcome}</p></div></div>
+            <div className="study-outcome"><Database aria-hidden="true" /><div><span>PRIMARY OUTCOME</span><p>{project.outcome}</p></div></div>
           </div>
           <button type="button" className="study-hero-frame" onClick={() => setLightbox(0)} aria-label={`Enlarge ${project.title} dashboard`}>
             <img src={project.images[0]} alt={`${project.title} dashboard overview`} />
@@ -112,7 +111,7 @@ export function CaseStudyLayout({ project }) {
         <Motion.section className="study-section" {...reveal}>
           <StudyHeading number={6} title="Key insights" note="The most decision-relevant findings, summarized for quick review." />
           <div className="insight-receipt">
-            <div className="receipt-header"><Coffee /><span>Insight summary · {project.shortName}</span></div>
+            <div className="receipt-header"><Database /><span>INSIGHT SUMMARY / {project.shortName}</span></div>
             {project.insights.map((item, index) => (
               <article key={item.title}><span>Insight {String(index + 1).padStart(2, '0')}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></article>
             ))}
@@ -135,8 +134,8 @@ export function CaseStudyLayout({ project }) {
         <Motion.section className="study-section" {...reveal}>
           <StudyHeading number={8} title="Technology" />
           <div className="study-chalkboard">
-            <span>Today’s tools</span>
-            <div>{project.tools.map((tool) => <p key={tool}><Coffee aria-hidden="true" /> {tool}</p>)}</div>
+            <span>TECHNOLOGY INDEX</span>
+            <div>{project.tools.map((tool) => <p key={tool}><Database aria-hidden="true" /> {tool}</p>)}</div>
           </div>
         </Motion.section>
 
@@ -152,8 +151,8 @@ export function CaseStudyLayout({ project }) {
         </Motion.section>
 
         <section className="study-closing pixel-corners">
-          <Coffee aria-hidden="true" />
-          <p>Thanks for exploring this project.</p>
+          <Database aria-hidden="true" />
+          <p>END OF PROJECT RECORD.</p>
           <div>
             <a href={project.github} target="_blank" rel="noreferrer" className="button-primary"><FaGithub /> View GitHub</a>
             <Link to="/#projects" className="button-secondary"><ArrowLeft /> Back to projects</Link>

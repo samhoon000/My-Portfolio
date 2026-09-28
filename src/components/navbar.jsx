@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
 import { Link, useLocation } from 'react-router-dom'
-import { BiCoffee } from 'react-icons/bi'
 import { navLinks } from '../data/portfolio-data'
 
 export function Navbar() {
@@ -38,14 +37,13 @@ export function Navbar() {
       <div className={`mx-auto flex max-w-7xl items-center justify-between px-4 transition-all duration-300 sm:px-6 lg:px-10 ${isScrolled ? 'py-2.5' : 'py-4'}`}>
         <Link 
           to="/#home" 
-          className="group flex items-center gap-2 font-pixel text-lg font-bold tracking-wide text-[#FFF1D6] transition-colors hover:text-[#E39A73]"
+          className="brand-mark"
         >
-          <BiCoffee className="text-xl text-[#E39A73] transition-transform group-hover:rotate-12" />
-          <span>Abdul Samhoon</span><small>Data Analyst</small>
+          <span aria-hidden="true">A·S</span><strong>Abdul Samhoon</strong><small>Data / AI</small>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="cafe-menu hidden items-center gap-1 lg:flex" aria-label="Main navigation">
+        <nav className="nav-menu hidden items-center gap-1 lg:flex" aria-label="Main navigation">
           {navLinks.map((link) => (
             <Link
               key={link.id}
@@ -62,7 +60,7 @@ export function Navbar() {
             rel="noopener noreferrer"
             className="nav-resume"
           >
-            Resume
+            Résumé ↗
           </a>
         </nav>
 
@@ -70,7 +68,7 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen((state) => !state)}
-          className="rounded-sm border border-copper/50 bg-espresso/90 p-2 text-xl text-cream transition-colors hover:border-accent hover:text-accent lg:hidden"
+          className="nav-toggle lg:hidden"
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isOpen}
         >
@@ -86,7 +84,7 @@ export function Navbar() {
               key={link.id}
               to={`/#${link.id}`}
               onClick={() => setIsOpen(false)}
-              className="block py-1.5 text-sm font-semibold uppercase tracking-wider text-[#FFF1D6] hover:text-[#E39A73]"
+            className="mobile-nav-link"
             >
               {link.label}
             </Link>
@@ -98,7 +96,7 @@ export function Navbar() {
             onClick={() => setIsOpen(false)}
             className="nav-resume mt-2 text-center"
           >
-            Download Resume
+            Résumé ↗
           </a>
         </div>
       )}

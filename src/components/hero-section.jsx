@@ -1,170 +1,165 @@
-import { useState, useEffect } from 'react'
-import { heroStats } from '../data/portfolio-data'
-import { useTypewriter } from '../hooks/use-typewriter'
-import { useCountUp } from '../hooks/use-count-up'
-import { FaGithub, FaFileDownload, FaEnvelope, FaProjectDiagram } from 'react-icons/fa'
+import { useEffect, useRef } from 'react'
+import { motion as Motion, useReducedMotion } from 'framer-motion'
+import { ArrowDownRight, ArrowUpRight, Download } from 'lucide-react'
+import { contactDetails } from '../data/portfolio-data'
 
-function StatCard({ label, value }) {
-  const count = useCountUp(value)
-  return (
-    <div className="glass-card rounded-xl p-4 shadow-card">
-      <p className="text-xl font-bold text-[#FFF1D6]">{count}+</p>
-      <p className="mt-1 text-xs uppercase tracking-wider text-[#FFF1D6]">{label}</p>
-    </div>
-  )
-}
-
-function TerminalSkills() {
-  const skills = [
-    "> Loading technical skills...",
-    "✓ Python for Data Analysis",
-    "✓ SQL & Database Querying",
-    "✓ Power BI Visualization",
-    "✓ Data Cleaning & EDA",
-    "✓ Machine Learning Basics",
-    "✓ Pandas & NumPy",
-    "✓ Git & GitHub"
-  ]
-
-  const [displayedLines, setDisplayedLines] = useState([])
-  const [currentLineIdx, setCurrentLineIdx] = useState(0)
-  const [typedText, setTypedText] = useState('')
+function DataSculpture() {
+  const canvasRef = useRef(null)
 
   useEffect(() => {
-    if (currentLineIdx >= skills.length) {
-      const resetTimeout = setTimeout(() => {
-        setDisplayedLines([])
-        setCurrentLineIdx(0)
-        setTypedText('')
-      }, 5000)
-      return () => clearTimeout(resetTimeout)
+    const canvas = canvasRef.current
+    const context = canvas?.getContext('2d')
+    if (!canvas || !context) return undefined
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const pointer = { x: 0, y: 0, tx: 0, ty: 0 }
+    let width = 0
+    let height = 0
+    let frame = 0
+    let visible = true
+    const start = performance.now()
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect()
+      const ratio = Math.min(window.devicePixelRatio || 1, 1.75)
+      width = rect.width
+      height = rect.height
+      canvas.width = Math.max(1, Math.floor(width * ratio))
+      canvas.height = Math.max(1, Math.floor(height * ratio))
+      context.setTransform(ratio, 0, 0, ratio, 0, 0)
     }
 
-    const currentFullText = skills[currentLineIdx]
-
-    if (typedText.length < currentFullText.length) {
-      const charTimeout = setTimeout(() => {
-        setTypedText(currentFullText.slice(0, typedText.length + 1))
-      }, 35)
-      return () => clearTimeout(charTimeout)
-    } else {
-      const lineTimeout = setTimeout(() => {
-        setDisplayedLines((prev) => [...prev, currentFullText])
-        setCurrentLineIdx((prev) => prev + 1)
-        setTypedText('')
-      }, 300)
-      return () => clearTimeout(lineTimeout)
+    const rotate = (point, ax, ay) => {
+      let [x, y, z] = point
+      const cosy = Math.cos(ax)
+      const siny = Math.sin(ax)
+      const y1 = y * cosy - z * siny
+      const z1 = y * siny + z * cosy
+      const cosx = Math.cos(ay)
+      const sinx = Math.sin(ay)
+      return [x * cosx + z1 * sinx, y1, -x * sinx + z1 * cosx]
     }
-  }, [currentLineIdx, typedText, skills])
 
-  const renderLine = (lineText, key, isTyping = false) => {
-    if (lineText.startsWith('>')) {
-      return (
-        <div key={key} className="font-mono text-xs sm:text-sm text-[#FFF1D6] leading-normal min-h-[1.5rem] flex items-start">
-          <div className="inline-block text-[#E39A73] mr-2 font-bold select-none">&gt;</div>
-          <div className="inline font-semibold text-[#FFF1D6]">
-            {lineText.substring(1).trimStart()}
-            {isTyping && <div className="inline-block w-1.5 h-3.5 bg-[#E39A73] ml-1 animate-pulse align-middle" />}
-          </div>
-        </div>
-      )
+    const draw = (now) => {
+      if (!visible) return
+      const t = reduced ? 0.7 : (now - start) * 0.00024
+      pointer.x += (pointer.tx - pointer.x) * 0.045
+      pointer.y += (pointer.ty - pointer.y) * 0.045
+      context.clearRect(0, 0, width, height)
+
+      const cx = width * 0.5
+      const cy = height * 0.49
+      const scale = Math.min(width, height) * 0.26
+      const rings = width < 640 ? 22 : 34
+      const segments = width < 640 ? 46 : 72
+      const points = []
+
+      for (let i = 0; i < rings; i += 1) {
+        const u = (i / (rings - 1) - 0.5) * Math.PI * 1.42
+        const row = []
+        for (let j = 0; j < segments; j += 1) {
+          const v = (j / segments) * Math.PI * 2
+          const swell = 1 + 0.2 * Math.sin(v * 3 + t * 2) * Math.cos(u * 2)
+          const radius = Math.cos(u) * swell
+          const x = radius * Math.cos(v)
+          const y = Math.sin(u) * 1.2
+          const z = radius * Math.sin(v) + 0.17 * Math.sin(u * 4 + v * 2 + t * 3)
+          const r = rotate([x, y, z], -0.36 + pointer.y * 0.22, t + pointer.x * 0.34)
+          const perspective = 3.8 / (4.3 - r[2])
+          row.push({ x: cx + r[0] * scale * perspective, y: cy + r[1] * scale * perspective, z: r[2], p: perspective })
+        }
+        points.push(row)
+      }
+
+      context.lineWidth = 0.7
+      for (let i = 0; i < rings; i += 1) {
+        context.beginPath()
+        points[i].forEach((point, j) => j ? context.lineTo(point.x, point.y) : context.moveTo(point.x, point.y))
+        context.closePath()
+        context.strokeStyle = `rgba(232,229,222,${0.05 + (i / rings) * 0.16})`
+        context.stroke()
+      }
+      for (let j = 0; j < segments; j += 3) {
+        context.beginPath()
+        points.forEach((row, i) => i ? context.lineTo(row[j].x, row[j].y) : context.moveTo(row[j].x, row[j].y))
+        context.strokeStyle = 'rgba(232,229,222,.11)'
+        context.stroke()
+      }
+
+      points.flat().filter((_, index) => index % 11 === 0).sort((a, b) => a.z - b.z).forEach((point) => {
+        const alpha = Math.max(0.08, Math.min(0.68, (point.z + 1.5) / 3))
+        context.beginPath()
+        context.arc(point.x, point.y, Math.max(.5, point.p * 1.55), 0, Math.PI * 2)
+        context.fillStyle = `rgba(255,250,240,${alpha})`
+        context.fill()
+      })
+
+      const gradient = context.createRadialGradient(cx, cy, 0, cx, cy, scale * 1.8)
+      gradient.addColorStop(0, 'rgba(255,255,255,.035)')
+      gradient.addColorStop(1, 'rgba(255,255,255,0)')
+      context.fillStyle = gradient
+      context.fillRect(0, 0, width, height)
+
+      if (!reduced) frame = requestAnimationFrame(draw)
     }
-    if (lineText.startsWith('✓')) {
-      return (
-        <div key={key} className="font-mono text-xs sm:text-sm text-[#FFF1D6] leading-normal min-h-[1.5rem] flex items-start">
-          <div className="inline-block text-emerald mr-2 font-bold select-none">✓</div>
-          <div className="inline font-medium text-[#FFF1D6]">
-            {lineText.substring(1).trimStart()}
-            {isTyping && <div className="inline-block w-1.5 h-3.5 bg-[#E39A73] ml-1 animate-pulse align-middle" />}
-          </div>
-        </div>
-      )
+
+    const onPointer = (event) => {
+      const rect = canvas.getBoundingClientRect()
+      pointer.tx = ((event.clientX - rect.left) / rect.width - 0.5) * 2
+      pointer.ty = ((event.clientY - rect.top) / rect.height - 0.5) * 2
     }
-    return (
-      <div key={key} className="font-mono text-xs sm:text-sm text-[#FFF1D6] leading-normal min-h-[1.5rem] flex items-start">
-        <div className="inline text-[#FFF1D6]">
-          {lineText}
-          {isTyping && <div className="inline-block w-1.5 h-3.5 bg-[#E39A73] ml-1 animate-pulse align-middle" />}
-        </div>
-      </div>
-    )
-  }
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting
+      if (visible && !reduced) {
+        cancelAnimationFrame(frame)
+        frame = requestAnimationFrame(draw)
+      }
+    })
 
-  return (
-    <div className="w-full">
-      <div className="mb-4">
-        <h3 className="font-display text-lg font-bold text-[#FFF1D6] tracking-tight">Technical Toolkit</h3>
-        <div className="font-sans text-xs text-[#FFF1D6] mt-1">
-          Technologies and tools I use to solve data problems.
-        </div>
-      </div>
+    resize()
+    canvas.addEventListener('pointermove', onPointer, { passive: true })
+    window.addEventListener('resize', resize, { passive: true })
+    observer.observe(canvas)
+    draw(performance.now())
 
-      <div className="glass-card rounded-2xl bg-panelSoft overflow-hidden shadow-[0_0_30px_rgba(56,189,248,0.12)] border border-accent/20 hover:border-accent/40 transition-all duration-300">
-        <div className="flex items-center justify-between px-4 py-3 bg-[#121212] border-b border-stroke/40">
-          <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-            <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-            <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
-          </div>
-          <div className="text-[11px] font-mono text-[#FFF1D6] tracking-wider select-none pr-8">
-            skills.sh
-          </div>
-          <div />
-        </div>
+    return () => {
+      cancelAnimationFrame(frame)
+      canvas.removeEventListener('pointermove', onPointer)
+      window.removeEventListener('resize', resize)
+      observer.disconnect()
+    }
+  }, [])
 
-        <div className="p-5 bg-[#0d0d0d] h-[260px] max-h-[260px] overflow-hidden flex flex-col justify-start gap-1.5 font-mono select-text text-left">
-          {displayedLines.map((line, idx) => {
-            const isLastLineAndFinished = currentLineIdx >= skills.length && idx === skills.length - 1
-            return renderLine(line, `line-${idx}`, isLastLineAndFinished)
-          })}
-          {currentLineIdx < skills.length && renderLine(typedText, 'line-current', true)}
-        </div>
-      </div>
-    </div>
-  )
+  return <canvas ref={canvasRef} className="data-sculpture" aria-label="Interactive abstract three-dimensional data sculpture" role="img" />
 }
-
 export function HeroSection() {
-  const typed = useTypewriter('Building Data-Driven Solutions with Analytics & Machine Learning')
+  const reduceMotion = useReducedMotion()
+  const reveal = reduceMotion ? false : { opacity: 0, y: 32 }
 
   return (
-    <section id="home" className="relative pt-20 pb-10 sm:pt-24 sm:pb-12">
-      <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-center">
+    <section id="home" className="hero-section">
+      <div className="hero-rule" aria-hidden="true"><span>01 — PORTFOLIO / 2026</span><span>INDIA · REMOTE</span></div>
+      <div className="hero-stage">
+        <Motion.div className="hero-copy" initial={reveal} animate={{ opacity: 1, y: 0 }} transition={{ duration: .85, ease: [.16, 1, .3, 1] }}>
+          <p className="hero-eyebrow">Data Analyst · AI & Data Science</p>
+          <h1><span>Abdul</span><span className="hero-name-outline">Samhoon</span></h1>
+          <p className="hero-intro">I turn complex data into clear systems, useful decisions, and business-ready stories.</p>
+          <div className="hero-actions">
+            <a href="#projects" className="button-primary" data-cursor="VIEW">Selected work <ArrowDownRight /></a>
+            <a href="/Abdul_Samhoon_Resume.pdf" download className="button-text">Résumé <Download /></a>
+          </div>
+        </Motion.div>
+
+        <Motion.div className="hero-visual" initial={reduceMotion ? false : { opacity: 0, scale: .92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, delay: .16, ease: [.16, 1, .3, 1] }}>
+          <DataSculpture />
+          <div className="sculpture-caption"><span>FIG. 01</span><span>ANALYTICAL FORM</span></div>
+        </Motion.div>
+      </div>
+      <div className="hero-footerline">
+        <span>AVAILABLE FOR DATA & ANALYTICS OPPORTUNITIES</span>
         <div>
-          <p className="readable-text mb-4 text-sm uppercase tracking-[0.18em] text-accent">Data Analyst Intern @ Trinetro Labs • Final-Year AI & Data Science Student</p>
-          <h1 className="font-display text-4xl font-bold tracking-tight text-[#FFF1D6] sm:text-6xl lg:text-7xl">Abdul Samhoon</h1>
-          <h2 className="mt-4 min-h-[4.5rem] sm:min-h-[4rem] lg:min-h-[5.5rem] font-display text-xl font-semibold animated-gradient-text sm:text-2xl lg:text-3xl leading-snug lg:leading-normal">
-            {typed}
-            <span className="inline-block ml-1 animate-pulse text-accent">|</span>
-          </h2>
-          <p
-            className="readable-text mt-6 max-w-xl text-base leading-relaxed"
-            style={{ color: '#FFF1D6' }}
-          >
-            I specialize in transforming complex data into strategic business intelligence. Currently working as a <strong>Data Analyst Intern at Trinetro Labs</strong> and pursuing my final year in <strong>AI & Data Science</strong>, I focus on building analytical pipelines and models that drive real-world impact.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a href="#projects" className="flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-base transition hover:-translate-y-0.5 hover:bg-accentSoft hover:shadow-[0_0_15px_rgba(56,189,248,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base">
-              <FaProjectDiagram /> Explore Projects
-            </a>
-            <a href="/Abdul_Samhoon_Resume.pdf" download="Abdul_Samhoon_Resume.pdf" className="flex items-center gap-2 rounded-lg border border-stroke bg-panel px-6 py-3 text-sm font-semibold text-[#FFF1D6] transition hover:-translate-y-0.5 hover:border-accent hover:bg-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base">
-              <FaFileDownload /> Resume
-            </a>
-            <a href="https://github.com/samhoon000" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-lg border border-stroke bg-panel px-6 py-3 text-sm font-semibold text-[#FFF1D6] transition hover:-translate-y-0.5 hover:border-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base">
-              <FaGithub /> GitHub
-            </a>
-            <a href="#contact" className="flex items-center gap-2 rounded-lg border border-stroke bg-panel px-6 py-3 text-sm font-semibold text-[#FFF1D6] transition hover:-translate-y-0.5 hover:border-emerald-500 hover:bg-emerald-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base">
-              <FaEnvelope /> Contact
-            </a>
-          </div>
-        </div>
-        <div className="space-y-6 w-full mt-8 lg:mt-0">
-          <TerminalSkills />
-          <div className="grid grid-cols-3 gap-4">
-            {heroStats.map((stat) => (
-              <StatCard key={stat.label} label={stat.label} value={stat.value} />
-            ))}
-          </div>
+          <a href={contactDetails.github} target="_blank" rel="noreferrer">GitHub <ArrowUpRight /></a>
+          <a href={contactDetails.linkedin} target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight /></a>
         </div>
       </div>
     </section>

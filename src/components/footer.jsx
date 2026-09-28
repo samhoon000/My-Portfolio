@@ -1,20 +1,19 @@
 import { Link } from 'react-router-dom'
-import { BiCoffee } from 'react-icons/bi'
 import { contactDetails } from '../data/portfolio-data'
 
 export function Footer() {
   return (
-    <footer className="cafe-footer relative z-20">
+    <footer className="site-footer relative z-20">
       <div>
-        <BiCoffee aria-hidden="true" />
-        <p>Thanks for exploring my work.</p>
-        <span>Abdul Samhoon · Data Analyst · Builder · Problem Solver</span>
+        <p>Abdul Samhoon</p>
+        <span>Data Analyst · AI & Data Science</span>
       </div>
       <nav aria-label="Footer navigation">
-        <Link to="/#home">Back to top</Link>
-        <a href={contactDetails.github} target="_blank" rel="noreferrer">GitHub</a>
-        <a href={contactDetails.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+        <Link to="/#home">Top ↑</Link>
+        <a href={contactDetails.github} target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href={contactDetails.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
       </nav>
+      <small>React · Vite · Motion · © 2026</small>
     </footer>
   )
 }

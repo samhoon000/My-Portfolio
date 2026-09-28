@@ -24,7 +24,7 @@ export default {
         textMuted: '#FFF1D6',
         textDark: '#2B1D18', // Dark Text for light elements only
         textDarkMuted: '#9B7E66',
-        cafeTeal: '#294b50', // Pixel accent
+        graphite: '#292929',
         emerald: '#3ea878',
       },
       boxShadow: {

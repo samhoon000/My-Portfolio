@@ -1,30 +1,31 @@
 import { SectionHeading } from './section-heading'
-import { BiCoffeeTogo } from 'react-icons/bi'
-import { FaLaptopCode, FaChartPie } from 'react-icons/fa'
+import { FaLaptopCode, FaChartPie, FaChartLine } from 'react-icons/fa'
+import { SectionReveal } from './section-reveal'
 
 const details = [
   { label: 'Role', value: 'Data Analyst Intern', Icon: FaLaptopCode },
   { label: 'Education', value: 'B.E. in AI & Data Science', Icon: FaChartPie },
-  { label: 'Focus', value: 'BI & Machine Learning', Icon: BiCoffeeTogo },
+  { label: 'Focus', value: 'BI & Machine Learning', Icon: FaChartLine },
 ]
 
 export function AboutSection() {
   return (
     <section id="about" className="scene-section about-scene">
-      <div className="scene-marker" aria-hidden="true"><span>01</span> Profile overview</div>
-      <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+      <div className="scene-marker" aria-hidden="true"><span>02</span> About</div>
+      <SectionReveal className="about-layout">
         <SectionHeading
-          eyebrow="About me"
-          title="Engineering data into strategic business insights."
+          eyebrow="Profile"
+          title="Finding the signal inside the noise."
           description="AI & Data Science undergraduate and Data Analyst Intern, turning complicated questions into useful decisions."
         />
-        <div className="wood-panel pixel-corners p-6 sm:p-8">
-          <p className="text-lg leading-relaxed text-cream">
+        <div className="profile-panel">
+          <div className="panel-label"><span>Approach</span><span>01—03</span></div>
+          <p className="profile-intro">
             I build clear analytical stories from messy, real-world data—using <strong>SQL</strong>, <strong>Python</strong>, <strong>Power BI</strong>, and <strong>machine learning</strong> to connect technical work with business impact.
           </p>
-          <div className="mt-7 grid gap-3 sm:grid-cols-3">
+          <div className="profile-details">
             {details.map((detail) => (
-              <div key={detail.label} className="table-sign">
+              <div key={detail.label} className="data-cell">
                 <detail.Icon aria-hidden="true" />
                 <span>{detail.label}</span>
                 <strong>{detail.value}</strong>
@@ -32,7 +33,7 @@ export function AboutSection() {
             ))}
           </div>
         </div>
-      </div>
+      </SectionReveal>
     </section>
   )
 }

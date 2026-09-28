@@ -17,7 +17,6 @@
   --body: 'Manrope', sans-serif;
   --mono: 'DM Mono', monospace;
 }
-
 @layer base {
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; background: var(--black); }

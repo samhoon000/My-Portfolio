@@ -17,10 +17,12 @@ import { BiBarChartAlt2 } from 'react-icons/bi'
 
 export const navLinks = [
   { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
   { id: 'projects', label: 'Work' },
   { id: 'experience', label: 'Experience' },
   { id: 'skills', label: 'Stack' },
   { id: 'achievements', label: 'Recognition' },
+  { id: 'certifications', label: 'Credentials' },
   { id: 'contact', label: 'Contact' },
 ]
 

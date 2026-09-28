@@ -21,7 +21,6 @@ function ProjectActions({ project, onPreview }) {
     </div>
   )
 }
-
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState(null)
   const closeButtonRef = useRef(null)

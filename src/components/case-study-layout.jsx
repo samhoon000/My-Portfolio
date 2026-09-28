@@ -21,7 +21,6 @@ function StudyHeading({ number, title, note }) {
     </div>
   )
 }
-
 export function CaseStudyLayout({ project }) {
   const reduceMotion = useReducedMotion()
   const [lightbox, setLightbox] = useState(null)

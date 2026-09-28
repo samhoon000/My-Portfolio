@@ -132,7 +132,6 @@ function DataSculpture() {
 
   return <canvas ref={canvasRef} className="data-sculpture" aria-label="Interactive abstract three-dimensional data sculpture" role="img" />
 }
-
 export function HeroSection() {
   const reduceMotion = useReducedMotion()
   const reveal = reduceMotion ? false : { opacity: 0, y: 32 }

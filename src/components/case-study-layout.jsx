@@ -1,30 +1,211 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion as Motion, useReducedMotion } from 'framer-motion'
 import { FaGithub } from 'react-icons/fa'
 import {
   ArrowLeft,
+  ArrowRight,
   ArrowUpRight,
-  ChevronLeft,
-  ChevronRight,
+  BarChart3,
+  Braces,
   Database,
   FileText,
   Presentation,
-  X,
+  Sparkles,
 } from 'lucide-react'
 
-function StudyHeading({ number, title, note }) {
+function SceneHeading({ number, label, title, note }) {
   return (
-    <div className="study-heading">
-      <span>{String(number).padStart(2, '0')}</span>
-      <div><h2>{title}</h2>{note && <p>{note}</p>}</div>
+    <div className="narrative-heading">
+      <div><span>{String(number).padStart(2, '0')}</span><i /></div>
+      <p>{label}</p>
+      <h2>{title}</h2>
+      {note && <small>{note}</small>}
     </div>
   )
 }
+
+function NarrativeSection({ children, className = '', reduceMotion }) {
+  return (
+    <Motion.section
+      className={`narrative-section ${className}`}
+      initial={reduceMotion ? false : { opacity: 0, y: 54, scale: 0.975 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: '-12% 0px -12%' }}
+      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+    >
+      {children}
+    </Motion.section>
+  )
+}
+
+function HeroScene({ project, reduceMotion }) {
+  return (
+    <div className="narrative-hero-scene" aria-label={`${project.shortName} analytical system visualization`}>
+      <div className="scene-grid" aria-hidden="true" />
+      <div className="scene-orbit scene-orbit-one" aria-hidden="true" />
+      <div className="scene-orbit scene-orbit-two" aria-hidden="true" />
+      <Motion.div
+        className="scene-core"
+        initial={reduceMotion ? false : { opacity: 0, scale: 0.78, rotateX: 12 }}
+        animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+        transition={{ duration: 1, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <Database aria-hidden="true" />
+        <span>ANALYTICAL CORE</span>
+        <strong>{project.systemLabel}</strong>
+      </Motion.div>
+      {project.heroNodes.map((node, index) => (
+        <Motion.div
+          key={node}
+          className={`scene-node scene-node-${index + 1}`}
+          initial={reduceMotion ? false : { opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.65, delay: 0.35 + index * 0.1 }}
+        >
+          <i aria-hidden="true" />
+          <span>{node}</span>
+        </Motion.div>
+      ))}
+      <div className="scene-packet packet-one" aria-hidden="true" />
+      <div className="scene-packet packet-two" aria-hidden="true" />
+      <div className="scene-packet packet-three" aria-hidden="true" />
+    </div>
+  )
+}
+
+function ProblemScene({ project }) {
+  return (
+    <div className="problem-system-scene">
+      <div className="problem-fragments">
+        <span className="scene-caption">BEFORE · FRAGMENTED</span>
+        {project.problemSources.map((source, index) => (
+          <div key={source} className={`fragment-block fragment-${index + 1}`}>
+            <Braces aria-hidden="true" /><span>{source}</span>
+          </div>
+        ))}
+        <div className="problem-status"><span>SLOW</span><span>INCONSISTENT</span><span>MANUAL</span></div>
+      </div>
+      <div className="system-transfer" aria-hidden="true"><i /><ArrowRight /><i /></div>
+      <div className="solution-core">
+        <span className="scene-caption">AFTER · UNIFIED</span>
+        <div className="solution-engine"><Database /><strong>{project.systemLabel}</strong><small>ONE DECISION SYSTEM</small></div>
+        <div className="solution-signals">{project.solutionSignals.map((signal) => <span key={signal}>{signal}</span>)}</div>
+      </div>
+    </div>
+  )
+}
+
+function DataFlowScene({ project }) {
+  return (
+    <div className="data-flow-scene">
+      <div className="data-inputs">
+        <span className="scene-caption">RAW DATA</span>
+        {project.inputTypes.map((input, index) => (
+          <div key={input} className="data-chip"><span>{String(index + 1).padStart(2, '0')}</span><strong>{input}</strong></div>
+        ))}
+      </div>
+      <div className="data-stream" aria-hidden="true">
+        {Array.from({ length: 12 }, (_, index) => <i key={index} style={{ '--particle-index': index }} />)}
+      </div>
+      <div className="data-engine">
+        <Database aria-hidden="true" />
+        <span>STRUCTURED DATA</span>
+        <strong>{project.storageLabel}</strong>
+      </div>
+      <div className="data-output">
+        <span className="scene-caption">ANALYTICS → INSIGHTS</span>
+        {project.outputTypes.map((output) => <div key={output}><BarChart3 aria-hidden="true" /><span>{output}</span></div>)}
+      </div>
+    </div>
+  )
+}
+
+function PipelineScene({ project }) {
+  return (
+    <div className="pipeline-scene">
+      {project.process.map((step, index) => (
+        <div className="pipeline-stage" key={step}>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <i aria-hidden="true"><b /></i>
+          <strong>{step}</strong>
+          <small>{project.pipelineTools[index]}</small>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function EngineeringScene({ project }) {
+  return (
+    <div className="engineering-scene">
+      <div className="query-stack">
+        {project.engineeringFlow.map((step, index) => (
+          <div key={step}><span>{String(index + 1).padStart(2, '0')}</span><strong>{step}</strong></div>
+        ))}
+      </div>
+      <div className="query-engine-core"><Braces /><span>ANALYSIS ENGINE</span><strong>{project.engineLabel}</strong></div>
+      <div className="analysis-outputs">
+        {project.analysis.map((item, index) => (
+          <article key={item.title}><span>{String(index + 1).padStart(2, '0')}</span><h3>{item.title}</h3><p>{item.text}</p></article>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function TechnologyScene({ project }) {
+  return (
+    <div className="technology-scene">
+      <div className="technology-core"><Sparkles /><span>PROJECT SYSTEM</span><strong>{project.shortName}</strong></div>
+      {project.technologyMap.map((technology, index) => (
+        <div className={`technology-node technology-node-${index + 1}`} key={technology.name}>
+          <strong>{technology.name}</strong><span>{technology.use}</span>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function InsightsScene({ project }) {
+  return (
+    <div className="insights-scene">
+      <div className="insight-particles" aria-hidden="true">{Array.from({ length: 32 }, (_, index) => <i key={index} style={{ '--insight-index': index }} />)}</div>
+      <div className="insight-engine"><span>RAW DATA</span><ArrowRight /><strong>PATTERN</strong><ArrowRight /><b>INSIGHT</b></div>
+      <div className="insight-metrics">
+        {project.impactMetrics.map((metric, index) => (
+          <article key={metric.label} className={`impact-metric impact-metric-${index + 1}`}>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <strong>{metric.value}</strong>
+            <p>{metric.label}</p>
+            <small>{metric.note}</small>
+          </article>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function TransformationScene({ project }) {
+  return (
+    <div className="transformation-scene">
+      <div className="transformation-side is-before">
+        <span>BEFORE</span><strong>{project.before.title}</strong>
+        <div>{project.before.signals.map((signal) => <i key={signal}>{signal}</i>)}</div>
+      </div>
+      <div className="transformation-flow" aria-hidden="true"><i /><i /><i /><ArrowRight /></div>
+      <div className="transformation-side is-after">
+        <span>AFTER</span><strong>{project.after.title}</strong>
+        <div>{project.after.signals.map((signal) => <i key={signal}>{signal}</i>)}</div>
+      </div>
+    </div>
+  )
+}
+
 export function CaseStudyLayout({ project }) {
   const reduceMotion = useReducedMotion()
-  const [lightbox, setLightbox] = useState(null)
-  const closeButton = useRef(null)
+  const pageRef = useRef(null)
+  const pointerFrame = useRef(null)
 
   useEffect(() => {
     const previousTitle = document.title
@@ -32,144 +213,102 @@ export function CaseStudyLayout({ project }) {
     return () => { document.title = previousTitle }
   }, [project.title])
 
-  useEffect(() => {
-    if (lightbox === null) return undefined
-    const previousOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    closeButton.current?.focus()
-    const onKeyDown = (event) => {
-      if (event.key === 'Escape') setLightbox(null)
-      if (event.key === 'ArrowRight') setLightbox((index) => (index + 1) % project.images.length)
-      if (event.key === 'ArrowLeft') setLightbox((index) => (index - 1 + project.images.length) % project.images.length)
-    }
-    document.addEventListener('keydown', onKeyDown)
-    return () => {
-      document.removeEventListener('keydown', onKeyDown)
-      document.body.style.overflow = previousOverflow
-    }
-  }, [lightbox, project.images.length])
+  const handlePointerMove = (event) => {
+    if (reduceMotion || window.matchMedia('(hover: none), (pointer: coarse)').matches) return
+    if (pointerFrame.current) cancelAnimationFrame(pointerFrame.current)
+    pointerFrame.current = requestAnimationFrame(() => {
+      const x = event.clientX / window.innerWidth - 0.5
+      const y = event.clientY / window.innerHeight - 0.5
+      pageRef.current?.style.setProperty('--scene-shift-x', `${x * 12}px`)
+      pageRef.current?.style.setProperty('--scene-shift-y', `${y * 10}px`)
+      pageRef.current?.style.setProperty('--scene-rotate-y', `${x * 2.6}deg`)
+      pageRef.current?.style.setProperty('--scene-rotate-x', `${y * -2.2}deg`)
+    })
+  }
 
-  const reveal = reduceMotion
-    ? {}
-    : { initial: { opacity: 0, y: 18 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-70px' }, transition: { duration: .45 } }
+  const resetPointer = () => {
+    pageRef.current?.style.setProperty('--scene-shift-x', '0px')
+    pageRef.current?.style.setProperty('--scene-shift-y', '0px')
+    pageRef.current?.style.setProperty('--scene-rotate-y', '0deg')
+    pageRef.current?.style.setProperty('--scene-rotate-x', '0deg')
+  }
 
   return (
-    <div className="case-study-page">
-      <main id="main-content" className="case-study-shell">
+    <div ref={pageRef} className="case-study-page narrative-page" onPointerMove={handlePointerMove} onPointerLeave={resetPointer}>
+      <main id="main-content" className="case-study-shell narrative-shell">
         <Link to="/#projects" className="study-back"><ArrowLeft /> Back to projects</Link>
 
-        <Motion.header className="study-hero" initial={reduceMotion ? false : { opacity: 0, scale: .985 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .45 }}>
-          <div className="study-hero-copy">
-            <span className="study-kicker">{project.category}</span>
+        <Motion.header
+          className="narrative-hero"
+          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="narrative-hero-copy">
+            <span>{project.category}</span>
             <h1>{project.title}</h1>
-            <p className="study-summary">{project.summary}</p>
-            <div className="study-tools">{project.tools.map((tool) => <span key={tool}>{tool}</span>)}</div>
-            <div className="study-outcome"><Database aria-hidden="true" /><div><span>PRIMARY OUTCOME</span><p>{project.outcome}</p></div></div>
+            <p>{project.summary}</p>
+            <div className="narrative-hero-meta"><i>SCROLL TO EXPLORE</i><b>{project.data[0].value}</b><small>{project.data[0].label}</small></div>
           </div>
-          <button type="button" className="study-hero-frame" onClick={() => setLightbox(0)} aria-label={`Enlarge ${project.title} dashboard`}>
-            <img src={project.images[0]} alt={`${project.title} dashboard overview`} />
-            <span>Project display · select to enlarge</span>
-          </button>
+          <HeroScene project={project} reduceMotion={reduceMotion} />
         </Motion.header>
 
-        <Motion.section className="study-section" {...reveal}>
-          <StudyHeading number={1} title="The problem" />
-          <div className="study-note-card"><p>{project.problem}</p></div>
-        </Motion.section>
+        <NarrativeSection reduceMotion={reduceMotion}>
+          <SceneHeading number={1} label="THE PROBLEM → THE SOLUTION" title="From fragments to one decision system." note={project.problemShort} />
+          <ProblemScene project={project} />
+        </NarrativeSection>
 
-        <Motion.section className="study-section" {...reveal}>
-          <StudyHeading number={2} title="The approach" />
-          <div className="study-card-grid">
-            {project.approach.map((item) => <article className="study-menu-card" key={item.title}><span>{item.label}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}
-          </div>
-        </Motion.section>
+        <NarrativeSection reduceMotion={reduceMotion}>
+          <SceneHeading number={2} label="DATA / INPUT" title="Raw records enter. Structured signals emerge." note={project.dataNote} />
+          <DataFlowScene project={project} />
+        </NarrativeSection>
 
-        <Motion.section className="study-section study-split" {...reveal}>
-          <div>
-            <StudyHeading number={3} title="Data" />
-            <div className="study-data-ticket">
-              {project.data.map((item) => <div key={item.label}><strong>{item.value}</strong><span>{item.label}</span></div>)}
-              <p>{project.dataNote}</p>
+        <NarrativeSection reduceMotion={reduceMotion}>
+          <SceneHeading number={3} label="PROJECT PIPELINE" title="A six-stage path from source to decision." />
+          <PipelineScene project={project} />
+        </NarrativeSection>
+
+        <NarrativeSection reduceMotion={reduceMotion}>
+          <SceneHeading number={4} label="ENGINEERING / ANALYSIS" title="The work inside the system." />
+          <EngineeringScene project={project} />
+        </NarrativeSection>
+
+        <NarrativeSection reduceMotion={reduceMotion}>
+          <SceneHeading number={5} label="TECHNOLOGY ECOSYSTEM" title="Each tool connected to a job." />
+          <TechnologyScene project={project} />
+        </NarrativeSection>
+
+        <NarrativeSection reduceMotion={reduceMotion} className="insight-narrative-section">
+          <SceneHeading number={6} label="DATA → INSIGHT" title="Patterns become decisions." note={project.takeaway} />
+          <InsightsScene project={project} />
+        </NarrativeSection>
+
+        <NarrativeSection reduceMotion={reduceMotion}>
+          <SceneHeading number={7} label="BEFORE → AFTER" title="The project’s value, in one transition." />
+          <TransformationScene project={project} />
+        </NarrativeSection>
+
+        <NarrativeSection reduceMotion={reduceMotion} className="narrative-ending">
+          <div className="ending-system">
+            <div className="ending-core"><Database /><span>COMPLETED SYSTEM</span><strong>{project.shortName}</strong></div>
+            <div className="ending-path" aria-label="Problem to impact workflow">
+              {['PROBLEM', 'DATA', 'PROCESS', 'INSIGHT', 'IMPACT'].map((item, index) => <span key={item}>{item}{index < 4 && <ArrowRight />}</span>)}
             </div>
           </div>
-          <div>
-            <StudyHeading number={4} title="Process" />
-            <ol className="study-process">
-              {project.process.map((step, index) => <li key={step}><span>{String(index + 1).padStart(2, '0')}</span><p>{step}</p></li>)}
-            </ol>
-          </div>
-        </Motion.section>
-
-        <Motion.section className="study-section" {...reveal}>
-          <StudyHeading number={5} title="Analysis" note="The questions explored and methods used." />
-          <div className="study-analysis-grid">
-            {project.analysis.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.text}</p></article>)}
-          </div>
-        </Motion.section>
-
-        <Motion.section className="study-section" {...reveal}>
-          <StudyHeading number={6} title="Key insights" note="The most decision-relevant findings, summarized for quick review." />
-          <div className="insight-receipt">
-            <div className="receipt-header"><Database /><span>INSIGHT SUMMARY / {project.shortName}</span></div>
-            {project.insights.map((item, index) => (
-              <article key={item.title}><span>Insight {String(index + 1).padStart(2, '0')}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></article>
-            ))}
-            <div className="receipt-total"><span>Takeaway</span><strong>{project.takeaway}</strong></div>
-          </div>
-        </Motion.section>
-
-        <Motion.section className="study-section" {...reveal}>
-          <StudyHeading number={7} title="Dashboard & results" note="Interactive outputs presented as focused dashboard views." />
-          <div className={`study-gallery ${project.images.length === 1 ? 'single' : ''}`}>
-            {project.images.map((image, index) => (
-              <button type="button" key={image} onClick={() => setLightbox(index)} aria-label={`Enlarge dashboard view ${index + 1}`}>
-                <img src={image} alt={`${project.title} dashboard view ${index + 1}`} loading="lazy" />
-                <span>Display {String(index + 1).padStart(2, '0')}</span>
-              </button>
-            ))}
-          </div>
-        </Motion.section>
-
-        <Motion.section className="study-section" {...reveal}>
-          <StudyHeading number={8} title="Technology" />
-          <div className="study-chalkboard">
-            <span>TECHNOLOGY INDEX</span>
-            <div>{project.tools.map((tool) => <p key={tool}><Database aria-hidden="true" /> {tool}</p>)}</div>
-          </div>
-        </Motion.section>
-
-        <Motion.section className="study-section" {...reveal}>
-          <StudyHeading number={9} title="Outcome" />
-          <div className="study-outcome-board">
-            <p>{project.outcomeLong}</p>
-            <div className="study-docs">
-              <Link to={project.reportRoute}><FileText /> <span><strong>Project report</strong><small>Read the full methodology</small></span><ArrowUpRight /></Link>
-              <Link to={project.presentationRoute}><Presentation /> <span><strong>Presentation</strong><small>Open the project deck</small></span><ArrowUpRight /></Link>
+          <div className="ending-copy">
+            <span>PROJECT IMPACT</span>
+            <h2>{project.outcome}</h2>
+            <div className="study-docs narrative-docs">
+              <Link to={project.reportRoute}><FileText /><span><strong>Project report</strong><small>Full methodology</small></span><ArrowUpRight /></Link>
+              <Link to={project.presentationRoute}><Presentation /><span><strong>Presentation</strong><small>Project deck</small></span><ArrowUpRight /></Link>
+            </div>
+            <div className="narrative-actions">
+              <a href={project.github} target="_blank" rel="noreferrer" className="button-primary"><FaGithub /> View GitHub</a>
+              <Link to="/#projects" className="button-secondary"><ArrowLeft /> Back to projects</Link>
             </div>
           </div>
-        </Motion.section>
-
-        <section className="study-closing pixel-corners">
-          <Database aria-hidden="true" />
-          <p>END OF PROJECT RECORD.</p>
-          <div>
-            <a href={project.github} target="_blank" rel="noreferrer" className="button-primary"><FaGithub /> View GitHub</a>
-            <Link to="/#projects" className="button-secondary"><ArrowLeft /> Back to projects</Link>
-          </div>
-        </section>
+        </NarrativeSection>
       </main>
-
-      {lightbox !== null && (
-        <div className="study-lightbox" role="dialog" aria-modal="true" aria-label={`${project.title} image viewer`} onMouseDown={(event) => event.target === event.currentTarget && setLightbox(null)}>
-          <div className="study-lightbox-frame">
-            <button ref={closeButton} type="button" className="lightbox-close" onClick={() => setLightbox(null)} aria-label="Close image viewer"><X /></button>
-            {project.images.length > 1 && <button type="button" className="lightbox-prev" onClick={() => setLightbox((lightbox - 1 + project.images.length) % project.images.length)} aria-label="Previous dashboard"><ChevronLeft /></button>}
-            <img src={project.images[lightbox]} alt={`${project.title} enlarged dashboard view ${lightbox + 1}`} />
-            {project.images.length > 1 && <button type="button" className="lightbox-next" onClick={() => setLightbox((lightbox + 1) % project.images.length)} aria-label="Next dashboard"><ChevronRight /></button>}
-            <p>{project.shortName} · view {lightbox + 1} of {project.images.length}</p>
-          </div>
-        </div>
-      )}
     </div>
   )
 }

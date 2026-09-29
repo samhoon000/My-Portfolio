@@ -1,20 +1,3 @@
-import {
-  FaChartLine,
-  FaChartBar,
-  FaDatabase,
-  FaFileExcel,
-  FaMicrosoft,
-  FaPython,
-  FaTable,
-  FaRegChartBar,
-  FaGithub,
-  FaGitAlt,
-  FaServer,
-  FaAws
-} from 'react-icons/fa'
-import { SiPandas, SiNumpy, SiScikitlearn } from 'react-icons/si'
-import { BiBarChartAlt2 } from 'react-icons/bi'
-
 export const navLinks = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
@@ -51,28 +34,28 @@ export const experiences = [
 
 export const skills = {
   'Languages': [
-    { name: 'Python', icon: FaPython },
-    { name: 'SQL', icon: FaDatabase },
+    { name: 'Python', logo: 'https://api.iconify.design/logos/python.svg', description: 'Data analysis · Automation · ML' },
+    { name: 'SQL', logo: 'https://api.iconify.design/vscode-icons/file-type-sql.svg', description: 'Querying · Analytics · Databases' },
   ],
-  'Libraries': [
-    { name: 'Pandas', icon: SiPandas },
-    { name: 'NumPy', icon: SiNumpy },
-    { name: 'Scikit-Learn', icon: SiScikitlearn },
-    { name: 'Matplotlib', icon: FaChartLine },
+  'Libraries & Frameworks': [
+    { name: 'Pandas', logo: 'https://api.iconify.design/logos/pandas-icon.svg', description: 'Data manipulation' },
+    { name: 'NumPy', logo: 'https://api.iconify.design/logos/numpy.svg', description: 'Numerical computing' },
+    { name: 'Scikit-learn', logo: 'https://api.iconify.design/simple-icons/scikitlearn.svg?color=%23f7931e', description: 'Machine learning' },
+    { name: 'Matplotlib', logo: 'https://api.iconify.design/logos/matplotlib-icon.svg', description: 'Data visualization' },
   ],
   'Analytics & BI': [
-    { name: 'Power BI', icon: FaMicrosoft },
-    { name: 'Excel', icon: FaFileExcel },
-    { name: 'Data Cleaning', icon: FaTable },
-    { name: 'EDA', icon: FaRegChartBar },
-    { name: 'Feature Engineering', icon: BiBarChartAlt2 },
+    { name: 'Power BI', logo: 'https://api.iconify.design/logos/microsoft-power-bi.svg', description: 'Business intelligence' },
+    { name: 'Excel', logo: 'https://api.iconify.design/vscode-icons/file-type-excel.svg', description: 'Modeling · Reporting' },
+    { name: 'Data Cleaning', description: 'Reliable, analysis-ready data' },
+    { name: 'EDA', description: 'Patterns · Outliers · Insight' },
+    { name: 'Feature Engineering', description: 'Signal from raw variables' },
   ],
-  'Development & Cloud': [
-    { name: 'Git', icon: FaGitAlt },
-    { name: 'GitHub', icon: FaGithub },
-    { name: 'AWS', icon: FaAws },
-    { name: 'MySQL', icon: FaDatabase },
-    { name: 'phpMyAdmin', icon: FaServer },
+  'Development & Databases': [
+    { name: 'Git', logo: 'https://api.iconify.design/logos/git-icon.svg', description: 'Version control' },
+    { name: 'GitHub', logo: 'https://api.iconify.design/mdi/github.svg?color=%23f4f2ed', description: 'Code collaboration' },
+    { name: 'AWS', logo: 'https://api.iconify.design/logos/aws.svg', description: 'Cloud infrastructure' },
+    { name: 'MySQL', logo: 'https://api.iconify.design/logos/mysql-icon.svg', description: 'Relational databases' },
+    { name: 'phpMyAdmin', logo: 'https://api.iconify.design/simple-icons/phpmyadmin.svg?color=%236c78af', description: 'Database administration' },
   ]
 }
 

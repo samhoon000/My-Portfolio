@@ -1,166 +1,203 @@
 import { useEffect, useRef } from 'react'
-import { motion as Motion, useReducedMotion } from 'framer-motion'
-import { ArrowDownRight, ArrowUpRight, Download } from 'lucide-react'
-import { contactDetails } from '../data/portfolio-data'
+import { motion as Motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import { ArrowDown, ArrowDownRight, Download } from 'lucide-react'
 
-function DataSculpture() {
+function SpaceField() {
   const canvasRef = useRef(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
     const context = canvas?.getContext('2d')
-    if (!canvas || !context) return undefined
+    const hero = canvas?.closest('.hero-section')
+    if (!canvas || !context || !hero) return undefined
 
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const pointer = { x: 0, y: 0, tx: 0, ty: 0 }
     let width = 0
     let height = 0
     let frame = 0
-    let visible = true
-    const start = performance.now()
+    let active = true
+    let stars = []
+    let meteors = []
+
+    const makeScene = () => {
+      const mobile = width < 720
+      const count = mobile ? 34 : 78
+      stars = Array.from({ length: count }, (_, index) => ({
+        x: Math.random(),
+        y: Math.random(),
+        size: Math.random() * (mobile ? 1.05 : 1.45) + .25,
+        depth: index % 3 === 0 ? 1 : index % 3 === 1 ? .55 : .22,
+        alpha: Math.random() * .46 + .16,
+        phase: Math.random() * Math.PI * 2,
+      }))
+      meteors = Array.from({ length: mobile ? 1 : 3 }, (_, index) => ({
+        x: .56 + Math.random() * .38,
+        y: .08 + Math.random() * .54,
+        length: 18 + Math.random() * 32,
+        alpha: index === 0 ? .28 : .12,
+        speed: .018 + Math.random() * .012,
+        delay: Math.random() * 16,
+      }))
+    }
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect()
-      const ratio = Math.min(window.devicePixelRatio || 1, 1.75)
+      const ratio = Math.min(window.devicePixelRatio || 1, 1.6)
       width = rect.width
       height = rect.height
       canvas.width = Math.max(1, Math.floor(width * ratio))
       canvas.height = Math.max(1, Math.floor(height * ratio))
       context.setTransform(ratio, 0, 0, ratio, 0, 0)
-    }
-
-    const rotate = (point, ax, ay) => {
-      let [x, y, z] = point
-      const cosy = Math.cos(ax)
-      const siny = Math.sin(ax)
-      const y1 = y * cosy - z * siny
-      const z1 = y * siny + z * cosy
-      const cosx = Math.cos(ay)
-      const sinx = Math.sin(ay)
-      return [x * cosx + z1 * sinx, y1, -x * sinx + z1 * cosx]
+      makeScene()
     }
 
     const draw = (now) => {
-      if (!visible) return
-      const t = reduced ? 0.7 : (now - start) * 0.00024
-      pointer.x += (pointer.tx - pointer.x) * 0.045
-      pointer.y += (pointer.ty - pointer.y) * 0.045
+      if (!active) return
+      pointer.x += (pointer.tx - pointer.x) * .035
+      pointer.y += (pointer.ty - pointer.y) * .035
       context.clearRect(0, 0, width, height)
 
-      const cx = width * 0.5
-      const cy = height * 0.49
-      const scale = Math.min(width, height) * 0.26
-      const rings = width < 640 ? 22 : 34
-      const segments = width < 640 ? 46 : 72
-      const points = []
-
-      for (let i = 0; i < rings; i += 1) {
-        const u = (i / (rings - 1) - 0.5) * Math.PI * 1.42
-        const row = []
-        for (let j = 0; j < segments; j += 1) {
-          const v = (j / segments) * Math.PI * 2
-          const swell = 1 + 0.2 * Math.sin(v * 3 + t * 2) * Math.cos(u * 2)
-          const radius = Math.cos(u) * swell
-          const x = radius * Math.cos(v)
-          const y = Math.sin(u) * 1.2
-          const z = radius * Math.sin(v) + 0.17 * Math.sin(u * 4 + v * 2 + t * 3)
-          const r = rotate([x, y, z], -0.36 + pointer.y * 0.22, t + pointer.x * 0.34)
-          const perspective = 3.8 / (4.3 - r[2])
-          row.push({ x: cx + r[0] * scale * perspective, y: cy + r[1] * scale * perspective, z: r[2], p: perspective })
-        }
-        points.push(row)
-      }
-
-      context.lineWidth = 0.7
-      for (let i = 0; i < rings; i += 1) {
+      stars.forEach((star) => {
+        const shimmer = reduced ? 1 : .76 + Math.sin(now * .00075 + star.phase) * .24
+        const px = star.x * width + pointer.x * star.depth * 14
+        const py = star.y * height + pointer.y * star.depth * 9
         context.beginPath()
-        points[i].forEach((point, j) => j ? context.lineTo(point.x, point.y) : context.moveTo(point.x, point.y))
-        context.closePath()
-        context.strokeStyle = `rgba(232,229,222,${0.05 + (i / rings) * 0.16})`
-        context.stroke()
-      }
-      for (let j = 0; j < segments; j += 3) {
-        context.beginPath()
-        points.forEach((row, i) => i ? context.lineTo(row[j].x, row[j].y) : context.moveTo(row[j].x, row[j].y))
-        context.strokeStyle = 'rgba(232,229,222,.11)'
-        context.stroke()
-      }
-
-      points.flat().filter((_, index) => index % 11 === 0).sort((a, b) => a.z - b.z).forEach((point) => {
-        const alpha = Math.max(0.08, Math.min(0.68, (point.z + 1.5) / 3))
-        context.beginPath()
-        context.arc(point.x, point.y, Math.max(.5, point.p * 1.55), 0, Math.PI * 2)
-        context.fillStyle = `rgba(255,250,240,${alpha})`
+        context.arc(px, py, star.size, 0, Math.PI * 2)
+        context.fillStyle = `rgba(242,235,222,${star.alpha * shimmer})`
         context.fill()
       })
 
-      const gradient = context.createRadialGradient(cx, cy, 0, cx, cy, scale * 1.8)
-      gradient.addColorStop(0, 'rgba(255,255,255,.035)')
-      gradient.addColorStop(1, 'rgba(255,255,255,0)')
-      context.fillStyle = gradient
-      context.fillRect(0, 0, width, height)
+      if (!reduced) {
+        meteors.forEach((meteor) => {
+          const cycle = ((now * .001 * meteor.speed + meteor.delay) % 1)
+          if (cycle > .14) return
+          const travel = cycle / .14
+          const x = meteor.x * width + travel * 120
+          const y = meteor.y * height + travel * 52
+          const gradient = context.createLinearGradient(x, y, x - meteor.length, y - meteor.length * .42)
+          gradient.addColorStop(0, `rgba(255,240,218,${meteor.alpha * (1 - travel)})`)
+          gradient.addColorStop(1, 'rgba(255,240,218,0)')
+          context.beginPath()
+          context.moveTo(x, y)
+          context.lineTo(x - meteor.length, y - meteor.length * .42)
+          context.strokeStyle = gradient
+          context.lineWidth = .8
+          context.stroke()
+        })
+      }
 
-      if (!reduced) frame = requestAnimationFrame(draw)
+      frame = requestAnimationFrame(draw)
     }
 
-    const onPointer = (event) => {
-      const rect = canvas.getBoundingClientRect()
-      pointer.tx = ((event.clientX - rect.left) / rect.width - 0.5) * 2
-      pointer.ty = ((event.clientY - rect.top) / rect.height - 0.5) * 2
+    const onPointerMove = (event) => {
+      const rect = hero.getBoundingClientRect()
+      pointer.tx = ((event.clientX - rect.left) / rect.width - .5) * 2
+      pointer.ty = ((event.clientY - rect.top) / rect.height - .5) * 2
+      hero.style.setProperty('--space-x', `${pointer.tx * -7}px`)
+      hero.style.setProperty('--space-y', `${pointer.ty * -5}px`)
     }
+
+    const onPointerLeave = () => {
+      pointer.tx = 0
+      pointer.ty = 0
+      hero.style.setProperty('--space-x', '0px')
+      hero.style.setProperty('--space-y', '0px')
+    }
+
     const observer = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting
-      if (visible && !reduced) {
+      active = entry.isIntersecting
+      if (active) {
         cancelAnimationFrame(frame)
         frame = requestAnimationFrame(draw)
       }
     })
 
     resize()
-    canvas.addEventListener('pointermove', onPointer, { passive: true })
+    hero.addEventListener('pointermove', onPointerMove, { passive: true })
+    hero.addEventListener('pointerleave', onPointerLeave, { passive: true })
     window.addEventListener('resize', resize, { passive: true })
-    observer.observe(canvas)
+    observer.observe(hero)
     draw(performance.now())
 
     return () => {
       cancelAnimationFrame(frame)
-      canvas.removeEventListener('pointermove', onPointer)
+      hero.removeEventListener('pointermove', onPointerMove)
+      hero.removeEventListener('pointerleave', onPointerLeave)
       window.removeEventListener('resize', resize)
       observer.disconnect()
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="data-sculpture" aria-label="Interactive abstract three-dimensional data sculpture" role="img" />
+  return <canvas ref={canvasRef} className="space-field" aria-hidden="true" />
 }
+
 export function HeroSection() {
+  const heroRef = useRef(null)
   const reduceMotion = useReducedMotion()
-  const reveal = reduceMotion ? false : { opacity: 0, y: 32 }
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
+  const sceneOpacity = useTransform(scrollYProgress, [0, .58, 1], [1, .74, 0])
+  const sceneScale = useTransform(scrollYProgress, [0, 1], [1, 1.08])
+  const sceneY = useTransform(scrollYProgress, [0, 1], [0, 110])
+  const copyY = useTransform(scrollYProgress, [0, 1], [0, 55])
+  const reveal = reduceMotion ? false : { opacity: 0, y: 28 }
 
   return (
-    <section id="home" className="hero-section">
-      <div className="hero-rule" aria-hidden="true"><span>01 — PORTFOLIO / 2026</span><span>INDIA · REMOTE</span></div>
-      <div className="hero-stage">
-        <Motion.div className="hero-copy" initial={reveal} animate={{ opacity: 1, y: 0 }} transition={{ duration: .85, ease: [.16, 1, .3, 1] }}>
-          <p className="hero-eyebrow">Data Analyst · AI & Data Science</p>
-          <h1><span>Abdul</span><span className="hero-name-outline">Samhoon</span></h1>
-          <p className="hero-intro">I turn complex data into clear systems, useful decisions, and business-ready stories.</p>
-          <div className="hero-actions">
-            <a href="#projects" className="button-primary" data-cursor="VIEW">Selected work <ArrowDownRight /></a>
-            <a href="/Abdul_Samhoon_Resume.pdf" download className="button-text">Résumé <Download /></a>
-          </div>
-        </Motion.div>
+    <section id="home" ref={heroRef} className="hero-section">
+      <Motion.div
+        className="hero-space-art"
+        aria-hidden="true"
+        style={reduceMotion ? undefined : { opacity: sceneOpacity, scale: sceneScale, y: sceneY }}
+      />
+      <SpaceField />
+      <div className="hero-vignette" aria-hidden="true" />
 
-        <Motion.div className="hero-visual" initial={reduceMotion ? false : { opacity: 0, scale: .92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1, delay: .16, ease: [.16, 1, .3, 1] }}>
-          <DataSculpture />
-          <div className="sculpture-caption"><span>FIG. 01</span><span>ANALYTICAL FORM</span></div>
-        </Motion.div>
-      </div>
-      <div className="hero-footerline">
-        <span>AVAILABLE FOR DATA & ANALYTICS OPPORTUNITIES</span>
-        <div>
-          <a href={contactDetails.github} target="_blank" rel="noreferrer">GitHub <ArrowUpRight /></a>
-          <a href={contactDetails.linkedin} target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight /></a>
+      <div className="hero-inner">
+        <div className="hero-rule" aria-hidden="true">
+          <span>01 — PORTFOLIO / 2026</span>
+          <span>INDIA · REMOTE</span>
         </div>
+
+        <div className="hero-stage">
+          <Motion.div
+            className="hero-copy"
+            initial={reveal}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: .9, ease: [.16, 1, .3, 1] }}
+            style={reduceMotion ? undefined : { y: copyY }}
+          >
+            <p className="hero-eyebrow">Data Analyst · AI &amp; Data Science</p>
+            <h1><span>Abdul</span><span className="hero-name-outline">Samhoon</span></h1>
+            <p className="hero-intro">I turn complex data into clear systems, useful decisions, and business-ready stories.</p>
+            <div className="hero-actions">
+              <a href="#projects" className="button-primary" data-cursor="VIEW">Selected work <ArrowDownRight /></a>
+              <a href="/Abdul_Samhoon_Resume.pdf" download className="button-text">Résumé <Download /></a>
+            </div>
+          </Motion.div>
+
+          <Motion.div
+            className="hero-annotation"
+            initial={reduceMotion ? false : { opacity: 0, x: 18 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: .55, ease: [.16, 1, .3, 1] }}
+          >
+            <span>FIG. 01</span>
+            <strong>DEEP DATA FIELD</strong>
+            <i aria-hidden="true" />
+          </Motion.div>
+        </div>
+
+        <div className="hero-footerline">
+          <span>AVAILABLE FOR DATA &amp; ANALYTICS OPPORTUNITIES</span>
+          <a className="hero-scroll-cue" href="#main-content">
+            <span>Scroll to explore</span>
+            <ArrowDown />
+          </a>
+        </div>
+      </div>
+
+      <div className="hero-transition" aria-hidden="true">
+        <div className="hero-data-grid" />
       </div>
     </section>
   )

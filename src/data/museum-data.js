@@ -6,7 +6,7 @@ export const profile = {
   education: 'B.E. in Artificial Intelligence & Data Science · Class of 2027',
   experience: 'Data Analyst Intern · Trinetro Labs',
   roles: ['Data Analyst Intern', 'Business Analyst Intern', 'BI Analyst Intern', 'Product Analyst Intern'],
-  portrait: null,
+  portrait: '/AbdulSamhoon.jpg',
   resume: '/Abdul_Samhoon_Resume.pdf',
   email: 'bdlsmhn@gmail.com',
   github: 'https://github.com/samhoon000',

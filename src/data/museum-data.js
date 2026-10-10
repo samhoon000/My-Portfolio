@@ -1,5 +1,4 @@
-// Edit this file to update the museum's content and assets.
-// Add a portrait to public/ and set portrait to its path when one is available.
+// Portfolio content and paths to genuine project assets.
 export const profile = {
   name: 'Abdul Samhoon',
   headline: 'Turning data into decisions.',
@@ -13,22 +12,6 @@ export const profile = {
   github: 'https://github.com/samhoon000',
   linkedin: 'https://www.linkedin.com/in/abdul-samhoon-0bb8b5330/',
 }
-
-export const rooms = [
-  { id: 'orientation', label: 'Orientation', number: '01' },
-  { id: 'about', label: 'About', number: '02' },
-  { id: 'experience', label: 'Experience', number: '03' },
-  { id: 'skills', label: 'Data lab', number: '04' },
-  { id: 'projects', label: 'Projects', number: '05' },
-  { id: 'resume', label: 'Résumé', number: '06' },
-  { id: 'contact', label: 'Contact', number: '07' },
-]
-
-export const journeys = [
-  { id: 'analyst', number: 'A', title: 'Meet the analyst', subtitle: 'The person behind the process', start: 'about', path: ['About', 'Experience', 'Skills', 'Résumé'], icon: '◌' },
-  { id: 'work', number: 'B', title: 'Explore the work', subtitle: 'Questions, methods, evidence', start: 'projects', path: ['Projects', 'Case studies', 'Findings', 'Résumé'], icon: '▥' },
-  { id: 'lab', number: 'C', title: 'Enter the data lab', subtitle: 'The tools behind the thinking', start: 'skills', path: ['SQL', 'Python', 'BI', 'Project evidence'], icon: '⌘' },
-]
 
 export const projects = [
   {
@@ -81,6 +64,18 @@ export const projects = [
     tools: ['Excel', 'Power BI', 'DAX'],
     images: ['/Apple-Stock-1.png', '/Apple-Stock-2.png'], imageAlts: ['Apple stock dashboard overview', 'Apple stock dashboard detail'],
     repo: 'https://github.com/samhoon000/apple-stock-trend-dashboard', documents: [],
+  },
+  {
+    slug: 'air-quality', number: '05', title: 'Karnataka Air Quality Analysis', category: 'Environmental analytics', theme: 'blue',
+    teaser: 'A visual comparison of air pollution by place, year, and season in Karnataka.',
+    problem: 'The available dashboard examines how the displayed air pollution measures vary across Karnataka locations and over time.',
+    data: 'The project screenshot labels its source as CPCB data and its displayed period as 2004–2015. The underlying dataset and preparation notes are not included in this portfolio repository.',
+    investigation: 'The available artifact compares location averages, a yearly trend, and seasonal RSPM values. The exact preparation steps and tooling are not documented in the available source.',
+    insights: 'In the displayed top-ten comparison, Tumkur has the highest average RSPM. The seasonal chart shows winter above summer and monsoon for the displayed measure.',
+    implication: 'The dashboard points to locations and seasons that merit closer investigation; it does not establish causes or health outcomes.',
+    tools: ['CPCB data', 'Dashboard', 'Air quality'],
+    images: ['/karnataka-aqi-1.png'], imageAlts: ['Karnataka air quality dashboard showing location, yearly, and seasonal comparisons'],
+    repo: null, documents: [], evidenceNote: 'Dashboard screenshot is available; source repository and methodology are not yet attached.',
   },
 ]
 

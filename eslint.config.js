@@ -5,7 +5,8 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  // The earlier museum experiment is preserved but is not part of the active app.
+  globalIgnores(['dist', 'src/museum/**']),
   {
     files: ['**/*.{js,jsx}'],
     extends: [

@@ -1,15 +1,15 @@
 # 👤 Samhoon | Data Analyst & Data Science Portfolio
 > B.E. in Artificial Intelligence & Data Science | Aspiring Data Analyst / Business Analyst / Data Science Intern
 
-## Interactive Data Museum
+## Motion-driven editorial portfolio
 
-The portfolio is an interactive museum built with React, Vite, and Tailwind CSS. Visitors can choose one of three routes, use the exhibition map, filter the project gallery, open six-chapter case studies, and track visited rooms locally. All content remains accessible without completing a route.
+The current site is an editorial, motion-led portfolio built with React Router and Vite. The homepage gives direct access to selected work, analytical methods, background, experience, credentials, and contact details. Each of the five projects has its own case-study route with the original dashboard imagery and available source documents.
 
-- Edit profile details, links, project stories, skill connections, credentials, and the portrait path in `src/data/museum-data.js`.
-- To add Abdul's photograph, place the image in `public/` and set `profile.portrait` to its public path, for example `'/abdul-portrait.jpg'`. The monogram remains as the fallback until then.
-- The museum atmosphere uses lightweight CSS animation so it works without a video file. Reduced-motion visitors receive a still scene.
-- Original reports and presentations remain in `public/`, with the previous document routes redirected to those assets.
-- Exploration progress is saved in the browser under `samhoon-museum-v1`; no account is required.
+- Edit profile details, links, project stories, skill connections, credentials, and recognition in `src/data/museum-data.js`.
+- The active interface is `src/Editorial.jsx` and `src/editorial.css`. The earlier museum implementation remains in the repository as previous work and is not loaded by the app.
+- Motion uses lightweight CSS and viewport observation. Reduced-motion visitors receive a static version without entrance animations.
+- Reports, presentations, résumé, and dashboard images remain in `public/`. Previous museum and document URLs redirect to current sections, case studies, or original assets.
+- The Karnataka air-quality case study uses a genuine dashboard screenshot. Its repository and methodology are not present in this checkout, so the page marks those details as unavailable.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/abdul-samhoon-0bb8b5330/)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github)](https://github.com/samhoon000)

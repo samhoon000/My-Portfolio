@@ -1,110 +1,58 @@
-import { useEffect, useState } from 'react'
-import { Link, Route, Routes, useLocation, useParams } from 'react-router-dom'
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Check, Download, Mail, Menu, X } from 'lucide-react'
-import { FaGithub as Github, FaLinkedinIn as Linkedin } from 'react-icons/fa'
-import { credentials, journeys, profile, projects, recognition, rooms, skillGroups } from './data/museum-data'
+import { useEffect } from 'react'
+import { Navigate, Route, Routes, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { MuseumProvider } from './museum/MuseumContext'
+import { MuseumNav } from './museum/MuseumNav'
+import { AboutRoom, AtriumRoom, ContactRoom, EntranceRoom, ExperienceRoom, ProjectGalleryRoom, SkillsRoom } from './museum/Rooms'
+import { CaseRoom } from './museum/CaseRoom'
+import './museum/rooms.css'
+import './museum/responsive.css'
 
-const KEY = 'samhoon-museum-v1'
-function useMuseum() {
-  const [progress, setProgress] = useState(() => {
-    try { return JSON.parse(localStorage.getItem(KEY)) || { rooms: [], projects: [], skills: [] } }
-    catch { return { rooms: [], projects: [], skills: [] } }
-  })
-  const [notice, setNotice] = useState('')
-  const visit = (type, id) => setProgress(current => {
-    if (current[type]?.includes(id)) return current
-    const next = { ...current, [type]: [...(current[type] || []), id] }
-    localStorage.setItem(KEY, JSON.stringify(next))
-    if (type === 'projects' && next.projects.length === 1) setNotice('FIRST DISCOVERY / CASE STUDY OPENED')
-    if (type === 'skills' && next.skills.length === 1) setNotice('DATA LAB / FIRST METHOD EXPLORED')
-    return next
-  })
-  useEffect(() => { if (!notice) return; const timer = setTimeout(() => setNotice(''), 3500); return () => clearTimeout(timer) }, [notice])
-  return { progress, visit, notice }
+function LegacyCase() {
+  const { slug } = useParams()
+  return <Navigate to={`/museum/projects/${slug}`} replace />
 }
 
-function ScrollToLocation() {
+function LegacyDocument({ href }) {
+  useEffect(() => { window.location.replace(href) }, [href])
+  return <main className="legacy-document"><p>Opening document…</p><a href={href}>Open it here</a></main>
+}
+
+function LegacyHashRedirect() {
   const { pathname, hash } = useLocation()
+  const navigate = useNavigate()
   useEffect(() => {
-    if (hash) requestAnimationFrame(() => document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }))
-    else window.scrollTo(0, 0)
-  }, [pathname, hash])
+    const targets = { orientation: '/museum', about: '/museum/about', projects: '/museum/projects', skills: '/museum/skills', experience: '/museum/experience', achievements: '/museum/experience', certifications: '/museum/experience', contact: '/museum/contact' }
+    if (pathname === '/' && targets[hash.slice(1)]) navigate(targets[hash.slice(1)], { replace: true })
+  }, [pathname, hash, navigate])
   return null
 }
 
-function Reveal({ children, className = '' }) {
-  const [node, setNode] = useState(null)
-  const [visible, setVisible] = useState(false)
-  useEffect(() => {
-    if (!node) return
-    const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect() } }, { threshold: .08 })
-    observer.observe(node)
-    return () => observer.disconnect()
-  }, [node])
-  return <div ref={setNode} className={`reveal ${visible ? 'visible' : ''} ${className}`}>{children}</div>
+function App() {
+  return <MuseumProvider>
+    <a className="skip-link" href="#museum-main">Skip to room content</a>
+    <LegacyHashRedirect />
+    <MuseumNav />
+    <div id="museum-main" tabIndex={-1}>
+      <Routes>
+        <Route path="/" element={<EntranceRoom />} />
+        <Route path="/museum" element={<AtriumRoom />} />
+        <Route path="/museum/about" element={<AboutRoom />} />
+        <Route path="/museum/projects" element={<ProjectGalleryRoom />} />
+        <Route path="/museum/projects/:slug" element={<CaseRoom />} />
+        <Route path="/museum/skills" element={<SkillsRoom />} />
+        <Route path="/museum/experience" element={<ExperienceRoom />} />
+        <Route path="/museum/contact" element={<ContactRoom />} />
+        <Route path="/project/:slug" element={<LegacyCase />} />
+        <Route path="/project/food-health/report" element={<LegacyDocument href="/food-health-report.pdf" />} />
+        <Route path="/project/food-health/presentation" element={<LegacyDocument href="/food-health-presentation.pdf" />} />
+        <Route path="/project/instacart/report" element={<LegacyDocument href="/instacart-report.pdf" />} />
+        <Route path="/project/instacart/presentation" element={<LegacyDocument href="/instacart-presentation.pdf" />} />
+        <Route path="/projects/instacart/report" element={<LegacyDocument href="/instacart-report.pdf" />} />
+        <Route path="/projects/instacart/presentation" element={<LegacyDocument href="/instacart-presentation.pdf" />} />
+        <Route path="*" element={<Navigate to="/museum" replace />} />
+      </Routes>
+    </div>
+  </MuseumProvider>
 }
 
-function Atmosphere({ kind }) { return <div className={`atmosphere atmosphere--${kind}`} aria-hidden="true"><div className="atmosphere-grid" /><div className="atmosphere-beam" /><div className="atmosphere-arc arc-one" /><div className="atmosphere-arc arc-two" /><div className="atmosphere-horizon" /><div className="atmosphere-particles" /></div> }
-function Label({ number, title, note = 'THE SAMHOON COLLECTION' }) { return <div className="section-label"><span><i /> EXHIBIT {number} / {title}</span><span>{note}</span></div> }
-
-function Navigation({ active, progress }) {
-  const [open, setOpen] = useState(false)
-  const location = useLocation()
-  useEffect(() => setOpen(false), [location])
-  return <>
-    <header className="site-header">
-      <Link className="brand" to="/#home" aria-label="Abdul Samhoon, return to entrance"><span className="brand-glyph">AS<span>·</span></span><span className="brand-name">ABDUL SAMHOON<small>DATA / DECISIONS</small></span></Link>
-      <nav className="desktop-nav" aria-label="Primary navigation">{rooms.map(room => <Link key={room.id} to={`/#${room.id}`} className={active === room.id ? 'active' : ''}>{room.id === 'orientation' ? 'Map' : room.id === 'skills' ? 'Skills' : room.label}</Link>)}</nav>
-      <div className="header-right"><span className="header-progress">EXPLORED <b>{String(progress.rooms.length).padStart(2, '0')}/07</b></span><a className="header-resume" href={profile.resume} download>RÉSUMÉ <ArrowUpRight size={13} /></a><button className="menu-toggle" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? 'Close menu' : 'Open menu'}>{open ? <X /> : <Menu />}</button></div>
-    </header>
-    {open && <nav className="mobile-nav" aria-label="Mobile navigation">{rooms.map(room => <Link key={room.id} to={`/#${room.id}`}><span>{room.number}</span>{room.label}<ArrowUpRight size={16} /></Link>)}<a href={profile.resume} download>Download résumé <Download size={16} /></a></nav>}
-  </>
-}
-
-function Room({ id, visit, children, className = '' }) {
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) visit('rooms', id) }, { threshold: .2 })
-    const node = document.getElementById(id); if (node) observer.observe(node)
-    return () => observer.disconnect()
-  }, [id, visit])
-  return <section id={id} className={`room ${className}`}>{children}</section>
-}
-
-function Portrait() { const [failed, setFailed] = useState(false); return profile.portrait && !failed ? <img src={profile.portrait} alt="Portrait of Abdul Samhoon" onError={() => setFailed(true)} /> : <div className="portrait-placeholder"><span>AS</span><small>PORTRAIT SPACE</small></div> }
-
-function Entrance() { return <section id="home" className="entrance"><Atmosphere kind="entrance" /><div className="entrance-content wrap"><div className="entrance-top"><span>AN INTERACTIVE ANALYTICAL PORTFOLIO</span><span>OPEN TO INTERNSHIPS / 2026</span></div><div className="entrance-body"><div className="entrance-copy"><p className="eyebrow">WELCOME TO THE DATA MUSEUM</p><h1>Turning data<br /><em>into decisions.</em></h1><p className="entrance-intro">{profile.intro}</p><div className="entrance-roles">{profile.roles.slice(0, 3).map(role => <span key={role}>{role}</span>)}</div><div className="button-row"><Link className="button button-primary" to="/#orientation">Enter the museum <ArrowRight size={17} /></Link><Link className="button button-outline" to="/#projects">Explore my work <ArrowUpRight size={17} /></Link></div><div className="entrance-quick"><a href={profile.resume} download>View résumé <Download size={14} /></a><Link to="/#contact">Contact me <ArrowUpRight size={14} /></Link></div></div><div className="portrait-installation"><div className="portrait-halo" /><div className="portrait-frame"><Portrait /><div className="portrait-corner corner-a" /><div className="portrait-corner corner-b" /></div><div className="portrait-caption"><span>FIG. 00 / THE ANALYST</span><span>ABDUL SAMHOON</span></div></div></div><div className="entrance-bottom"><span>01 — BEGIN EXPLORING</span><Link to="/#orientation">SCROLL TO ENTER <ArrowDown size={16} /></Link><span>SCROLL / DISCOVER / CONNECT</span></div></div></section> }
-
-function Orientation({ progress }) { return <div className="room-inner wrap"><Label number="01" title="ORIENTATION HALL" note="CHOOSE YOUR OWN ROUTE" /><Reveal className="orientation-heading"><p className="eyebrow">THE EXPERIENCE IS YOURS</p><h2>Where would you<br /><em>like to begin?</em></h2><p>Take a guided route or move freely between rooms. Every exhibit is open from the start.</p></Reveal><div className="journey-grid">{journeys.map(journey => <Link className={`journey journey--${journey.id}`} to={`/#${journey.start}`} key={journey.id}><div className="journey-top"><span>PATH {journey.number}</span><span className="journey-symbol">{journey.icon}</span></div><div className="journey-art"><span className="journey-orbit" /><span className="journey-core">{journey.number}</span></div><div className="journey-bottom"><p>{journey.subtitle}</p><h3>{journey.title}</h3><span className="journey-route">{journey.path.join(' → ')}</span><span className="journey-enter">Begin this route <ArrowUpRight size={16} /></span></div></Link>)}</div><div className="map-installation"><div className="map-copy"><p className="eyebrow">EXHIBITION DIRECTORY</p><h3>Every room,<br />one connected story.</h3><p>Choose any destination. A small marker remembers where you’ve been on this device.</p></div><div className="floor-map" aria-label="Exhibition map">{rooms.map((room, index) => <Link key={room.id} className={`map-node map-node--${index + 1} ${progress.rooms.includes(room.id) ? 'visited' : ''}`} to={`/#${room.id}`}><span>{room.number}</span><strong>{room.label}</strong>{progress.rooms.includes(room.id) && <Check size={13} aria-label="Visited" />}</Link>)}</div></div></div> }
-
-function About() { return <><Atmosphere kind="about" /><div className="room-inner wrap"><Label number="02" title="THE ANALYST" /><div className="about-layout"><Reveal className="about-statement"><p className="eyebrow">ABOUT ABDUL</p><h2>Curiosity is<br />the first <em>query.</em></h2><p>I study Artificial Intelligence & Data Science and work at the intersection of analysis, reporting, and useful business questions. I’m most interested in the moment a complicated dataset becomes something a team can understand and use.</p><div className="inline-links"><Link to="/#experience">My journey <ArrowUpRight size={15} /></Link><Link to="/project/instacart">A featured project <ArrowUpRight size={15} /></Link></div></Reveal><Reveal className="about-panel"><div className="about-panel-head">ANALYST PROFILE <span>NO. 001</span></div><div className="about-monogram">A<span>/</span>S</div><dl><div><dt>EDUCATION</dt><dd>{profile.education}</dd></div><div><dt>CURRENT EXPERIENCE</dt><dd>{profile.experience}</dd></div><div><dt>FOCUS</dt><dd>Data analytics · Business intelligence · Decision support</dd></div></dl></Reveal></div></div></> }
-
-function Experience() { return <div className="room-inner wrap"><Label number="03" title="CAREER TIMELINE" /><Reveal className="section-intro"><p className="eyebrow">A JOURNEY IN PROGRESS</p><h2>Built by learning.<br /><em>Sharpened by doing.</em></h2></Reveal><div className="timeline"><article className="timeline-item"><div className="timeline-date">2027 <span>EXPECTED</span></div><div className="timeline-dot" /><div><p className="eyebrow">EDUCATION</p><h3>B.E. in Artificial Intelligence & Data Science</h3><p>Building a foundation in analytical methods, programming, data systems, and applied machine learning.</p></div></article><article className="timeline-item"><div className="timeline-date">2026 <span>AUG — PRESENT</span></div><div className="timeline-dot" /><div><p className="eyebrow">PRACTICE</p><h3>Data Analyst Intern <em>at Trinetro Labs</em></h3><p>Working with SQL databases, semantic modeling, and AI-powered business intelligence workflows in a remote startup environment.</p><details><summary>Read the focus areas <ArrowDown size={15} /></summary><ul><li>Data analysis and reporting workflows</li><li>SQL and database exploration</li><li>Collaboration with product and engineering teams</li></ul></details></div></article></div><div className="recognition-strip"><span>RECOGNITION IN THE ARCHIVE</span>{recognition.map(item => <a key={item.title} href={item.image} target="_blank" rel="noreferrer"><strong>{item.title}</strong><small>{item.detail}</small><ArrowUpRight size={16} /></a>)}</div></div> }
-
-function DataLab({ visit, progress }) { const [selected, setSelected] = useState('sql'); const group = skillGroups.find(item => item.id === selected); const onTabKey = event => { if (!['ArrowDown', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return; event.preventDefault(); const tabs = [...event.currentTarget.querySelectorAll('[role="tab"]')]; const index = tabs.indexOf(document.activeElement); const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length; tabs[next]?.focus(); tabs[next]?.click() }; return <><Atmosphere kind="lab" /><div className="room-inner wrap"><Label number="04" title="DATA LAB" note="METHODS / TOOLS / EVIDENCE" /><Reveal className="section-intro"><p className="eyebrow">TOOLS WITH A PURPOSE</p><h2>Inside the<br /><em>analytical process.</em></h2><p>Explore a discipline to see what I do with it and where it appears in actual work.</p></Reveal><div className="lab-layout"><div className="lab-list" role="tablist" aria-label="Skill disciplines" onKeyDown={onTabKey}>{skillGroups.map(item => <button type="button" key={item.id} role="tab" aria-selected={selected === item.id} aria-controls="skill-panel" onClick={() => { setSelected(item.id); visit('skills', item.id) }} className={selected === item.id ? 'selected' : ''}><span>{item.number}</span><strong>{item.title}</strong>{progress.skills.includes(item.id) && <Check size={14} aria-label="Explored" />}<ArrowUpRight size={18} /></button>)}</div><div className="lab-display" id="skill-panel" role="tabpanel"><div className="lab-display-top"><span>SPECIMEN / {group.number}</span><span>SELECT A METHOD</span></div><div className="lab-visual" aria-hidden="true"><span /><span /><span /><span /><i /></div><p className="eyebrow">CURRENT EXHIBIT</p><h3>{group.title}</h3><p>{group.description}</p><div className="tool-chips">{group.tools.map(tool => <span key={tool}>{tool}</span>)}</div><div className="related-work"><span>SEE IT IN PRACTICE</span>{group.projectSlugs.map(slug => { const project = projects.find(item => item.slug === slug); return <Link key={slug} to={`/project/${slug}`}>{project.title}<ArrowUpRight size={15} /></Link> })}</div></div></div></div></> }
-
-function Gallery({ progress }) { const [filter, setFilter] = useState('All work'); const filters = ['All work', ...new Set(projects.map(project => project.category))]; const visible = filter === 'All work' ? projects : projects.filter(project => project.category === filter); return <div className="room-inner wrap"><Label number="05" title="PROJECT GALLERY" note="SELECTED ANALYTICAL WORK" /><Reveal className="gallery-heading"><div><p className="eyebrow">THE MAIN EXHIBITION</p><h2>Evidence on<br /><em>display.</em></h2></div><p>Each exhibit starts with a question, moves through a method, and ends with evidence you can inspect.</p></Reveal><div className="gallery-filters" aria-label="Filter projects">{filters.map(item => <button type="button" key={item} className={filter === item ? 'active' : ''} onClick={() => setFilter(item)} aria-pressed={filter === item}>{item}</button>)}</div><div className="exhibit-list">{visible.map((project, index) => <article key={project.slug} className={`project-exhibit project-exhibit--${project.theme} ${index % 2 ? 'reverse' : ''}`}><div className="project-copy"><div className="project-meta"><span>EXHIBIT {project.number}</span><span>{project.category.toUpperCase()}</span>{progress.projects.includes(project.slug) && <span className="seen-mark"><Check size={13} /> EXPLORED</span>}</div><h3>{project.title}</h3><p className="project-teaser">{project.teaser}</p><div className="project-tools">{project.tools.slice(0, 4).map(tool => <span key={tool}>{tool}</span>)}</div><div className="project-actions"><Link className="text-action" to={`/project/${project.slug}`}>Enter case study <ArrowUpRight size={18} /></Link><a href={project.repo} target="_blank" rel="noreferrer">Repository <Github size={16} /></a></div></div><Link to={`/project/${project.slug}`} className="project-image" aria-label={`Explore ${project.title} case study`}><div className="image-stage"><img src={project.images[0]} alt={project.imageAlts[0]} loading="lazy" /></div><div className="image-caption"><span>ANALYTICAL ARTIFACT / {project.number}</span><span>OPEN EXHIBIT ↗</span></div></Link></article>)}</div></div> }
-
-function Resume() { return <div className="room-inner wrap"><Label number="06" title="RÉSUMÉ & CREDENTIALS" /><div className="resume-layout"><Reveal><p className="eyebrow">THE QUICK REFERENCE</p><h2>All the details.<br /><em>One document.</em></h2><p>A concise account of my education, internship, tools, and analytical work.</p><a className="button button-primary" href={profile.resume} download>Download résumé <Download size={17} /></a><div className="resume-facts"><span>{profile.education}</span><span>{profile.experience}</span></div></Reveal><div className="credential-column"><p className="eyebrow">VERIFIED CREDENTIALS</p>{credentials.map(item => <a className="credential" key={item.title} href={item.href} target="_blank" rel="noreferrer"><img src={item.image} alt="" loading="lazy" /><span><small>{item.issuer}</small><strong>{item.title}</strong></span><ArrowUpRight size={17} /></a>)}</div></div></div> }
-
-function Contact() { return <><Atmosphere kind="finale" /><div className="room-inner wrap contact-inner"><Label number="07" title="THE FINAL ROOM" note="THE CONVERSATION STARTS HERE" /><Reveal><p className="eyebrow">THANK YOU FOR EXPLORING</p><h2>Let’s make the<br /><em>next insight count.</em></h2><p>I’m looking for internship opportunities in data analysis, business analysis, BI, and product analytics. If my work sparks a question, I’d love to talk.</p><a className="contact-email" href={`mailto:${profile.email}`}>{profile.email}<ArrowUpRight size={34} /></a><div className="contact-links"><a href={profile.linkedin} target="_blank" rel="noreferrer"><Linkedin size={18} /> LinkedIn <ArrowUpRight size={14} /></a><a href={profile.github} target="_blank" rel="noreferrer"><Github size={18} /> GitHub <ArrowUpRight size={14} /></a><a href={profile.resume} download><Download size={18} /> Résumé <ArrowUpRight size={14} /></a><a href={`mailto:${profile.email}`}><Mail size={18} /> Email <ArrowUpRight size={14} /></a></div></Reveal><div className="final-line"><span>ABDUL SAMHOON / DATA ANALYST</span><Link to="/#home">BACK TO THE ENTRANCE ↑</Link><span>BUILT TO BE EXPLORED</span></div></div></> }
-
-function Home({ progress, visit }) {
-  const [active, setActive] = useState('')
-  useEffect(() => { const observer = new IntersectionObserver(entries => { const entry = entries.find(item => item.isIntersecting); if (entry) setActive(entry.target.id) }, { rootMargin: '-15% 0px -75% 0px' }); rooms.forEach(room => { const node = document.getElementById(room.id); if (node) observer.observe(node) }); return () => observer.disconnect() }, [])
-  return <><Navigation active={active} progress={progress} /><main id="main-content"><Entrance /><Room id="orientation" visit={visit} className="orientation-room"><Orientation progress={progress} /></Room><Room id="about" visit={visit} className="about-room"><About /></Room><Room id="experience" visit={visit} className="experience-room"><Experience /></Room><Room id="skills" visit={visit} className="lab-room"><DataLab visit={visit} progress={progress} /></Room><Room id="projects" visit={visit} className="gallery-room"><Gallery progress={progress} /></Room><Room id="resume" visit={visit} className="resume-room"><Resume /></Room><Room id="contact" visit={visit} className="contact-room"><Contact /></Room></main></>
-}
-
-function CaseStudy({ progress, visit }) {
-  const { slug } = useParams()
-  const project = projects.find(item => item.slug === slug)
-  useEffect(() => { if (project) visit('projects', project.slug) }, [project, visit])
-  useEffect(() => { if (project) document.title = `${project.title} | Abdul Samhoon`; return () => { document.title = 'Abdul Samhoon | Interactive Data Museum' } }, [project])
-  if (!project) return <main className="not-found wrap"><h1>Exhibit not found.</h1><Link to="/#projects">Return to project gallery <ArrowRight size={17} /></Link></main>
-  const next = projects[(projects.findIndex(item => item.slug === slug) + 1) % projects.length]
-  const chapters = [['01', 'The problem', project.problem], ['02', 'The data', project.data], ['03', 'The investigation', project.investigation], ['04', 'The insights', project.insights], ['05', 'The implications', project.implication]]
-  return <><Navigation active="projects" progress={progress} /><main id="main-content" className={`case-page case-page--${project.theme}`}><div className="case-hero"><Atmosphere kind="case" /><div className="wrap case-hero-inner"><Link className="back-link" to="/#projects"><ArrowLeft size={17} /> BACK TO THE GALLERY</Link><p className="eyebrow">CASE STUDY / EXHIBIT {project.number} / {project.category.toUpperCase()}</p><h1>{project.title}</h1><p>{project.teaser}</p><div className="case-tools">{project.tools.map(tool => <span key={tool}>{tool}</span>)}</div><div className="case-cover"><img src={project.images[0]} alt={project.imageAlts[0]} /><span>FIG. 01 — PROJECT DASHBOARD</span></div></div></div><div className="case-content wrap"><div className="case-rail"><span>THE STORY</span>{chapters.map(chapter => <a key={chapter[0]} href={`#chapter-${chapter[0]}`}>{chapter[0]} / {chapter[1]}</a>)}<a href="#chapter-06">06 / Evidence</a></div><div className="case-chapters">{chapters.map(chapter => <section id={`chapter-${chapter[0]}`} className="case-chapter" key={chapter[0]}><Reveal><span className="case-chapter-number">CHAPTER {chapter[0]} / 06</span><h2>{chapter[1]}</h2><p>{chapter[2]}</p>{chapter[0] === '03' && <div className="method-flow">{project.tools.slice(0, 4).map((tool, index) => <span key={tool}>{String(index + 1).padStart(2, '0')} <strong>{tool}</strong></span>)}</div>}{chapter[0] === '04' && project.images[1] && <figure className="case-inline-image"><img src={project.images[1]} alt={project.imageAlts[1]} loading="lazy" /><figcaption>FIG. 02 — ADDITIONAL PROJECT VIEW</figcaption></figure>}{chapter[0] === '04' && <Link className="chapter-next" to="/#skills">Explore the methods behind this work <ArrowUpRight size={16} /></Link>}{chapter[0] === '05' && <Link className="chapter-next" to="/#experience">Learn about my internship <ArrowUpRight size={16} /></Link>}</Reveal></section>)}<section id="chapter-06" className="case-chapter"><Reveal><span className="case-chapter-number">CHAPTER 06 / 06</span><h2>The evidence</h2><p>Inspect the repository and original project artifacts.</p><div className="evidence-links"><a href={project.repo} target="_blank" rel="noreferrer"><Github size={18} /> Source repository <ArrowUpRight size={17} /></a>{project.documents.map(doc => <a key={doc.href} href={doc.href} target="_blank" rel="noreferrer">{doc.label} <ArrowUpRight size={17} /></a>)}</div></Reveal></section></div></div><div className="case-next wrap"><div><span>CONTINUE YOUR VISIT</span><h2>What will you<br /><em>explore next?</em></h2></div><div><Link to={`/project/${next.slug}`}>Next case study: {next.title} <ArrowUpRight size={17} /></Link><Link to="/#orientation">Return to the exhibition map <ArrowUpRight size={17} /></Link><Link to="/#contact">Start a conversation <ArrowUpRight size={17} /></Link></div></div></main></>
-}
-
-function LegacyDocument({ href }) { useEffect(() => { window.location.replace(href) }, [href]); return <main className="not-found wrap"><p>Opening project document…</p><a href={href}>Open the document</a></main> }
-function App() { const { progress, visit, notice } = useMuseum(); return <div className="museum-app"><ScrollToLocation /><a className="skip-link" href="#main-content">Skip to content</a><Routes><Route path="/" element={<Home progress={progress} visit={visit} />} /><Route path="/project/:slug" element={<CaseStudy progress={progress} visit={visit} />} /><Route path="/project/food-health/report" element={<LegacyDocument href="/food-health-report.pdf" />} /><Route path="/project/food-health/presentation" element={<LegacyDocument href="/food-health-presentation.pdf" />} /><Route path="/project/instacart/report" element={<LegacyDocument href="/instacart-report.pdf" />} /><Route path="/project/instacart/presentation" element={<LegacyDocument href="/instacart-presentation.pdf" />} /><Route path="/projects/instacart/report" element={<LegacyDocument href="/instacart-report.pdf" />} /><Route path="/projects/instacart/presentation" element={<LegacyDocument href="/instacart-presentation.pdf" />} /><Route path="*" element={<Home progress={progress} visit={visit} />} /></Routes>{notice && <div className="discovery-toast" role="status"><span>✦</span>{notice}</div>}</div> }
 export default App

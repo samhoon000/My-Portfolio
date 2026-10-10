@@ -1,6 +1,16 @@
 # 👤 Samhoon | Data Analyst & Data Science Portfolio
 > B.E. in Artificial Intelligence & Data Science | Aspiring Data Analyst / Business Analyst / Data Science Intern
 
+## Interactive Data Museum
+
+The portfolio is an interactive museum built with React, Vite, and Tailwind CSS. Visitors can choose one of three routes, use the exhibition map, filter the project gallery, open six-chapter case studies, and track visited rooms locally. All content remains accessible without completing a route.
+
+- Edit profile details, links, project stories, skill connections, credentials, and the portrait path in `src/data/museum-data.js`.
+- To add Abdul's photograph, place the image in `public/` and set `profile.portrait` to its public path, for example `'/abdul-portrait.jpg'`. The monogram remains as the fallback until then.
+- The museum atmosphere uses lightweight CSS animation so it works without a video file. Reduced-motion visitors receive a still scene.
+- Original reports and presentations remain in `public/`, with the previous document routes redirected to those assets.
+- Exploration progress is saved in the browser under `samhoon-museum-v1`; no account is required.
+
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/abdul-samhoon-0bb8b5330/)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github)](https://github.com/samhoon000)
 [![Email](https://img.shields.io/badge/Email-Contact-red?style=for-the-badge&logo=gmail)](mailto:bdlsmhn@gmail.com)

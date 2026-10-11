@@ -9,7 +9,7 @@ The current site is an editorial, motion-led portfolio built with React Router a
 - The active interface is `src/Editorial.jsx` and `src/editorial.css`. The earlier museum implementation remains in the repository as previous work and is not loaded by the app.
 - Motion uses lightweight CSS and viewport observation. Reduced-motion visitors receive a static version without entrance animations.
 - Reports, presentations, résumé, and dashboard images remain in `public/`. Previous museum and document URLs redirect to current sections, case studies, or original assets.
-- The Karnataka air-quality case study uses a genuine dashboard screenshot. Its repository and methodology are not present in this checkout, so the page marks those details as unavailable.
+- The Tamil Nadu Air Quality Analysis case study uses `public/TamilNadu_Dashboard.png` and links to its [source repository](https://github.com/samhoon000/tamilnadu-air-quality-analysis).
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/abdul-samhoon-0bb8b5330/)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github)](https://github.com/samhoon000)

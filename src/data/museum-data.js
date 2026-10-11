@@ -29,7 +29,19 @@ export const projects = [
     documents: [{ label: 'Read report', href: '/instacart-report.pdf' }, { label: 'View presentation', href: '/instacart-presentation.pdf' }],
   },
   {
-    slug: 'food-health', number: '02', title: 'Food Nutrition & Health Risk', category: 'Health analytics', theme: 'green',
+    slug: 'tamil-nadu-air-quality', number: '02', title: 'Tamil Nadu Air Quality Analysis', category: 'Data Analytics / Business Intelligence', theme: 'blue',
+    teaser: 'What do five years of Tamil Nadu monitoring records reveal about pollution patterns and data coverage?',
+    problem: 'Fragmented government monitoring files make it difficult to compare pollutant concentrations across cities, stations, and years with confidence.',
+    data: 'The analysis covers 10,890 verified observations from 31 monitoring stations across 8 Tamil Nadu cities and urban areas, spanning 2011–2015. It examines PM₁₀/RSPM, PM₂.₅, NO₂, and SO₂ concentrations from CPCB and TNPCB ambient monitoring records.',
+    investigation: 'Combined yearly CSV files, standardized changing schemas and date formats, audited duplicates and invalid values, and preserved missing readings without arbitrary imputation. Stored the validated dataset in Parquet, queried it with DuckDB and SQL, and built an interactive Power BI dashboard with DAX measures. A 30-observation screening threshold is an analytical safeguard for small-sample city comparisons, not a regulatory rule.',
+    insights: 'The analysis observed persistent PM₁₀ concerns, higher chronic PM₁₀ levels in Thoothukudi and Trichy, and stronger NO₂ patterns in commercial and traffic-heavy corridors. Industrial locations showed more variable spikes rather than uniformly higher baselines. Sparse PM₂.₅ coverage and expansion from 16 stations in 5 cities to 31 in 8 limit direct year-over-year comparisons.',
+    implication: 'The dashboard helps compare monthly trends, city and station hotspots, location types, extreme observations, and monitoring coverage while keeping data gaps visible. These patterns support further investigation; they do not establish causes.',
+    tools: ['Python', 'SQL', 'Pandas', 'DuckDB', 'Power BI', 'DAX', 'Parquet'],
+    images: ['/TamilNadu_Dashboard.png'], imageAlts: ['Tamil Nadu Air Quality Analysis Power BI dashboard'],
+    repo: 'https://github.com/samhoon000/tamilnadu-air-quality-analysis', documents: [],
+  },
+  {
+    slug: 'food-health', number: '03', title: 'Food Nutrition & Health Risk', category: 'Health analytics', theme: 'green',
     teaser: 'How can a product catalog become a practical nutrition risk view?',
     problem: 'A catalog of nutritional records needed a consistent way to surface potential risk and support product review.',
     data: 'The project analyzes more than 1,000 catalog items with nutrition attributes and semi-structured source records.',
@@ -42,7 +54,7 @@ export const projects = [
     documents: [{ label: 'Read report', href: '/food-health-report.pdf' }, { label: 'View presentation', href: '/food-health-presentation.pdf' }],
   },
   {
-    slug: 'food-prices', number: '03', title: 'India Food Price Intelligence', category: 'Market analytics', theme: 'blue',
+    slug: 'food-prices', number: '04', title: 'India Food Price Intelligence', category: 'Market analytics', theme: 'blue',
     teaser: 'Where do commodity prices diverge, and which markets fluctuate most?',
     problem: 'Regional price variation can make market patterns difficult to read at a glance.',
     data: 'The project uses Indian agricultural commodity pricing data. The repository holds the source analysis and dashboard context.',
@@ -54,7 +66,7 @@ export const projects = [
     repo: 'https://github.com/samhoon000/indian-food-price-volatility', documents: [],
   },
   {
-    slug: 'apple-stock', number: '04', title: 'Apple Stock Price Analysis', category: 'Financial analytics', theme: 'violet',
+    slug: 'apple-stock', number: '05', title: 'Apple Stock Price Analysis', category: 'Financial analytics', theme: 'violet',
     teaser: 'How can historical market data be easier to explore?',
     problem: 'Long price histories need clear views of trends, trading activity, and volatility.',
     data: 'The project uses historical Apple stock market data for its dashboard analysis.',
@@ -65,25 +77,13 @@ export const projects = [
     images: ['/Apple-Stock-1.png', '/Apple-Stock-2.png'], imageAlts: ['Apple stock dashboard overview', 'Apple stock dashboard detail'],
     repo: 'https://github.com/samhoon000/apple-stock-trend-dashboard', documents: [],
   },
-  {
-    slug: 'air-quality', number: '05', title: 'Karnataka Air Quality Analysis', category: 'Environmental analytics', theme: 'blue',
-    teaser: 'A visual comparison of air pollution by place, year, and season in Karnataka.',
-    problem: 'The available dashboard examines how the displayed air pollution measures vary across Karnataka locations and over time.',
-    data: 'The project screenshot labels its source as CPCB data and its displayed period as 2004–2015. The underlying dataset and preparation notes are not included in this portfolio repository.',
-    investigation: 'The available artifact compares location averages, a yearly trend, and seasonal RSPM values. The exact preparation steps and tooling are not documented in the available source.',
-    insights: 'In the displayed top-ten comparison, Tumkur has the highest average RSPM. The seasonal chart shows winter above summer and monsoon for the displayed measure.',
-    implication: 'The dashboard points to locations and seasons that merit closer investigation; it does not establish causes or health outcomes.',
-    tools: ['CPCB data', 'Dashboard', 'Air quality'],
-    images: ['/karnataka-aqi-1.png'], imageAlts: ['Karnataka air quality dashboard showing location, yearly, and seasonal comparisons'],
-    repo: null, documents: [], evidenceNote: 'Dashboard screenshot is available; source repository and methodology are not yet attached.',
-  },
 ]
 
 export const skillGroups = [
-  { id: 'sql', number: '01', title: 'SQL & databases', description: 'Shape reliable questions with joins, aggregations, and data models.', tools: ['SQL', 'DuckDB', 'MySQL', 'Data modeling'], projectSlugs: ['instacart', 'food-health'] },
-  { id: 'python', number: '02', title: 'Python & analysis', description: 'Clean, explore, and transform raw records into analysis-ready data.', tools: ['Python', 'Pandas', 'NumPy', 'EDA'], projectSlugs: ['instacart', 'food-health', 'food-prices'] },
-  { id: 'bi', number: '03', title: 'Business intelligence', description: 'Translate analytical work into dashboards and decision-ready reporting.', tools: ['Power BI', 'DAX', 'Excel', 'KPI analysis'], projectSlugs: ['instacart', 'food-health', 'apple-stock'] },
-  { id: 'quality', number: '04', title: 'Data quality', description: 'Check missing values, normalize messy fields, and validate analytical inputs.', tools: ['Cleaning', 'Validation', 'Transformations'], projectSlugs: ['food-health', 'instacart'] },
+  { id: 'sql', number: '01', title: 'SQL & databases', description: 'Shape reliable questions with joins, aggregations, and data models.', tools: ['SQL', 'DuckDB', 'MySQL', 'Data modeling'], projectSlugs: ['instacart', 'tamil-nadu-air-quality', 'food-health'] },
+  { id: 'python', number: '02', title: 'Python & analysis', description: 'Clean, explore, and transform raw records into analysis-ready data.', tools: ['Python', 'Pandas', 'NumPy', 'EDA'], projectSlugs: ['instacart', 'tamil-nadu-air-quality', 'food-health', 'food-prices'] },
+  { id: 'bi', number: '03', title: 'Business intelligence', description: 'Translate analytical work into dashboards and decision-ready reporting.', tools: ['Power BI', 'DAX', 'Excel', 'KPI analysis'], projectSlugs: ['instacart', 'tamil-nadu-air-quality', 'food-health', 'apple-stock'] },
+  { id: 'quality', number: '04', title: 'Data quality', description: 'Check missing values, normalize messy fields, and validate analytical inputs.', tools: ['Cleaning', 'Validation', 'Transformations'], projectSlugs: ['food-health', 'instacart', 'tamil-nadu-air-quality'] },
   { id: 'ml', number: '05', title: 'Statistics & ML', description: 'Use statistical thinking and applied machine learning when the question calls for it.', tools: ['Statistics', 'Scikit-learn', 'Model evaluation'], projectSlugs: ['food-prices'] },
 ]
 

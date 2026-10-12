@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom'
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Download, Menu, X } from 'lucide-react'
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
 import { profile, projects, credentials, recognition, skillGroups } from './data/museum-data'
+import { createHeroInk } from './hero-ink'
 import './editorial.css'
 import './profile.css'
 
@@ -44,7 +45,31 @@ function Label({ index, children, light = false }) { return <div className={`sec
 
 function SignalGraphic() { return <div className="signal-graphic" aria-hidden="true"><div className="signal-graphic-caption">FIELD NOTES / 001<br />TRANSLATING COMPLEXITY</div><svg viewBox="0 0 560 560" role="presentation" focusable="false"><circle className="signal-orbit signal-orbit--one" cx="280" cy="280" r="222" /><circle className="signal-orbit signal-orbit--two" cx="280" cy="280" r="165" /><circle className="signal-orbit signal-orbit--three" cx="280" cy="280" r="106" /><circle className="signal-orbit signal-orbit--four" cx="280" cy="280" r="43" /><line x1="280" y1="28" x2="280" y2="532" /><line x1="28" y1="280" x2="532" y2="280" /><path className="signal-path" d="M56 347 C119 341 153 221 208 242 S284 377 327 294 S396 161 493 205" /><circle className="signal-point" cx="327" cy="294" r="8" /><circle className="signal-point signal-point--small" cx="493" cy="205" r="5" /></svg><div className="signal-graphic-index">01 — 05 / SELECTED WORK</div></div> }
 
-function Hero() { return <section className="hero" id="top"><div className="hero-grid" aria-hidden="true" /><div className="hero-inner"><div className="hero-kicker"><span className="status-dot" /> AVAILABLE FOR DATA & ANALYTICS OPPORTUNITIES <span>— 2026</span></div><div className="hero-main"><div className="hero-copy"><p className="hero-overline">ABDUL SAMHOON / ANALYTICAL PORTFOLIO</p><h1>Making<br />data <em>mean</em><br />more<span className="hero-period">.</span></h1><div className="hero-bottom-row"><p>I turn complex information into clear questions, useful dashboards, and decisions people can act on.</p><Link className="circle-link" to="/#work" aria-label="Explore selected work"><ArrowDown size={27} /></Link></div></div><div className="hero-visual"><SignalGraphic /><figure className="hero-profile"><div className="hero-photo-frame"><img src="/AbdulSamhoon.jpg" alt="Abdul Samhoon outdoors" fetchPriority="high" /></div><figcaption className="hero-profile-caption"><div><span>THE ANALYST / FIG. 01</span><strong>Abdul Samhoon</strong></div><div className="hero-socials"><a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="Abdul Samhoon on GitHub (opens in a new tab)" title="View Abdul Samhoon on GitHub"><FaGithub aria-hidden="true" /></a><a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Abdul Samhoon on LinkedIn (opens in a new tab)" title="View Abdul Samhoon on LinkedIn"><FaLinkedinIn aria-hidden="true" /></a></div></figcaption></figure></div></div><div className="hero-footer"><span>DATA ANALYST / AI & DATA SCIENCE STUDENT</span><span>SCROLL TO EXPLORE <ArrowDown size={13} /></span><span>PORTFOLIO, VOL. 01</span></div></div></section> }
+// Slow ambient light and ink-like forms behind the hero grid; nudged very slightly by the cursor, and on desktop
+// an ink layer between them that the cursor pushes aside (see hero-ink.js)
+function HeroAtmosphere() {
+  const ref = useRef(null), inkRef = useRef(null)
+  useEffect(() => {
+    const el = ref.current, hero = el.parentElement
+    const io = new IntersectionObserver(([entry]) => el.classList.toggle('is-offscreen', !entry.isIntersecting))
+    io.observe(hero)
+    if (!matchMedia('(pointer: fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return () => io.disconnect()
+    const ink = innerWidth > 650 ? createHeroInk(inkRef.current, hero) : null
+    let tx = 0, ty = 0, x = 0, y = 0, frame = 0
+    const step = () => {
+      x += (tx - x) * .035; y += (ty - y) * .035
+      el.style.setProperty('--mx', x.toFixed(4)); el.style.setProperty('--my', y.toFixed(4))
+      frame = Math.abs(tx - x) + Math.abs(ty - y) > .002 ? requestAnimationFrame(step) : 0
+    }
+    const move = e => { const r = hero.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width * 2 - 1; ty = (e.clientY - r.top) / r.height * 2 - 1; frame ||= requestAnimationFrame(step) }
+    const settle = () => { tx = ty = 0; frame ||= requestAnimationFrame(step) }
+    hero.addEventListener('pointermove', move); hero.addEventListener('pointerleave', settle)
+    return () => { io.disconnect(); ink?.destroy(); cancelAnimationFrame(frame); hero.removeEventListener('pointermove', move); hero.removeEventListener('pointerleave', settle) }
+  }, [])
+  return <div className="hero-atmos" ref={ref} aria-hidden="true"><div className="atmos-light"><span /><span /><span /><span /></div><canvas className="atmos-ink" ref={inkRef} /><div className="atmos-forms"><span /><span /><span /><span /></div></div>
+}
+
+function Hero() { return <section className="hero" id="top"><HeroAtmosphere /><div className="hero-grid" aria-hidden="true" /><div className="hero-inner"><div className="hero-kicker"><span className="status-dot" /> AVAILABLE FOR DATA & ANALYTICS OPPORTUNITIES <span>— 2026</span></div><div className="hero-main"><div className="hero-copy"><p className="hero-overline">ABDUL SAMHOON / ANALYTICAL PORTFOLIO</p><h1>Making<br />data <em>mean</em><br />more<span className="hero-period">.</span></h1><div className="hero-bottom-row"><p>I turn complex information into clear questions, useful dashboards, and decisions people can act on.</p><Link className="circle-link" to="/#work" aria-label="Explore selected work"><ArrowDown size={27} /></Link></div></div><div className="hero-visual"><SignalGraphic /><figure className="hero-profile"><div className="hero-photo-frame"><img src="/AbdulSamhoon.jpg" alt="Abdul Samhoon outdoors" fetchPriority="high" /></div><figcaption className="hero-profile-caption"><div><span>THE ANALYST / FIG. 01</span><strong>Abdul Samhoon</strong></div><div className="hero-socials"><a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="Abdul Samhoon on GitHub (opens in a new tab)" title="View Abdul Samhoon on GitHub"><FaGithub aria-hidden="true" /></a><a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Abdul Samhoon on LinkedIn (opens in a new tab)" title="View Abdul Samhoon on LinkedIn"><FaLinkedinIn aria-hidden="true" /></a></div></figcaption></figure></div></div><div className="hero-footer"><span>DATA ANALYST / AI & DATA SCIENCE STUDENT</span><span>SCROLL TO EXPLORE <ArrowDown size={13} /></span><span>PORTFOLIO, VOL. 01</span></div></div></section> }
 
 function ProjectCard({ project, index }) { return <article className={`project-card project-card--${project.theme} reveal`}><Link className="project-visual" to={projectPath(project.slug)} aria-label={`Read ${project.title} case study`}><span className="project-visual-grid" aria-hidden="true" /><img src={project.images[0]} alt={project.imageAlts[0]} loading="lazy" /><span className="project-visual-index">{String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span><span className="project-visual-arrow"><ArrowUpRight size={23} /></span></Link><div className="project-meta"><span>{project.category}</span><span>{project.tools.slice(0, 3).join(' / ')}</span></div><div className="project-card-title"><h3><Link to={projectPath(project.slug)}>{project.title}</Link></h3><Link className="project-text-link" to={projectPath(project.slug)} aria-label={`Open ${project.title}`}><ArrowUpRight size={25} /></Link></div><p>{project.teaser}</p></article> }
 

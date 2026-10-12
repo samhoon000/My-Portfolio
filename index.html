@@ -57,7 +57,7 @@
       .intro__ink .intro__stage{animation:i-recede .55s cubic-bezier(.4,0,.2,1) 2.18s both}
       .intro__herobox{position:absolute;left:0;right:0;top:var(--gt,var(--hh));height:var(--gh,calc(100% - var(--hh)));overflow:hidden}
       .intro__herobox::before{content:'';position:absolute;left:-22vw;bottom:-60vw;width:110vw;height:110vw;border:1px solid rgba(231,239,222,.15);border-radius:50%}
-      .intro__herobox div{position:absolute;inset:0;opacity:.18;background-image:linear-gradient(90deg,#f1f1df 1px,transparent 1px),linear-gradient(#f1f1df 1px,transparent 1px);background-size:14.28% 100%,100% 20%;-webkit-mask-image:linear-gradient(90deg,transparent 12%,#000 70%);mask-image:linear-gradient(90deg,transparent 12%,#000 70%)}
+      .intro__herogrid{position:absolute;inset:0;opacity:.18;background-image:linear-gradient(90deg,#f1f1df 1px,transparent 1px),linear-gradient(#f1f1df 1px,transparent 1px);background-size:14.28% 100%,100% 20%;-webkit-mask-image:linear-gradient(90deg,transparent 12%,#000 70%);mask-image:linear-gradient(90deg,transparent 12%,#000 70%)}
 
       /* Chart */
       .intro svg text{font:11px 'DM Mono',monospace;letter-spacing:.04em}
@@ -238,6 +238,8 @@
           return o + '</svg>';
         }
 
+        // The hero's ambient light + ink forms (styled by the site CSS), so the panel already matches the hero when it lifts
+        var atmos = '<div class="hero-atmos"><div class="atmos-light">' + '<span></span>'.repeat(4) + '</div><div class="atmos-forms">' + '<span></span>'.repeat(4) + '</div></div>';
         var frame = function (cap) { return '<div class="intro__frame"><p class="intro__cap">' + cap + '</p><p>MAKING DATA MEAN MORE.</p></div>'; };
         var mark = '<div class="intro__brand"><div class="intro__lift"><div class="intro__mark"><span class="intro__sym">A<span>·</span>S</span><span class="intro__name">Abdul Samhoon<small>DATA / ANALYSIS / INSIGHT</small></span></div></div></div>';
         var root = d.createElement('div');
@@ -246,7 +248,7 @@
         root.innerHTML = still ? '<div class="intro__paper"></div>' + mark
           : '<div class="intro__paper"><div class="intro__grid intro__grid--v"></div><div class="intro__grid intro__grid--h"></div>'
             + frame('<span>FIG. 00 — RAW / UNSORTED</span><span>FIG. 00 — SORTING</span>') + '<div class="intro__stagebox">' + chart(false) + '</div></div>'
-            + '<div class="intro__inkwrap"><div class="intro__ink"><div class="intro__herobox"><div></div></div>'
+            + '<div class="intro__inkwrap"><div class="intro__ink"><div class="intro__herobox">' + atmos + '<div class="intro__herogrid"></div></div>'
             + frame('FIG. 00 — SIGNAL / INSIGHT') + '<div class="intro__stagebox">' + chart(true) + '</div></div></div>' + mark;
         d.body.insertBefore(root, d.body.firstChild);
         de.classList.add('intro-on');

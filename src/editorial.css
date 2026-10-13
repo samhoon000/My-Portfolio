@@ -50,3 +50,5 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:po
 @media(prefers-reduced-motion:reduce){.hero-atmos span,.hero-atmos span::after{animation:none}}
 .atmos-ink{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity 1.6s ease}
 .atmos-ink.is-ready{opacity:1}
+.hero-organism{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-organism--front{z-index:1}

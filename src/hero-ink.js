@@ -138,10 +138,11 @@ export function createHeroInk(canvas, hero) {
     gl.drawArrays(gl.TRIANGLES, 0, 3)
   }
 
-  let vel, offsets, pressure, div, texel, aspect = 1
+  let vel, offsets, pressure, div, texel, aspect = 1, size = { width: 1, height: 1 }
   const resize = () => {
     const rect = hero.getBoundingClientRect()
     if (!rect.width || !rect.height) return
+    size = rect
     aspect = rect.width / rect.height
     // Ink is soft, so half resolution is plenty
     canvas.width = Math.round(rect.width * .5)
@@ -169,7 +170,7 @@ export function createHeroInk(canvas, hero) {
   const onLeave = () => { pointer.inside = false; pointer.fresh = true }
 
   const step = (dt, now) => {
-    const rect = hero.getBoundingClientRect()
+    const rect = size // cached on resize: reading layout every frame forced style recalcs
     if (pointer.inside) {
       const px = pointer.sx, py = pointer.sy
       const k = 1 - Math.exp(-dt * 22)

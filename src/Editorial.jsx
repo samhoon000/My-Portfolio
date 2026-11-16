@@ -104,8 +104,32 @@ function CaseStudy() {
   useEffect(() => { document.title = project ? `${project.title} — Abdul Samhoon` : 'Project not found — Abdul Samhoon' }, [project])
   if (!project) return <main id="main" className="not-found"><h1>Project not found.</h1><Link to="/#work">Return to selected work <ArrowLeft size={18} /></Link></main>
   const next = projects[(projects.findIndex(item => item.slug === slug) + 1) % projects.length]
-  const chapters = [{ n: '01', title: 'The question', body: project.problem }, { n: '02', title: 'The material', body: project.data }, { n: '03', title: 'The approach', body: project.investigation }, { n: '04', title: 'What emerged', body: project.insights }, { n: '05', title: 'Why it matters', body: project.implication }]
-  return <main id="main" className={`case-page case-page--${project.theme}`}><div className="case-hero"><div className="section-inner"><div className="case-hero-top"><Link to="/#work"><ArrowLeft size={17} /> SELECTED WORK</Link><span>CASE STUDY / {project.number} OF 0{projects.length}</span></div><div className="case-hero-grid"><div><p className="eyebrow">{project.category.toUpperCase()}</p><h1>{project.title}</h1><p className="case-teaser">{project.teaser}</p></div><div className="case-hero-mark" aria-hidden="true"><span>{project.number}</span><small>ANALYSIS / ARTIFACT / IMPACT</small></div></div><div className="case-tool-row">{project.tools.map(tool => <span key={tool}>{tool}</span>)}</div></div></div><section className="case-body section-pad"><div className="section-inner"><Label index="A">THE STORY</Label><div className="case-story">{chapters.map(chapter => <div className="case-chapter reveal" key={chapter.n}><span>{chapter.n} /</span><h2>{chapter.title}</h2><p>{chapter.body}</p></div>)}</div>{project.evidenceNote && <p className="evidence-note">{project.evidenceNote}</p>}</div></section><section className="case-gallery section-pad"><div className="section-inner"><Label index="B">THE ARTIFACTS</Label><div className="case-images">{project.images.map((src, index) => <figure className="reveal" key={src}><div><img src={src} alt={project.imageAlts[index]} loading="lazy" /></div><figcaption>FIG. {String(index + 1).padStart(2, '0')} / {project.imageAlts[index]}</figcaption></figure>)}</div><div className="case-links">{project.repo && <a href={project.repo} target="_blank" rel="noreferrer">Source repository <ArrowUpRight size={21} /></a>}{project.documents.map(doc => <a href={doc.href} target="_blank" rel="noreferrer" key={doc.href}>{doc.label} <ArrowUpRight size={21} /></a>)}</div></div></section><section className="case-next"><div className="section-inner"><span>NEXT CASE STUDY / {next.number}</span><Link to={projectPath(next.slug)}>{next.title}<ArrowRight size={40} /></Link><Link className="case-back" to="/#work">ALL WORK <ArrowUpRight size={17} /></Link></div></section></main>
+  const isOribi = project.slug === 'oribi'
+  const chapters = isOribi
+    ? [{ n: '01', title: 'The problem', body: project.problem }, { n: '02', title: 'The solution', body: project.solution }, { n: '03', title: 'Workflow & example', body: project.workflowSummary }, { n: '04', title: 'What Oribi reports', body: project.insights }, { n: '05', title: 'Using the context', body: project.contextFormats }]
+    : [{ n: '01', title: 'The question', body: project.problem }, { n: '02', title: 'The material', body: project.data }, { n: '03', title: 'The approach', body: project.investigation }, { n: '04', title: 'What emerged', body: project.insights }, { n: '05', title: 'Why it matters', body: project.implication }]
+  return <main id="main" className={`case-page case-page--${project.theme}`}>
+    <div className="case-hero"><div className="section-inner">
+      <div className="case-hero-top"><Link to="/#work"><ArrowLeft size={17} /> SELECTED WORK</Link><span>CASE STUDY / {project.number} OF 0{projects.length}</span></div>
+      <div className="case-hero-grid"><div><p className="eyebrow">{project.category.toUpperCase()}</p><h1>{project.title}</h1>{isOribi && <p className="oribi-detail-subtitle">{project.subtitle}</p>}<p className="case-teaser">{project.teaser}</p></div><div className="case-hero-mark" aria-hidden="true"><span>{project.number}</span><small>ANALYSIS / ARTIFACT / IMPACT</small></div></div>
+      <div className="case-tool-row">{project.tools.map(tool => <span key={tool}>{tool}</span>)}</div>
+    </div></div>
+    <section className="case-body section-pad"><div className="section-inner"><Label index="A">THE STORY</Label><div className="case-story">
+      {chapters.map((chapter, index) => <div className="case-chapter reveal" key={chapter.n}>
+        <span>{chapter.n} /</span><h2>{chapter.title}</h2>
+        <div className="case-chapter-content"><p>{chapter.body}</p>
+          {isOribi && index === 2 && <div className="oribi-example-grid">
+            <div className="oribi-workflow-panel"><h3>Workflow</h3><ol className="oribi-workflow">{project.workflow.map((step, stepIndex) => <li key={step}><span>{String(stepIndex + 1).padStart(2, '0')}</span>{step}</li>)}</ol></div>
+            <div className="oribi-code-panel"><h3>Python example</h3><pre className="oribi-code"><code>{project.codeExample}</code></pre></div>
+          </div>}
+          {isOribi && index === 2 && <p className="oribi-context-formats">{project.contextFormats}</p>}
+          {isOribi && index === 4 && <p className="oribi-inference-note">{project.inferenceNote}</p>}
+        </div>
+      </div>)}
+    </div></div></section>
+    <section className="case-gallery section-pad"><div className="section-inner"><Label index="B">THE ARTIFACTS</Label><div className="case-images">{project.images.map((src, index) => <figure className="reveal" key={src}><div><img src={src} alt={project.imageAlts[index]} loading="lazy" /></div><figcaption>FIG. {String(index + 1).padStart(2, '0')} / {project.imageAlts[index]}</figcaption></figure>)}</div><div className="case-links">{project.repo && <a href={project.repo} target="_blank" rel="noreferrer">{isOribi ? 'GitHub repository' : 'Source repository'} <ArrowUpRight size={21} /></a>}{project.documents.map(doc => <a href={doc.href} target="_blank" rel="noreferrer" key={doc.href}>{doc.label} <ArrowUpRight size={21} /></a>)}</div></div></section>
+    <section className="case-next"><div className="section-inner"><span>NEXT CASE STUDY / {next.number}</span><Link to={projectPath(next.slug)}>{next.title}<ArrowRight size={40} /></Link><Link className="case-back" to="/#work">ALL WORK <ArrowUpRight size={17} /></Link></div></section>
+  </main>
 }
 
 function LegacyDocument({ href }) { useEffect(() => { window.location.replace(href) }, [href]); return <main id="main" className="not-found"><p>Opening document…</p><a href={href}>Open it here <Download size={18} /></a></main> }

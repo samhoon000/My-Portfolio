@@ -31,7 +31,7 @@ const projectPresentation = [
 function ProjectActions({ project, index, onPreview }) {
   const route = index === 0
     ? '/project/food-health'
-    : index === 1 ? '/project/instacart' : null
+    : index === 1 ? '/project/instacart' : index === 2 ? '/project/oribi' : null
 
   return (
     <div className="project-actions">

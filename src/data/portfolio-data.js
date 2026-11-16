@@ -134,21 +134,15 @@ export const projects = [
     buttonText: 'Explore Project',
   },
   {
-    title: 'India Food Price Intelligence Dashboard',
-    problem: 'Agricultural commodity price volatility lacked transparency, making it difficult to uncover market risks, overpaying regions, and state-wise fluctuations for informed trading.',
-    approach: 'Built a robust market intelligence dashboard in Power BI. Utilized Python and Pandas for deep data wrangling and feature extraction from raw pricing datasets.',
-    result: 'Successfully mapped overpaying vs. underpaying markets across India. Proved Tomato had the highest price volatility, transforming raw data into a strategic tool for policy and trading decisions.',
-    tools: ['Power BI', 'Python', 'Pandas', 'Statistics', 'Market Analytics'],
-    insights:
-      'Tomato showed the highest price volatility, while Wheat remained most stable. Certain markets significantly overpaid compared to national averages, while others consistently underpaid. Southern and northeastern states showed stronger pricing fluctuations.',
-    imageLabel: 'Market Price Dashboard',
-    githubUrl: 'https://github.com/samhoon000/indian-food-price-volatility.git',
-    images: ['/food-price-1.png', '/food-price-2.png'],
-    themeClasses: {
-      cardHover: 'hover:border-emerald/50',
-      button: 'border-emerald/50 bg-emerald/10 text-emerald hover:bg-emerald hover:text-base focus-visible:ring-emerald shadow-[0_0_10px_rgba(16,185,129,0.2)] hover:shadow-[0_0_15px_rgba(16,185,129,0.4)]',
-      imageHover: 'hover:border-emerald/50 hover:shadow-[0_0_25px_rgba(16,185,129,0.25)]',
-    }
+    title: 'Oribi — DataFrame Intelligence & Dataset Profiling Library',
+    problem: 'Analysts and AI systems often start working with a dataset without first understanding its structure, grain, identifiers, missingness, or semantic roles. This can result in incorrect assumptions and unreliable analysis.',
+    approach: 'Oribi is an open-source Python library that inspects pandas DataFrames and creates structured, evidence-backed analytical context before analysis. Its deterministic heuristics report likely structure, semantics, keys, grain, observed relationships, and analytical warnings.',
+    result: 'A structured dataset snapshot that analysts, data scientists, and downstream AI or data-analysis tooling can use before writing analysis or generating code. Inferences describe evidence and are not guaranteed business meanings.',
+    tools: ['Python', 'Pandas', 'Open Source', 'Data Profiling'],
+    insights: 'The repository documents dataset shape and duplicates, column statistics and missingness, likely semantic roles, candidate keys, likely grain, observed functional dependencies, and warnings for potential analytical issues.',
+    imageLabel: 'Oribi evidence-backed dataset context diagram',
+    githubUrl: 'https://github.com/samhoon000/Oribi',
+    images: ['/oribi-profile.png'],
   },
   {
     title: 'Apple Stock Price Analysis Dashboard',

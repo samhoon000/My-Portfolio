@@ -54,16 +54,21 @@ export const projects = [
     documents: [{ label: 'Read report', href: '/food-health-report.pdf' }, { label: 'View presentation', href: '/food-health-presentation.pdf' }],
   },
   {
-    slug: 'food-prices', number: '04', title: 'India Food Price Intelligence', category: 'Market analytics', theme: 'blue',
-    teaser: 'Where do commodity prices diverge, and which markets fluctuate most?',
-    problem: 'Regional price variation can make market patterns difficult to read at a glance.',
-    data: 'The project uses Indian agricultural commodity pricing data. The repository holds the source analysis and dashboard context.',
-    investigation: 'Wrangled the pricing data with Python and Pandas and visualized commodity and regional comparisons in Power BI.',
-    insights: 'The documented analysis identified tomato as the most volatile commodity studied and wheat as the most stable.',
-    implication: 'The dashboard supports closer inspection of regional price differences and possible market inefficiencies.',
-    tools: ['Python', 'Pandas', 'Power BI', 'Statistics'],
-    images: ['/food-price-1.png', '/food-price-2.png'], imageAlts: ['India food price dashboard overview', 'India food price dashboard detail'],
-    repo: 'https://github.com/samhoon000/indian-food-price-volatility', documents: [],
+    slug: 'oribi', number: '04', title: 'Oribi', category: 'OPEN-SOURCE PYTHON LIBRARY', theme: 'cyan',
+    subtitle: 'DataFrame Intelligence & Dataset Profiling Library',
+    teaser: 'DataFrame Intelligence & Dataset Profiling Library. An open-source Python library that profiles pandas DataFrames and generates evidence-backed context about structure, semantics, keys, grain, relationships, and analytical warnings.',
+    problem: 'Analysts and AI systems often start working with a dataset without first understanding its structure, grain, identifiers, missingness, or semantic roles. This can lead to incorrect assumptions and unreliable analysis.',
+    solution: 'Oribi automatically inspects a pandas DataFrame and creates a structured, evidence-backed snapshot of the dataset before analysis. It is designed for data analysts, data scientists, and downstream AI or data-analysis tooling.',
+    workflowSummary: 'A deterministic profiling workflow moves from a DataFrame to a structured dataset context that analysts and downstream tools can inspect before writing analysis or generating code.',
+    workflow: ['Input DataFrame', 'Profile dataset', 'Analyze columns', 'Infer semantic roles', 'Detect candidate keys', 'Estimate grain', 'Identify observed relationships', 'Generate analytical warnings', 'Produce structured context'],
+    codeExample: 'import pandas as pd\nfrom oribi import inspect\n\ndf = pd.read_csv("data.csv")\n\ncontext = inspect(df)\n\nprint(context.summary())\nprint(context.to_context(max_chars=2000))',
+    insights: 'The snapshot reports dataset shape and duplicate rows; column statistics and missingness; likely roles such as identifier, measure, dimension, categorical, temporal, boolean, and text; candidate keys; likely grain; observed functional-dependency relationships; and warnings including non-unique identifiers, negative or skewed measures, high-cardinality categories, and possible temporal gaps.',
+    implication: 'The compact context can help analysts and downstream AI or data-analysis systems understand a dataset before analysis, then use that evidence to guide the next questions and code.',
+    contextFormats: 'The result can be rendered as Markdown, serialized to JSON-compatible data, or returned as a dictionary. A bounded context string is available for downstream use.',
+    inferenceNote: 'Oribi uses deterministic, evidence-backed heuristics. Inferences are not guaranteed business meanings: candidate keys reflect observed uniqueness, and observed relationships do not prove that a join is valid or safe.',
+    tools: ['Python', 'Pandas', 'Open Source', 'Data Profiling'],
+    images: ['/oribi-profile.png'], imageAlts: ['Editorial illustration of Python and pandas profiling a DataFrame, schema, and statistics'],
+    repo: 'https://github.com/samhoon000/Oribi', documents: [],
   },
   {
     slug: 'apple-stock', number: '05', title: 'Apple Stock Price Analysis', category: 'Financial analytics', theme: 'violet',
@@ -81,10 +86,10 @@ export const projects = [
 
 export const skillGroups = [
   { id: 'sql', number: '01', title: 'SQL & databases', description: 'Shape reliable questions with joins, aggregations, and data models.', tools: ['SQL', 'DuckDB', 'MySQL', 'Data modeling'], projectSlugs: ['instacart', 'tamil-nadu-air-quality', 'food-health'] },
-  { id: 'python', number: '02', title: 'Python & analysis', description: 'Clean, explore, and transform raw records into analysis-ready data.', tools: ['Python', 'Pandas', 'NumPy', 'EDA'], projectSlugs: ['instacart', 'tamil-nadu-air-quality', 'food-health', 'food-prices'] },
+  { id: 'python', number: '02', title: 'Python & analysis', description: 'Clean, explore, and transform raw records into analysis-ready data.', tools: ['Python', 'Pandas', 'NumPy', 'EDA'], projectSlugs: ['instacart', 'tamil-nadu-air-quality', 'food-health', 'oribi'] },
   { id: 'bi', number: '03', title: 'Business intelligence', description: 'Translate analytical work into dashboards and decision-ready reporting.', tools: ['Power BI', 'DAX', 'Excel', 'KPI analysis'], projectSlugs: ['instacart', 'tamil-nadu-air-quality', 'food-health', 'apple-stock'] },
-  { id: 'quality', number: '04', title: 'Data quality', description: 'Check missing values, normalize messy fields, and validate analytical inputs.', tools: ['Cleaning', 'Validation', 'Transformations'], projectSlugs: ['food-health', 'instacart', 'tamil-nadu-air-quality'] },
-  { id: 'ml', number: '05', title: 'Statistics & ML', description: 'Use statistical thinking and applied machine learning when the question calls for it.', tools: ['Statistics', 'Scikit-learn', 'Model evaluation'], projectSlugs: ['food-prices'] },
+  { id: 'quality', number: '04', title: 'Data quality', description: 'Check missing values, normalize messy fields, and validate analytical inputs.', tools: ['Cleaning', 'Validation', 'Transformations'], projectSlugs: ['food-health', 'instacart', 'tamil-nadu-air-quality', 'oribi'] },
+  { id: 'ml', number: '05', title: 'Statistics & ML', description: 'Use statistical thinking and applied machine learning when the question calls for it.', tools: ['Statistics', 'Scikit-learn', 'Model evaluation'], projectSlugs: ['apple-stock'] },
 ]
 
 export const credentials = [

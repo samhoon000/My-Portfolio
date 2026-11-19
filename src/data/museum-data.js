@@ -67,7 +67,7 @@ export const projects = [
     contextFormats: 'The result can be rendered as Markdown, serialized to JSON-compatible data, or returned as a dictionary. A bounded context string is available for downstream use.',
     inferenceNote: 'Oribi uses deterministic, evidence-backed heuristics. Inferences are not guaranteed business meanings: candidate keys reflect observed uniqueness, and observed relationships do not prove that a join is valid or safe.',
     tools: ['Python', 'Pandas', 'Open Source', 'Data Profiling'],
-    images: ['/oribi-profile.png'], imageAlts: ['Editorial illustration of Python and pandas profiling a DataFrame, schema, and statistics'],
+    images: ['/oribi-logo.png'], imageAlts: ['Oribi logo with a navy antelope and wordmark on a golden circle'],
     repo: 'https://github.com/samhoon000/Oribi', documents: [],
   },
   {

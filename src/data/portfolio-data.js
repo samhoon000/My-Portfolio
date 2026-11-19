@@ -140,9 +140,9 @@ export const projects = [
     result: 'A structured dataset snapshot that analysts, data scientists, and downstream AI or data-analysis tooling can use before writing analysis or generating code. Inferences describe evidence and are not guaranteed business meanings.',
     tools: ['Python', 'Pandas', 'Open Source', 'Data Profiling'],
     insights: 'The repository documents dataset shape and duplicates, column statistics and missingness, likely semantic roles, candidate keys, likely grain, observed functional dependencies, and warnings for potential analytical issues.',
-    imageLabel: 'Oribi evidence-backed dataset context diagram',
+    imageLabel: 'Oribi antelope logo',
     githubUrl: 'https://github.com/samhoon000/Oribi',
-    images: ['/oribi-profile.png'],
+    images: ['/oribi-logo.png'],
   },
   {
     title: 'Apple Stock Price Analysis Dashboard',

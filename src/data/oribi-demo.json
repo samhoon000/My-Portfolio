@@ -1,0 +1,868 @@
+{
+  "revision": "01cd334b44e111828a543685d1842ec89c75d63c",
+  "version": "0.2.0",
+  "grain": {
+    "composite": {
+      "rows": [
+        {
+          "order_id": 101,
+          "product_id": 7,
+          "region": "east",
+          "revenue": 25.0,
+          "order_date": "2026-01-01T00:00:00.000"
+        },
+        {
+          "order_id": 101,
+          "product_id": 8,
+          "region": "east",
+          "revenue": 40.0,
+          "order_date": "2026-01-01T00:00:00.000"
+        },
+        {
+          "order_id": 102,
+          "product_id": 9,
+          "region": "west",
+          "revenue": 30.0,
+          "order_date": "2026-01-02T00:00:00.000"
+        },
+        {
+          "order_id": 102,
+          "product_id": 10,
+          "region": "west",
+          "revenue": -5.0,
+          "order_date": "2026-01-02T00:00:00.000"
+        },
+        {
+          "order_id": 103,
+          "product_id": 7,
+          "region": "east",
+          "revenue": 21.0,
+          "order_date": "2026-01-03T00:00:00.000"
+        },
+        {
+          "order_id": 103,
+          "product_id": 9,
+          "region": "east",
+          "revenue": 33.0,
+          "order_date": "2026-01-03T00:00:00.000"
+        },
+        {
+          "order_id": 104,
+          "product_id": 8,
+          "region": "west",
+          "revenue": 50.0,
+          "order_date": "2026-01-04T00:00:00.000"
+        },
+        {
+          "order_id": 104,
+          "product_id": 10,
+          "region": "west",
+          "revenue": 34.0,
+          "order_date": "2026-01-04T00:00:00.000"
+        }
+      ],
+      "duplicateRows": [],
+      "grain": {
+        "status": "estimated",
+        "label": "order_id + product_id",
+        "columns": [
+          "order_id",
+          "product_id"
+        ],
+        "confidence": 0.67,
+        "evidence": [
+          {
+            "code": "composite_uniqueness",
+            "statement": "8 distinct pairs across 8 rows",
+            "details": {
+              "distinct_pairs": 8,
+              "row_count": 8,
+              "uniqueness_rate": 1.0,
+              "duplicate_count": 0,
+              "missing_count": 0,
+              "verified_unique": true
+            }
+          }
+        ]
+      },
+      "keys": [
+        {
+          "columns": [
+            "order_date",
+            "product_id"
+          ],
+          "kind": "composite",
+          "verified_unique": true
+        },
+        {
+          "columns": [
+            "order_id",
+            "product_id"
+          ],
+          "kind": "composite",
+          "verified_unique": true
+        }
+      ]
+    },
+    "single": {
+      "rows": [
+        {
+          "order_id": 101,
+          "product_id": 7,
+          "region": "east",
+          "revenue": 25.0,
+          "order_date": "2026-01-01T00:00:00.000",
+          "line_id": 1
+        },
+        {
+          "order_id": 101,
+          "product_id": 8,
+          "region": "east",
+          "revenue": 40.0,
+          "order_date": "2026-01-01T00:00:00.000",
+          "line_id": 2
+        },
+        {
+          "order_id": 102,
+          "product_id": 9,
+          "region": "west",
+          "revenue": 30.0,
+          "order_date": "2026-01-02T00:00:00.000",
+          "line_id": 3
+        },
+        {
+          "order_id": 102,
+          "product_id": 10,
+          "region": "west",
+          "revenue": -5.0,
+          "order_date": "2026-01-02T00:00:00.000",
+          "line_id": 4
+        },
+        {
+          "order_id": 103,
+          "product_id": 7,
+          "region": "east",
+          "revenue": 21.0,
+          "order_date": "2026-01-03T00:00:00.000",
+          "line_id": 5
+        },
+        {
+          "order_id": 103,
+          "product_id": 9,
+          "region": "east",
+          "revenue": 33.0,
+          "order_date": "2026-01-03T00:00:00.000",
+          "line_id": 6
+        },
+        {
+          "order_id": 104,
+          "product_id": 8,
+          "region": "west",
+          "revenue": 50.0,
+          "order_date": "2026-01-04T00:00:00.000",
+          "line_id": 7
+        },
+        {
+          "order_id": 104,
+          "product_id": 10,
+          "region": "west",
+          "revenue": 34.0,
+          "order_date": "2026-01-04T00:00:00.000",
+          "line_id": 8
+        }
+      ],
+      "duplicateRows": [],
+      "grain": {
+        "status": "estimated",
+        "label": "line_id",
+        "columns": [
+          "line_id"
+        ],
+        "confidence": 0.67,
+        "evidence": [
+          {
+            "code": "single_column_uniqueness",
+            "statement": "8 distinct values across 8 rows",
+            "details": {
+              "distinct_count": 8,
+              "row_count": 8,
+              "duplicate_count": 0,
+              "missing_count": 0,
+              "verified_unique": true
+            }
+          }
+        ]
+      },
+      "keys": [
+        {
+          "columns": [
+            "line_id"
+          ],
+          "kind": "single",
+          "verified_unique": true
+        },
+        {
+          "columns": [
+            "order_date",
+            "product_id"
+          ],
+          "kind": "composite",
+          "verified_unique": true
+        },
+        {
+          "columns": [
+            "order_id",
+            "product_id"
+          ],
+          "kind": "composite",
+          "verified_unique": true
+        }
+      ]
+    },
+    "duplicate": {
+      "rows": [
+        {
+          "order_id": 101,
+          "product_id": 7,
+          "region": "east",
+          "revenue": 25.0,
+          "order_date": "2026-01-01T00:00:00.000"
+        },
+        {
+          "order_id": 101,
+          "product_id": 8,
+          "region": "east",
+          "revenue": 40.0,
+          "order_date": "2026-01-01T00:00:00.000"
+        },
+        {
+          "order_id": 102,
+          "product_id": 9,
+          "region": "west",
+          "revenue": 30.0,
+          "order_date": "2026-01-02T00:00:00.000"
+        },
+        {
+          "order_id": 102,
+          "product_id": 10,
+          "region": "west",
+          "revenue": -5.0,
+          "order_date": "2026-01-02T00:00:00.000"
+        },
+        {
+          "order_id": 103,
+          "product_id": 7,
+          "region": "east",
+          "revenue": 21.0,
+          "order_date": "2026-01-03T00:00:00.000"
+        },
+        {
+          "order_id": 103,
+          "product_id": 9,
+          "region": "east",
+          "revenue": 33.0,
+          "order_date": "2026-01-03T00:00:00.000"
+        },
+        {
+          "order_id": 104,
+          "product_id": 8,
+          "region": "west",
+          "revenue": 50.0,
+          "order_date": "2026-01-04T00:00:00.000"
+        },
+        {
+          "order_id": 104,
+          "product_id": 10,
+          "region": "west",
+          "revenue": 34.0,
+          "order_date": "2026-01-04T00:00:00.000"
+        },
+        {
+          "order_id": 104,
+          "product_id": 10,
+          "region": "west",
+          "revenue": 34.0,
+          "order_date": "2026-01-04T00:00:00.000"
+        }
+      ],
+      "duplicateRows": [
+        7,
+        8
+      ],
+      "grain": {
+        "status": "undetermined",
+        "label": null,
+        "columns": [],
+        "confidence": 0.0,
+        "evidence": [
+          {
+            "code": "no_strong_key",
+            "statement": "No single column or tested column pair was sufficiently unique",
+            "details": {
+              "row_count": 9,
+              "max_exact_rows": 100000
+            }
+          }
+        ]
+      },
+      "keys": []
+    }
+  },
+  "roles": [
+    {
+      "name": "order_id",
+      "dtype": "int64",
+      "semantic": {
+        "role": "identifier",
+        "confidence": 0.78,
+        "evidence": [
+          {
+            "code": "name_identifier_hint",
+            "statement": "Column name strongly suggests an identifier",
+            "details": {}
+          },
+          {
+            "code": "identifier_value_variation",
+            "statement": "Observed 4 distinct non-missing values",
+            "details": {
+              "distinct_count": 4,
+              "row_count": 8
+            }
+          },
+          {
+            "code": "numeric_type",
+            "statement": "Column has a numeric dtype",
+            "details": {}
+          },
+          {
+            "code": "repeated_numeric_measure_values",
+            "statement": "Numeric values repeat across rows without having low categorical cardinality",
+            "details": {}
+          }
+        ]
+      },
+      "distinct": 4,
+      "recommendations": [
+        {
+          "operation": "COUNT DISTINCT",
+          "rationale": "Distinct counting is recommended to count unique entities because repeated identifier values cause row counts to exceed entity counts."
+        },
+        {
+          "operation": "SUM",
+          "rationale": "Summing identifier values is inappropriate because identifiers represent entity labels rather than additive quantities."
+        },
+        {
+          "operation": "MEAN",
+          "rationale": "Averaging identifier values is inappropriate because identifiers represent entity labels rather than measurable quantities."
+        }
+      ]
+    },
+    {
+      "name": "product_id",
+      "dtype": "int64",
+      "semantic": {
+        "role": "identifier",
+        "confidence": 0.78,
+        "evidence": [
+          {
+            "code": "name_identifier_hint",
+            "statement": "Column name strongly suggests an identifier",
+            "details": {}
+          },
+          {
+            "code": "identifier_value_variation",
+            "statement": "Observed 4 distinct non-missing values",
+            "details": {
+              "distinct_count": 4,
+              "row_count": 8
+            }
+          },
+          {
+            "code": "numeric_type",
+            "statement": "Column has a numeric dtype",
+            "details": {}
+          },
+          {
+            "code": "repeated_numeric_measure_values",
+            "statement": "Numeric values repeat across rows without having low categorical cardinality",
+            "details": {}
+          }
+        ]
+      },
+      "distinct": 4,
+      "recommendations": [
+        {
+          "operation": "COUNT DISTINCT",
+          "rationale": "Distinct counting is recommended to count unique entities because repeated identifier values cause row counts to exceed entity counts."
+        },
+        {
+          "operation": "SUM",
+          "rationale": "Summing identifier values is inappropriate because identifiers represent entity labels rather than additive quantities."
+        },
+        {
+          "operation": "MEAN",
+          "rationale": "Averaging identifier values is inappropriate because identifiers represent entity labels rather than measurable quantities."
+        }
+      ]
+    },
+    {
+      "name": "region",
+      "dtype": "str",
+      "semantic": {
+        "role": "dimension",
+        "confidence": 0.62,
+        "evidence": [
+          {
+            "code": "text_dimension",
+            "statement": "Text values are reusable across rows",
+            "details": {}
+          }
+        ]
+      },
+      "distinct": 2,
+      "recommendations": [
+        {
+          "operation": "GROUP BY",
+          "rationale": "Grouping by this dimension is useful for segmenting aggregations across categories, and counting distinct values is useful for assessing category cardinality."
+        }
+      ]
+    },
+    {
+      "name": "revenue",
+      "dtype": "float64",
+      "semantic": {
+        "role": "measure",
+        "confidence": 0.76,
+        "evidence": [
+          {
+            "code": "mostly_unique",
+            "statement": "8 distinct non-null values across 8 rows",
+            "details": {
+              "distinct_count": 8,
+              "row_count": 8,
+              "distinct_rate": 1.0
+            }
+          },
+          {
+            "code": "numeric_type",
+            "statement": "Column has a numeric dtype",
+            "details": {}
+          },
+          {
+            "code": "name_measure_hint",
+            "statement": "Column name supports a quantitative measure",
+            "details": {}
+          },
+          {
+            "code": "floating_point_type",
+            "statement": "Floating-point values are consistent with a quantitative measure",
+            "details": {}
+          },
+          {
+            "code": "negative_numeric_values",
+            "statement": "Negative numeric values are consistent with signed measurements",
+            "details": {
+              "negative_count": 1
+            }
+          },
+          {
+            "code": "numeric_value_variability",
+            "statement": "Numeric values exhibit non-zero dispersion",
+            "details": {
+              "standard_deviation": 16.20405592965627
+            }
+          },
+          {
+            "code": "non_identifier_numeric_domain",
+            "statement": "Floating-point or negative values conflict with entity identity",
+            "details": {}
+          }
+        ]
+      },
+      "distinct": 8,
+      "recommendations": [
+        {
+          "operation": "SUM",
+          "rationale": "SUM is a reasonable starting point for additive quantities to measure total volume across observations."
+        },
+        {
+          "operation": "MEAN",
+          "rationale": "MEAN is a reasonable starting point for estimating typical values across observations when the distribution is relatively symmetric."
+        },
+        {
+          "operation": "MEDIAN",
+          "rationale": "MEDIAN is useful for central tendency, especially when the distribution may be skewed or contain extreme values."
+        },
+        {
+          "operation": "MIN",
+          "rationale": "MIN is valid for observing lower bounds across observations."
+        },
+        {
+          "operation": "MAX",
+          "rationale": "MAX is valid for observing upper bounds across observations."
+        }
+      ]
+    },
+    {
+      "name": "order_date",
+      "dtype": "datetime64[us]",
+      "semantic": {
+        "role": "temporal",
+        "confidence": 0.86,
+        "evidence": [
+          {
+            "code": "datetime_dtype",
+            "statement": "Column has a datetime dtype",
+            "details": {}
+          }
+        ]
+      },
+      "distinct": 4,
+      "recommendations": []
+    }
+  ],
+  "relationships": [
+    {
+      "source_column": "order_date",
+      "target_column": "order_id",
+      "kind": "one_to_one",
+      "mapping_cardinality": "one_to_one",
+      "coverage": 1.0,
+      "confidence": 0.84,
+      "evidence": [
+        {
+          "code": "bijective_value_mapping",
+          "statement": "each observed value maps one-to-one between order_date and order_id",
+          "details": {
+            "distinct_values": 4,
+            "coverage": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "source_column": "order_id",
+      "target_column": "region",
+      "kind": "functional_dependency",
+      "mapping_cardinality": "many_to_one",
+      "coverage": 1.0,
+      "confidence": 0.84,
+      "evidence": [
+        {
+          "code": "value_mapping",
+          "statement": "100.0% of observed order_id values map to one region value",
+          "details": {
+            "source_distinct": 4,
+            "target_distinct": 2,
+            "coverage": 1.0,
+            "violation_count": 0,
+            "affected_groups": 0,
+            "paired_row_count": 8,
+            "missing_pair_count": 0
+          }
+        }
+      ]
+    },
+    {
+      "source_column": "order_id",
+      "target_column": "line_id",
+      "kind": "one_to_many",
+      "mapping_cardinality": "one_to_many",
+      "coverage": 1.0,
+      "confidence": 0.84,
+      "evidence": [
+        {
+          "code": "entity_group_mapping",
+          "statement": "100.0% of observed line_id values map to one order_id value; 8 entity values occur across 4 groups",
+          "details": {
+            "entity_distinct": 8,
+            "group_distinct": 4,
+            "average_entities_per_group": 2.0,
+            "minimum_entities_per_group": 2,
+            "maximum_entities_per_group": 2,
+            "coverage": 1.0,
+            "paired_row_count": 8,
+            "missing_pair_count": 0
+          }
+        }
+      ]
+    }
+  ],
+  "quality": {
+    "rows": [
+      {
+        "date": "2026-01-01T00:00:00.000",
+        "revenue": 30.0
+      },
+      {
+        "date": "2026-01-02T00:00:00.000",
+        "revenue": null
+      },
+      {
+        "date": "2026-01-03T00:00:00.000",
+        "revenue": 25.0
+      },
+      {
+        "date": "2026-01-04T00:00:00.000",
+        "revenue": null
+      },
+      {
+        "date": "2026-01-06T00:00:00.000",
+        "revenue": 40.0
+      },
+      {
+        "date": "2026-01-07T00:00:00.000",
+        "revenue": null
+      },
+      {
+        "date": "2026-01-08T00:00:00.000",
+        "revenue": 38.0
+      },
+      {
+        "date": "2026-01-09T00:00:00.000",
+        "revenue": null
+      }
+    ],
+    "warnings": [
+      {
+        "code": "potential_temporal_gap",
+        "severity": "low",
+        "title": "Potential temporal gap",
+        "message": "date has a possible temporal gap relative to an inferred 1 day cadence.",
+        "evidence": [
+          {
+            "code": "temporal_gap",
+            "statement": "1 timestamp(s) may be absent relative to an inferred 1 day cadence",
+            "details": {
+              "cadence": "1 day",
+              "gap_start": "2026-01-05T00:00:00",
+              "gap_end": "2026-01-05T00:00:00",
+              "missing_intervals": 1,
+              "expected_timestamps": [
+                "2026-01-05T00:00:00"
+              ],
+              "examples_omitted": 0,
+              "observed_before": "2026-01-04T00:00:00",
+              "observed_after": "2026-01-06T00:00:00"
+            }
+          }
+        ],
+        "implication": "The interval may reflect missing observations or a normal pause in data collection.",
+        "recommendation": "Confirm the expected sampling schedule before treating the interval as missing data."
+      },
+      {
+        "code": "high_missingness",
+        "severity": "medium",
+        "title": "High missingness",
+        "message": "revenue is missing 50.0% of its values.",
+        "evidence": [
+          {
+            "code": "missing_rate",
+            "statement": "4 of values are missing",
+            "details": {
+              "missing_count": 4,
+              "missing_rate": 0.5
+            }
+          }
+        ],
+        "implication": "Analyses using this column may exclude many rows.",
+        "recommendation": "Check whether missing values have a meaningful interpretation."
+      }
+    ]
+  },
+  "metrics": [
+    {
+      "name": "order_count",
+      "label": "Order count",
+      "kind": "entity_count",
+      "sql": "COUNT(DISTINCT order_id)",
+      "columns": [
+        "order_id"
+      ],
+      "confidence": 0.86,
+      "rationale": "Counts distinct order_id entities rather than rows because order_id repeats across observations.",
+      "evidence": [
+        {
+          "code": "identifier_entity_role",
+          "statement": "order_id has an identifier role with 4 distinct values",
+          "details": {
+            "distinct_count": 4,
+            "observed_count": 8,
+            "semantic_confidence": 0.78
+          }
+        },
+        {
+          "code": "repeated_entity_observations",
+          "statement": "order_id repeats across rows (4 distinct across 8 observed rows)",
+          "details": {
+            "distinct_count": 4,
+            "observed_count": 8
+          }
+        },
+        {
+          "code": "entity_at_observation_grain",
+          "statement": "order_id contributes to the estimated observation grain",
+          "details": {
+            "grain_confidence": 0.67
+          }
+        }
+      ],
+      "caveats": []
+    },
+    {
+      "name": "product_count",
+      "label": "Product count",
+      "kind": "entity_count",
+      "sql": "COUNT(DISTINCT product_id)",
+      "columns": [
+        "product_id"
+      ],
+      "confidence": 0.86,
+      "rationale": "Counts distinct product_id entities rather than rows because product_id repeats across observations.",
+      "evidence": [
+        {
+          "code": "identifier_entity_role",
+          "statement": "product_id has an identifier role with 4 distinct values",
+          "details": {
+            "distinct_count": 4,
+            "observed_count": 8,
+            "semantic_confidence": 0.78
+          }
+        },
+        {
+          "code": "repeated_entity_observations",
+          "statement": "product_id repeats across rows (4 distinct across 8 observed rows)",
+          "details": {
+            "distinct_count": 4,
+            "observed_count": 8
+          }
+        },
+        {
+          "code": "entity_at_observation_grain",
+          "statement": "product_id contributes to the estimated observation grain",
+          "details": {
+            "grain_confidence": 0.67
+          }
+        }
+      ],
+      "caveats": []
+    },
+    {
+      "name": "total_revenue",
+      "label": "Total revenue",
+      "kind": "measure_total",
+      "sql": "SUM(revenue)",
+      "columns": [
+        "revenue"
+      ],
+      "confidence": 0.86,
+      "rationale": "Sums additive measure revenue across observed rows.",
+      "evidence": [
+        {
+          "code": "additive_measure_role",
+          "statement": "revenue is an additive measure with recommended SUM aggregation",
+          "details": {
+            "observed_count": 8,
+            "missing_count": 0,
+            "semantic_confidence": 0.76
+          }
+        }
+      ],
+      "caveats": [
+        "revenue contains negative values; confirm refunds or adjustments before summing."
+      ]
+    },
+    {
+      "name": "average_order_value",
+      "label": "Average order value",
+      "kind": "measure_per_entity",
+      "sql": "SUM(revenue) / NULLIF(COUNT(DISTINCT order_id), 0)",
+      "columns": [
+        "revenue",
+        "order_id"
+      ],
+      "confidence": 0.87,
+      "rationale": "Computes total revenue per distinct order_id using NULLIF to avoid division by zero.",
+      "evidence": [
+        {
+          "code": "additive_measure_and_entity",
+          "statement": "Combines additive measure revenue with identifier order_id (4 distinct entities)",
+          "details": {
+            "entity_distinct_count": 4,
+            "measure_observed_count": 8,
+            "entity_observed_count": 8
+          }
+        },
+        {
+          "code": "repeated_entity_observations",
+          "statement": "order_id repeats across rows, so aggregating revenue per distinct order_id avoids row-grain distortion",
+          "details": {
+            "distinct_count": 4,
+            "observed_count": 8
+          }
+        },
+        {
+          "code": "entity_at_observation_grain",
+          "statement": "order_id participates in the inferred observation grain",
+          "details": {
+            "grain_confidence": 0.67
+          }
+        }
+      ],
+      "caveats": [
+        "revenue contains negative values; confirm refunds or adjustments before summing."
+      ]
+    },
+    {
+      "name": "revenue_per_product",
+      "label": "Revenue per product",
+      "kind": "measure_per_entity",
+      "sql": "SUM(revenue) / NULLIF(COUNT(DISTINCT product_id), 0)",
+      "columns": [
+        "revenue",
+        "product_id"
+      ],
+      "confidence": 0.87,
+      "rationale": "Computes total revenue per distinct product_id using NULLIF to avoid division by zero.",
+      "evidence": [
+        {
+          "code": "additive_measure_and_entity",
+          "statement": "Combines additive measure revenue with identifier product_id (4 distinct entities)",
+          "details": {
+            "entity_distinct_count": 4,
+            "measure_observed_count": 8,
+            "entity_observed_count": 8
+          }
+        },
+        {
+          "code": "repeated_entity_observations",
+          "statement": "product_id repeats across rows, so aggregating revenue per distinct product_id avoids row-grain distortion",
+          "details": {
+            "distinct_count": 4,
+            "observed_count": 8
+          }
+        },
+        {
+          "code": "entity_at_observation_grain",
+          "statement": "product_id participates in the inferred observation grain",
+          "details": {
+            "grain_confidence": 0.67
+          }
+        }
+      ],
+      "caveats": [
+        "revenue contains negative values; confirm refunds or adjustments before summing."
+      ]
+    }
+  ],
+  "options": {
+    "maxExactRows": 100000,
+    "limitedExample": "Dataset: 8 rows × 5 columns. Likely grain could not be determined confidently. Exact row limit exceeded. 3 analytical warning(s) detected. Key findings: [medium] order_id has 4 distinct values across rows and may identify repeated entities. · [medium] product_id has 4 distinct values across rows and may identify repeated entities. · [low] 1 negative values were observed in likely measure revenue."
+  },
+  "exports": {
+    "summary": "Dataset: 8 rows × 5 columns. Likely grain: order_id + product_id (confidence 0.67). 3 analytical warning(s) detected. Key findings: [medium] order_id has 4 distinct values across rows and may identify repeated entities. · [medium] product_id has 4 distinct values across rows and may identify repeated entities. · [low] 1 negative values were observed in likely measure revenue.",
+    "context": "DATASET\n8 rows × 5 columns\n\nGRAIN\norder_id + product_id · candidate composite observation grain · 67% confidence\n\nCOLUMNS\n- order_date: datetime64[us]/temporal\n- order_id: int64/identifier\n- product_id: int64/identifier\n- region: str/dimension\n- revenue: float64/measure\n\nWARNINGS\n⚠ order_id has 4 distinct values across rows and may identify repeated entities.\n⚠ product_id has 4 distinct values across rows and may identify repeated entities.\n⚠ 1 negative values were observed in likely measure revenue.\n\nAGGREGATION GUIDANCE\n- order_id: Aggregations: COUNT DISTINCT | Inappropriate aggregations: SUM · MEAN\n- product_id: Aggregations: COUNT DISTINCT | Inappropriate aggregations: SUM · MEAN\n- region: Aggregations: GROUP BY\n- revenue: Aggregations: SUM · MEAN (SUM only for additive quantities / MEAN for roughly symmetric values)\n\nDATASET DETAILS\nConfidence percentages are heuristic scores, not probabilities.\n\nMETRICS\n- order_count (86% confidence): COUNT(DISTINCT order_id)\n- product_count (86% confidence): COUNT(DISTINCT product_id)\n- total_revenue (86% confidence): SUM(revenue)\n- average_order_value (87% confidence): SUM(revenue) / NULLIF(COUNT(DISTINCT order_id), 0)\n- revenue_per_product (87% confidence): SUM(revenue) / NULLIF(COUNT(DISTINCT product_id), 0)\n\nRELATIONSHIPS\n- order_date is a temporal attribute associated with observations (datetime-typed column with 8 non-missing values; 96% confidence)\n- order_id + product_id jointly identify an observation (8 distinct pairs across 8 rows; 100% uniqueness evidence; 93% confidence)\n- order_id groups observations (4 unique values across 8 non-missing observations; average 2.00 observations/value; 50% evidence strength; 69% confidence)\n[Context truncated.]",
+    "markdown": "# Dataset context\n\n## Dataset summary\n\n- Rows: 8\n- Columns: 5\n- Duplicate rows: 0\n\n## Grain\n\n**order_id + product_id** · candidate observation grain · confidence 67%\n\n<details>\n<summary>Grain inference evidence</summary>\n\n- 8 distinct pairs across 8 rows\n\n</details>\n\n## Column roles\n\n- **order_date**: temporal dimension (86% confidence)\n- **order_id**: identifier candidate (78% confidence)\n- **product_id**: identifier candidate (78% confidence)\n- **region**: categorical dimension (62% confidence)",
+    "json": "{\n  \"candidate_keys\": [\n    {\n      \"columns\": [\n        \"order_date\",\n        \"product_id\"\n      ],\n      \"confidence\": 0.67,\n      \"duplicate_count\": 0,\n      \"evidence\": [\n        {\n          \"code\": \"composite_uniqueness\",\n          \"details\": {\n            \"distinct_pairs\": 8,\n            \"duplicate_count\": 0,\n            \"missing_count\": 0,\n            \"row_count\": 8,\n            \"uniqueness_rate\": 1.0,\n            \"verified_unique\": true\n          },\n          \"statement\": \"8 distinct pairs across 8 rows\"\n        }\n      ],\n      \"kind\": \"composite\",\n      \"missing_count\": 0,\n      \"uniqueness_rate\": 1.0,\n      \"verified_unique\": true"
+  }
+}

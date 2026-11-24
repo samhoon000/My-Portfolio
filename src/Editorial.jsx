@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { Link, Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom'
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Download, Menu, X } from 'lucide-react'
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
@@ -8,6 +8,7 @@ import { createHeroOrganism } from './hero-organism'
 import './editorial.css'
 import './profile.css'
 
+const OribiCaseStudy = lazy(() => import('./OribiCaseStudy'))
 const projectPath = slug => `/project/${slug}`
 
 function PageEffects() {
@@ -83,7 +84,7 @@ function HeroOrganism() {
 
 function Hero() { return <section className="hero" id="top"><HeroAtmosphere /><HeroOrganism /><div className="hero-grid" aria-hidden="true" /><div className="hero-inner"><div className="hero-kicker"><span className="status-dot" /> AVAILABLE FOR DATA & ANALYTICS OPPORTUNITIES <span>— 2026</span></div><div className="hero-main"><div className="hero-copy"><p className="hero-overline">ABDUL SAMHOON / ANALYTICAL PORTFOLIO</p><h1>Making<br />data <em>mean</em><br />more<span className="hero-period">.</span></h1><div className="hero-bottom-row"><p>I turn complex information into clear questions, useful dashboards, and decisions people can act on.</p><Link className="circle-link" to="/#work" aria-label="Explore selected work"><ArrowDown size={27} /></Link></div></div><div className="hero-visual"><SignalGraphic /><figure className="hero-profile"><div className="hero-photo-frame"><img src="/AbdulSamhoon.jpg" alt="Abdul Samhoon outdoors" fetchPriority="high" /></div><figcaption className="hero-profile-caption"><div><span>THE ANALYST / FIG. 01</span><strong>Abdul Samhoon</strong></div><div className="hero-socials"><a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="Abdul Samhoon on GitHub (opens in a new tab)" title="View Abdul Samhoon on GitHub"><FaGithub aria-hidden="true" /></a><a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Abdul Samhoon on LinkedIn (opens in a new tab)" title="View Abdul Samhoon on LinkedIn"><FaLinkedinIn aria-hidden="true" /></a></div></figcaption></figure></div></div><div className="hero-footer"><span>DATA ANALYST / AI & DATA SCIENCE STUDENT</span><span>SCROLL TO EXPLORE <ArrowDown size={13} /></span><span>PORTFOLIO, VOL. 01</span></div></div></section> }
 
-function ProjectCard({ project, index }) { return <article className={`project-card project-card--${project.theme} reveal`}><Link className="project-visual" to={projectPath(project.slug)} aria-label={`Read ${project.title} case study`}><span className="project-visual-grid" aria-hidden="true" /><img src={project.images[0]} alt={project.imageAlts[0]} loading="lazy" /><span className="project-visual-index">{String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span><span className="project-visual-arrow"><ArrowUpRight size={23} /></span></Link><div className="project-meta"><span>{project.category}</span><span>{project.tools.slice(0, 3).join(' / ')}</span></div><div className="project-card-title"><h3><Link to={projectPath(project.slug)}>{project.title}</Link></h3><Link className="project-text-link" to={projectPath(project.slug)} aria-label={`Open ${project.title}`}><ArrowUpRight size={25} /></Link></div><p>{project.teaser}</p></article> }
+function ProjectCard({ project, index }) { return <article className={`project-card project-card--${project.theme} reveal`}><Link className="project-visual" to={projectPath(project.slug)} aria-label={`Read ${project.title} case study`}><span className="project-visual-grid" aria-hidden="true" /><img src={project.coverImage?.src ?? project.images[0]} alt={project.coverImage?.alt ?? project.imageAlts[0]} loading="lazy" /><span className="project-visual-index">{String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span><span className="project-visual-arrow"><ArrowUpRight size={23} /></span></Link><div className="project-meta"><span>{project.category}</span><span>{project.tools.slice(0, 3).join(' / ')}</span></div><div className="project-card-title"><h3><Link to={projectPath(project.slug)}>{project.title}</Link></h3><Link className="project-text-link" to={projectPath(project.slug)} aria-label={`Open ${project.title}`}><ArrowUpRight size={25} /></Link></div><p>{project.teaser}</p></article> }
 
 function Work() { return <section className="work-section section-pad" id="work"><div className="section-inner"><Label index="01">SELECTED WORK</Label><div className="work-intro reveal"><div><p className="eyebrow">A CURATED SELECTION / FIVE CASE STUDIES</p><h2>The evidence<br />is in the <em>work.</em></h2></div><p>Each project starts with a question. The result is a clearer way to see what the data is saying.</p></div><div className="project-grid">{projects.map((project, index) => <ProjectCard project={project} index={index} key={project.slug} />)}</div><div className="work-outro"><span>THERE IS MORE BEHIND EVERY IMAGE.</span><a href={profile.github} target="_blank" rel="noreferrer">Explore GitHub <ArrowUpRight size={18} /></a></div></div></section> }
 
@@ -98,37 +99,32 @@ function Contact() { return <section className="contact-section" id="contact"><d
 
 function Home() { useEffect(() => { document.title = 'Abdul Samhoon — Data, made to mean more.' }, []); return <main id="main"><Hero /><Work /><Method /><About /><Experience /><Contact /></main> }
 
+function CaseNext({ project }) {
+  return <section className="case-next"><div className="section-inner"><span>NEXT CASE STUDY / {project.number}</span><Link to={projectPath(project.slug)}>{project.title}<ArrowRight size={40} /></Link><Link className="case-back" to="/#work">ALL WORK <ArrowUpRight size={17} /></Link></div></section>
+}
+
 function CaseStudy() {
   const { slug } = useParams()
   const project = projects.find(item => item.slug === slug)
   useEffect(() => { document.title = project ? `${project.title} — Abdul Samhoon` : 'Project not found — Abdul Samhoon' }, [project])
   if (!project) return <main id="main" className="not-found"><h1>Project not found.</h1><Link to="/#work">Return to selected work <ArrowLeft size={18} /></Link></main>
   const next = projects[(projects.findIndex(item => item.slug === slug) + 1) % projects.length]
-  const isOribi = project.slug === 'oribi'
-  const chapters = isOribi
-    ? [{ n: '01', title: 'The problem', body: project.problem }, { n: '02', title: 'The solution', body: project.solution }, { n: '03', title: 'Workflow & example', body: project.workflowSummary }, { n: '04', title: 'What Oribi reports', body: project.insights }, { n: '05', title: 'Using the context', body: project.contextFormats }]
-    : [{ n: '01', title: 'The question', body: project.problem }, { n: '02', title: 'The material', body: project.data }, { n: '03', title: 'The approach', body: project.investigation }, { n: '04', title: 'What emerged', body: project.insights }, { n: '05', title: 'Why it matters', body: project.implication }]
+  if (project.slug === 'oribi') return <Suspense fallback={<main id="main" className="section-inner section-pad" aria-busy="true">Loading Oribi…</main>}><OribiCaseStudy project={project} total={projects.length}><CaseNext project={next} /></OribiCaseStudy></Suspense>
+  const chapters = [{ n: '01', title: 'The question', body: project.problem }, { n: '02', title: 'The material', body: project.data }, { n: '03', title: 'The approach', body: project.investigation }, { n: '04', title: 'What emerged', body: project.insights }, { n: '05', title: 'Why it matters', body: project.implication }]
   return <main id="main" className={`case-page case-page--${project.theme}`}>
     <div className="case-hero"><div className="section-inner">
       <div className="case-hero-top"><Link to="/#work"><ArrowLeft size={17} /> SELECTED WORK</Link><span>CASE STUDY / {project.number} OF 0{projects.length}</span></div>
-      <div className="case-hero-grid"><div><p className="eyebrow">{project.category.toUpperCase()}</p><h1>{project.title}</h1>{isOribi && <p className="oribi-detail-subtitle">{project.subtitle}</p>}<p className="case-teaser">{project.teaser}</p></div><div className="case-hero-mark" aria-hidden="true"><span>{project.number}</span><small>ANALYSIS / ARTIFACT / IMPACT</small></div></div>
+      <div className="case-hero-grid"><div><p className="eyebrow">{project.category.toUpperCase()}</p><h1>{project.title}</h1><p className="case-teaser">{project.teaser}</p></div><div className="case-hero-mark" aria-hidden="true"><span>{project.number}</span><small>ANALYSIS / ARTIFACT / IMPACT</small></div></div>
       <div className="case-tool-row">{project.tools.map(tool => <span key={tool}>{tool}</span>)}</div>
     </div></div>
     <section className="case-body section-pad"><div className="section-inner"><Label index="A">THE STORY</Label><div className="case-story">
-      {chapters.map((chapter, index) => <div className="case-chapter reveal" key={chapter.n}>
+      {chapters.map(chapter => <div className="case-chapter reveal" key={chapter.n}>
         <span>{chapter.n} /</span><h2>{chapter.title}</h2>
-        <div className="case-chapter-content"><p>{chapter.body}</p>
-          {isOribi && index === 2 && <div className="oribi-example-grid">
-            <div className="oribi-workflow-panel"><h3>Workflow</h3><ol className="oribi-workflow">{project.workflow.map((step, stepIndex) => <li key={step}><span>{String(stepIndex + 1).padStart(2, '0')}</span>{step}</li>)}</ol></div>
-            <div className="oribi-code-panel"><h3>Python example</h3><pre className="oribi-code"><code>{project.codeExample}</code></pre></div>
-          </div>}
-          {isOribi && index === 2 && <p className="oribi-context-formats">{project.contextFormats}</p>}
-          {isOribi && index === 4 && <p className="oribi-inference-note">{project.inferenceNote}</p>}
-        </div>
+        <div className="case-chapter-content"><p>{chapter.body}</p></div>
       </div>)}
     </div></div></section>
-    <section className="case-gallery section-pad"><div className="section-inner"><Label index="B">THE ARTIFACTS</Label><div className="case-images">{project.images.map((src, index) => <figure className="reveal" key={src}><div><img src={src} alt={project.imageAlts[index]} loading="lazy" /></div><figcaption>FIG. {String(index + 1).padStart(2, '0')} / {project.imageAlts[index]}</figcaption></figure>)}</div><div className="case-links">{project.repo && <a href={project.repo} target="_blank" rel="noreferrer">{isOribi ? 'GitHub repository' : 'Source repository'} <ArrowUpRight size={21} /></a>}{project.documents.map(doc => <a href={doc.href} target="_blank" rel="noreferrer" key={doc.href}>{doc.label} <ArrowUpRight size={21} /></a>)}</div></div></section>
-    <section className="case-next"><div className="section-inner"><span>NEXT CASE STUDY / {next.number}</span><Link to={projectPath(next.slug)}>{next.title}<ArrowRight size={40} /></Link><Link className="case-back" to="/#work">ALL WORK <ArrowUpRight size={17} /></Link></div></section>
+    <section className="case-gallery section-pad"><div className="section-inner"><Label index="B">THE ARTIFACTS</Label><div className="case-images">{project.images.map((src, index) => <figure className="reveal" key={src}><div><img src={src} alt={project.imageAlts[index]} loading="lazy" /></div><figcaption>FIG. {String(index + 1).padStart(2, '0')} / {project.imageAlts[index]}</figcaption></figure>)}</div><div className="case-links">{project.repo && <a href={project.repo} target="_blank" rel="noreferrer">Source repository <ArrowUpRight size={21} /></a>}{project.documents.map(doc => <a href={doc.href} target="_blank" rel="noreferrer" key={doc.href}>{doc.label} <ArrowUpRight size={21} /></a>)}</div></div></section>
+    <CaseNext project={next} />
   </main>
 }
 
